@@ -1,0 +1,6 @@
+[home]
+ig88-vm ansible_ssh_host=ig88-vm.local
+
+[work]
+usxxcohoegl2c-vm ansible_ssh_host=usxxcohoegl2c.corp.emc.com
+starfury ansible_ssh_host=10.100.177.171
