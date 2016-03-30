@@ -1,0 +1,4 @@
+---
+- include: chrome.yml
+  sudo: true
+  when: '"chrome" in use_repos'

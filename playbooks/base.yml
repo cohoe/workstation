@@ -4,4 +4,7 @@
   roles:
     #- dev
     #- shell
-    - tools
+    #- tools
+    - repos
+  vars_files:
+    - ../vars/global.yml

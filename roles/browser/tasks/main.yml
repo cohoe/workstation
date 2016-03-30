@@ -1,4 +1,3 @@
 ---
-# Chrome
-#
-# Firefox
+- dnf: name=google-chrome-stable state=latest
+- dnf: name=firefox state=latest
