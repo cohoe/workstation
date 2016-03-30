@@ -7,6 +7,8 @@
     - tmux
     - strace
     - git
+    - glances
+    - setroubleshoot-server
   sudo: true
 
 - name: "DNF Development Tools Group"

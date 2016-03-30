@@ -1,14 +1,9 @@
 ---
 - dnf: name={{ item }} state=latest
   with_items:
-    - bind-utils
-    - openssh-clients
-    - openldap-clients
-    - rsync
     - screen
     - tmux
     - vim
-    - iftop
     - glances
     - setroubleshoot-server
   tags:

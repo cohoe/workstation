@@ -34,33 +34,33 @@ class devtools {
 #	}
 #}
 
-class nettools {
-	# Packet Capture
-	package { 'nmap': }
-	package { 'tcpdump': }
-	package { 'wireshark-gnome': }
-	package { 'net-snmp-utils': }
+#class nettools {
+#	# Packet Capture
+#	package { 'nmap': }
+#	package { 'tcpdump': }
+#	package { 'wireshark-gnome': }
+#	package { 'net-snmp-utils': }
+#
+#	# LDAP
+#	package { 'openldap-clients': }
+#}
 
-	# LDAP
-	package { 'openldap-clients': }
-}
+#class browsers {
+#	# Chrome
+#	include '::chromerepo'
+#	package { 'google-chrome-stable': }
+#
+#	# Firefox
+#	package { 'firefox': }
+#
+#	# @TODO: Flash
+#}
 
-class browsers {
-	# Chrome
-	include '::chromerepo'
-	package { 'google-chrome-stable': }
-
-	# Firefox
-	package { 'firefox': }
-
-	# @TODO: Flash
-}
-
-class gui {
-	# Basic tools
-	package { 'launchy': }
-	package { 'numlockx': }
-}
+#class gui {
+#	# Basic tools
+#	package { 'launchy': }
+#	package { 'numlockx': }
+#}
 
 node default {
 	# Passwordless sudo for admin group
@@ -72,17 +72,17 @@ node default {
 
 	# @TODO: RPMFusion
 
-	# Tools
-	include systools
-	include devtools
-	include nettools
-	include browsers
-	include gui
+#	# Tools
+#	include systools
+#	include devtools
+#	include nettools
+#	include browsers
+#	include gui
 
-	# SSH
-	service { 'sshd':
-		ensure => 'running',
-		enable => true,
-		hasrestart => true,
-	}
-}
+#	# SSH
+#	service { 'sshd':
+#		ensure => 'running',
+#		enable => true,
+#		hasrestart => true,
+#	}
+#}

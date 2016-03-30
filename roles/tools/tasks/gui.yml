@@ -1,0 +1,7 @@
+---
+- name: "GUI tools"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - launchy
+    - numlockx
+  sudo: true

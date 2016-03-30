@@ -1,0 +1,14 @@
+---
+- dnf: name={{ item }} state=latest
+  with_items:
+    - bind-utils
+    - openssh-clients
+    - openldap-clients
+    - iftop
+    - nmap
+    - tcpdump
+    - wireshark-gnome
+    - net-snmp-utils
+  sudo: true
+  tags:
+    - packages
