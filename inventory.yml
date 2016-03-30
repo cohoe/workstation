@@ -1,3 +1,5 @@
+localhost ansible_ssh_host=localhost
+
 [home]
 ig88-vm ansible_ssh_host=ig88-vm.local
 

@@ -1,38 +1,38 @@
-class systools {
-	# System Tools
-	package { 'iftop': }
-	package { 'glances': }
-	package { 'setroubleshoot-server': }
-}
+#class systools {
+#	# System Tools
+#	package { 'iftop': }
+#	package { 'glances': }
+#	package { 'setroubleshoot-server': }
+#}
 
 class devtools {
 	# Shells
 	package { 'zsh': }
 
-	# Editors and workflow
-	package { 'vim-enhanced': }
-	package { 'tmux': }
-	package { 'screen': }
-	package { 'strace': }
-	package { 'git': }
-
-	# Java
-	package { 'java': }
-	package { 'icedtea-web': }
-
-	# Python
-	package { 'python-virtualenvwrapper': }
-	package { 'python-pep8': }
-
-	# LaTeX
-	package { 'texworks': }
-	package { 'texlive-pdftex': }
-
-	# Goups
-	yumgroup { 'Development Tools':
-		ensure => 'present',
-	}
-}
+#	# Editors and workflow
+#	package { 'vim-enhanced': }
+#	package { 'tmux': }
+#	package { 'screen': }
+#	package { 'strace': }
+#	package { 'git': }
+#
+#	# Java
+#	package { 'java': }
+#	package { 'icedtea-web': }
+#
+#	# Python
+#	package { 'python-virtualenvwrapper': }
+#	package { 'python-pep8': }
+#
+#	# LaTeX
+#	package { 'texworks': }
+#	package { 'texlive-pdftex': }
+#
+#	# Goups
+#	yumgroup { 'Development Tools':
+#		ensure => 'present',
+#	}
+#}
 
 class nettools {
 	# Packet Capture

@@ -1,0 +1,6 @@
+---
+- file: path=~/.bin
+        state=directory
+
+- include: packages.yml
+  sudo: true

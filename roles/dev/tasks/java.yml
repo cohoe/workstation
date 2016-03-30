@@ -1,0 +1,7 @@
+---
+- name: "Java"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - java
+    - icedtea-web
+  sudo: true

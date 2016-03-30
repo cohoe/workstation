@@ -1,0 +1,6 @@
+---
+- name: Base system stuff
+  hosts: localhost
+  roles:
+    #- dev
+    - shell

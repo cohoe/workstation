@@ -1,0 +1,14 @@
+---
+- name: "Development Tools"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - vim
+    - screen
+    - tmux
+    - strace
+    - git
+  sudo: true
+
+- name: "DNF Development Tools Group"
+  dnf: name="@Development Tools" state=present
+  sudo: true

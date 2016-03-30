@@ -1,0 +1,7 @@
+---
+- name: "Python"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - python-virtualenvwrapper
+    - python-pep8
+  sudo: true
