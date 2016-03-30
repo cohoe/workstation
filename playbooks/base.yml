@@ -5,7 +5,8 @@
     #- dev
     #- shell
     #- tools
-    - repo
-    - browser
+    #- repo
+    #- browser
+    - sudo
   vars_files:
     - ../vars/global.yml
