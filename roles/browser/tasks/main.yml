@@ -1,3 +1,5 @@
 ---
 - dnf: name=google-chrome-stable state=latest
+  sudo: true
 - dnf: name=firefox state=latest
+  sudo: true

@@ -5,6 +5,7 @@
     #- dev
     #- shell
     #- tools
-    - repos
+    - repo
+    - browser
   vars_files:
     - ../vars/global.yml
