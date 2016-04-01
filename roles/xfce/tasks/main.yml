@@ -1,2 +1,10 @@
 ---
-- include core.yml
+- include: core.yml
+- include: panel.yml
+# @TODO: Wallpaper
+#- include: wallpaper.yml
+
+- name: "Reset xfce"
+  shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true
+  environment:
+    DISPLAY: "{{xfce_display}}"

@@ -1,0 +1,15 @@
+---
+- name: "Get wallpaper"
+  get_url: url={{xfce_wallpaper_url}}
+           dest={{xfce_wallpaper_destination}}
+
+- name: "Set wallpaper"
+  shell: xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path --create -t string -s "{{xfce_wallpaper_destination}}"
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+# For some reason, this needs to be done.
+- name: "Set wallpaper again"
+  shell: xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -s "{{xfce_wallpaper_destination}}"
+  environment:
+    DISPLAY: "{{xfce_display}}"

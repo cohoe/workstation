@@ -2,3 +2,6 @@
 xfce_display: ":0.0"
 xfce_workspace_count: 6
 xfce_theme: "Redmond"
+xfce_wallpaper_url: "http://img08.deviantart.net/bf3b/i/2004/172/4/b/storm_and_light.jpg"
+#xfce_wallpaper_url: "http://t.wallpaperweb.org/wallpaper/abstract/1600x1200/Ataraxia.jpg"
+xfce_wallpaper_destination: "~/Pictures/wallpaper"

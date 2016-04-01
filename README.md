@@ -13,10 +13,9 @@ Ansible scripts for development environment configuration.
   * gitignore
   * zshrc
   * vimrc
-* XFCE config
+* Wallpaper
 * RPMFusion
 * Pycharm
-* AnyConnect
 * Flash for FF
 * Firefox profile
 * SELinux
@@ -27,3 +26,4 @@ Ansible scripts for development environment configuration.
   * projects
   * VMware Client Integration
   * OpenVPN
+  * AnyConnect
