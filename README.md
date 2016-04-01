@@ -28,3 +28,4 @@ Ansible scripts for development environment configuration.
   * CAs
   * rsautil
   * LDAP
+  * projects

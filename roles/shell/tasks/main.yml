@@ -1,6 +1,14 @@
 ---
-- file: path=~/.bin
+- file: path=~/bin
         state=directory
 
 - include: packages.yml
   sudo: true
+
+# Projects directory
+- file: path=~/Projects
+        state=directory
+- file: path=~/Projects/{{ item }}
+  with_items:
+    - pub
+    - priv
