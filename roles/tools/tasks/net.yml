@@ -12,3 +12,8 @@
   sudo: true
   tags:
     - packages
+
+# Add the user to the wireshark group
+- user: name={{ ansible_env.USER }} append=yes
+        groups=wireshark
+  sudo: true

@@ -22,7 +22,6 @@ Ansible scripts for development environment configuration.
 * Flash for FF
 * home/bin
 * VMware Client Integration
-* Wireshark group
 * Firefox profile
 * SELinux
 * EMC

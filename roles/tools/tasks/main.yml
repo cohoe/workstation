@@ -1,7 +1,7 @@
 ---
-- include: java.yml
-- include: python.yml
-- include: latex.yml
-- include: tools.yml
+#- include: java.yml
+#- include: python.yml
+#- include: latex.yml
+#- include: tools.yml
 - include: net.yml
-- include: gui.yml
+#- include: gui.yml

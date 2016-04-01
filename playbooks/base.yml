@@ -4,10 +4,10 @@
   roles:
     #- dev
     #- shell
-    #- tools
+    - tools
     #- repo
     #- browser
     #- sudo
-    - slack
+    #- slack
   vars_files:
     - ../vars/global.yml
