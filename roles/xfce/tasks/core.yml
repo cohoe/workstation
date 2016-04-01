@@ -1,0 +1,35 @@
+---
+- name: "Set workspace count"
+  shell: xfconf-query -c xfwm4 -p /general/workspace_count -s "{{xfce_workspace_count}}"
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Enable compositing"
+  shell: xfconf-query -c xfwm4 -p /general/use_compositing -s true
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Set theme"
+  shell: xfconf-query -c xfwm4 -p /general/theme -s "{{xfce_theme}}"
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Shortcut for prev_workspace"
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Alt><Super>Left" --create -t string -s prev_workspace_key
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Shortcut for next_workspace"
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Alt><Super>Right" --create -t string -s next_workspace_key
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Set file browser default view"
+  shell: xfconf-query -c thunar -p /default-view --create -t string -s ThunarDetailsView
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Set file browser last view"
+  shell: xfconf-query -c thunar -p /last-view --create -t string -s ThunarDetailsView
+  environment:
+    DISPLAY: "{{xfce_display}}"
