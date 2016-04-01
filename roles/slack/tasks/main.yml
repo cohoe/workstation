@@ -1,0 +1,4 @@
+---
+- dnf: name=https://downloads.slack-edge.com/linux_releases/slack-2.0.3-0.1.fc21.x86_64.rpm state=latest
+  sudo: yes
+  when: ansible_distribution == 'Fedora'

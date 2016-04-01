@@ -7,6 +7,7 @@
     #- tools
     #- repo
     #- browser
-    - sudo
+    #- sudo
+    - slack
   vars_files:
     - ../vars/global.yml
