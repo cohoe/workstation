@@ -15,13 +15,9 @@ Ansible scripts for development environment configuration.
   * vimrc
 * XFCE config
 * RPMFusion
-* Projects structure
 * Pycharm
 * AnyConnect
-* OpenVPN
 * Flash for FF
-* home/bin
-* VMware Client Integration
 * Firefox profile
 * SELinux
 * EMC
@@ -29,3 +25,5 @@ Ansible scripts for development environment configuration.
   * rsautil
   * LDAP
   * projects
+  * VMware Client Integration
+  * OpenVPN

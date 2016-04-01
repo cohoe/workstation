@@ -1,0 +1,13 @@
+---
+
+- shell: xfconf-query -c xfwm4 -p /general/workspace_count -s "{{xfce_workspace_count}}"
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- shell: xfconf-query -c xfwm4 -p /general/use_compositing -s true
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- shell: xfconf-query -c xfwm4 -p /general/theme -s "{{xfce_theme}}"
+  environment:
+    DISPLAY: "{{xfce_display}}"

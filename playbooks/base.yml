@@ -3,11 +3,12 @@
   hosts: localhost
   roles:
     #- dev
-    - shell
+    #- shell
     #- tools
     #- repo
     #- browser
     #- sudo
     #- slack
+    - xfce
   vars_files:
     - ../vars/global.yml
