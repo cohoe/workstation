@@ -1,5 +1,14 @@
 ---
 - dnf: name=google-chrome-stable state=latest
   sudo: true
+
+- name: "Chrome regular launcher"
+  copy: dest="~/.local/share/applications/chrome.desktop"
+        src="chrome.desktop"
+
+- name: "Chrome incognito launcher"
+  copy: dest="~/.local/share/applications/incognito.desktop"
+        src="incognito.desktop"
+
 - dnf: name=firefox state=latest
   sudo: true

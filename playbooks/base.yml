@@ -11,6 +11,8 @@
     #- slack
     #- xfce
     #- launchy
-    - x11
+    #- x11
+    #- browser
+    - grub
   vars_files:
     - ../vars/global.yml

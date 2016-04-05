@@ -4,6 +4,10 @@
 # @TODO: Wallpaper
 #- include: wallpaper.yml
 
+- name: "Explorer shortcut"
+  copy: dest="~/.local/share/applications/explorer.desktop"
+        src="explorer.desktop"
+
 - name: "Reset xfce"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true
   environment:

@@ -27,3 +27,6 @@ Ansible scripts for development environment configuration.
   * VMware Client Integration
   * OpenVPN
   * AnyConnect
+    * path
+    * package
+    * ff profile
