@@ -1,0 +1,11 @@
+[http]
+	sslverify = off
+[user]
+	name = Grant Cohoe
+    email = grant@grantcohoe.com
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=28800
+[core]
+	excludesfile = ~/.gitignore

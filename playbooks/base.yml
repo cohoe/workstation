@@ -2,7 +2,7 @@
 - name: Base system stuff
   hosts: all
   roles:
-    #- shell
+    - shell
     #- tools
     #- repo
     #- sudo

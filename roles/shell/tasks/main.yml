@@ -12,3 +12,10 @@
   with_items:
     - pub
     - priv
+
+# Misc dotfiles
+- copy: dest=~/.{{ item }}
+        src={{ item }}
+  with_items:
+    - gitconfig
+    - gitignore
