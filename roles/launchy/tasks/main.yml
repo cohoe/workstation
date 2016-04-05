@@ -1,0 +1,12 @@
+---
+- dnf: name=launchy state=latest
+  sudo: true
+
+- name: "Install Launchy config"
+  copy: dest="~/launchy.ini"
+        src="launchy.ini"
+
+- name: "Autostart Launchy"
+  copy: dest="/etc/xdg/autostart/launchy.desktop"
+        src="launchy.desktop"
+  sudo: true

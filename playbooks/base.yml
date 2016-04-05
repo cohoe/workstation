@@ -9,6 +9,8 @@
     #- browser
     #- sudo
     #- slack
-    - xfce
+    #- xfce
+    #- launchy
+    - x11
   vars_files:
     - ../vars/global.yml

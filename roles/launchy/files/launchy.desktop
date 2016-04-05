@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=Launchy
+Comment=Keystroke Launcher
+Exec=launchy %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=launchy_icon
+Categories=Utility;
+
+
+X-Desktop-File-Install-Version=0.22
+OnlyShowIn=GNOME;
+X-GNOME-Autostart-enabled=false
