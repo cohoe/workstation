@@ -1,0 +1,4 @@
+---
+# A work computer
+#
+- include: base.yml

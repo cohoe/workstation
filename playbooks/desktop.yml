@@ -1,0 +1,12 @@
+---
+- name: Graphical desktop stuff
+  hosts: all
+  roles:
+    - browser
+    #- slack
+    #- xfce
+    #- launchy
+    #- x11
+    #- grub
+  vars_files:
+    - ../vars/global.yml

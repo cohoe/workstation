@@ -1,18 +1,10 @@
 ---
 - name: Base system stuff
-  hosts: localhost
+  hosts: all
   roles:
-    #- dev
     #- shell
     #- tools
     #- repo
-    #- browser
     #- sudo
-    #- slack
-    #- xfce
-    #- launchy
-    #- x11
-    #- browser
-    - grub
   vars_files:
     - ../vars/global.yml
