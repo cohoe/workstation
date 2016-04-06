@@ -6,3 +6,7 @@
 - include: slack.yml
   sudo: true
   when: '"slack" in use_repos'
+
+- include: rpmfusion.yml
+  sudo: true
+  when: '"rpmfusion" in use_repos'

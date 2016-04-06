@@ -9,7 +9,6 @@ Ansible scripts for development environment configuration.
 
 ## TODO
 * Wallpaper
-* RPMFusion
 * Pycharm
 * Flash for FF
 * SELinux
