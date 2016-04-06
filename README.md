@@ -9,10 +9,7 @@ Ansible scripts for development environment configuration.
 
 ## TODO
 * Dotfiles
-  * gitconfig
-  * gitignore
   * zshrc
-  * vimrc
 * Wallpaper
 * RPMFusion
 * Pycharm

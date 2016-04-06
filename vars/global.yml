@@ -1,3 +1,10 @@
 ---
 use_repos:
  - chrome
+
+ohmyzsh_directory: ~/.oh-my-zsh
+ohmyzsh_repo: https://github.com/robbyrussell/oh-my-zsh
+
+nvm_repo: https://github.com/creationix/nvm.git
+nvm_directory: ~/.nvm
+nvm_version: v0.30.2

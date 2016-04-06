@@ -1,0 +1,70 @@
+" Set appropriate file handlers
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" We are in the 21st century, and this is VIm not VI
+set nocompatible
+
+" Fix backspace
+set bs=2
+
+" Dont wrap text on new lines. Just scroll to the side
+"set wrap
+set wrap linebreak 
+"set formatoptions=l
+"set lbr
+"
+nmap <silent> j gj
+nmap <silent> k gk
+nmap <silent> <down> gj
+nmap <silent> <up> gk
+nnoremap <silent> <space> <esc>:noh<return><esc>
+
+" Make Enter put a newline
+map <S-Enter> O<Esc>j
+map <CR> o<Esc>k
+
+" Set terminal color capabilities
+"set t_Co=256
+
+" Auto-indent based on the syntax being used
+set autoindent
+"set smartindent
+
+" Set history length
+set history=250
+
+" Turn on syntax highlighting, also based on file extension
+syntax on
+filetype on
+filetype plugin on
+
+" Turn on line numbering and force numbers to be as far left as possible
+set number
+set numberwidth=2
+
+" Highlight search results
+set hlsearch
+
+" Set the number of spaces one tab equals
+set ts=4
+set tabstop=4
+
+" Indentations should be tabstop spaces
+set shiftwidth=4
+
+" Use spaces instead of tabs
+set expandtab
+
+set showmatch
+set showtabline=2
+set ruler
+
+" Colors!
+"colorscheme typofree
+set background=dark
+
+" Keep a few lines when scrolling
+set scrolloff=10
+
+set pastetoggle=<F2>
+

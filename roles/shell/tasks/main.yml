@@ -1,21 +1,46 @@
 ---
-- file: path=~/bin
-        state=directory
+#- file: path=~/bin
+#        state=directory
+#
+#- include: packages.yml
+#  sudo: true
+#
+## Projects directory
+#- file: path=~/Projects
+#        state=directory
+#- file: path=~/Projects/{{ item }}
+#  with_items:
+#    - pub
+#    - priv
+#
+## Misc dotfiles
+#- copy: dest=~/.{{ item }}
+#        src={{ item }}
+#  with_items:
+#    - gitconfig
+#    - gitignore
+#    - vimrc
 
-- include: packages.yml
-  sudo: true
+# zshrc
+- copy: dest=~/.zshrc
+        src=zsh/zshrc
 
-# Projects directory
-- file: path=~/Projects
-        state=directory
-- file: path=~/Projects/{{ item }}
+# ohmyzsh
+- git: repo={{ ohmyzsh_repo }}
+       dest={{ ohmyzsh_directory }}
+
+# Custom files
+- copy: dest={{ ohmyzsh_directory }}/custom/{{ item }}
+        src=zsh/{{ item }}
   with_items:
-    - pub
-    - priv
+    - aliases.zsh
+    - environment.zsh
+    - path.zsh
 
-# Misc dotfiles
-- copy: dest=~/.{{ item }}
-        src={{ item }}
-  with_items:
-    - gitconfig
-    - gitignore
+# NVM
+- git: repo={{ nvm_repo }}
+       dest={{ nvm_directory }}
+       version={{ nvm_version }}
+
+- copy: dest={{ ohmyzsh_directory}}/custom/nvm.zsh
+        src=zsh/nvm.zsh
