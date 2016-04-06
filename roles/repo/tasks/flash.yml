@@ -1,0 +1,3 @@
+---
+- copy: dest=/etc/yum.repos.d/adobe-flash-x86_64.repo
+        src=adobe-flash-x86_64.repo

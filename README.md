@@ -8,15 +8,17 @@ Ansible scripts for development environment configuration.
 * requiretty is removed from the targets sudoers file.
 
 ## TODO
-* Wallpaper
 * Pycharm
-* Flash for FF
-* SELinux
+* Security
+* RPM Keys
 * EMC
+  * SELinux
+  * Wallpaper
   * CAs
   * rsautil
   * LDAP
   * projects
+  * Flash for FF
   * VMware Client Integration
   * OpenVPN
   * AnyConnect
