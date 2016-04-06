@@ -1,4 +1,6 @@
 ---
+- include: base.yml
+
 - name: Graphical desktop stuff
   hosts: all
   roles:

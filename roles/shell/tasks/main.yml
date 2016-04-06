@@ -1,25 +1,26 @@
 ---
-#- file: path=~/bin
-#        state=directory
-#
-#- include: packages.yml
-#  sudo: true
-#
-## Projects directory
-#- file: path=~/Projects
-#        state=directory
-#- file: path=~/Projects/{{ item }}
-#  with_items:
-#    - pub
-#    - priv
-#
-## Misc dotfiles
-#- copy: dest=~/.{{ item }}
-#        src={{ item }}
-#  with_items:
-#    - gitconfig
-#    - gitignore
-#    - vimrc
+- file: path=~/bin
+        state=directory
+
+- include: packages.yml
+  sudo: true
+
+# Projects directory
+- file: path=~/Projects
+        state=directory
+- file: path=~/Projects/{{ item }}
+  with_items:
+    - pub
+    - priv
+    - rsa
+
+# Misc dotfiles
+- copy: dest=~/.{{ item }}
+        src={{ item }}
+  with_items:
+    - gitconfig
+    - gitignore
+    - vimrc
 
 # zshrc
 - copy: dest=~/.zshrc

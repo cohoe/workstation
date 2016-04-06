@@ -1,5 +1,5 @@
 ---
-- name: Install slack
-  dnf: name=https://downloads.slack-edge.com/linux_releases/slack-2.0.3-0.1.fc21.x86_64.rpm state=latest
+- name: Slack desktop application
+  dnf: name=slack state=present
   sudo: yes
-  when: ansible_distribution == 'Fedora'
+  when: (ansible_distribution == 'Fedora') and ('slack' in use_repos)

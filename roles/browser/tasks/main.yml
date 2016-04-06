@@ -1,6 +1,7 @@
 ---
 - dnf: name=google-chrome-stable state=latest
   sudo: true
+  when: "'chrome' in use_repos"
 
 - name: "Chrome regular launcher"
   copy: dest="~/.local/share/applications/chrome.desktop"

@@ -2,3 +2,7 @@
 - include: chrome.yml
   sudo: true
   when: '"chrome" in use_repos'
+
+- include: slack.yml
+  sudo: true
+  when: '"slack" in use_repos'

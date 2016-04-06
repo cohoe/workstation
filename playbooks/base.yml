@@ -2,9 +2,9 @@
 - name: Base system stuff
   hosts: all
   roles:
-    - shell
+    #- shell
     #- tools
-    #- repo
+    - repo
     #- sudo
   vars_files:
     - ../vars/global.yml

@@ -1,6 +1,7 @@
 ---
 use_repos:
  - chrome
+ - slack
 
 ohmyzsh_directory: ~/.oh-my-zsh
 ohmyzsh_repo: https://github.com/robbyrussell/oh-my-zsh
