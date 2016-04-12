@@ -1,3 +1,6 @@
 ---
-- copy: dest=/etc/yum.repos.d/adobe-flash-x86_64.repo
-        src=adobe-flash-x86_64.repo
+#- copy: dest=/etc/yum.repos.d/adobe-linux-x86_64.repo
+#        src=adobe-linux-x86_64.repo
+- dnf: name=http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+       state=present
+  sudo: true

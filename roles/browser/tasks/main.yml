@@ -1,4 +1,5 @@
 ---
+# Chrome
 - dnf: name=google-chrome-stable state=latest
   sudo: true
   when: "'chrome' in use_repos"
@@ -6,10 +7,17 @@
 - name: "Chrome regular launcher"
   copy: dest="~/.local/share/applications/chrome.desktop"
         src="chrome.desktop"
+  when: "'chrome' in use_repos"
 
 - name: "Chrome incognito launcher"
   copy: dest="~/.local/share/applications/incognito.desktop"
         src="incognito.desktop"
+  when: "'chrome' in use_repos"
 
+# Firefox
 - dnf: name=firefox state=latest
   sudo: true
+
+- dnf: name=flash-plugin state=latest
+  sudo: true
+  when: "'flash' in use_repos"

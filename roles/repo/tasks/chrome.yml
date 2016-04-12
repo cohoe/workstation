@@ -1,3 +1,6 @@
 ---
 - copy: dest=/etc/yum.repos.d/google-chrome.repo
         src=google-chrome.repo
+
+- rpm_key: key=https://dl.google.com/linux/linux_signing_key.pub
+           state=present
