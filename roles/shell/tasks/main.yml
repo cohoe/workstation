@@ -21,6 +21,7 @@
     - gitconfig
     - gitignore
     - vimrc
+    - screenrc
 
 # zshrc
 - copy: dest=~/.zshrc
