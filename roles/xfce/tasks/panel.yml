@@ -16,4 +16,5 @@
 
 - name: "Copy new web browser shortcut"
   copy: dest="~/.config/xfce4/panel/launcher-11/{{xfce_web_file.stdout}}"
-        src="config/xfce4/panel/chrome/chrome.desktop"
+        src="chrome.desktop"
+  when: "'chrome' in use_repos"

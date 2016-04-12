@@ -5,7 +5,8 @@
     #- shell
     #- tools
     - repo
-    - browser
+    #- browser
     #- sudo
+    - xfce
   vars_files:
     - ../vars/global.yml

@@ -3,6 +3,7 @@
 - include: panel.yml
 # @TODO: Wallpaper
 #- include: wallpaper.yml
+- include: terminal.yml
 
 - name: "Explorer shortcut"
   copy: dest="~/.local/share/applications/explorer.desktop"
