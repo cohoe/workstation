@@ -12,7 +12,6 @@
   with_items:
     - pub
     - priv
-    - rsa
 
 # Misc dotfiles
 - copy: dest=~/.{{ item }}
