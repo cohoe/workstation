@@ -21,3 +21,13 @@
 - dnf: name=flash-plugin state=latest
   sudo: true
   when: "'flash' in use_repos"
+
+- seboolean: name=mozilla_plugin_can_network_connect
+             state=yes
+             persistent=yes
+  sudo: true
+
+- seboolean: name=unconfined_mozilla_plugin_transition
+             state=no
+             persistent=yes
+  sudo: true

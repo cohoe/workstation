@@ -1,4 +1,12 @@
 ---
 # A work computer
 #
-- include: base.yml
+#- include: base.yml
+- name: Work
+  hosts: all
+  roles:
+    - common
+    - emc
+  vars_files:
+    - ../vars/global.yml
+    - ../vars/emc.yml
