@@ -17,3 +17,9 @@
 - name: "anyconnect | cleanup"
   file: path=/tmp/anyconnect
         state=absent
+
+- name: "anyconnect | touch"
+  file: path=/usr/bin/hal-get-property
+        mode=0755
+        state=touch
+  sudo: yes

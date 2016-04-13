@@ -2,6 +2,6 @@
 - name: RoleTest
   hosts: all
   roles:
-    - browser
+    - emc
   vars_files:
     - ../vars/global.yml
