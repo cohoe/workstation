@@ -36,3 +36,7 @@
              state=no
              persistent=yes
   sudo: true
+
+# This is needed for Cisco AnyConnect to actually trust anything
+- name: "firefox | profile | create"
+  shell: firefox -CreateProfile default
