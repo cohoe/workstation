@@ -8,20 +8,10 @@ Ansible scripts for development environment configuration.
 * requiretty is removed from the targets sudoers file.
 
 ## TODO
+* Package updates to start
 * Pycharm
 * Security
-* RPM Keys
+* Launchy autostart is registered but not enabled?
 * EMC
-  * SELinux
   * Wallpaper
-  * CAs
-  * rsautil
-  * LDAP
-  * projects
-  * Flash for FF
-  * VMware Client Integration
   * OpenVPN
-  * AnyConnect
-    * path
-    * package
-    * ff profile

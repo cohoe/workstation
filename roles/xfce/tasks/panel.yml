@@ -18,3 +18,8 @@
   copy: dest="~/.config/xfce4/panel/launcher-11/{{xfce_web_file.stdout}}"
         src="chrome.desktop"
   when: "'chrome' in use_repos"
+
+- name: "clock | format"
+  shell: xfconf-query -c xfce4-panel -p /plugins/plugin-5/digital-format -ns "%I:%M %p %m/%d" -t string
+  environment:
+    DISPLAY: "{{xfce_display}}"
