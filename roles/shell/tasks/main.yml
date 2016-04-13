@@ -43,3 +43,9 @@
 
 - copy: dest={{ ohmyzsh_directory}}/custom/nvm.zsh
         src=zsh/nvm.zsh
+
+
+- name: "user | shell | set"
+  user: name={{ ansible_env.USER }}
+        shell=/bin/zsh
+  sudo: yes
