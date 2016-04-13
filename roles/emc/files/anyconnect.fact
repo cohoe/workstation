@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ANYCONNECT_BINARY=/opt/cisco/anyconnect/bin/vpn
+
+echo -en "{\n\t"
+if [ -x $ANYCONNECT_BINARY ]; then
+    RAW_VERSION=$($ANYCONNECT_BINARY version | egrep -e "[0-9]{5}")
+    VERSION=$(echo $RAW_VERSION | sed 's/[A-Za-z \(\)]//g')
+    VERSION=$(echo $VERSION | sed 's/.$//g')
+
+    echo "\"anyconnect_version\": \"$VERSION\","
+    echo -en "\t"
+    echo "\"anyconnect_present\": true"
+else
+    echo "\"anyconnnect_present\": false"
+fi
+echo "}"

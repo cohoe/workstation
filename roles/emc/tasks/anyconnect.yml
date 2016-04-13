@@ -1,0 +1,18 @@
+- name: "anyconnect | prep"
+  shell: if [ -d /tmp/anyconnect ]; then rm -rf /tmp/anyconnect && mkdir /tmp/anyconnect; else mkdir /tmp/anyconnect; fi
+
+- name: "anyconnect | download"
+  get_url: url={{ anyconnect_repo }}/{{ anyconnect_package }}
+           dest=/tmp/anyconnect/{{ anyconnect_package }}
+
+- name: "anyconnect | extract"
+  unarchive: src=/tmp/anyconnect/{{ anyconnect_package }}
+             dest=/tmp/anyconnect/
+
+- name: "anyconnect | install"
+  shell: bash /tmp/anyconnect/binaries/vpnsetup.sh
+  sudo: yes
+
+- name: "anyconnect | cleanup"
+  file: path=/tmp/anyconnect
+        state=absent
