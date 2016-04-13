@@ -1,42 +1,44 @@
 ---
 # Chrome
-- dnf: name=google-chrome-stable state=latest
-  sudo: true
-  when: "'chrome' in use_repos"
-
-- name: "chrome | launcher directory | create"
-  file: path=~/.local/share/applications
-        recurse=yes
-        state=directory
-
-- name: "chrome | launcher | create"
-  copy: dest="~/.local/share/applications/chrome.desktop"
-        src="chrome.desktop"
-  when: "'chrome' in use_repos"
-
-- name: "chrome | incognito launcher | create"
-  copy: dest="~/.local/share/applications/incognito.desktop"
-        src="incognito.desktop"
-  when: "'chrome' in use_repos"
-
-# Firefox
-- dnf: name=firefox state=latest
-  sudo: true
-
-- dnf: name=flash-plugin state=latest
-  sudo: true
-  when: "'flash' in use_repos"
-
-- seboolean: name=mozilla_plugin_can_network_connect
-             state=yes
-             persistent=yes
-  sudo: true
-
-- seboolean: name=unconfined_mozilla_plugin_transition
-             state=no
-             persistent=yes
-  sudo: true
+#- dnf: name=google-chrome-stable state=latest
+#  sudo: true
+#  when: "'chrome' in use_repos"
+#
+#- name: "chrome | launcher directory | create"
+#  file: path=~/.local/share/applications
+#        recurse=yes
+#        state=directory
+#
+#- name: "chrome | launcher | create"
+#  copy: dest="~/.local/share/applications/chrome.desktop"
+#        src="chrome.desktop"
+#  when: "'chrome' in use_repos"
+#
+#- name: "chrome | incognito launcher | create"
+#  copy: dest="~/.local/share/applications/incognito.desktop"
+#        src="incognito.desktop"
+#  when: "'chrome' in use_repos"
+#
+## Firefox
+#- dnf: name=firefox state=latest
+#  sudo: true
+#
+#- dnf: name=flash-plugin state=latest
+#  sudo: true
+#  when: "'flash' in use_repos"
+#
+#- seboolean: name=mozilla_plugin_can_network_connect
+#             state=yes
+#             persistent=yes
+#  sudo: true
+#
+#- seboolean: name=unconfined_mozilla_plugin_transition
+#             state=no
+#             persistent=yes
+#  sudo: true
 
 # This is needed for Cisco AnyConnect to actually trust anything
 - name: "firefox | profile | create"
-  shell: firefox -CreateProfile default
+  shell: if [ ! -d {{ ansible_env.HOME }}/.mozilla/firefox ]; then firefox -CreateProfile default; fi
+  environment:
+    DISPLAY: "{{ display }}"
