@@ -8,6 +8,7 @@
 - name: "anyconnect | extract"
   unarchive: src=/tmp/anyconnect/{{ anyconnect_package }}
              dest=/tmp/anyconnect/
+             copy=no
 
 - name: "anyconnect | install"
   shell: bash /tmp/anyconnect/binaries/vpnsetup.sh
