@@ -1,0 +1,10 @@
+---
+- name: "ldap | install"
+  dnf: name=openldap-clients
+       state=latest
+  sudo: yes
+
+- name: "ldap | config"
+  template: src=ldap.conf
+            dest=/etc/openldap/ldap.conf
+  sudo: yes

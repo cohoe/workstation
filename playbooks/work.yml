@@ -7,6 +7,7 @@
   roles:
     - common
     - emc
+    - ldap
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml
