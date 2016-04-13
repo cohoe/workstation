@@ -12,6 +12,7 @@ Ansible scripts for development environment configuration.
 * Pycharm
 * Security
 * Launchy autostart is registered but not enabled?
+* Calendar on monday
 * EMC
   * Wallpaper
   * OpenVPN
