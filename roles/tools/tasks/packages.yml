@@ -1,8 +1,12 @@
 ---
-- name: "Development Tools"
+#- name: "vim-minimal | remove"
+#  dnf: name=vim-minimal state=absent
+#  sudo: yes
+
+- name: "my tools | install"
   dnf: name={{ item }} state=latest
   with_items:
-    - vim
+    - vim-enhanced
     - screen
     - tmux
     - strace
@@ -11,6 +15,6 @@
     - setroubleshoot-server
   sudo: true
 
-- name: "DNF Development Tools Group"
+- name: "dev tools group | install"
   dnf: name="@Development Tools" state=present
   sudo: true

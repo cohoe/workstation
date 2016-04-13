@@ -2,6 +2,6 @@
 - include: java.yml
 - include: python.yml
 - include: latex.yml
-- include: tools.yml
+- include: packages.yml
 - include: net.yml
 - include: gui.yml
