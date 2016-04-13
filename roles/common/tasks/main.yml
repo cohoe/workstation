@@ -1,0 +1,13 @@
+---
+- name: "python-dnf | install"
+  shell: dnf install python-dnf -y
+  sudo: yes
+
+- name: "packages | install"
+  dnf: name={{ item }} state=present
+  sudo: yes
+  with_items:
+    - libsemanage-python
+    - libselinux-python
+    - python-dnf
+    - python-firewall

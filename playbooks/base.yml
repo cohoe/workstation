@@ -2,11 +2,11 @@
 - name: Base system stuff
   hosts: all
   roles:
-    #- shell
-    #- tools
+    - common
     - repo
+    - shell
+    - tools
     - browser
-    #- sudo
-    #- xfce
+    - sudo
   vars_files:
     - ../vars/global.yml

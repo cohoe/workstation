@@ -12,6 +12,8 @@ if [ -x $ANYCONNECT_BINARY ]; then
     echo -en "\t"
     echo "\"anyconnect_present\": true"
 else
-    echo "\"anyconnnect_present\": false"
+    echo "\"anyconnect_version\": 0,"
+    echo -en "\t"
+    echo "\"anyconnect_present\": false"
 fi
 echo "}"
