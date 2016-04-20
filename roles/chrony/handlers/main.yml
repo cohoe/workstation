@@ -1,0 +1,4 @@
+---
+- name: 'restart chronyd'
+  action: service name=chronyd state=restarted
+  sudo: yes

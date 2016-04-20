@@ -1,0 +1,18 @@
+---
+- name: "pool | remove"
+  lineinfile:
+    dest: "/etc/chrony.conf"
+    regexp: "^pool"
+    state: absent
+  notify: restart chronyd
+  sudo: yes
+
+- name: "server | add"
+  lineinfile:
+    dest: "/etc/chrony.conf"
+    regexp: "^server {{ item }}"
+    line: "server {{ item }} iburst"
+  with_items:
+    - "{{ time_servers }}" 
+  notify: restart chronyd
+  sudo: yes

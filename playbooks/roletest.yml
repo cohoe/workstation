@@ -3,6 +3,8 @@
   hosts: all
   roles:
     #- xfce
-    - horizon
+    #- horizon
+    - chrony
   vars_files:
     - ../vars/global.yml
+    - ../vars/emc.yml

@@ -7,5 +7,6 @@
     - shell
     - tools
     - sudo
+    - chrony
   vars_files:
     - ../vars/global.yml

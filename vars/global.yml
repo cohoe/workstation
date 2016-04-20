@@ -13,3 +13,7 @@ nvm_directory: ~/.nvm
 nvm_version: v0.30.2
 
 display: ":0.0"
+
+time_servers:
+ - time.windows.com
+ - pool.ntp.org

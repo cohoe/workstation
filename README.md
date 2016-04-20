@@ -16,3 +16,5 @@ Ansible scripts for development environment configuration.
 * EMC
   * Wallpaper
   * OpenVPN
+* VMware Workstation
+  * With libs fix
