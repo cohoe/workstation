@@ -1,0 +1,26 @@
+---
+- name: "directory | create"
+  file: path={{ perforce_p4v_root }}
+        state=directory
+        recurse=yes
+  sudo: yes
+
+- name: "archive | download"
+  get_url: url={{ perforce_p4v_package }}
+           dest=/tmp/p4v.tgz
+
+- name: "archive | deploy"
+  unarchive: src=/tmp/p4v.tgz
+             dest={{ perforce_p4v_root }}
+             copy=no
+  sudo: yes
+
+- name: "archive | link"
+  file: src={{ perforce_p4v_root }}/{{ perforce_p4v_version }}
+        dest={{ perforce_p4v_root}}/p4v
+        state=link
+  sudo: yes
+
+- name: "shortcut | install"
+  template: src=p4v.desktop
+            dest=~/.local/share/applications/p4v.desktop

@@ -16,5 +16,9 @@ Ansible scripts for development environment configuration.
 * EMC
   * Wallpaper
   * OpenVPN
+  * KeystoreExplorer
 * VMware Workstation
   * With libs fix
+* HDHomeRun
+* Arduino
+* VLC

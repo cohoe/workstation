@@ -5,7 +5,9 @@
     #- xfce
     #- horizon
     #- chrony
-    - remmina
+    #- remmina
+    #- repo
+    - perforce
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml
