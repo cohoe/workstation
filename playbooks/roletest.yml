@@ -4,7 +4,8 @@
   roles:
     #- xfce
     #- horizon
-    - chrony
+    #- chrony
+    - remmina
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml

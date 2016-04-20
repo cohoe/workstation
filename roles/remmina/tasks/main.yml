@@ -1,0 +1,15 @@
+---
+- name: "package | install"
+  dnf: name=remmina state=latest
+  sudo: yes
+
+- name: "config | create"
+  file: path=~/.remmina
+        state=directory
+        mode=0700
+
+- name: "files | create"
+  template: src=connection.j2
+            dest=~/.remmina/{{ item.name }}.remmina
+  with_items:
+    - "{{ remmina_hosts }}"
