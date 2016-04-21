@@ -23,4 +23,4 @@
 
 - name: "shortcut | install"
   template: src=p4v.desktop
-            dest=~/.local/share/applications/p4v.desktop
+            dest={{ shortcuts_directory }}/p4v.desktop

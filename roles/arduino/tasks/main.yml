@@ -1,0 +1,12 @@
+---
+- name: "ide | install"
+  dnf: name=arduino state=latest
+  sudo: yes
+
+- name: "groups | add"
+  user: name={{ ansible_env.USER }} append=yes
+        groups={{ item }}
+  with_items:
+    - dialout
+    - lock
+  sudo: true

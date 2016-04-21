@@ -1,0 +1,21 @@
+---
+- name: "directory | create"
+  file: path={{ sublime_root }}
+        state=directory
+        recurse=yes
+  sudo: yes
+
+- name: "archive | download"
+  get_url: url={{ sublime_repo }}/{{ sublime_package }}
+           dest=/tmp/{{ sublime_package }}
+
+- name: "archive | deploy"
+  unarchive: src=/tmp/{{ sublime_package }}
+             dest={{ sublime_root }}
+             copy=no
+  sudo: yes
+
+- name: "shortcut | install"
+  template: src=sublime.desktop
+            dest={{ shortcuts_directory }}/sublime.desktop
+  sudo: yes

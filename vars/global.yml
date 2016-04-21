@@ -17,3 +17,10 @@ display: ":0.0"
 time_servers:
  - time.windows.com
  - pool.ntp.org
+
+shortcuts_directory: /usr/local/share/applications
+
+sublime_repo: https://download.sublimetext.com
+sublime_package: sublime_text_3_build_3103_x64.tar.bz2
+sublime_root: /opt/sublime
+sublime_version: sublime_text_3
