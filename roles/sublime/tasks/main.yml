@@ -17,5 +17,5 @@
 
 - name: "shortcut | install"
   template: src=sublime.desktop
-            dest={{ shortcuts_directory }}/sublime.desktop
+            dest={{ sys_shortcuts_directory }}/sublime.desktop
   sudo: yes

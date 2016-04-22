@@ -4,3 +4,8 @@
   with_items:
     - numlockx
   sudo: true
+
+- name: "vlc | install"
+  dnf: name=vlc state=latest
+  sudo: yes
+  when: '"rpmfusion" in use_repos'

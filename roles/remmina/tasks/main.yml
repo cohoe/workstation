@@ -13,3 +13,8 @@
             dest=~/.remmina/{{ item.name }}.remmina
   with_items:
     - "{{ remmina_hosts }}"
+
+# Launchy cant deal with shortcuts with more than one entry
+- name: "shortcut | create"
+  copy: src=remmina.desktop
+        dest={{ local_shortcuts_directory }}/remmina.desktop

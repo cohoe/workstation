@@ -5,11 +5,11 @@
     #- xfce
     #- horizon
     #- chrony
-    #- remmina
+    - remmina
     #- repo
     #- perforce
     #- sublime
-    - arduino
+    #- arduino
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml

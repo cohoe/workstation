@@ -20,4 +20,3 @@ Ansible scripts for development environment configuration.
 * VMware Workstation
   * With libs fix
 * HDHomeRun
-* VLC
