@@ -19,3 +19,4 @@ Ansible scripts for development environment configuration.
 * VMware Workstation
   * With libs fix
 * HDHomeRun
+* Need to refactor XFCE to do sane things
