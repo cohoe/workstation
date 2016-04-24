@@ -2,3 +2,7 @@
 - name: 'update-ca-trust'
   shell: 'update-ca-trust'
   sudo: yes
+
+- name: 'reload firewall'
+  shell: firewall-cmd --reload
+  sudo: yes

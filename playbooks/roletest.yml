@@ -2,6 +2,7 @@
 - name: RoleTest
   hosts: all
   roles:
+    - common
     #- xfce
     #- horizon
     #- chrony
@@ -11,8 +12,9 @@
     #- sublime
     #- arduino
     #- locale
-    - xfce
-    - docky
+    #- xfce
+    #- docky
+    - hdhomerun
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

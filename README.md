@@ -11,12 +11,10 @@ Ansible scripts for development environment configuration.
 * Package updates to start
 * Pycharm
 * Security
-* Launchy autostart is registered but not enabled?
 * EMC
   * Wallpaper
   * OpenVPN
   * KeystoreExplorer
 * VMware Workstation
   * With libs fix
-* HDHomeRun
 * Need to refactor XFCE to do sane things
