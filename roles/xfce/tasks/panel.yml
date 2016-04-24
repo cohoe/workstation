@@ -23,3 +23,18 @@
   shell: xfconf-query -c xfce4-panel -p /plugins/plugin-5/digital-format -ns "%I:%M %p %m/%d" -t string
   environment:
     DISPLAY: "{{xfce_display}}"
+
+- name: "menu | name"
+  shell: xfconf-query -c xfce4-panel -p /plugins/plugin-1/button-title -n -t string -s ""
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "menu | icon"
+  shell: xfconf-query -c xfce4-panel -p /plugins/plugin-1/button-icon -n -t string -s "fedora-logo-icon"
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "panel | remove"
+  shell: xfconf-query -c xfce4-panel -p /panels -a -t int -s 1
+  environment:
+    DISPLAY: "{{xfce_display}}"

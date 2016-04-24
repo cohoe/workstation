@@ -10,7 +10,9 @@
     #- perforce
     #- sublime
     #- arduino
-    - locale
+    #- locale
+    - xfce
+    - docky
   vars_files:
     - ../vars/global.yml
-    - ../vars/emc.yml
+    #- ../vars/emc.yml

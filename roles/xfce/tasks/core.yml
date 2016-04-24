@@ -9,6 +9,16 @@
   environment:
     DISPLAY: "{{xfce_display}}"
 
+- name: "Disable dock shadow"
+  shell: xfconf-query -c xfwm4 -p /general/show_dock_shadow -s false
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Snap to windows"
+  shell: xfconf-query -c xfwm4 -p /general/snap_to_windows -s true
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
 - name: "Set theme"
   shell: xfconf-query -c xfwm4 -p /general/theme -s "{{xfce_theme}}"
   environment:
@@ -31,5 +41,20 @@
 
 - name: "Set file browser last view"
   shell: xfconf-query -c thunar -p /last-view --create -t string -s ThunarDetailsView
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Set file browser side view"
+  shell: xfconf-query -c thunar -p /last-side-pane --create -t string -s ThunarTreePane
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "System font"
+  shell: xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Sans 10"
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "Hide power icon"
+  shell: xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s false
   environment:
     DISPLAY: "{{xfce_display}}"

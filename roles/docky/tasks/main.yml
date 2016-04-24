@@ -1,0 +1,32 @@
+---
+#- name: "packages | install"
+#  dnf: name={{ item }} state=latest
+#  sudo: yes
+#  with_items:
+#    - docky
+#    - gconf-editor
+#
+#- name: "autostart | configure"
+#  copy: src=docky.desktop
+#        dest=~/.config/autostart/docky.desktop
+
+- name: "dbus vars | get"
+  shell: strings /proc/$(pgrep -u $(whoami) xfce4-session)/environ | egrep '(DBUS_SESSION_BUS_ADDRESS)' | sed 's/DBUS_SESSION_BUS_ADDRESS=//'
+  register: dbus_address
+
+- name: "primative config | set"
+  shell: gconftool-2 -s {{ item.key }} -t {{ item.type }} "{{ item.value }}"
+  environment:
+    - DBUS_SESSION_BUS_ADDRESS: "{{ dbus_address.stdout }}"
+  with_items:
+    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/IconSize', type: 'int', value: '32' }
+    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/ThreeDimensional', type: 'bool', value: 'true' }
+    - { key: '/apps/docky-2/Docky/Services/ThemeService/Theme', type: 'string', value: 'Air' }
+
+- name: "list config | set"
+  shell: gconftool-2 -s {{ item.key }} -t 'list' --list-type={{ item.type }} "[{{ item.value }}]"
+  environment:
+    - DBUS_SESSION_BUS_ADDRESS: "{{ dbus_address.stdout }}"
+  with_items:
+    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/Plugins', type: 'string', value: 'Desktop' }
+    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/Launchers', type: 'string', value: 'file:///usr/share/applications/xfce4-terminal.desktop,file:///usr/share/applications/google-chrome.desktop,file:///usr/share/applications/Thunar.desktop' }

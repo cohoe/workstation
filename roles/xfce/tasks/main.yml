@@ -9,6 +9,13 @@
   copy: dest="~/.local/share/applications/explorer.desktop"
         src="explorer.desktop"
 
+- name: "Thunar icon"
+  lineinfile:
+    dest: "/usr/share/applications/Thunar.desktop"
+    regexp: "^Icon="
+    line: "Icon=system-file-manager"
+  sudo: yes
+
 - name: "Reset xfce"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true
   environment:
