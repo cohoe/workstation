@@ -1,0 +1,14 @@
+---
+- name: "package | install"
+  dnf: name=hdhomerun state=latest
+  sudo: yes
+
+# Firewall
+- name: "firewall | rules"
+  shell: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_home_allow -1 {{ item }}
+  sudo: yes
+  with_items:
+    - "-p udp --sport 65001 -j ACCEPT"
+    - "-p tcp --sport 65001 -j ACCEPT"
+    - "-p udp --sport 5004 -j ACCEPT"
+  notify: reload firewall
