@@ -15,6 +15,7 @@ Ansible scripts for development environment configuration.
   * Wallpaper
   * OpenVPN
   * KeystoreExplorer
-* VMware Workstation
-  * With libs fix
+  * Move anyconnect to its own role
 * Need to refactor XFCE to do sane things
+* Get Horizon vars out of the role into the global encrypted stash
+* Quicktile

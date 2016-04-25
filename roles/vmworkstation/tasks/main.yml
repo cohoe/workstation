@@ -1,0 +1,25 @@
+---
+- name: "package | download"
+  get_url: url={{ vmworkstation_repo }}/{{ vmworkstation_package }}
+           dest=/tmp/{{ vmworkstation_package }}
+           mode=0755
+
+- name: "package | install"
+  shell: bash /tmp/{{ vmworkstation_package }} --console --eulas-agreed --required
+  sudo: yes
+
+- name: "fix | install"
+  copy: src=Update_VMW.sh dest=/tmp/Update_VMW.sh
+        mode=0755
+
+- name: "fix | run"
+  shell: bash /tmp/Update_VMW.sh
+  sudo: yes
+
+- name: "server | port | set"
+  lineinfile:
+    dest: /etc/vmware/hostd/proxy.xml
+    regexp: "<httpsPort>"
+    line: "<httpsPort>{{ vmworkstation_https_port }}</httpsPort>"
+  sudo: yes
+  notify: restart vmware-workstation-server

@@ -1,0 +1,4 @@
+---
+- name: 'restart vmware-workstation-server'
+  action: service name=vmware-workstation-server state=restarted
+  sudo: yes
