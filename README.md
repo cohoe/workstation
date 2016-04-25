@@ -15,6 +15,5 @@ Ansible scripts for development environment configuration.
   * Wallpaper
   * OpenVPN
   * KeystoreExplorer
-  * Move anyconnect to its own role
 * Need to refactor XFCE to do sane things
 * Quicktile

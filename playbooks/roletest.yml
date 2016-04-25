@@ -3,7 +3,8 @@
   hosts: all
   roles:
     #- common
-    - vmworkstation
+    #- vmworkstation
+    #- anyconnect
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml
