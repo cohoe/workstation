@@ -58,3 +58,18 @@
   shell: xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s false
   environment:
     DISPLAY: "{{xfce_display}}"
+
+- name: "Reset keyboards"
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '/xfwm4/custom/{{ item }}' -r
+  environment:
+    DISPLAY: "{{xfce_display}}"
+  with_items:
+    - <Alt><Control>KP_1
+    - <Alt><Control>KP_2
+    - <Alt><Control>KP_3
+    - <Alt><Control>KP_4
+    - <Alt><Control>KP_5
+    - <Alt><Control>KP_6
+    - <Alt><Control>KP_7
+    - <Alt><Control>KP_8
+    - <Alt><Control>KP_9

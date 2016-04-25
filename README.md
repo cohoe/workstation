@@ -17,3 +17,4 @@ Ansible scripts for development environment configuration.
   * KeystoreExplorer
 * Need to refactor XFCE to do sane things
 * Quicktile
+* Firefox shortcut?

@@ -1,0 +1,25 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - pygtk2
+    - pygobject2
+    - dbus-python
+    - gnome-python2-libwnck
+    - python-xlib
+
+- name: "target | create"
+  file: path=/opt/quicktile/
+        state=directory
+  sudo: yes
+
+- name: "repo | install"
+  git: repo=https://github.com/ssokolow/quicktile
+       dest=/opt/quicktile
+  sudo: yes
+
+- name: "shortcut | install"
+  copy: src=quicktile.desktop
+        dest=/usr/share/applications/quicktile.desktop
+  sudo: yes

@@ -5,6 +5,8 @@
     #- common
     #- vmworkstation
     #- anyconnect
+    - xfce
+    - quicktile
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml
