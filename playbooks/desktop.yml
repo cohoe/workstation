@@ -7,8 +7,12 @@
     - browser
     - slack
     - xfce
+    - docky
     - launchy
     - x11
     - grub
+    - remmina
+    - sublime
+    - arduino
   vars_files:
     - ../vars/global.yml

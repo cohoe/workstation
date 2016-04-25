@@ -3,18 +3,6 @@
   hosts: all
   roles:
     - common
-    #- xfce
-    #- horizon
-    #- chrony
-    #- remmina
-    #- repo
-    #- perforce
-    #- sublime
-    #- arduino
-    #- locale
-    #- xfce
-    #- docky
-    - hdhomerun
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

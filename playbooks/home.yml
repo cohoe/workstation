@@ -1,0 +1,11 @@
+---
+# A home computer
+#
+- name: Home
+  hosts: all
+  roles:
+  vars_files:
+    - ../vars/global.yml
+
+- include: base.yml
+- include: desktop.yml

@@ -7,6 +7,8 @@
     - common
     - emc
     - ldap
+    - horizon
+    - perforce
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml
