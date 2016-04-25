@@ -1,4 +1,6 @@
 ---
 vmworkstation_repo: https://download3.vmware.com/software/wkst/file/
-vmworkstation_package: VMware-Workstation-Full-12.1.0-3272444.x86_64.bundle
+vmworkstation_version: 12.1.0-3272444
 vmworkstation_https_port: 8443
+
+vmworkstation_package: VMware-Workstation-Full-{{ vmworkstation_version }}.x86_64.bundle

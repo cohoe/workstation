@@ -11,3 +11,9 @@
     - libselinux-python
     - python-dnf
     - python-firewall
+
+- name: "facts directory | create"
+  file: path=/etc/ansible/facts.d
+        recurse=yes
+        state=directory
+  sudo: yes
