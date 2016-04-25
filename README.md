@@ -17,5 +17,4 @@ Ansible scripts for development environment configuration.
   * KeystoreExplorer
   * Move anyconnect to its own role
 * Need to refactor XFCE to do sane things
-* Get Horizon vars out of the role into the global encrypted stash
 * Quicktile
