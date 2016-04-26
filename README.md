@@ -9,9 +9,7 @@ Ansible scripts for development environment configuration.
 
 ## TODO
 * Package updates to start
-* Pycharm
 * Security
 * EMC
-  * Wallpaper
   * OpenVPN
   * KeystoreExplorer

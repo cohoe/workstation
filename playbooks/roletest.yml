@@ -7,7 +7,8 @@
     #- anyconnect
     #- xfce
     #- quicktile
-    - browser
+    #- browser
+    - pycharm
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

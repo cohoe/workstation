@@ -1,0 +1,21 @@
+---
+- name: "directory | create"
+  file: path={{ pycharm_root }}
+        state=directory
+        recurse=yes
+  sudo: yes
+
+- name: "archive | download"
+  get_url: url={{ pycharm_repo }}/{{ pycharm_package }}
+           dest=/tmp/{{ pycharm_package }}
+
+- name: "archive | deploy"
+  unarchive: src=/tmp/{{ pycharm_package }}
+             dest={{ pycharm_root }}
+             copy=no
+  sudo: yes
+
+- name: "shortcut | install"
+  template: src=pycharm.desktop
+            dest={{ sys_shortcuts_directory }}/pycharm.desktop
+  sudo: yes
