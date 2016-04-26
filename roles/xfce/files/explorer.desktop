@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Exec=exo-open --launch FileManager ~
+Exec=exo-open --launch FileManager
 Icon=system-file-manager
 StartupNotify=true
 Terminal=false

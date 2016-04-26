@@ -1,14 +1,14 @@
 ---
-#- name: "packages | install"
-#  dnf: name={{ item }} state=latest
-#  sudo: yes
-#  with_items:
-#    - docky
-#    - gconf-editor
-#
-#- name: "autostart | configure"
-#  copy: src=docky.desktop
-#        dest=~/.config/autostart/docky.desktop
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - docky
+    - gconf-editor
+
+- name: "autostart | configure"
+  copy: src=docky.desktop
+        dest=~/.config/autostart/docky.desktop
 
 - name: "dbus vars | get"
   shell: strings /proc/$(pgrep -u $(whoami) xfce4-session)/environ | egrep '(DBUS_SESSION_BUS_ADDRESS)' | sed 's/DBUS_SESSION_BUS_ADDRESS=//'
