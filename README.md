@@ -11,5 +11,4 @@ Ansible scripts for development environment configuration.
 * Package updates to start
 * Security
 * Split browser into multiple roles
-* Remove useless packages
 * Split tools into cli and gui

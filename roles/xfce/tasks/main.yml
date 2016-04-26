@@ -3,6 +3,7 @@
 - include: thunar.yml
 - include: terminal.yml
 - include: keyboard.yml
+- include: junk.yml
 
 - name: "explorer shortcut | create"
   copy: dest={{ sys_shortcuts_dir }}/explorer.desktop

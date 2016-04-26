@@ -1,0 +1,39 @@
+---
+- name: "junk | remove"
+  dnf: name={{ item }} state=absent
+  sudo: yes
+  with_items:
+    - orage
+    - abiword
+    - claws-mail
+    - evolution
+    - parole
+    - pragha
+    - rhythmbox
+    - totem
+    - empathy
+    - liferea
+    - pidgin
+    - eog
+    - shotwell
+    - devassistant
+    - geany
+    - catfish
+    - gedit
+    - leafpad
+    - bijiben
+    - gnome-screenshot
+    - rxvt
+    - gnome-maps
+    - gnome-boxes
+    - galculator
+    - gnome-commander
+    - orca
+    - gnome-weather
+    - file-roller
+    - devassistant-gui
+    - meld
+    - vinagre
+    - gnome-software
+    - gnome-system-monitor
+    - gnome-terminal
