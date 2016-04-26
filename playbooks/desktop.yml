@@ -17,5 +17,6 @@
     - hdhomerun
     - quicktile
     - pycharm
+    - ksexplorer
   vars_files:
     - ../vars/global.yml
