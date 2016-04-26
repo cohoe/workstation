@@ -23,3 +23,8 @@
   copy: src=quicktile.desktop
         dest=/usr/share/applications/quicktile.desktop
   sudo: yes
+
+- name: "autostart | install"
+  file: src=/usr/share/applications/quicktile.desktop
+        dest=~/.config/autostart/quicktile.desktop
+        state=link

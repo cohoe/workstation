@@ -73,3 +73,11 @@
     - <Alt><Control>KP_7
     - <Alt><Control>KP_8
     - <Alt><Control>KP_9
+
+- name: "Set keystroke"
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' -t string -sn {{ item.value }}
+  environment:
+    DISPLAY: "{{xfce_display}}"
+  with_items:
+    - { key: '/xfwm4/custom/<Super>Up', value: 'maximize_window_key' }
+    - { key: '/xfwm4/custom/<Super>Down', value: 'hide_window_key' }
