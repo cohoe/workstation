@@ -15,5 +15,3 @@ Ansible scripts for development environment configuration.
   * Wallpaper
   * OpenVPN
   * KeystoreExplorer
-* Need to refactor XFCE to do sane things
-* Firefox shortcut?

@@ -1,0 +1,25 @@
+---
+- name: "keyboard shortcuts | remove"
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '/xfwm4/custom/{{ item }}' -r
+  environment:
+    DISPLAY: "{{xfce_display}}"
+  with_items:
+    - <Alt><Control>KP_1
+    - <Alt><Control>KP_2
+    - <Alt><Control>KP_3
+    - <Alt><Control>KP_4
+    - <Alt><Control>KP_5
+    - <Alt><Control>KP_6
+    - <Alt><Control>KP_7
+    - <Alt><Control>KP_8
+    - <Alt><Control>KP_9
+
+- name: "keyboard shortcuts | set"
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' --create -t string -s {{ item.value }}
+  environment:
+    DISPLAY: "{{xfce_display}}"
+  with_items:
+    - { key: '/xfwm4/custom/<Super>Up', value: 'maximize_window_key' }
+    - { key: '/xfwm4/custom/<Super>Down', value: 'hide_window_key' }
+    - { key: '/xfwm4/custom/<Primary><Alt><Super>Left', value: 'prev_workspace_key' }
+    - { key: '/xfwm4/custom/<Primary><Alt><Super>Right', value: 'next_workspace_key' }

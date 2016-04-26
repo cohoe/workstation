@@ -14,6 +14,7 @@
         src="chrome.desktop"
   when: "'chrome' in use_repos"
 
+
 - name: "chrome | incognito launcher | create"
   copy: dest="~/.local/share/applications/incognito.desktop"
         src="incognito.desktop"
@@ -42,3 +43,7 @@
   shell: if [ ! -d {{ ansible_env.HOME }}/.mozilla/firefox ]; then firefox -CreateProfile default; fi
   environment:
     DISPLAY: "{{ display }}"
+
+- name: "firefox | launcher | create"
+  copy: dest="~/.local/share/applications/firefox.desktop"
+        src="firefox.desktop"

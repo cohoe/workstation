@@ -1,24 +1,4 @@
 ---
-- name: "Remove app search"
-  shell: xfconf-query -c xfce4-panel -p /plugins/plugin-12 -r
-  environment:
-    DISPLAY: "{{xfce_display}}"
-
-- name: "Remove app search plugin files"
-  file: path=~/.config/xfce4/panel/launcher-12/
-        state=absent
-
-#- name: "Get web browser shortcut file name"
-#  shell: xfconf-query -c xfce4-panel -p /plugins/plugin-11/items | grep desktop
-#  environment:
-#    DISPLAY: "{{xfce_display}}"
-#  register: xfce_web_file
-#
-#- name: "Copy new web browser shortcut"
-#  copy: dest="~/.config/xfce4/panel/launcher-11/{{xfce_web_file.stdout}}"
-#        src="chrome.desktop"
-#  when: "'chrome' in use_repos"
-
 - name: "clock | format"
   shell: xfconf-query -c xfce4-panel -p /plugins/plugin-5/digital-format -ns "%I:%M %p %m/%d" -t string
   environment:

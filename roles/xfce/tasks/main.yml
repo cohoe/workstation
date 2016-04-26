@@ -1,22 +1,35 @@
 ---
-- include: core.yml
 - include: panel.yml
-# @TODO: Wallpaper
-#- include: wallpaper.yml
+- include: thunar.yml
 - include: terminal.yml
+- include: keyboard.yml
 
-- name: "Explorer shortcut"
+- name: "explorer shortcut | create"
   copy: dest="~/.local/share/applications/explorer.desktop"
         src="explorer.desktop"
 
-- name: "Thunar icon"
-  lineinfile:
-    dest: "/usr/share/applications/Thunar.desktop"
-    regexp: "^Icon="
-    line: "Icon=system-file-manager"
-  sudo: yes
+- name: "xfwm4 | set"
+  shell: xfconf-query -c xfwm4 -p {{ item.key }} -s {{ item.value }}
+  environment:
+    DISPLAY: "{{xfce_display}}"
+  with_items:
+    - { key: "/general/workspace_count", value: "{{ xfce_workspace_count }}" }
+    - { key: "/general/use_compositing", value: 'true' }
+    - { key: "/general/show_dock_shadow", value: 'false' }
+    - { key: "/general/snap_to_windows", value: 'true' }
+    - { key: "/general/theme", value: "{{ xfce_theme }}" }
 
-- name: "Reset xfce"
+- name: "font | set"
+  shell: xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Sans 10"
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "power icon | hide"
+  shell: xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s false
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "reset"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true
   environment:
     DISPLAY: "{{xfce_display}}"

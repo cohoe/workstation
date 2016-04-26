@@ -1,0 +1,16 @@
+---
+- name: "thunar | create"
+  shell: xfconf-query -c thunar -p {{ item.key }} --create -t string -s {{ item.value }}
+  environment:
+    DISPLAY: "{{xfce_display}}"
+  with_items:
+    - { key: '/default-view', value: "ThunarDetailsView" }
+    - { key: '/last-view', value: "ThunarDetailsView" }
+    - { key: '/last-side-pane', value: "ThunarTreePane" }
+
+- name: "thunar | icon"
+  lineinfile:
+    dest: "/usr/share/applications/Thunar.desktop"
+    regexp: "^Icon="
+    line: "Icon=system-file-manager"
+  sudo: yes
