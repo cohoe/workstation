@@ -1,4 +1,8 @@
 ---
+- name: "theme package | install"
+  dnf: name=grub2-starfield-theme state=latest
+  sudo: yes
+
 - name: "grub | theme"
   lineinfile:
     dest: "/etc/default/grub"
