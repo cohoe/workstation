@@ -30,3 +30,8 @@ pycharm_repo: https://download.jetbrains.com/python
 pycharm_version: pycharm-community-2016.1.2
 pycharm_package: "{{ pycharm_version }}.tar.gz"
 pycharm_root: /opt/pycharm
+
+ksexplorer_repo: https://github.com/kaikramer/keystore-explorer/releases/download/v5.1.1
+ksexplorer_version: kse-511
+ksexplorer_package: "{{ ksexplorer_version }}.zip"
+ksexplorer_root: /opt/kse

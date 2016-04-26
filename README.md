@@ -12,4 +12,3 @@ Ansible scripts for development environment configuration.
 * Security
 * EMC
   * OpenVPN
-  * KeystoreExplorer

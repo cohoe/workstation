@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Keystore Explorer
+Exec={{ ksexplorer_root }}/{{ ksexplorer_version }}/kse.sh
+Icon={{ ksexplorer_root }}/{{ ksexplorer_version }}/icons/kse_128.png
+Comment=Java Keystore Explorer
+Categories=Development;
+Terminal=false

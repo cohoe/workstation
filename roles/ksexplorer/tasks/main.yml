@@ -1,0 +1,21 @@
+---
+- name: "directory | create"
+  file: path={{ ksexplorer_root }}
+        state=directory
+        recurse=yes
+  sudo: yes
+
+- name: "archive | download"
+  get_url: url={{ ksexplorer_repo }}/{{ ksexplorer_package }}
+           dest=/tmp/{{ ksexplorer_package }}
+
+- name: "archive | deploy"
+  unarchive: src=/tmp/{{ ksexplorer_package }}
+             dest={{ ksexplorer_root }}
+             copy=no
+  sudo: yes
+
+- name: "shortcut | install"
+  template: src=ksexplorer.desktop
+            dest={{ sys_shortcuts_directory }}/ksexplorer.desktop
+  sudo: yes

@@ -8,7 +8,8 @@
     #- xfce
     #- quicktile
     #- browser
-    - pycharm
+    #- pycharm
+    - ksexplorer
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
