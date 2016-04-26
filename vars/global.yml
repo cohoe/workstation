@@ -18,8 +18,10 @@ time_servers:
  - time.windows.com
  - pool.ntp.org
 
-sys_shortcuts_directory: /usr/local/share/applications
-local_shortcuts_directory: ~/.local/share/applications
+sys_shortcuts_dir: /usr/local/share/applications
+# Deprecated
+#user_shortcuts_dir: ~/.local/share/applications
+user_autostart_dir: ~/.config/autostart
 
 sublime_repo: https://download.sublimetext.com
 sublime_package: sublime_text_3_build_3103_x64.tar.bz2

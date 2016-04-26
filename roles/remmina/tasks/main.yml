@@ -17,4 +17,5 @@
 # Launchy cant deal with shortcuts with more than one entry
 - name: "shortcut | create"
   copy: src=remmina.desktop
-        dest={{ local_shortcuts_directory }}/remmina.desktop
+        dest={{ sys_shortcuts_dir }}/remmina.desktop
+  sudo: yes

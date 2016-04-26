@@ -4,21 +4,22 @@
   sudo: true
   when: "'chrome' in use_repos"
 
-- name: "chrome | launcher directory | create"
-  file: path=~/.local/share/applications
-        recurse=yes
-        state=directory
+#- name: "chrome | launcher directory | create"
+#  file: path=~/.local/share/applications
+#        recurse=yes
+#        state=directory
 
 - name: "chrome | launcher | create"
-  copy: dest="~/.local/share/applications/chrome.desktop"
-        src="chrome.desktop"
+  copy: dest=/usr/share/applications/google-chrome.desktop
+        src=chrome.desktop
   when: "'chrome' in use_repos"
-
+  sudo: yes
 
 - name: "chrome | incognito launcher | create"
-  copy: dest="~/.local/share/applications/incognito.desktop"
-        src="incognito.desktop"
+  copy: dest=/usr/share/applications/google-chrome-incognito.desktop
+        src=incognito.desktop
   when: "'chrome' in use_repos"
+  sudo: yes
 
 # Firefox
 - dnf: name=firefox state=latest
@@ -45,5 +46,6 @@
     DISPLAY: "{{ display }}"
 
 - name: "firefox | launcher | create"
-  copy: dest="~/.local/share/applications/firefox.desktop"
-        src="firefox.desktop"
+  copy: dest={{ sys_shortcuts_dir }}/firefox.desktop
+        src=firefox.desktop
+  sudo: yes

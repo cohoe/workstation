@@ -10,3 +10,5 @@ Ansible scripts for development environment configuration.
 ## TODO
 * Package updates to start
 * Security
+* Split browser into multiple roles
+* Remove useless packages

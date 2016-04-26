@@ -7,9 +7,9 @@
     #- anyconnect
     #- xfce
     #- quicktile
-    #- browser
+    - browser
     #- pycharm
-    - ksexplorer
+    #- ksexplorer
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

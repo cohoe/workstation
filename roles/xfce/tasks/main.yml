@@ -5,8 +5,9 @@
 - include: keyboard.yml
 
 - name: "explorer shortcut | create"
-  copy: dest="~/.local/share/applications/explorer.desktop"
-        src="explorer.desktop"
+  copy: dest={{ sys_shortcuts_dir }}/explorer.desktop
+        src=explorer.desktop
+  sudo: yes
 
 - name: "xfwm4 | set"
   shell: xfconf-query -c xfwm4 -p {{ item.key }} -s {{ item.value }}

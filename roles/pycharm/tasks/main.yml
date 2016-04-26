@@ -17,5 +17,5 @@
 
 - name: "shortcut | install"
   template: src=pycharm.desktop
-            dest={{ sys_shortcuts_directory }}/pycharm.desktop
+            dest={{ sys_shortcuts_dir }}/pycharm.desktop
   sudo: yes
