@@ -10,6 +10,8 @@
     - horizon
     - perforce
     - anyconnect
+    - ksexplorer
+    - openvpn
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml

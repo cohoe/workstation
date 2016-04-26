@@ -10,5 +10,3 @@ Ansible scripts for development environment configuration.
 ## TODO
 * Package updates to start
 * Security
-* EMC
-  * OpenVPN
