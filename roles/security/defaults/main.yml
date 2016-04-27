@@ -1,0 +1,8 @@
+---
+secure_firewalld: true
+
+# Firewall
+firewalld_zone: public
+firewalld_enabled_services:
+  - ssh
+firewalld_enabled_ports:

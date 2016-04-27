@@ -1,0 +1,4 @@
+---
+- include: firewall.yml
+  when: secure_firewalld
+  sudo: yes

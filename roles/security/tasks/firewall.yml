@@ -1,0 +1,49 @@
+---
+- name: "firewalld | install"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - firewalld
+    - python-firewall
+
+- name: "firewalld | enable"
+  service: name=firewalld
+           enabled=true
+           state=started
+
+- name: "firewalld | zones | get"
+  shell: firewall-cmd --get-zones
+  register: firewall_zones
+  changed_when: false
+
+- name: "firewalld | default zone | get"
+  shell: firewall-cmd --get-default-zone
+  register: firewall_default_zone
+  changed_when: false
+
+- name: "firewalld | zone | create"
+  shell: firewall-cmd --permanent --new-zone={{ firewalld_zone }} && firewall-cmd --reload
+  when: firewalld_zone not in firewall_zones.stdout
+
+- name: "firewalld | default zone | set"
+  shell: firewall-cmd --set-default-zone={{ firewalld_zone }}
+  when: firewalld_zone not in firewall_default_zone.stdout
+
+- name: "firewalld | services | enable"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    service: "{{ item }}"
+  with_items:
+    - "{{ firewalld_enabled_services }}"
+
+- name: "firewalld | ports | enable"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    port: "{{ item }}"
+  with_items:
+    - "{{ firewalld_enabled_ports }}"

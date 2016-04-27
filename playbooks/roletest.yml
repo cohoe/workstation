@@ -9,9 +9,10 @@
     #- guitools
     #- docky
     #- quicktile
-    - browser
+    #- browser
     #- pycharm
     #- ksexplorer
+    - security
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
