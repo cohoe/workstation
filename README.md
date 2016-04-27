@@ -10,3 +10,4 @@ Ansible scripts for development environment configuration.
 ## TODO
 * Package updates to start
 * Security
+  * Move firewall handler to security module

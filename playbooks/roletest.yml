@@ -12,7 +12,9 @@
     #- browser
     #- pycharm
     #- ksexplorer
+    #- security
     - security
+    - hdhomerun
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<direct>
-  <rule priority="-1" table="filter" ipv="ipv4" chain="IN_home_allow">-p udp --sport 65001 -j ACCEPT</rule>
-  <rule priority="-1" table="filter" ipv="ipv4" chain="IN_home_allow">-p tcp --sport 65001 -j ACCEPT</rule>
-  <rule priority="-1" table="filter" ipv="ipv4" chain="IN_home_allow">-p udp --sport 5004 -j ACCEPT</rule>
-</direct>

@@ -5,7 +5,7 @@
 
 # Firewall
 - name: "firewall | rules"
-  shell: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_home_allow -1 {{ item }}
+  shell: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_{{ firewalld_zone }}_allow -1 {{ item }}
   sudo: yes
   with_items:
     - "-p udp --sport 65001 -j ACCEPT"
