@@ -1,0 +1,40 @@
+---
+- name: "java | install"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - java
+  sudo: true
+
+- name: "python | install"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - python-virtualenvwrapper
+    - python-pep8
+  sudo: true
+
+- name: "network tools | install"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - bind-utils
+    - openssh-clients
+    - openldap-clients
+    - iftop
+    - nmap
+    - tcpdump
+    - net-snmp-utils
+    - tftp
+  sudo: true
+  tags:
+    - packages
+
+- name: "dev tools | install"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - vim-enhanced
+    - screen
+    - tmux
+    - strace
+    - git
+    - glances
+    - setroubleshoot-server
+  sudo: true

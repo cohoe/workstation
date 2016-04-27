@@ -1,0 +1,20 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - numlockx
+    - icedtea-web
+    - texworks
+    - texlive-pdftex
+    - wireshark-gnome
+
+
+- name: "vlc | install"
+  dnf: name=vlc state=latest
+  sudo: yes
+  when: '"rpmfusion" in use_repos'
+
+- name: "wireshark group | add"
+  user: name={{ ansible_env.USER }} append=yes
+        groups=wireshark
