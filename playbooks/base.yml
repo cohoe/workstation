@@ -5,7 +5,7 @@
     - common
     - repo
     - shell
-    - tools
+    - clitools
     - sudo
     - chrony
     - locale

@@ -1,7 +1,0 @@
----
-- name: "LaTeX"
-  dnf: name={{ item }} state=latest
-  with_items:
-    - texworks
-    - texlive-pdftex
-  sudo: true

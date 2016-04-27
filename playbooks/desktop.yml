@@ -4,6 +4,7 @@
 - name: Graphical desktop stuff
   hosts: all
   roles:
+    - guitools
     - browser
     - slack
     - xfce
