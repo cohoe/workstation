@@ -10,7 +10,7 @@
 
 - name: "thunar | icon"
   lineinfile:
-    dest: "/usr/share/applications/Thunar.desktop"
+    dest: "{{ sys_shortcuts_dir }}/Thunar.desktop"
     regexp: "^Icon="
     line: "Icon=system-file-manager"
   sudo: yes

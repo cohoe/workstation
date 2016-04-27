@@ -1,0 +1,29 @@
+---
+# Firefox
+- dnf: name=firefox state=latest
+  sudo: true
+
+- dnf: name=flash-plugin state=latest
+  sudo: true
+  when: "'flash' in use_repos"
+
+- seboolean: name=mozilla_plugin_can_network_connect
+             state=yes
+             persistent=yes
+  sudo: true
+
+- seboolean: name=unconfined_mozilla_plugin_transition
+             state=no
+             persistent=yes
+  sudo: true
+
+# This is needed for Cisco AnyConnect to actually trust anything
+- name: "firefox | profile | create"
+  shell: if [ ! -d ~/.mozilla/firefox ]; then firefox -CreateProfile default; fi
+  environment:
+    DISPLAY: "{{ display }}"
+
+- name: "firefox | launcher | create"
+  copy: dest={{ sys_shortcuts_dir }}/firefox.desktop
+        src=firefox.desktop
+  sudo: yes

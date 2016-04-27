@@ -6,10 +6,10 @@
     #- vmworkstation
     #- anyconnect
     #- xfce
-    - guitools
+    #- guitools
     #- docky
     #- quicktile
-    #- browser
+    - browser
     #- pycharm
     #- ksexplorer
   vars_files:

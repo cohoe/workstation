@@ -29,4 +29,4 @@
     - DBUS_SESSION_BUS_ADDRESS: "{{ dbus_address.stdout }}"
   with_items:
     - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/Plugins', type: 'string', value: 'Desktop' }
-    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/Launchers', type: 'string', value: 'file:///usr/share/applications/xfce4-terminal.desktop,file:///usr/share/applications/google-chrome.desktop,file:///usr/share/applications/Thunar.desktop' }
+    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/Launchers', type: 'string', value: 'file:///usr/share/applications/xfce4-terminal.desktop,file:///usr/share/applications/google-chrome.desktop,file://{{ sys_shortcuts_dir }}/Thunar.desktop' }
