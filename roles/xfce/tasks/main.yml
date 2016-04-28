@@ -1,4 +1,5 @@
 ---
+- include: power.yml
 - include: panel.yml
 - include: thunar.yml
 - include: terminal.yml
@@ -9,6 +10,10 @@
   copy: dest={{ local_shortcuts_dir }}/explorer.desktop
         src=explorer.desktop
   sudo: yes
+
+- name: "autostart directory | create"
+  file: path=~/.config/autostart
+        state=directory
 
 - name: "xfwm4 | set"
   shell: xfconf-query -c xfwm4 -p {{ item.key }} -s {{ item.value }}
@@ -21,15 +26,20 @@
     - { key: "/general/snap_to_windows", value: 'true' }
     - { key: "/general/theme", value: "{{ xfce_theme }}" }
 
-- name: "font | set"
+- name: "xsettings | font | set"
   shell: xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Sans 10"
   environment:
     DISPLAY: "{{xfce_display}}"
 
-- name: "power icon | hide"
-  shell: xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s false
+- name: "xfce4-desktop | set"
+  shell: xfconf-query -c xfce4-desktop -p {{ item.key }} -s {{ item.value }}
   environment:
     DISPLAY: "{{xfce_display}}"
+  with_items:
+    - { key: "/desktop-icons/icon-size", value: "32" }
+    - { key: "/desktop-icons/file-icons/show-filesystem", value: false }
+    - { key: "/desktop-icons/file-icons/show-home", value: false }
+    - { key: "/desktop-icons/file-icons/show-trash", value: false }
 
 - name: "reset"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true

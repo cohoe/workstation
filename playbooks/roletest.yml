@@ -5,7 +5,7 @@
     #- common
     #- vmworkstation
     #- anyconnect
-    #- xfce
+    - xfce
     #- guitools
     #- docky
     #- quicktile
@@ -13,8 +13,8 @@
     #- pycharm
     #- ksexplorer
     #- security
-    - security
-    - hdhomerun
+    #- security
+    #- hdhomerun
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

@@ -1,0 +1,11 @@
+---
+- name: "laptop | detect"
+  shell: upower -e
+  register: power_sources
+  changed_when: false
+
+- name: "power icon | hide"
+  shell: xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 0
+  when: '"BAT0" not in "{{ power_sources.stdout }}"'
+  environment:
+    DISPLAY: "{{xfce_display}}"
