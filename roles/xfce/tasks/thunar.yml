@@ -8,9 +8,14 @@
     - { key: '/last-view', value: "ThunarDetailsView" }
     - { key: '/last-side-pane', value: "ThunarTreePane" }
 
-- name: "thunar | icon"
+- name: "thunar | shortcut | install"
+  copy: src={{ sys_shortcuts_dir }}/Thunar.desktop
+        dest={{ local_shortcuts_dir }}/Thunar.desktop
+  sudo: yes
+
+- name: "thunar | shortcut | icon"
   lineinfile:
-    dest: "{{ sys_shortcuts_dir }}/Thunar.desktop"
+    dest: "{{ local_shortcuts_dir }}/Thunar.desktop"
     regexp: "^Icon="
     line: "Icon=system-file-manager"
   sudo: yes

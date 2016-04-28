@@ -17,5 +17,5 @@
 
 - name: "shortcut | install"
   template: src=ksexplorer.desktop
-            dest={{ sys_shortcuts_dir }}/ksexplorer.desktop
+            dest={{ local_shortcuts_dir }}/ksexplorer.desktop
   sudo: yes

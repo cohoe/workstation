@@ -24,6 +24,6 @@
     DISPLAY: "{{ display }}"
 
 - name: "firefox | launcher | create"
-  copy: dest={{ sys_shortcuts_dir }}/firefox.desktop
+  copy: dest={{ local_shortcuts_dir }}/firefox.desktop
         src=firefox.desktop
   sudo: yes

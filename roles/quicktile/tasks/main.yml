@@ -21,10 +21,10 @@
 
 - name: "shortcut | install"
   copy: src=quicktile.desktop
-        dest={{ sys_shortcuts_dir }}/quicktile.desktop
+        dest={{ local_shortcuts_dir }}/quicktile.desktop
   sudo: yes
 
 - name: "autostart | install"
-  file: src={{ sys_shortcuts_dir }}/quicktile.desktop
+  file: src={{ local_shortcuts_dir }}/quicktile.desktop
         dest={{ user_autostart_dir }}/quicktile.desktop
         state=link

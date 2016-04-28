@@ -23,5 +23,5 @@
 
 - name: "shortcut | install"
   template: src=p4v.desktop
-            dest={{ sys_shortcuts_dir }}/p4v.desktop
+            dest={{ local_shortcuts_dir }}/p4v.desktop
   sudo: yes

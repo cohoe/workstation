@@ -11,3 +11,4 @@ Ansible scripts for development environment configuration.
 * Package updates to start
 * Security
   * Move firewall handler to security module
+* sys, local, user need broken out and sanitized

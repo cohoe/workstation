@@ -6,7 +6,7 @@
 - include: junk.yml
 
 - name: "explorer shortcut | create"
-  copy: dest={{ sys_shortcuts_dir }}/explorer.desktop
+  copy: dest={{ local_shortcuts_dir }}/explorer.desktop
         src=explorer.desktop
   sudo: yes
 

@@ -4,13 +4,13 @@
   when: "'chrome' in use_repos"
 
 - name: "chrome | launcher | create"
-  copy: dest={{ sys_shortcuts_dir }}/google-chrome.desktop
+  copy: dest={{ local_shortcuts_dir }}/google-chrome.desktop
         src=chrome.desktop
   when: "'chrome' in use_repos"
   sudo: yes
 
 - name: "chrome | incognito launcher | create"
-  copy: dest={{ sys_shortcuts_dir }}/google-chrome-incognito.desktop
+  copy: dest={{ local_shortcuts_dir }}/google-chrome-incognito.desktop
         src=incognito.desktop
   when: "'chrome' in use_repos"
   sudo: yes

@@ -18,9 +18,9 @@ time_servers:
  - time.windows.com
  - pool.ntp.org
 
-sys_shortcuts_dir: /usr/local/share/applications
-# Deprecated
-#user_shortcuts_dir: ~/.local/share/applications
+sys_shortcuts_dir: /usr/share/applications
+local_shortcuts:dir: /usr/local/share/applications
+user_shortcuts_dir: ~/.local/share/applications
 user_autostart_dir: ~/.config/autostart
 
 sublime_repo: https://download.sublimetext.com
