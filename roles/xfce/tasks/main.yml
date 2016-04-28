@@ -11,6 +11,14 @@
         src=explorer.desktop
   sudo: yes
 
+- name: "menus directory | create"
+  file: path=~/.config/menus
+        state=directory
+
+- name: "menus config | create"
+  copy: src=xfce-applications.menu
+        dest=~/.config/menus/xfce-applications.menu
+
 - name: "autostart directory | create"
   file: path=~/.config/autostart
         state=directory
@@ -32,14 +40,14 @@
     DISPLAY: "{{xfce_display}}"
 
 - name: "xfce4-desktop | set"
-  shell: xfconf-query -c xfce4-desktop -p {{ item.key }} -s {{ item.value }}
+  shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
   environment:
     DISPLAY: "{{xfce_display}}"
   with_items:
-    - { key: "/desktop-icons/icon-size", value: "32" }
-    - { key: "/desktop-icons/file-icons/show-filesystem", value: false }
-    - { key: "/desktop-icons/file-icons/show-home", value: false }
-    - { key: "/desktop-icons/file-icons/show-trash", value: false }
+    - { key: "/desktop-icons/icon-size", type: "int", value: "32" }
+    - { key: "/desktop-icons/file-icons/show-filesystem", type: "boolean", value: "false" }
+    - { key: "/desktop-icons/file-icons/show-home", type: "boolean", value: "false" }
+    - { key: "/desktop-icons/file-icons/show-trash", type: "boolean", value: "false" }
 
 - name: "reset"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true

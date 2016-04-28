@@ -11,7 +11,6 @@ Ansible scripts for development environment configuration.
 * Package updates to start
 * Security
   * Move firewall handler to security module
-* Delete useless pinned shortcuts
 * HDHR not picking up default firewall zone
 * SSHD
 * Docky must not be running
