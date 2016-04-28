@@ -14,3 +14,4 @@ Ansible scripts for development environment configuration.
 * HDHR not picking up default firewall zone
 * SSHD
 * Docky must not be running
+* Still need to remove TopLevel from the other shortcuts in sys_shortcuts

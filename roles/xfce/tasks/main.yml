@@ -45,9 +45,9 @@
     DISPLAY: "{{xfce_display}}"
   with_items:
     - { key: "/desktop-icons/icon-size", type: "int", value: "32" }
-    - { key: "/desktop-icons/file-icons/show-filesystem", type: "boolean", value: "false" }
-    - { key: "/desktop-icons/file-icons/show-home", type: "boolean", value: "false" }
-    - { key: "/desktop-icons/file-icons/show-trash", type: "boolean", value: "false" }
+    - { key: "/desktop-icons/file-icons/show-filesystem", type: "bool", value: "false" }
+    - { key: "/desktop-icons/file-icons/show-home", type: "bool", value: "false" }
+    - { key: "/desktop-icons/file-icons/show-trash", type: "bool", value: "false" }
 
 - name: "reset"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true
