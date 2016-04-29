@@ -7,14 +7,13 @@
     #- anyconnect
     #- xfce
     #- guitools
-    #- docky
+    - docky
     #- quicktile
     #- browser
     #- pycharm
     #- ksexplorer
     #- security
     #- security
-    - xfce
     #- hdhomerun
     #- launchy
   vars_files:
