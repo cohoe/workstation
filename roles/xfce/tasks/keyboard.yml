@@ -13,6 +13,16 @@
     - <Alt><Control>KP_7
     - <Alt><Control>KP_8
     - <Alt><Control>KP_9
+    - <Primary><Alt>KP_1
+    - <Primary><Alt>KP_2
+    - <Primary><Alt>KP_3
+    - <Primary><Alt>KP_4
+    - <Primary><Alt>KP_5
+    - <Primary><Alt>KP_6
+    - <Primary><Alt>KP_7
+    - <Primary><Alt>KP_8
+    - <Primary><Alt>KP_9
+    - <Alt>F10
 
 - name: "keyboard shortcuts | set"
   shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' --create -t string -s {{ item.value }}
