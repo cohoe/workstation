@@ -7,13 +7,13 @@
     #- anyconnect
     #- xfce
     #- guitools
-    - docky
+    #- docky
     #- quicktile
     #- browser
     #- pycharm
     #- ksexplorer
     #- security
-    #- security
+    - security
     #- hdhomerun
   vars_files:
     - ../vars/global.yml

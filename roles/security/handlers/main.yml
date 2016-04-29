@@ -1,0 +1,8 @@
+---
+- name: restart sshd
+  sudo: true
+  service: name=sshd state=restarted
+
+- name: restart firewalld
+  sudo: true
+  service: name=firewalld state=restarted

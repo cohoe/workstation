@@ -11,4 +11,5 @@
     - "-p udp --sport 65001 -j ACCEPT"
     - "-p tcp --sport 65001 -j ACCEPT"
     - "-p udp --sport 5004 -j ACCEPT"
-  notify: reload firewall
+  # @TODO: Firewall
+  #notify: reload firewall

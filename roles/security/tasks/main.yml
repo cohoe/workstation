@@ -2,3 +2,7 @@
 - include: firewall.yml
   when: secure_firewalld
   sudo: yes
+
+- include: sshd.yml
+  sudo: true
+  when: secure_sshd

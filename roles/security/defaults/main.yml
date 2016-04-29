@@ -1,8 +1,12 @@
 ---
 secure_firewalld: true
+secure_sshd: true
 
 # Firewall
 firewalld_zone: public
 firewalld_enabled_services:
   - ssh
 firewalld_enabled_ports:
+
+permit_root_login: false
+strict_sshd_ciphers: true
