@@ -18,3 +18,16 @@
   shell: xfconf-query -c xfce4-panel -p /panels -a -t int -s 1
   environment:
     DISPLAY: "{{xfce_display}}"
+
+- name: "top level shortcuts | remove"
+  lineinfile:
+    dest: "{{ item }}"
+    regexp: "^Categories=(.*)X-Xfce-Toplevel;$"
+    line: 'Categories=\1'
+    backrefs: "yes"
+  sudo: yes
+  with_items:
+    - "{{ sys_shortcuts_dir }}/exo-mail-reader.desktop"
+    - "{{ sys_shortcuts_dir }}/exo-file-manager.desktop"
+    - "{{ sys_shortcuts_dir }}/exo-web-browser.desktop"
+    - "{{ sys_shortcuts_dir }}/exo-terminal-emulator.desktop"

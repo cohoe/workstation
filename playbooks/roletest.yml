@@ -13,7 +13,8 @@
     #- pycharm
     #- ksexplorer
     #- security
-    - security
+    #- security
+    - xfce
     #- hdhomerun
   vars_files:
     - ../vars/global.yml
