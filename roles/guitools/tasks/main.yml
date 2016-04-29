@@ -18,3 +18,4 @@
 - name: "wireshark group | add"
   user: name={{ ansible_env.USER }} append=yes
         groups=wireshark
+  sudo: yes
