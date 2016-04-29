@@ -6,6 +6,10 @@
   copy: dest="~/launchy.ini"
         src="launchy.ini"
 
+- name: "shortcut | install"
+  copy: src="launchy.desktop"
+        dest="{{ user_shortcuts_dir }}/launchy.desktop"
+
 - name: "Autostart Launchy"
   copy: dest="/etc/xdg/autostart/launchy.desktop"
         src="launchy.desktop"

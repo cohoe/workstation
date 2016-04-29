@@ -31,3 +31,8 @@
     - "{{ sys_shortcuts_dir }}/exo-file-manager.desktop"
     - "{{ sys_shortcuts_dir }}/exo-web-browser.desktop"
     - "{{ sys_shortcuts_dir }}/exo-terminal-emulator.desktop"
+
+- name: "icons | hide"
+  shell: xfconf-query -c xfce4-panel -p /plugins/plugin-6/names-hidden -n -t string -a -s 'launchy'
+  environment:
+    DISPLAY: "{{xfce_display}}"
