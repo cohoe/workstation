@@ -1,0 +1,13 @@
+---
+- name: "install"
+  dnf: name=steam state=latest
+  sudo: yes
+  when: '"rpmfusion" in use_repos'
+
+- name: "shortcuts | install"
+  copy: src={{ item }}
+        dest={{ local_shortcuts_dir }}/{{ item }}
+  sudo: yes
+  with_items:
+    - steam.desktop
+    - steambigpicture.desktop

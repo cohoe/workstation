@@ -8,5 +8,4 @@ Ansible scripts for development environment configuration.
 * requiretty is removed from the targets sudoers file.
 
 ## TODO
-* Steam
 * Remote Desktop

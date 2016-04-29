@@ -7,7 +7,6 @@
     #- anyconnect
     #- xfce
     #- guitools
-    - docky
     #- quicktile
     #- browser
     #- pycharm
@@ -16,6 +15,7 @@
     #- security
     #- hdhomerun
     #- launchy
+    - steam
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
