@@ -1,11 +1,15 @@
 ---
 # A home computer
 #
+- include: base.yml
+- include: desktop.yml
+
 - name: Home
   hosts: all
   roles:
+    - hdhomerun
+    - arduino
+  vars:
+    - firewalld_zone: home
   vars_files:
     - ../vars/global.yml
-
-- include: base.yml
-- include: desktop.yml

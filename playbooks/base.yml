@@ -5,8 +5,8 @@
     - common
     - repo
     - security
-    - shell
     - clitools
+    - shell
     - sudo
     - chrony
     - locale

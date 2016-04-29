@@ -13,9 +13,9 @@
     #- pycharm
     #- ksexplorer
     #- security
-    #- security
-    - xfce
-    #- hdhomerun
+    - security
+    #- xfce
+    - hdhomerun
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

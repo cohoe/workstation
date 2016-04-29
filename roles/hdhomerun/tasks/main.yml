@@ -13,3 +13,4 @@
     - "-p udp --sport 5004 -j ACCEPT"
   # @TODO: Firewall
   #notify: reload firewall
+  notify: restart firewalld

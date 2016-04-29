@@ -12,6 +12,10 @@
     - python-dnf
     - python-firewall
 
+- name: "packages | update"
+  dnf: name=* state=latest
+  sudo: yes
+
 - name: "facts directory | create"
   file: path=/etc/ansible/facts.d
         recurse=yes

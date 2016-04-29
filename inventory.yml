@@ -2,6 +2,7 @@ localhost ansible_ssh_host=localhost
 
 [home]
 ig88-vm ansible_ssh_host=ig88-vm.local
+192.168.222.129
 
 [work]
 usxxcohoegl2c-vm ansible_ssh_host=usxxcohoegl2c.corp.emc.com
