@@ -5,9 +5,9 @@
     #- common
     #- vmworkstation
     #- anyconnect
-    - xfce
+    #- xfce
     #- guitools
-    #- docky
+    - docky
     #- quicktile
     #- browser
     #- pycharm

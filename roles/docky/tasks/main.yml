@@ -14,6 +14,12 @@
   shell: strings /proc/$(pgrep -u $(whoami) xfce4-session)/environ | egrep '(DBUS_SESSION_BUS_ADDRESS)' | sed 's/DBUS_SESSION_BUS_ADDRESS=//'
   register: dbus_address
 
+- name: "docky processes | stop"
+  shell: killall docky
+  register: docky_kill
+  changed_when: '"no process found" not in docky_kill.stderr'
+  ignore_errors: yes
+
 - name: "primative config | set"
   shell: gconftool-2 -s {{ item.key }} -t {{ item.type }} "{{ item.value }}"
   environment:
