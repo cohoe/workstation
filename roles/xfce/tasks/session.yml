@@ -1,0 +1,13 @@
+---
+- name: "session | set"
+  shell: xfconf-query -c xfce4-session -p '/general/SaveOnExit' -s 'false'
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
+- name: "session cache | delete"
+  file: path=~/.cache/sessions
+        state=absent
+
+- name: "session directory | create"
+  file: path=~/.cache/sessions
+        state=directory

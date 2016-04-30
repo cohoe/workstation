@@ -1,4 +1,5 @@
 ---
+- include: session.yml
 - include: power.yml
 - include: panel.yml
 - include: thunar.yml
@@ -43,6 +44,14 @@
   shell: xfconf-query -c xfce4-session -p '/general/SaveOnExit' -s 'false'
   environment:
     DISPLAY: "{{xfce_display}}"
+
+- name: "session cache | delete"
+  file: path=~/.cache/sessions
+        state=absent
+
+- name: "session directory | create"
+  file: path=~/.cache/sessions
+        state=directory
 
 - name: "xfce4-desktop | set"
   shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}

@@ -19,8 +19,8 @@
     #- chrome/remote
     #- chrome/browser
     #- firefox
-    #- xfce
-    - xscreensaver
+    - xfce
+    #- xscreensaver
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
