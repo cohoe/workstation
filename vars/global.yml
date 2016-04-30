@@ -39,3 +39,5 @@ ksexplorer_package: "{{ ksexplorer_version }}.zip"
 ksexplorer_root: /opt/kse
 
 chrome_remote_package: http://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+
+xfce_background_login: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg

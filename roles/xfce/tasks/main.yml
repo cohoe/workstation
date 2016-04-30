@@ -40,11 +40,17 @@
   environment:
     DISPLAY: "{{xfce_display}}"
 
+- name: "login wallpaper | get"
+  get_url: url={{ xfce_background_login }}
+           dest=/usr/share/backgrounds/images/login.jpg
+  sudo: yes
+
 - name: "login wallpaper | set"
   lineinfile:
     dest: '/etc/lightdm/lightdm-gtk-greeter.conf'
     regexp: "^background="
-    line: "background=#396da6"
+    #line: "background=#396da6"
+    line: "background=/usr/share/backgrounds/images/login.jpg"
   sudo: yes
 
 - name: "xfce4-desktop | set"
