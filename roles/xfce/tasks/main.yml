@@ -39,6 +39,11 @@
   environment:
     DISPLAY: "{{xfce_display}}"
 
+- name: "session | set"
+  shell: xfconf-query -c xfce4-session -p '/general/SaveOnExit' -s 'false'
+  environment:
+    DISPLAY: "{{xfce_display}}"
+
 - name: "xfce4-desktop | set"
   shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
   environment:

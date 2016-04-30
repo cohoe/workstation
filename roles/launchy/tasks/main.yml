@@ -8,9 +8,9 @@
 
 - name: "shortcut | install"
   copy: src="launchy.desktop"
-        dest="{{ user_shortcuts_dir }}/launchy.desktop"
+        dest="{{ local_shortcuts_dir }}/launchy.desktop"
+  sudo: yes
 
 - name: "Autostart Launchy"
-  copy: dest="/etc/xdg/autostart/launchy.desktop"
+  copy: dest="{{ user_autostart_dir }}/launchy.desktop"
         src="launchy.desktop"
-  sudo: true
