@@ -13,6 +13,10 @@
   changed_when: false
   ignore_errors: yes
 
+- name: "config | create"
+  file: path=~/.xscreensaver
+        state=touch
+
 - name: "disable"
   lineinfile:
     dest: ~/.xscreensaver

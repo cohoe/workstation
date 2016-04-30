@@ -1,6 +1,6 @@
 ---
 - name: "session | set"
-  shell: xfconf-query -c xfce4-session -p '/general/SaveOnExit' -s 'false'
+  shell: xfconf-query -c xfce4-session -p '/general/SaveOnExit' -n -t 'bool' -s 'false'
   environment:
     DISPLAY: "{{xfce_display}}"
 

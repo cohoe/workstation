@@ -24,9 +24,6 @@
   shell: firewall-cmd --permanent --new-zone={{ firewalld_zone }} && firewall-cmd --reload
   when: firewalld_zone not in firewall_zones.stdout
 
-- name: "debug"
-  debug: msg={{ firewalld_zone }}
-
 - name: "firewalld | default zone | set"
   shell: firewall-cmd --set-default-zone={{ firewalld_zone }}
   when: firewalld_zone not in firewall_default_zone.stdout

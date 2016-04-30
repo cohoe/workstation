@@ -2,7 +2,7 @@
 - name: RoleTest
   hosts: all
   roles:
-    #- xscreensaver
+    - xscreensaver
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
