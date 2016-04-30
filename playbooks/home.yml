@@ -9,6 +9,7 @@
   roles:
     - hdhomerun
     - arduino
+    - chrome/remote
   vars:
     - firewalld_zone: home
   vars_files:

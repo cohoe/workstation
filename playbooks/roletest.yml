@@ -16,7 +16,9 @@
     #- hdhomerun
     #- launchy
     #- steam
-    - chrome/remote
+    #- chrome/remote
+    - chrome/browser
+    - firefox
     #- xfce
   vars_files:
     - ../vars/global.yml
