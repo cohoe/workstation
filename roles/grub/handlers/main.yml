@@ -1,4 +1,4 @@
 ---
 - name: "rebuild grub"
-  command: grub2-mkconfig --output=/boot/grub2/grub.cfg
+  command: grub2-mkconfig -o /boot/grub2/grub.cfg
   sudo: yes

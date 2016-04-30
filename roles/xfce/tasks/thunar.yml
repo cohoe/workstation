@@ -19,3 +19,15 @@
     regexp: "^Icon="
     line: "Icon=system-file-manager"
   sudo: yes
+
+- name: "thunar | packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - gvfs-afc
+    - gvfs-afp
+    - gvfs-smb
+    - gvfs-mtp
+    - gvfs-nfs
+    - gvfs-fuse
+    - gvfs-archive
