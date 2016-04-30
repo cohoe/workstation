@@ -18,5 +18,6 @@
     - quicktile
     - pycharm
     - ksexplorer
+    - xscreensaver
   vars_files:
     - ../vars/global.yml

@@ -1,0 +1,37 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - virt-what
+    - xscreensaver
+
+- name: "virtualized | get"
+  shell: virt-what
+  sudo: yes
+  register: platform
+  changed_when: false
+  ignore_errors: yes
+
+- name: "disable"
+  lineinfile:
+    dest: ~/.xscreensaver
+    regexp: "^mode"
+    line: "mode:\toff"
+  when: 'platform.stdout != ""'
+
+- name: "enable"
+  lineinfile:
+    dest: ~/.xscreensaver
+    regexp: "^mode"
+    line: "mode:\tone"
+  when: 'platform.stdout == ""'
+
+- name: "set"
+  lineinfile:
+    dest: ~/.xscreensaver
+    regexp: "^selected"
+    line: "selected:\t115"
+
+# Flury
+# GLMatrix

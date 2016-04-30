@@ -17,9 +17,10 @@
     #- launchy
     #- steam
     #- chrome/remote
-    - chrome/browser
-    - firefox
+    #- chrome/browser
+    #- firefox
     #- xfce
+    - xscreensaver
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
