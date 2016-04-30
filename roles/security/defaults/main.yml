@@ -6,6 +6,7 @@ secure_sshd: true
 firewalld_zone: public
 firewalld_enabled_services:
   - ssh
+  - samba-client
 firewalld_enabled_ports:
 
 permit_root_login: false

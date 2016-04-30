@@ -2,24 +2,6 @@
 - name: RoleTest
   hosts: all
   roles:
-    #- common
-    #- vmworkstation
-    #- anyconnect
-    #- xfce
-    #- guitools
-    #- quicktile
-    #- browser
-    #- pycharm
-    #- ksexplorer
-    #- security
-    #- security
-    #- hdhomerun
-    #- launchy
-    #- steam
-    #- chrome/remote
-    #- chrome/browser
-    #- firefox
-    - xfce
     #- xscreensaver
   vars_files:
     - ../vars/global.yml

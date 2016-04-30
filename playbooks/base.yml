@@ -4,7 +4,6 @@
   roles:
     - common
     - repo
-    - security
     - clitools
     - shell
     - sudo

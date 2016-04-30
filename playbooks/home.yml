@@ -6,11 +6,12 @@
 
 - name: Home
   hosts: all
+  vars:
+    - firewalld_zone: home
   roles:
+    - security
     - hdhomerun
     - arduino
     - chrome/remote
-  vars:
-    - firewalld_zone: home
   vars_files:
     - ../vars/global.yml
