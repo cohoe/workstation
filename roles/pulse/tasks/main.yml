@@ -1,0 +1,20 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - pulseaudio-equalizer
+
+- name: "config directory | create"
+  file: path=~/.pulse
+        state=directory
+
+- name: "equalizer config | copy"
+  copy: src=equalizerrc
+        dest=~/.pulse/equalizerrc
+
+- name: "equalizer | enable"
+  shell: pulseaudio-equalizer {{ item }}
+  with_items:
+    - enable
+    - enable-config

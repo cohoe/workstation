@@ -4,7 +4,9 @@
   roles:
     #- xfce
     #- docky
-    - chrome/remote
+    #- chrome/remote
+    - common
+    - pulse
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
