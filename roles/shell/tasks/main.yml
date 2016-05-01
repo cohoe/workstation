@@ -24,6 +24,14 @@
     - vimrc
     - screenrc
 
+# Root dotfiles
+- copy: dest=~/.{{ item }}
+        src={{ item }}
+  sudo: yes
+  with_items:
+    - vimrc
+    - screenrc
+
 # zshrc
 - copy: dest=~/.zshrc
         src=zsh/zshrc
@@ -50,6 +58,6 @@
 
 
 - name: "user | shell | set"
-  user: name={{ ansible_env.USER }}
+  user: name={{ ansible_user_id }}
         shell=/bin/zsh
   sudo: yes

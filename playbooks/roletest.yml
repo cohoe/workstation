@@ -9,7 +9,8 @@
     #- xfce
     #- plex
     #- security
-    - grub
+    #- grub
+    - shell
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
