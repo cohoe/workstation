@@ -8,6 +8,7 @@
     dest: "/etc/default/grub"
     regexp: "^GRUB_THEME"
     line: "GRUB_THEME=\"/boot/grub2/themes/system/theme.txt\""
+    backup: yes
   notify: rebuild grub
   sudo: yes
 
@@ -16,6 +17,7 @@
     dest: "/etc/default/grub"
     regexp: "^GRUB_GFXPAYLOAD_LINUX"
     line: "GRUB_GFXPAYLOAD_LINUX=1440x900"
+    backup: yes
   notify: rebuild grub
   sudo: yes
 
@@ -24,6 +26,7 @@
     dest: "/etc/default/grub"
     regexp: "^GRUB_GFXMODE"
     line: "GRUB_GFXMODE=1440x900"
+    backup: yes
   notify: rebuild grub
   sudo: yes
 
@@ -32,6 +35,7 @@
     dest: "/etc/default/grub"
     regexp: "^GRUB_TERMINAL_OUTPUT"
     state: absent
+    backup: yes
   notify: rebuild grub
   sudo: yes
 
@@ -40,5 +44,6 @@
     dest: "/etc/default/grub"
     regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
     line: "GRUB_CMDLINE_LINUX_DEFAULT=\"net.ifnames=0 biosdevname=0\""
+    backup: yes
   notify: rebuild grub
   sudo: yes
