@@ -1,0 +1,22 @@
+---
+
+- name: "package | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - nfs-utils
+
+- name: "export | create"
+  lineinfile:
+    dest: "/etc/exports"
+    regexp: "^{{ public_share_path }}"
+    line: "{{ public_share_path }}  -fsid=1,rw,crossmnt,subtree_check *"
+  sudo: yes
+
+- name: "service | start"
+  action: service name={{ item }}
+          state=started
+          enabled=yes
+  sudo: yes
+  with_items:
+    - nfs-server

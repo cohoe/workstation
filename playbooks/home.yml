@@ -14,6 +14,7 @@
         - ssh
         - samba-client
         - samba
+        - nfs
   roles:
 #    - security
 #    - hdhomerun
@@ -21,5 +22,6 @@
 #    - chrome/remote
 #    - plex
     - samba
+    - nfs
   vars_files:
     - ../vars/global.yml
