@@ -10,35 +10,9 @@
   copy: src=docky.desktop
         dest=~/.config/autostart/docky.desktop
 
-- name: "dbus vars | get"
-  shell: strings /proc/$(pgrep -u $(whoami) -o xfce4-session)/environ | egrep '(DBUS_SESSION_BUS_ADDRESS)' | sed 's/DBUS_SESSION_BUS_ADDRESS=//'
-  register: dbus_address
+- name: "config | set"
+  copy: src=config.xml
+        dest=/tmp/docky-config.xml
 
-- name: "docky process | start"
-  shell: docky &
-  environment:
-    - DISPLAY: "{{ display }}"
-    - DBUS_SESSION_BUS_ADDRESS: "{{ dbus_address.stdout }}"
-
-- name: "docky processes | stop"
-  shell: killall docky
-  register: docky_kill
-  changed_when: '"no process found" not in docky_kill.stderr'
-  ignore_errors: yes
-
-- name: "primative config | set"
-  shell: gconftool-2 -s {{ item.key }} -t {{ item.type }} "{{ item.value }}"
-  environment:
-    - DBUS_SESSION_BUS_ADDRESS: "{{ dbus_address.stdout }}"
-  with_items:
-    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/IconSize', type: 'int', value: '32' }
-    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/ThreeDimensional', type: 'bool', value: 'true' }
-    - { key: '/apps/docky-2/Docky/Services/ThemeService/Theme', type: 'string', value: 'Air' }
-
-- name: "list config | set"
-  shell: gconftool-2 -s {{ item.key }} -t 'list' --list-type={{ item.type }} "[{{ item.value }}]"
-  environment:
-    - DBUS_SESSION_BUS_ADDRESS: "{{ dbus_address.stdout }}"
-  with_items:
-    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/Plugins', type: 'string', value: 'Desktop' }
-    - { key: '/apps/docky-2/Docky/Interface/DockPreferences/Dock1/Launchers', type: 'string', value: 'file://{{ sys_shortcuts_dir}}/xfce4-terminal.desktop,file://{{ sys_shortcuts_dir }}/google-chrome.desktop,file://{{ local_shortcuts_dir }}/Thunar.desktop' }
+- name: "config | activate"
+  shell: gconftool-2 --load /tmp/docky-config.xml

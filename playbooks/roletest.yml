@@ -2,7 +2,8 @@
 - name: RoleTest
   hosts: all
   roles:
-    - xfce
+    #- xfce
+    - docky
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
