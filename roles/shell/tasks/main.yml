@@ -3,7 +3,7 @@
   dnf: name=zsh state=latest
   sudo: yes
 
-- file: path=~/bin
+- file: path=~/.bin
         state=directory
 
 # Projects directory

@@ -3,7 +3,8 @@
   hosts: all
   roles:
     #- xfce
-    - docky
+    #- docky
+    - chrome/remote
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

@@ -48,3 +48,6 @@
 - name: "service | autostart"
   shell: chkconfig --add chrome-remote-desktop
   sudo: yes
+
+- name: "cleanup"
+  file: path=~/rpmbuild state=absent
