@@ -1,7 +1,7 @@
 ---
-#- name: "install"
-#  dnf: name={{ plex_package }} state=latest
-#  sudo: yes
+- name: "install"
+  dnf: name={{ plex_package }} state=latest
+  sudo: yes
 
 - name: "service | enable"
   action: service name=plexmediaserver

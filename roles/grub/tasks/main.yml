@@ -34,3 +34,11 @@
     state: absent
   notify: rebuild grub
   sudo: yes
+
+- name: "extra command line"
+  lineinfile:
+    dest: "/etc/default/grub"
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
+    line: "GRUB_CMDLINE_LINUX_DEFAULT=\"net.ifnames=0 biosdevname=0\""
+  notify: rebuild grub
+  sudo: yes
