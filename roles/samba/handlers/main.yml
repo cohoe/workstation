@@ -1,0 +1,7 @@
+---
+- name: restart samba
+  sudo: true
+  service: name={{ item }} state=restarted
+  with_items:
+    - smb
+    - nmb

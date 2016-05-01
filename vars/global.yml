@@ -44,3 +44,5 @@ login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_lig
 user_background: http://i.grntm.co/wallpaper/wallpaper-panedia.com-00000324-2560x1600-3x_2_VMS.jpg
 
 plex_package: https://downloads.plex.tv/plex-media-server/0.9.16.6.1993-5089475/plexmediaserver-0.9.16.6.1993-5089475.x86_64.rpm
+
+public_share_path: /export/public

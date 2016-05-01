@@ -1,8 +1,8 @@
 ---
 # A home computer
 #
-- include: base.yml
-- include: desktop.yml
+#- include: base.yml
+#- include: desktop.yml
 
 - name: Home
   hosts: all
@@ -10,11 +10,16 @@
     - firewalld_enabled_ports:
         - 32400/tcp # Plex
     - firewalld_zone: home
+    - firewalld_enabled_services:
+        - ssh
+        - samba-client
+        - samba
   roles:
-    - security
-    - hdhomerun
-    - arduino
-    - chrome/remote
-    - plex
+#    - security
+#    - hdhomerun
+#    - arduino
+#    - chrome/remote
+#    - plex
+    - samba
   vars_files:
     - ../vars/global.yml

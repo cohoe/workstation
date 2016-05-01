@@ -1,0 +1,36 @@
+---
+- name: "package | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - samba
+
+- name: "selinux | set"
+  seboolean: name=samba_enable_home_dirs
+             state=yes
+             persistent=yes
+  sudo: yes
+
+- name: "public share | create"
+  file: dest={{ public_share_path }}
+        mode=0777
+        setype=samba_share_t
+        state=directory
+        recurse=yes
+  sudo: yes
+
+- name: "config"
+  template: src=smb.conf
+            dest=/etc/samba/smb.conf
+  sudo: yes
+  notify: restart samba
+
+- name: "services | enable"
+  action: service name={{ item }}
+          state=started
+          enabled=yes
+  sudo: yes
+  with_items:
+    - smb
+    - nmb
+
