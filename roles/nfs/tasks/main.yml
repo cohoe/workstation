@@ -20,3 +20,4 @@
   sudo: yes
   with_items:
     - nfs-server
+    - rpcbind
