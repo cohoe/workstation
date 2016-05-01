@@ -8,4 +8,3 @@ Ansible scripts for development environment configuration.
 * requiretty is removed from the targets sudoers file.
 
 ## TODO
-* Chrome Remote Desktop still has some SELinux problemz
