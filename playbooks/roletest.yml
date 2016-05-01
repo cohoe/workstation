@@ -6,7 +6,7 @@
     #- docky
     #- chrome/remote
     - common
-    - pulse
+    - xfce
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

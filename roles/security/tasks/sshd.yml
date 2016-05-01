@@ -9,7 +9,7 @@
   - { regexp: '^GSSAPIAuthentication', line: 'GSSAPIAuthentication  no' }
   - { regexp: '^LoginGraceTime', line: 'LoginGraceTime  1m' }
   - { regexp: '^MaxAuthTries', line: 'MaxAuthTries 15' }
-  - { regexp: '^PasswordAuthentication', line: 'PasswordAuthentication no' }
+  - { regexp: '^PasswordAuthentication', line: 'PasswordAuthentication yes' }
   - { regexp: '^PermitEmptyPasswords', line: 'PermitEmptyPasswords no' }
   - { regexp: '^PermitTunnel', line: 'PermitTunnel yes' }
   - { regexp: '^PrintLastLog', line: 'PrintLastLog yes' }
