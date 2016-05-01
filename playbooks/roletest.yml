@@ -4,13 +4,13 @@
   roles:
     #- xfce
     #- docky
-    #- chrome/remote
+    - launchy
+    - chrome/browser
     #- common
     #- xfce
     #- plex
     #- security
     #- grub
-    - shell
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

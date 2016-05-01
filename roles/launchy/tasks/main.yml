@@ -14,3 +14,7 @@
 - name: "Autostart Launchy"
   copy: dest="{{ user_autostart_dir }}/launchy.desktop"
         src="launchy.desktop"
+
+- name: "system shortcut | erase"
+  file: path="{{ sys_shortcuts_dir }}/launchy.desktop"
+        state=absent
