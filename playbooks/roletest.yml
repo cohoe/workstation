@@ -5,8 +5,9 @@
     #- xfce
     #- docky
     #- chrome/remote
-    - common
-    - xfce
+    #- common
+    #- xfce
+    - plex
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

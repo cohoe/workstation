@@ -1,17 +1,20 @@
 ---
 # A home computer
 #
-- include: base.yml
-- include: desktop.yml
+#- include: base.yml
+#- include: desktop.yml
 
 - name: Home
   hosts: all
   vars:
+    - firewalld_enabled_ports:
+        - 32400/tcp # Plex
     - firewalld_zone: home
   roles:
     - security
-    - hdhomerun
-    - arduino
-    - chrome/remote
+    #- hdhomerun
+    #- arduino
+    #- chrome/remote
+    - plex
   vars_files:
     - ../vars/global.yml
