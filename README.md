@@ -9,3 +9,4 @@ Ansible scripts for development environment configuration.
 
 ## TODO
 * NFS firewall
+* HTTP server

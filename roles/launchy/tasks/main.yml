@@ -18,3 +18,4 @@
 - name: "system shortcut | erase"
   file: path="{{ sys_shortcuts_dir }}/launchy.desktop"
         state=absent
+  sudo: yes

@@ -37,4 +37,5 @@
     - git
     - glances
     - setroubleshoot-server
+    - gcc
   sudo: true

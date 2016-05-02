@@ -1,8 +1,8 @@
 ---
 # A home computer
 #
-#- include: base.yml
-#- include: desktop.yml
+- include: base.yml
+- include: desktop.yml
 
 - name: Home
   hosts: all
@@ -18,7 +18,7 @@
     - hdhomerun
     - arduino
     - chrome/remote
-    #- plex
+    - plex
     - samba
     - nfs
     - wemo
