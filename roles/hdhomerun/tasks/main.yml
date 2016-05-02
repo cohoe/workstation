@@ -6,11 +6,9 @@
 # Firewall
 - name: "firewall | rules"
   shell: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_{{ firewalld_zone }}_allow -1 {{ item }}
-  sudo: yes
   with_items:
     - "-p udp --sport 65001 -j ACCEPT"
     - "-p tcp --sport 65001 -j ACCEPT"
     - "-p udp --sport 5004 -j ACCEPT"
-  # @TODO: Firewall
-  #notify: reload firewall
-  notify: restart firewalld
+  when: secure_firewalld
+  sudo: yes

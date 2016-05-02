@@ -7,8 +7,6 @@
 - name: Home
   hosts: all
   vars:
-    - firewalld_enabled_ports:
-        - 32400/tcp # Plex
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
@@ -16,12 +14,13 @@
         - samba
         - nfs
   roles:
-#    - security
-#    - hdhomerun
-#    - arduino
-#    - chrome/remote
-#    - plex
+    - security
+    - hdhomerun
+    - arduino
+    - chrome/remote
+    #- plex
     - samba
     - nfs
+    - wemo
   vars_files:
     - ../vars/global.yml

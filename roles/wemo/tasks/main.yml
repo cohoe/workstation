@@ -1,12 +1,6 @@
 ---
-- name: "install"
-  dnf: name={{ plex_package }} state=latest
-  sudo: yes
-
-- name: "service | enable"
-  action: service name=plexmediaserver
-                  state=started
-                  enabled=yes
+- name: "package | install"
+  pip: name=ouimeaux state=present
   sudo: yes
 
 - name: "firewall | configure"
@@ -17,6 +11,6 @@
     state: enabled
     port: "{{ item }}"
   with_items:
-    - 32400/tcp
+    - 54321/udp
   when: secure_firewalld
   sudo: yes
