@@ -60,6 +60,8 @@
     immediate: yes
     state: enabled
     service: "{{ item }}"
+  sudo: yes
   with_items:
     - nfs
+    - rpc-bind
   when: secure_firewalld

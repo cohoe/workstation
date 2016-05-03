@@ -47,4 +47,5 @@
   with_items:
     - samba
     - samba-client
+  sudo: yes
   when: secure_firewalld

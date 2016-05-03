@@ -54,4 +54,5 @@
   with_items:
     - http
     - https
+  sudo: yes
   when: secure_firewalld
