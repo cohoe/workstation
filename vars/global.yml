@@ -1,48 +1,57 @@
 ---
+# Package repositories
 use_repos:
  - chrome
  - slack
  - rpmfusion
  - flash
 
+# Shell
 ohmyzsh_directory: ~/.oh-my-zsh
 ohmyzsh_repo: https://github.com/robbyrussell/oh-my-zsh
 
+# NVM
 nvm_repo: https://github.com/creationix/nvm.git
 nvm_directory: ~/.nvm
 nvm_version: v0.30.2
 
+# XFCE
 display: ":0.0"
 
+# Chrony
 time_servers:
  - time.windows.com
  - pool.ntp.org
 
+# Various .desktop file directories
 sys_shortcuts_dir: /usr/share/applications
 local_shortcuts_dir: /usr/local/share/applications
 user_shortcuts_dir: ~/.local/share/applications
 user_autostart_dir: ~/.config/autostart
 
+# Sublime Text
 sublime_repo: https://download.sublimetext.com
 sublime_package: sublime_text_3_build_3103_x64.tar.bz2
 sublime_root: /opt/sublime
 sublime_version: sublime_text_3
 
+# Pycharm
 pycharm_repo: https://download.jetbrains.com/python
 pycharm_version: pycharm-community-2016.1.2
 pycharm_package: "{{ pycharm_version }}.tar.gz"
 pycharm_root: /opt/pycharm
 
+# KeystoreExplorer
 ksexplorer_repo: https://github.com/kaikramer/keystore-explorer/releases/download/v5.1.1
 ksexplorer_version: kse-511
 ksexplorer_package: "{{ ksexplorer_version }}.zip"
 ksexplorer_root: /opt/kse
 
+# Chrome Remote Desktop
 chrome_remote_package: http://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 
-login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
-user_background: http://i.grntm.co/wallpaper/wallpaper-panedia.com-00000324-2560x1600-3x_2_VMS.jpg
-
+# Plex
 plex_package: https://downloads.plex.tv/plex-media-server/0.9.16.6.1993-5089475/plexmediaserver-0.9.16.6.1993-5089475.x86_64.rpm
 
+# NFS/CIFS
 public_share_path: /export/public

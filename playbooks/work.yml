@@ -1,10 +1,17 @@
 ---
 # A work computer
 #
+- include: base.yml
+- include: desktop.yml
 - name: Work
   hosts: all
+  vars:
+    - firewalld_zone: work
+    - firewalld_enabled_services:
+        - ssh
+        - samba-client
   roles:
-    - common
+    - security
     - emc
     - ldap
     - horizon
@@ -14,6 +21,3 @@
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml
-
-- include: base.yml
-- include: desktop.yml

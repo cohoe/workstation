@@ -40,24 +40,6 @@
   environment:
     DISPLAY: "{{xfce_display}}"
 
-- name: "login wallpaper | get"
-  get_url: url={{ login_background }}
-           dest=/usr/share/backgrounds/images/login.jpg
-  sudo: yes
-
-- name: "login wallpaper | set"
-  lineinfile:
-    dest: '/etc/lightdm/lightdm-gtk-greeter.conf'
-    regexp: "^background="
-    #line: "background=#396da6"
-    line: "background=/usr/share/backgrounds/images/login.jpg"
-  sudo: yes
-
-- name: "user wallpaper | get"
-  get_url: url={{ user_background }}
-           dest=/usr/share/backgrounds/images/user-wallpaper.jpg
-  sudo: yes
-
 - name: "xfce4-desktop | set"
   shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
   environment:
@@ -67,7 +49,6 @@
     - { key: "/desktop-icons/file-icons/show-filesystem", type: "bool", value: "false" }
     - { key: "/desktop-icons/file-icons/show-home", type: "bool", value: "false" }
     - { key: "/desktop-icons/file-icons/show-trash", type: "bool", value: "false" }
-    - { key: "/backdrop/screen0/monitor0/workspace0/last-image", type: "string", value: "/usr/share/backgrounds/images/user-wallpaper.jpg" }
 
 - name: "reset"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true

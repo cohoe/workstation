@@ -1,0 +1,25 @@
+---
+- name: "login wallpaper | get"
+  get_url: url={{ login_background }}
+           dest=/usr/share/backgrounds/images/login.jpg
+  sudo: yes
+
+- name: "login wallpaper | set"
+  lineinfile:
+    dest: '/etc/lightdm/lightdm-gtk-greeter.conf'
+    regexp: "^background="
+    #line: "background=#396da6"
+    line: "background=/usr/share/backgrounds/images/login.jpg"
+  sudo: yes
+
+- name: "user wallpaper | get"
+  get_url: url={{ user_background }}
+           dest=/usr/share/backgrounds/images/user-wallpaper.jpg
+  sudo: yes
+
+- name: "user wallpaper | set"
+  shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
+  environment:
+    DISPLAY: "{{ display }}"
+  with_items:
+    - { key: "/backdrop/screen0/monitor0/workspace0/last-image", type: "string", value: "/usr/share/backgrounds/images/user-wallpaper.jpg" }
