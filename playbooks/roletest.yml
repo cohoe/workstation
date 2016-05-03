@@ -11,10 +11,11 @@
     #- common
     #- xfce
     #- plex
-    - security
+    #- security
     #- grub
-    - samba
-    - httpd
+    #- samba
+    #- httpd
+    - nfs
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
