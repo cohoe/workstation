@@ -43,3 +43,15 @@
   sudo: yes
   with_items:
     - httpd
+
+- name: "firewalld | services | enable"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    service: "{{ item }}"
+  with_items:
+    - http
+    - https
+  when: secure_firewalld

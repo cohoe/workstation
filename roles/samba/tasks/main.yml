@@ -37,3 +37,14 @@
     - smb
     - nmb
 
+- name: "firewalld | services | enable"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    service: "{{ item }}"
+  with_items:
+    - samba
+    - samba-client
+  when: secure_firewalld
