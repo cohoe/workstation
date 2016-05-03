@@ -1,0 +1,57 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - httpd
+
+- name: "userdir enable"
+  lineinfile:
+    dest: "/etc/httpd/conf.d/userdir.conf"
+    regexp: "UserDir ([a-zA-Z]+)$"
+    line: "    UserDir {{ user_public_directory }}"
+  sudo: yes
+  notify: restart httpd
+
+- name: "userdir config"
+  lineinfile:
+    dest: "/etc/httpd/conf.d/userdir.conf"
+    regexp: "^<Directory(.*)/public_html\">$"
+    line: '<Directory\1/{{ user_public_directory }}">'
+    backrefs: yes
+  sudo: yes
+  notify: restart httpd
+
+- name: "selinux | set"
+  seboolean: name={{ item }}
+             state=yes
+             persistent=yes
+  with_items:
+    - httpd_enable_homedirs
+  sudo: yes
+
+- name: "directory | set"
+  file: path=~/{{ user_public_directory }}
+        state=directory
+        setype=public_content_rw_t
+
+- name: "services | enable"
+  action: service name={{ item }}
+          state=started
+          enabled=yes
+  sudo: yes
+  with_items:
+    - httpd
+
+- name: "firewall | configure"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    port: "{{ item }}"
+  with_items:
+    - 80/tcp
+    - 443/tcp
+  when: secure_firewalld
+  sudo: yes

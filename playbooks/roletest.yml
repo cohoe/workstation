@@ -1,16 +1,20 @@
 ---
 - name: RoleTest
   hosts: all
+  vars:
+    - firewalld_zone: home
   roles:
     #- xfce
     #- docky
-    - launchy
-    - chrome/browser
+    #- launchy
+    #- chrome/browser
     #- common
     #- xfce
     #- plex
-    #- security
+    - security
     #- grub
+    - samba
+    - httpd
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
