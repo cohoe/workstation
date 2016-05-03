@@ -23,6 +23,7 @@
     - tcpdump
     - net-snmp-utils
     - tftp
+    - htop
   sudo: true
   tags:
     - packages
