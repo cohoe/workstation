@@ -13,6 +13,8 @@
         - samba-client
         - samba
         - nfs
+        - http
+        - https
   roles:
     - security
     - hdhomerun
@@ -22,5 +24,6 @@
     - samba
     - nfs
     - wemo
+    - httpd
   vars_files:
     - ../vars/global.yml

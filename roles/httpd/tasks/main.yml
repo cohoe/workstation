@@ -4,6 +4,7 @@
   sudo: yes
   with_items:
     - httpd
+    - mod_ssl
 
 - name: "userdir enable"
   lineinfile:
@@ -42,16 +43,3 @@
   sudo: yes
   with_items:
     - httpd
-
-- name: "firewall | configure"
-  firewalld:
-    zone: "{{ firewalld_zone }}"
-    permanent: yes
-    immediate: yes
-    state: enabled
-    port: "{{ item }}"
-  with_items:
-    - 80/tcp
-    - 443/tcp
-  when: secure_firewalld
-  sudo: yes
