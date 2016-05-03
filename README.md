@@ -8,5 +8,3 @@ Ansible scripts for development environment configuration.
 * requiretty is removed from the targets sudoers file.
 
 ## TODO
-* NFS firewall
-* HTTP server

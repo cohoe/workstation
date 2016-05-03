@@ -6,9 +6,12 @@
     - samba
 
 - name: "selinux | set"
-  seboolean: name=samba_enable_home_dirs
+  seboolean: name={{ item }}
              state=yes
              persistent=yes
+  with_items:
+    - smbd_anon_write
+    - samba_enable_home_dirs
   sudo: yes
 
 - name: "public share | create"
@@ -34,3 +37,15 @@
     - smb
     - nmb
 
+- name: "firewalld | services | enable"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    service: "{{ item }}"
+  with_items:
+    - samba
+    - samba-client
+  sudo: yes
+  when: secure_firewalld

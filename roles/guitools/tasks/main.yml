@@ -8,7 +8,7 @@
     - texworks
     - texlive-pdftex
     - wireshark-gnome
-
+    - rdesktop
 
 - name: "vlc | install"
   dnf: name=vlc state=latest

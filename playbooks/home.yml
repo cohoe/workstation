@@ -10,9 +10,6 @@
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
-        - samba-client
-        - samba
-        - nfs
   roles:
     - security
     - hdhomerun
@@ -21,6 +18,7 @@
     - plex
     - samba
     - nfs
+    - httpd
     - wemo
   vars_files:
     - ../vars/global.yml

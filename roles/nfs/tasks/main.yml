@@ -13,6 +13,19 @@
     line: "{{ public_share_path }}  -fsid=1,rw,crossmnt,subtree_check *"
   sudo: yes
 
+- name: "config"
+  lineinfile:
+    dest: "/etc/sysconfig/nfs"
+    regexp: "^{{ item.key }}"
+    line: '{{ item.key }}="{{ item.value }}"'
+  sudo: yes
+  with_items:
+    - { key: 'MOUNTD_PORT', value: '20048' }
+    - { key: 'STATD_PORT', value: '40110' }
+    - { key: 'LOCKD_TCPPORT', value: '32803' }
+    - { key: 'LOCKD_UDPPORT', value: '32769' }
+  notify: restart nfs
+
 - name: "service | start"
   action: service name={{ item }}
           state=started
@@ -20,4 +33,35 @@
   sudo: yes
   with_items:
     - nfs-server
-    - rpcbind
+#    - rpcbind
+#    - nfs
+#    - rpcbind
+#    - rpc-statd
+#    - nfs-mountd
+
+- name: "firewalld ports | enable"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    port: "{{ item }}"
+  with_items:
+    - 20048/tcp
+    - 41772/tcp
+    - 32803/tcp
+    - 32769/udp
+  sudo: yes
+
+- name: "firewalld | services | enable"
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    service: "{{ item }}"
+  sudo: yes
+  with_items:
+    - nfs
+    - rpc-bind
+  when: secure_firewalld
