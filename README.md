@@ -14,3 +14,9 @@ Ansible scripts for development environment configuration.
 * Crashplan
 * Google Drive
 * Kodi
+* Pipeline Builder
+* Wine(tricks)
+
+* Configuration for specific hosts
+* Tags
+* s/sudo/become
