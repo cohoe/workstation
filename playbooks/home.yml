@@ -20,5 +20,6 @@
     - nfs
     - httpd
     - wemo
+    - kodi
   vars_files:
     - ../vars/global.yml

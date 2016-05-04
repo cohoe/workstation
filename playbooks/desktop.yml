@@ -19,5 +19,7 @@
     - pycharm
     - ksexplorer
     - xscreensaver
+    - xbindkeys
+    - skippy
   vars_files:
     - ../vars/global.yml

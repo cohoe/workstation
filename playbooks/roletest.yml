@@ -18,7 +18,8 @@
     #- nfs
     #- pipeline
     #- xbindkeys
-    - skippy
+    #- skippy
+    - wine
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

@@ -1,0 +1,12 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - wine
+
+- name: "script | get"
+  get_url: url=https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+           dest=/usr/local/bin/winetricks
+           mode=0755
+  sudo: yes

@@ -12,7 +12,6 @@ Ansible scripts for development environment configuration.
 * Encryption
 * Crashplan
 * Google Drive
-* Wine(tricks)
 
 * Configuration for specific hosts
 * Tags
