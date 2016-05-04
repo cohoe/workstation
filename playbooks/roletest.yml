@@ -2,7 +2,7 @@
 - name: RoleTest
   hosts: all
   vars:
-    - firewalld_zone: home
+    - firewalld_zone: work
   roles:
     #- xfce
     #- docky
@@ -16,7 +16,7 @@
     #- samba
     #- httpd
     #- nfs
-    - compiz
+    - kodi
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

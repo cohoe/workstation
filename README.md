@@ -16,6 +16,10 @@ Ansible scripts for development environment configuration.
 * Kodi
 * Pipeline Builder
 * Wine(tricks)
+* xbindkeys
+* skippy
+* Resize dock
+* Start button application menu
 
 * Configuration for specific hosts
 * Tags
