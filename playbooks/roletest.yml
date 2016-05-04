@@ -16,7 +16,7 @@
     #- samba
     #- httpd
     #- nfs
-    - kodi
+    - pipeline
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

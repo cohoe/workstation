@@ -12,7 +12,6 @@ Ansible scripts for development environment configuration.
 * Encryption
 * Crashplan
 * Google Drive
-* Pipeline Builder
 * Wine(tricks)
 * xbindkeys
 * skippy
