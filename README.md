@@ -10,15 +10,12 @@ Ansible scripts for development environment configuration.
 ## TODO
 * Dropbox
 * Encryption
-* Remove Compiz
 * Crashplan
 * Google Drive
-* Kodi
 * Pipeline Builder
 * Wine(tricks)
 * xbindkeys
 * skippy
-* Resize dock
 * Start button application menu
 
 * Configuration for specific hosts
