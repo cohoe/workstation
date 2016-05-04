@@ -12,7 +12,7 @@
     - python-pep8
   sudo: true
 
-- name: "network tools | install"
+- name: "tools | install"
   dnf: name={{ item }} state=latest
   with_items:
     - bind-utils
@@ -24,6 +24,7 @@
     - net-snmp-utils
     - tftp
     - htop
+    - tcplay
   sudo: true
   tags:
     - packages

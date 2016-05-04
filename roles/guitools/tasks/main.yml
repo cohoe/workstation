@@ -10,10 +10,13 @@
     - wireshark-gnome
     - rdesktop
 
-- name: "vlc | install"
-  dnf: name=vlc state=latest
+- name: "other packages | install"
+  dnf: name={{ item }} state=latest
   sudo: yes
   when: '"rpmfusion" in use_repos'
+  with_items:
+    - vlc
+    - dropbox
 
 - name: "wireshark group | add"
   user: name={{ ansible_env.USER }} append=yes

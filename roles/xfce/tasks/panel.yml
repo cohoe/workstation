@@ -36,3 +36,8 @@
   shell: xfconf-query -c xfce4-panel -p /plugins/plugin-6/names-hidden -n -t string -a -s 'launchy'
   environment:
     DISPLAY: "{{xfce_display}}"
+
+- name: "top bar height"
+  shell: xfconf-query -c xfce4-panel -p /panels/panel-1/size -n -t int -s 26
+  environment:
+    DISPLAY: "{{xfce_display}}"
