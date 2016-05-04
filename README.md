@@ -13,7 +13,6 @@ Ansible scripts for development environment configuration.
 * Crashplan
 * Google Drive
 * Wine(tricks)
-* xbindkeys
 * skippy
 * Start button application menu
 

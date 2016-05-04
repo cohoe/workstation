@@ -16,7 +16,8 @@
     #- samba
     #- httpd
     #- nfs
-    - pipeline
+    #- pipeline
+    - xbindkeys
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
