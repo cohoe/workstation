@@ -17,7 +17,8 @@
     #- httpd
     #- nfs
     #- pipeline
-    - xbindkeys
+    #- xbindkeys
+    - skippy
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
