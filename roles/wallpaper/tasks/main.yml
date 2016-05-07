@@ -3,6 +3,7 @@
   get_url: url={{ login_background }}
            dest=/usr/share/backgrounds/images/login.jpg
   sudo: yes
+  when: login_background is defined
 
 - name: "login wallpaper | set"
   lineinfile:
@@ -11,11 +12,13 @@
     #line: "background=#396da6"
     line: "background=/usr/share/backgrounds/images/login.jpg"
   sudo: yes
+  when: login_background is defined
 
 - name: "user wallpaper | get"
   get_url: url={{ user_background }}
            dest=/usr/share/backgrounds/images/user-wallpaper.jpg
   sudo: yes
+  when: user_background is defined
 
 - name: "user wallpaper | set"
   shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
@@ -23,3 +26,4 @@
     DISPLAY: "{{ display }}"
   with_items:
     - { key: "/backdrop/screen0/monitor0/workspace0/last-image", type: "string", value: "/usr/share/backgrounds/images/user-wallpaper.jpg" }
+  when: user_background is defined

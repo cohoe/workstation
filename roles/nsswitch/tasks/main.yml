@@ -1,0 +1,7 @@
+---
+- name: "hosts | set"
+  lineinfile:
+    dest: /etc/nsswitch.conf
+    regexp: "^hosts:"
+    line: "hosts:      files wins dns"
+  sudo: yes
