@@ -18,6 +18,7 @@
     - perforce
     - anyconnect
     - openvpn
+    - pipeline
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml

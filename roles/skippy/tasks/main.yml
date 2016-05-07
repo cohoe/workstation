@@ -1,0 +1,36 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - kernel-devel
+    - libX11-devel
+    - libXft-devel
+    - libXcomposite-devel
+    - libXdamage-devel
+    - libXext-devel
+    - libXinerama-devel
+    - libpng-devel
+    - libjpeg-devel
+    - giflib-devel
+
+- name: "repo | clone"
+  git: repo=https://github.com/richardgv/skippy-xd
+       dest=/opt/skippy-xd
+  sudo: yes
+
+- name: "make"
+  shell: make PREFIX=/usr/local
+  sudo: yes
+  args:
+    chdir: /opt/skippy-xd
+
+- name: "install"
+  shell: make install PREFIX=/usr/local
+  sudo: yes
+  args:
+    chdir: /opt/skippy-xd
+
+- name: "autostart"
+  copy: src=skippy.desktop
+        dest={{ user_autostart_dir }}/skippy.desktop

@@ -1,0 +1,14 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - xbindkeys
+
+- name: "config | create"
+  copy: src=xbindkeysrc
+        dest=~/.xbindkeysrc
+
+- name: "autostart"
+  copy: src=xbindkeys.desktop
+        dest={{ user_autostart_dir }}/xbindkeys.desktop

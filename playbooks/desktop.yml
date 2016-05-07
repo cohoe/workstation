@@ -19,5 +19,8 @@
     - pycharm
     - ksexplorer
     - xscreensaver
+    - xbindkeys
+    - skippy
+    - wine
   vars_files:
     - ../vars/global.yml
