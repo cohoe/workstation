@@ -14,6 +14,10 @@
            mode=0755
   when: (ansible_local.vmworkstation.vmworkstation_present == false) or (ansible_local.vmworkstation.vmworkstation_version != vmworkstation_version)
 
+- name: "stop httpd"
+  service: name=httpd state=stopped
+  sudo: yes
+
 - name: "package | install"
   shell: bash /tmp/{{ vmworkstation_package }} --console --eulas-agreed --required
   sudo: yes

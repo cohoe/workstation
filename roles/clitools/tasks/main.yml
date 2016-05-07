@@ -25,6 +25,7 @@
     - tftp
     - htop
     - tcplay
+    - iotop
   sudo: true
   tags:
     - packages

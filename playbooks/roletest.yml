@@ -9,13 +9,14 @@
     #- launchy
     #- chrome/browser
     #- common
-    - xfce
+    #- xfce
     #- plex
     #- security
     #- grub
     #- samba
     #- httpd
     #- nfs
+    - vmworkstation
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
