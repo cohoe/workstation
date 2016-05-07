@@ -21,5 +21,8 @@
     - httpd
     - wemo
     - kodi
+    - steam
+    - pulse
+    - vmworkstation
   vars_files:
     - ../vars/global.yml
