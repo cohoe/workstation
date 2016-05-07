@@ -12,7 +12,7 @@
   get_url: url={{ vmworkstation_repo }}/{{ vmworkstation_package }}
            dest=/tmp/{{ vmworkstation_package }}
            mode=0755
-  when: (ansible_local.vmworkstation.vmworkstation_present == false) or (ansible_local.vmworkstation.vmworkstation_version != vmworkstation_version)
+  when: ansible_local.vmworkstation.vmworkstation_present == false
 
 - name: "stop httpd"
   service: name=httpd state=stopped
@@ -21,7 +21,7 @@
 - name: "package | install"
   shell: bash /tmp/{{ vmworkstation_package }} --console --eulas-agreed --required
   sudo: yes
-  when: (ansible_local.vmworkstation.vmworkstation_present == false) or (ansible_local.vmworkstation.vmworkstation_version != vmworkstation_version)
+  when: ansible_local.vmworkstation.vmworkstation_present == false
 
 - name: "fix | test"
   shell: grep -q VMWARE_USE_SHIPPED_LIBS /etc/vmware/bootstrap

@@ -3,8 +3,12 @@
   dnf: name=zsh state=latest
   sudo: yes
 
-- file: path=~/.bin
+- name: "Home subdirectories | create"
+  file: path=~/{{ item }}
         state=directory
+  with_items:
+    - .bin
+    - Software
 
 # Projects directory
 - file: path=~/Projects

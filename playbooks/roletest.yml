@@ -20,7 +20,8 @@
     #- nfs
     #- vmworkstation
     #- wallpaper
-    - nsswitch
+    #- nsswitch
+    - shell
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
