@@ -3,7 +3,7 @@ localhost ansible_ssh_host=localhost
 [home]
 ig88-vm ansible_ssh_host=ig88-vm.local
 jarvis ansible_ssh_host=192.168.1.56 ansible_ssh_user=cohoeg
-192.168.222.135
+ansitest ansible_ssh_host=192.168.222.135
 
 [work]
 usxxcohoegl2c-vm ansible_ssh_host=usxxcohoegl2c.corp.emc.com
