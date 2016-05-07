@@ -30,12 +30,13 @@
   changed_when: false
 
 - name: "fix | install"
-  copy: src=Update_VMW.sh dest=/tmp/Update_VMW.sh
+  copy: src=Update_VMW.sh dest=/usr/local/bin/Update_VMW.sh
         mode=0755
+  sudo: yes
   when: fix_result|failed
 
 - name: "fix | run"
-  shell: bash /tmp/Update_VMW.sh
+  shell: Update_VMW.sh
   sudo: yes
   when: fix_result|failed
 
