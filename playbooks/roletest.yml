@@ -9,14 +9,14 @@
     #- launchy
     #- chrome/browser
     #- common
-    #- xfce
+    - xfce
     #- plex
     #- security
     #- grub
     #- samba
     #- httpd
     #- nfs
-    - compiz
+    #- compiz
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

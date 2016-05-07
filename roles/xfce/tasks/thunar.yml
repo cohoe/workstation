@@ -31,3 +31,11 @@
     - gvfs-nfs
     - gvfs-fuse
     - gvfs-archive
+
+- name: "thunar | special packages | install"
+  dnf: name={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - gstreamer1-libav
+    - tumbler-extras
+  when: '"rpmfusion" in use_repos'
