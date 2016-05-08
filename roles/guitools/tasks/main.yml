@@ -10,6 +10,7 @@
     - wireshark-gnome
     - rdesktop
     - libreoffice
+    - scribus
 
 - name: "other packages | install"
   dnf: name={{ item }} state=latest

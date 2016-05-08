@@ -26,6 +26,7 @@
     - htop
     - tcplay
     - iotop
+    - ansible
   sudo: true
   tags:
     - packages
