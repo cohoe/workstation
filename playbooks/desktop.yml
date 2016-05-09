@@ -22,5 +22,6 @@
     - xbindkeys
     - skippy
     - wine
+    - atom
   vars_files:
     - ../vars/global.yml

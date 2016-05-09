@@ -1,0 +1,4 @@
+---
+- name: "install"
+  dnf: name={{ atom_package }} state=latest
+  sudo: yes
