@@ -1,7 +1,7 @@
 ---
 - name: "packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - pygtk2
     - pygobject2
@@ -12,17 +12,17 @@
 - name: "target | create"
   file: path=/opt/quicktile/
         state=directory
-  sudo: yes
+  become: yes
 
 - name: "repo | install"
   git: repo=https://github.com/ssokolow/quicktile
        dest=/opt/quicktile
-  sudo: yes
+  become: yes
 
 - name: "shortcut | install"
   copy: src=quicktile.desktop
         dest={{ local_shortcuts_dir }}/quicktile.desktop
-  sudo: yes
+  become: yes
 
 - name: "autostart | install"
   file: src={{ local_shortcuts_dir }}/quicktile.desktop

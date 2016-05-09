@@ -3,7 +3,7 @@
   copy: dest=/etc/ansible/facts.d/horizon.fact
         src=horizon.fact
         mode=0755
-  sudo: yes
+  become: yes
 
 - name: "ansible | reload"
   setup: filter=ansible_local
@@ -16,5 +16,5 @@
 
 - name: "client | install"
   shell: yes | bash /tmp/{{ horizon_package }}
-  sudo: yes
+  become: yes
   when: (ansible_local.horizon.horizon_present == false) or (ansible_local.horizon.horizon_version != horizon_version)

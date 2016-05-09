@@ -1,4 +1,4 @@
 ---
 - name: "install"
   dnf: name=openvpn state=latest
-  sudo: yes
+  become: yes

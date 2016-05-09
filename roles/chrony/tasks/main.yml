@@ -5,7 +5,7 @@
     regexp: "^pool"
     state: absent
   notify: restart chronyd
-  sudo: yes
+  become: yes
 
 - name: "server | add"
   lineinfile:
@@ -15,4 +15,4 @@
   with_items:
     - "{{ time_servers }}" 
   notify: restart chronyd
-  sudo: yes
+  become: yes

@@ -1,7 +1,7 @@
 ---
 - name: "package | install"
   pip: name=ouimeaux state=present
-  sudo: yes
+  become: yes
 
 - name: "firewall | configure"
   firewalld:
@@ -13,4 +13,4 @@
   with_items:
     - 54321/udp
   when: secure_firewalld
-  sudo: yes
+  become: yes

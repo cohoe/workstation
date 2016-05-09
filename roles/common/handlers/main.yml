@@ -1,4 +1,4 @@
 ---
 - name: 'update-ca-trust'
   shell: 'update-ca-trust'
-  sudo: yes
+  become: yes

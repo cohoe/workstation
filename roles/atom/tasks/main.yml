@@ -5,4 +5,4 @@
 
 - name: "install"
   dnf: name=/tmp/atom.rpm state=latest
-  sudo: yes
+  become: yes

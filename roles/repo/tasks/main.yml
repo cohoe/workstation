@@ -1,16 +1,16 @@
 ---
 - include: chrome.yml
-  sudo: true
+  become: true
   when: '"chrome" in use_repos'
 
 - include: slack.yml
-  sudo: true
+  become: true
   when: '"slack" in use_repos'
 
 - include: rpmfusion.yml
-  sudo: true
+  become: true
   when: '"rpmfusion" in use_repos'
 
 - include: flash.yml
-  sudo: true
+  become: true
   when: '"flash" in use_repos'

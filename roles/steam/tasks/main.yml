@@ -1,7 +1,7 @@
 ---
 - name: "install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   when: '"rpmfusion" in use_repos'
   with_items:
     - steam
@@ -11,14 +11,14 @@
   action: service name={{ item }}
           state=started
           enabled=yes
-  sudo: yes
+  become: yes
   with_items:
     - xboxdrv
 
 - name: "shortcuts | install"
   copy: src={{ item }}
         dest={{ local_shortcuts_dir }}/{{ item }}
-  sudo: yes
+  become: yes
   with_items:
     - steam.desktop
     - steambigpicture.desktop

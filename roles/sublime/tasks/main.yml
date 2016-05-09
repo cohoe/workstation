@@ -3,7 +3,7 @@
   file: path={{ sublime_root }}
         state=directory
         recurse=yes
-  sudo: yes
+  become: yes
 
 - name: "archive | download"
   get_url: url={{ sublime_repo }}/{{ sublime_package }}
@@ -13,9 +13,9 @@
   unarchive: src=/tmp/{{ sublime_package }}
              dest={{ sublime_root }}
              copy=no
-  sudo: yes
+  become: yes
 
 - name: "shortcut | install"
   template: src=sublime.desktop
             dest={{ local_shortcuts_dir }}/sublime.desktop
-  sudo: yes
+  become: yes

@@ -3,7 +3,7 @@
   file: path={{ perforce_p4v_root }}
         state=directory
         recurse=yes
-  sudo: yes
+  become: yes
 
 - name: "archive | download"
   get_url: url={{ perforce_p4v_package }}
@@ -13,15 +13,15 @@
   unarchive: src=/tmp/p4v.tgz
              dest={{ perforce_p4v_root }}
              copy=no
-  sudo: yes
+  become: yes
 
 - name: "archive | link"
   file: src={{ perforce_p4v_root }}/{{ perforce_p4v_version }}
         dest={{ perforce_p4v_root}}/p4v
         state=link
-  sudo: yes
+  become: yes
 
 - name: "shortcut | install"
   template: src=p4v.desktop
             dest={{ local_shortcuts_dir }}/p4v.desktop
-  sudo: yes
+  become: yes

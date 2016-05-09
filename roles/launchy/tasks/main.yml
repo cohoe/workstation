@@ -1,6 +1,6 @@
 ---
 - dnf: name=launchy state=latest
-  sudo: true
+  become: true
 
 - name: "Install Launchy config"
   copy: dest="~/launchy.ini"
@@ -9,7 +9,7 @@
 - name: "shortcut | install"
   copy: src="launchy.desktop"
         dest="{{ local_shortcuts_dir }}/launchy.desktop"
-  sudo: yes
+  become: yes
 
 - name: "Autostart Launchy"
   copy: dest="{{ user_autostart_dir }}/launchy.desktop"
@@ -18,4 +18,4 @@
 - name: "system shortcut | erase"
   file: path="{{ sys_shortcuts_dir }}/launchy.desktop"
         state=absent
-  sudo: yes
+  become: yes

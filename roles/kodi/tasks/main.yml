@@ -1,7 +1,7 @@
 ---
 - name: "package | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - kodi
     - opencv-core
@@ -10,5 +10,5 @@
 - name: "shortcut | install"
   copy: src=kodi.desktop
         dest={{ local_shortcuts_dir }}/kodi.desktop
-  sudo: yes
+  become: yes
   when: '"rpmfusion" in use_repos'

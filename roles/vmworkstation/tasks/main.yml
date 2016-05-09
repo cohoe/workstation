@@ -3,7 +3,7 @@
   copy: dest=/etc/ansible/facts.d/vmworkstation.fact
         src=vmworkstation.fact
         mode=0755
-  sudo: yes
+  become: yes
 
 - name: "ansible | reload"
   setup: filter=ansible_local
@@ -16,11 +16,11 @@
 
 - name: "stop httpd"
   service: name=httpd state=stopped
-  sudo: yes
+  become: yes
 
 - name: "package | install"
   shell: bash /tmp/{{ vmworkstation_package }} --console --eulas-agreed --required
-  sudo: yes
+  become: yes
   when: ansible_local.vmworkstation.vmworkstation_present == false
 
 - name: "fix | test"
@@ -32,12 +32,12 @@
 - name: "fix | install"
   copy: src=Update_VMW.sh dest=/usr/local/bin/Update_VMW.sh
         mode=0755
-  sudo: yes
+  become: yes
   when: fix_result|failed
 
 - name: "fix | run"
   shell: Update_VMW.sh
-  sudo: yes
+  become: yes
   when: fix_result|failed
 
 - name: "server | port | set"
@@ -45,5 +45,5 @@
     dest: /etc/vmware/hostd/proxy.xml
     regexp: "<httpsPort>"
     line: "<httpsPort>{{ vmworkstation_https_port }}</httpsPort>"
-  sudo: yes
+  become: yes
   notify: restart vmware-workstation-server

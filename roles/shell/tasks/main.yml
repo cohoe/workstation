@@ -1,7 +1,7 @@
 ---
 - name: "zsh | install"
   dnf: name=zsh state=latest
-  sudo: yes
+  become: yes
 
 - name: "Home subdirectories | create"
   file: path=~/{{ item }}
@@ -31,7 +31,7 @@
 # Root dotfiles
 - copy: dest=~/.{{ item }}
         src={{ item }}
-  sudo: yes
+  become: yes
   with_items:
     - vimrc
     - screenrc
@@ -64,4 +64,4 @@
 - name: "user | shell | set"
   user: name={{ ansible_user_id }}
         shell=/bin/zsh
-  sudo: yes
+  become: yes

@@ -3,7 +3,7 @@
   file: path={{ pycharm_root }}
         state=directory
         recurse=yes
-  sudo: yes
+  become: yes
 
 - name: "archive | download"
   get_url: url={{ pycharm_repo }}/{{ pycharm_package }}
@@ -13,9 +13,9 @@
   unarchive: src=/tmp/{{ pycharm_package }}
              dest={{ pycharm_root }}
              copy=no
-  sudo: yes
+  become: yes
 
 - name: "shortcut | install"
   template: src=pycharm.desktop
             dest={{ local_shortcuts_dir }}/pycharm.desktop
-  sudo: yes
+  become: yes

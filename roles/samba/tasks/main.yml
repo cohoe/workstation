@@ -1,7 +1,7 @@
 ---
 - name: "package | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - samba
 
@@ -12,7 +12,7 @@
   with_items:
     - smbd_anon_write
     - samba_enable_home_dirs
-  sudo: yes
+  become: yes
 
 - name: "public share | create"
   file: dest={{ public_share_path }}
@@ -20,19 +20,19 @@
         setype=samba_share_t
         state=directory
         recurse=yes
-  sudo: yes
+  become: yes
 
 - name: "config"
   template: src=smb.conf
             dest=/etc/samba/smb.conf
-  sudo: yes
+  become: yes
   notify: restart samba
 
 - name: "services | enable"
   action: service name={{ item }}
           state=started
           enabled=yes
-  sudo: yes
+  become: yes
   with_items:
     - smb
     - nmb
@@ -47,5 +47,5 @@
   with_items:
     - samba
     - samba-client
-  sudo: yes
+  become: yes
   when: secure_firewalld

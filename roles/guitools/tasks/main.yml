@@ -1,7 +1,7 @@
 ---
 - name: "packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - numlockx
     - icedtea-web
@@ -14,7 +14,7 @@
 
 - name: "other packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   when: '"rpmfusion" in use_repos'
   with_items:
     - vlc
@@ -23,4 +23,4 @@
 - name: "wireshark group | add"
   user: name={{ ansible_env.USER }} append=yes
         groups=wireshark
-  sudo: yes
+  become: yes

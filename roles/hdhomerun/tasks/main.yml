@@ -1,7 +1,7 @@
 ---
 - name: "package | install"
   dnf: name=hdhomerun state=latest
-  sudo: yes
+  become: yes
 
 # Firewall
 - name: "firewall | rules"
@@ -11,4 +11,4 @@
     - "-p tcp --sport 65001 -j ACCEPT"
     - "-p udp --sport 5004 -j ACCEPT"
   when: secure_firewalld
-  sudo: yes
+  become: yes

@@ -11,18 +11,18 @@
 - name: "thunar | shortcut | install"
   copy: src={{ sys_shortcuts_dir }}/Thunar.desktop
         dest={{ local_shortcuts_dir }}/Thunar.desktop
-  sudo: yes
+  become: yes
 
 - name: "thunar | shortcut | icon"
   lineinfile:
     dest: "{{ local_shortcuts_dir }}/Thunar.desktop"
     regexp: "^Icon="
     line: "Icon=system-file-manager"
-  sudo: yes
+  become: yes
 
 - name: "thunar | packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - gvfs-afc
     - gvfs-afp
@@ -34,7 +34,7 @@
 
 - name: "thunar | special packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - gstreamer1-libav
     - tumbler-extras

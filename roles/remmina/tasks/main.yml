@@ -1,7 +1,7 @@
 ---
 - name: "package | install"
   dnf: name=remmina state=latest
-  sudo: yes
+  become: yes
 
 - name: "config | create"
   file: path=~/.remmina
@@ -18,4 +18,4 @@
 - name: "shortcut | create"
   copy: src=remmina.desktop
         dest={{ local_shortcuts_dir }}/remmina.desktop
-  sudo: yes
+  become: yes

@@ -1,12 +1,12 @@
 ---
 - name: "package | update"
   dnf: name=glibc-common state=latest
-  sudo: yes
+  become: yes
 
 - name: "day | set"
   lineinfile:
     dest: "/usr/share/i18n/locales/en_US"
     regexp: "^first_weekday"
     line: "first_weekday\t2"
-  sudo: yes
+  become: yes
   notify: rebuild locale

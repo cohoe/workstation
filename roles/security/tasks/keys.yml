@@ -7,4 +7,4 @@
 
 - name: Add root SSH keys
   authorized_key: user=root key=https://github.com/cohoe.keys
-  sudo: true
+  become: true

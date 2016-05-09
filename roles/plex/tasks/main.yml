@@ -1,13 +1,13 @@
 ---
 - name: "install"
   dnf: name={{ plex_package }} state=latest
-  sudo: yes
+  become: yes
 
 - name: "service | enable"
   action: service name=plexmediaserver
                   state=started
                   enabled=yes
-  sudo: yes
+  become: yes
 
 - name: "firewall | configure"
   firewalld:
@@ -19,4 +19,4 @@
   with_items:
     - 32400/tcp
   when: secure_firewalld
-  sudo: yes
+  become: yes

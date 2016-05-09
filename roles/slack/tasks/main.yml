@@ -1,5 +1,5 @@
 ---
 - name: Slack desktop application
   dnf: name=slack state=present
-  sudo: yes
+  become: yes
   when: (ansible_distribution == 'Fedora') and ('slack' in use_repos)

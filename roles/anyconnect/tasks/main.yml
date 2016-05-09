@@ -4,7 +4,7 @@
   copy: dest=/etc/ansible/facts.d/anyconnect.fact
         src=anyconnect.fact
         mode=0755
-  sudo: yes
+  become: yes
 
 - name: "ansible | reload"
   setup: filter=ansible_local
@@ -30,18 +30,18 @@
 
 - name: "install"
   shell: bash /tmp/anyconnect/binaries/vpnsetup.sh
-  sudo: yes
+  become: yes
   when: anyconnect_install
 
 - name: "touch"
   file: path=/usr/bin/hal-get-property
         mode=0755
         state=file
-  sudo: yes
+  become: yes
 
 - name: "environment"
   copy: 
     dest: /etc/profile.d/anyconnect.sh
     content: |
         export PATH=$PATH:/opt/cisco/anyconnect/bin
-  sudo: yes
+  become: yes

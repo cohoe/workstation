@@ -3,14 +3,14 @@
   dnf: name={{ item }} state=latest
   with_items:
     - java
-  sudo: true
+  become: true
 
 - name: "python | install"
   dnf: name={{ item }} state=latest
   with_items:
     - python-virtualenvwrapper
     - python-pep8
-  sudo: true
+  become: true
 
 - name: "tools | install"
   dnf: name={{ item }} state=latest
@@ -27,7 +27,7 @@
     - tcplay
     - iotop
     - ansible
-  sudo: true
+  become: true
   tags:
     - packages
 
@@ -42,4 +42,4 @@
     - glances
     - setroubleshoot-server
     - gcc
-  sudo: true
+  become: true

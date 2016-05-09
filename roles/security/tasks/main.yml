@@ -3,8 +3,8 @@
 
 - include: firewall.yml
   when: secure_firewalld
-  sudo: yes
+  become: yes
 
 - include: sshd.yml
-  sudo: true
+  become: true
   when: secure_sshd

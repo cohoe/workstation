@@ -1,7 +1,7 @@
 ---
 - name: "junk | remove"
   dnf: name={{ item }} state=absent
-  sudo: yes
+  become: yes
   with_items:
     - orage
     - abiword

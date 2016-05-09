@@ -1,7 +1,7 @@
 ---
 - name: "packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - httpd
     - mod_ssl
@@ -11,7 +11,7 @@
     dest: "/etc/httpd/conf.d/userdir.conf"
     regexp: "UserDir ([a-zA-Z]+)$"
     line: "    UserDir {{ user_public_directory }}"
-  sudo: yes
+  become: yes
   notify: restart httpd
 
 - name: "userdir config"
@@ -20,7 +20,7 @@
     regexp: "^<Directory(.*)/public_html\">$"
     line: '<Directory\1/{{ user_public_directory }}">'
     backrefs: yes
-  sudo: yes
+  become: yes
   notify: restart httpd
 
 - name: "selinux | set"
@@ -29,7 +29,7 @@
              persistent=yes
   with_items:
     - httpd_enable_homedirs
-  sudo: yes
+  become: yes
 
 - name: "directory | set"
   file: path=~/{{ user_public_directory }}
@@ -40,7 +40,7 @@
   action: service name={{ item }}
           state=started
           enabled=yes
-  sudo: yes
+  become: yes
   with_items:
     - httpd
 
@@ -54,5 +54,5 @@
   with_items:
     - http
     - https
-  sudo: yes
+  become: yes
   when: secure_firewalld

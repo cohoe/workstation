@@ -1,7 +1,7 @@
 ---
 - name: "packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - kernel-devel
     - libX11-devel
@@ -17,17 +17,17 @@
 - name: "repo | clone"
   git: repo=https://github.com/richardgv/skippy-xd
        dest=/opt/skippy-xd
-  sudo: yes
+  become: yes
 
 - name: "make"
   shell: make PREFIX=/usr/local
-  sudo: yes
+  become: yes
   args:
     chdir: /opt/skippy-xd
 
 - name: "install"
   shell: make install PREFIX=/usr/local
-  sudo: yes
+  become: yes
   args:
     chdir: /opt/skippy-xd
 

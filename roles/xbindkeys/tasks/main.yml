@@ -1,7 +1,7 @@
 ---
 - name: "packages | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - xbindkeys
 

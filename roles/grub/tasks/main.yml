@@ -1,7 +1,7 @@
 ---
 - name: "theme package | install"
   dnf: name=grub2-starfield-theme state=latest
-  sudo: yes
+  become: yes
 
 - name: "grub | theme"
   lineinfile:
@@ -10,7 +10,7 @@
     line: "GRUB_THEME=\"/boot/grub2/themes/system/theme.txt\""
     backup: yes
   notify: rebuild grub
-  sudo: yes
+  become: yes
 
 - name: "grub | gfxpayload"
   lineinfile:
@@ -19,7 +19,7 @@
     line: "GRUB_GFXPAYLOAD_LINUX=1440x900"
     backup: yes
   notify: rebuild grub
-  sudo: yes
+  become: yes
 
 - name: "grub | gfxmode"
   lineinfile:
@@ -28,7 +28,7 @@
     line: "GRUB_GFXMODE=1440x900"
     backup: yes
   notify: rebuild grub
-  sudo: yes
+  become: yes
 
 - name: "grub | terminal_output"
   lineinfile:
@@ -37,7 +37,7 @@
     state: absent
     backup: yes
   notify: rebuild grub
-  sudo: yes
+  become: yes
 
 - name: "extra command line"
   lineinfile:
@@ -46,4 +46,4 @@
     line: "GRUB_CMDLINE_LINUX_DEFAULT=\"net.ifnames=0 biosdevname=0\""
     backup: yes
   notify: rebuild grub
-  sudo: yes
+  become: yes

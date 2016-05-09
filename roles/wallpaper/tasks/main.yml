@@ -2,7 +2,7 @@
 - name: "login wallpaper | get"
   get_url: url={{ login_background }}
            dest=/usr/share/backgrounds/images/login.jpg
-  sudo: yes
+  become: yes
   when: login_background is defined
 
 - name: "login wallpaper | set"
@@ -11,13 +11,13 @@
     regexp: "^background="
     #line: "background=#396da6"
     line: "background=/usr/share/backgrounds/images/login.jpg"
-  sudo: yes
+  become: yes
   when: login_background is defined
 
 - name: "user wallpaper | get"
   get_url: url={{ user_background }}
            dest=/usr/share/backgrounds/images/user-wallpaper.jpg
-  sudo: yes
+  become: yes
   when: user_background is defined
 
 - name: "user wallpaper | set"

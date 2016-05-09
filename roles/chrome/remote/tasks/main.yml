@@ -1,7 +1,7 @@
 ---
 - name: "dependencies | install"
   dnf: name={{ item }} state=latest
-  sudo: yes
+  become: yes
   with_items:
     - xorg-x11-server-Xvfb
     - python-psutil
@@ -19,18 +19,18 @@
 
 - name: "package | install"
   shell: rpm -i --force /tmp/{{ rpm_package.stdout }}
-  sudo: yes
+  become: yes
 
 - name: "pam config | remove"
   file: path=/etc/pam.d/chrome-remote-desktop
         state=absent
-  sudo: yes
+  become: yes
 
 - name: "pam config | set"
   file: src=/etc/pam.d/system-auth
         dest=/etc/pam.d/chrome-remote-desktop
         state=link
-  sudo: yes
+  become: yes
 
 - name: "config file | create"
   copy: 
@@ -43,11 +43,11 @@
     dest: "/etc/environment"
     regexp: "CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES"
     line: export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES=1440x720
-  sudo: yes
+  become: yes
 
 - name: "service | autostart"
   shell: chkconfig --add chrome-remote-desktop
-  sudo: yes
+  become: yes
 
 - name: "cleanup"
   file: path=~/rpmbuild state=absent

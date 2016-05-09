@@ -25,7 +25,7 @@
     regexp: "^Categories=(.*)X-Xfce-Toplevel;$"
     line: 'Categories=\1'
     backrefs: "yes"
-  sudo: yes
+  become: yes
   with_items:
     - "{{ sys_shortcuts_dir }}/exo-mail-reader.desktop"
     - "{{ sys_shortcuts_dir }}/exo-file-manager.desktop"

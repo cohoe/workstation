@@ -3,7 +3,7 @@
   file: path={{ ksexplorer_root }}
         state=directory
         recurse=yes
-  sudo: yes
+  become: yes
 
 - name: "archive | download"
   get_url: url={{ ksexplorer_repo }}/{{ ksexplorer_package }}
@@ -13,9 +13,9 @@
   unarchive: src=/tmp/{{ ksexplorer_package }}
              dest={{ ksexplorer_root }}
              copy=no
-  sudo: yes
+  become: yes
 
 - name: "shortcut | install"
   template: src=ksexplorer.desktop
             dest={{ local_shortcuts_dir }}/ksexplorer.desktop
-  sudo: yes
+  become: yes
