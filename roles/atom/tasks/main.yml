@@ -1,4 +1,8 @@
 ---
+- name: "package | download"
+  get_url: url={{ atom_package }}
+           dest=/tmp/atom.rpm
+
 - name: "install"
-  dnf: name={{ atom_package }} state=latest
+  dnf: name=/tmp/atom.rpm state=latest
   sudo: yes
