@@ -1,7 +1,10 @@
 ---
 - name: "package | install"
-  dnf: name=remmina state=latest
+  dnf: name={{ item }} state=latest
   become: yes
+  with_items:
+    - remmina
+    - remmina-plugins-*
 
 - name: "config | create"
   file: path=~/.remmina

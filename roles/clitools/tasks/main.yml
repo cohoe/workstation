@@ -27,6 +27,8 @@
     - tcplay
     - iotop
     - ansible
+    - acpid
+    - dkms
   become: true
   tags:
     - packages
