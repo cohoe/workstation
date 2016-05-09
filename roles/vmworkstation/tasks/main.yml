@@ -17,6 +17,7 @@
 - name: "stop httpd"
   service: name=httpd state=stopped
   become: yes
+  ignore_errors: yes
 
 - name: "package | install"
   shell: bash /tmp/{{ vmworkstation_package }} --console --eulas-agreed --required
