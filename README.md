@@ -19,6 +19,7 @@ Ansible scripts for development environment configuration.
   * /commands/custom/XF86AudioLowerVolume      amixer set Master 5%-
   * /commands/custom/XF86AudioMute             amixer set Master toggle
   * /commands/custom/XF86AudioRaiseVolume      amixer set Master 5%+
+  * /commands/default/<Primary><Alt>l          xflock4
 
 * user bin dir should be a var
 * pipeline needs bindir=~/.bin
