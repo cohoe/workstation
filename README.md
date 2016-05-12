@@ -15,11 +15,8 @@ Ansible scripts for development environment configuration.
   * ```export VMWARE_USE_SHIPPED_LIBS=force```
   * ```LD_LIBRARY_PATH=/usr/lib/vmware/lib/libglibmm-2.4.so.1/:/usr/lib64/gtk-2.0/modules/:$LD_LIBRARY_PATH```
 
-* Keyboard functions
-  * /commands/custom/XF86AudioLowerVolume      amixer set Master 5%-
-  * /commands/custom/XF86AudioMute             amixer set Master toggle
-  * /commands/custom/XF86AudioRaiseVolume      amixer set Master 5%+
-  * /commands/default/<Primary><Alt>l          xflock4
 
 * user bin dir should be a var
 * pipeline needs bindir=~/.bin
+* Launchy plugins needed some hack to make them work
+* xfce4-notes-plugin

@@ -33,3 +33,7 @@
     - { key: '/xfwm4/custom/<Super>Down', value: 'hide_window_key' }
     - { key: '/xfwm4/custom/<Primary><Alt><Super>Left', value: 'prev_workspace_key' }
     - { key: '/xfwm4/custom/<Primary><Alt><Super>Right', value: 'next_workspace_key' }
+    - { key: '/commands/custom/XF86AudioLowerVolume', value: 'amixer set Master 5%-' }
+    - { key: '/commands/custom/XF86AudioMute', value: 'amixer set Master toggle' }
+    - { key: '/commands/custom/XF86AudioRaiseVolume', value: 'amixer set Master 5%+' }
+    - { key: '/commands/custom/<Super>l', value: 'xflock4' }
