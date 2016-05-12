@@ -1,0 +1,6 @@
+---
+- copy: dest=/etc/yum.repos.d/virtualbox.repo
+        src=virtualbox.repo
+
+- rpm_key: key=https://www.virtualbox.org/download/oracle_vbox.asc
+           state=present

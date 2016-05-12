@@ -9,8 +9,9 @@
     #- clitools
     #- guitools
     #- atom
-    - emc
-    - samba
+    #- emc
+    #- samba
+    - vbox
   vars_files:
     - ../vars/global.yml
-    - ../vars/emc.yml
+    #- ../vars/emc.yml

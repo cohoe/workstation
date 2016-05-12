@@ -5,6 +5,7 @@ use_repos:
  - slack
  - rpmfusion
  - flash
+ - virtualbox
 
 # Shell
 ohmyzsh_directory: ~/.oh-my-zsh
