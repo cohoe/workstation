@@ -8,7 +8,6 @@ Ansible scripts for development environment configuration.
 * requiretty is removed from the targets sudoers file.
 
 ## TODO
-* chagne samba domain
 * Tags
 * Workstation needs work for 11
   * ```export VMWARE_USE_SHIPPED_LIBS=force```

@@ -3,12 +3,14 @@
   hosts: all
   vars:
     #- user_background: http://img08.deviantart.net/bf3b/i/2004/172/4/b/storm_and_light.jpg
-    - login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
+    #- login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
     - firewalld_zone: work
   roles:
     #- clitools
     #- guitools
-    - atom
+    #- atom
+    - emc
+    - samba
   vars_files:
     - ../vars/global.yml
-    #- ../vars/emc.yml
+    - ../vars/emc.yml
