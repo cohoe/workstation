@@ -19,3 +19,11 @@
   file: path="{{ sys_shortcuts_dir }}/launchy.desktop"
         state=absent
   become: yes
+
+# Launchy doesn't look for a lib64 directory for plugins even though
+# that's where the package added them.
+- name: "plugins | fix"
+  file: src=/usr/lib64/launchy/
+        dest=/usr/lib/launchy
+        state=link
+  become: yes

@@ -17,4 +17,3 @@ Ansible scripts for development environment configuration.
 
 
 * pipeline needs bindir=~/.bin
-* Launchy plugins needed some hack to make them work
