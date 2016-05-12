@@ -7,6 +7,12 @@
 - include: keyboard.yml
 - include: junk.yml
 
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  become: yes
+  with_items:
+    - xfce4-notes-plugin
+
 - name: "explorer shortcut | create"
   copy: dest={{ local_shortcuts_dir }}/explorer.desktop
         src=explorer.desktop

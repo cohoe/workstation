@@ -16,7 +16,5 @@ Ansible scripts for development environment configuration.
   * ```LD_LIBRARY_PATH=/usr/lib/vmware/lib/libglibmm-2.4.so.1/:/usr/lib64/gtk-2.0/modules/:$LD_LIBRARY_PATH```
 
 
-* user bin dir should be a var
 * pipeline needs bindir=~/.bin
 * Launchy plugins needed some hack to make them work
-* xfce4-notes-plugin
