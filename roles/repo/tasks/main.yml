@@ -17,4 +17,4 @@
 
 - include: vbox.yml
   become: true
-  when: '"vbox" in use_repos'
+  when: '"virtualbox" in use_repos'

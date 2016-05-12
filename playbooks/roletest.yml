@@ -11,6 +11,7 @@
     #- atom
     #- emc
     #- samba
+    #- repo
     - vbox
   vars_files:
     - ../vars/global.yml
