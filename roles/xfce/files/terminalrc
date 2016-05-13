@@ -18,4 +18,4 @@ MiscTabCloseButtons=TRUE
 MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
-ScrollingLines=2000
+ScrollingLines=10000
