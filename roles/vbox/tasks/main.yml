@@ -1,28 +1,27 @@
 ---
 - name: "packages | install"
   dnf: name={{ item }} state=latest
-  #become: yes
+  become: yes
   with_items:
     - dkms
-  #  - VirtualBox-5.0
-  #when: '"virtualbox" in use_repos'
+    - VirtualBox-5.0
+  when: '"virtualbox" in use_repos'
 
-#- name: "installed extentions | get"
-#  shell: vboxmanage list extpacks
-#  register: vbox_exts
-#  become: yes
-#  changed_when: false
-#  ignore_errors: true
-#
-#- name: "extpack | download"
-#  get_url: url={{ ext_repo }}/{{ ext_pack }}
-#           dest=/tmp/{{ ext_pack }}
-#  when: '"virtualbox" in "{{ use_repos }}" and "Oracle VM VirtualBox Extension Pack" not in "{{ vbox_exts.stdout }}"'
-#
-#- name: "extpack | install"
-#  shell: vboxmanage extpack install {{ ext_pack }}
-#  become: yes
-#  register: vbox_ext_result
-#  failed_when: '"Success" not in "{{ vbox_ext_result.stdout }}" or "already installed" not in {{ vbox_ext_result.stderr }}"'
-#  #failed_when: ('virtualbox' in {{ use_repos }} ) and ('Success' not in {{ vbox_ext_result.stdout }} or 'already installed' not in {{ vbox_ext_result.stderr }})
-#  when: '"virtualbox" in "{{ use_repos }}" and "Oracle VM VirtualBox Extension Pack" not in "{{ vbox_exts.stdout }}"'
+- name: "installed extentions | get"
+  shell: vboxmanage list extpacks
+  register: vbox_exts
+  become: yes
+  changed_when: false
+  ignore_errors: true
+
+- name: "extpack | download"
+  get_url: url={{ ext_repo }}/{{ ext_pack }}
+           dest=/tmp/{{ ext_pack }}
+  when: '"virtualbox" in "{{ use_repos }}" and "Oracle VM VirtualBox Extension Pack" not in "{{ vbox_exts.stdout }}"'
+
+- name: "extpack | install"
+  shell: vboxmanage extpack install /tmp/{{ ext_pack }}
+  become: yes
+  register: vbox_ext_result
+  failed_when: "vbox_ext_result.rc != 0 and vbox_ext_result.rc != 1"
+  when: '"virtualbox" in "{{ use_repos }}" and "Oracle VM VirtualBox Extension Pack" not in "{{ vbox_exts.stdout }}"'
