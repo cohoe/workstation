@@ -19,7 +19,7 @@
     - anyconnect
     - openvpn
     - pipeline
-    - vmworkstation
+    - vbox
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml
