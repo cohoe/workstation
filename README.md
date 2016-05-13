@@ -9,4 +9,3 @@ Ansible scripts for development environment configuration.
 
 ## TODO
 * Tags
-* Finish vbox
