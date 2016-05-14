@@ -1,7 +1,7 @@
 localhost ansible_ssh_host=localhost
 
 [home]
-ig88-vm ansible_ssh_host=ig88-vm.local
+ig88-vm
 192.168.1.86
 jarvis ansible_ssh_host=192.168.1.56 ansible_ssh_user=cohoeg
 ansitest ansible_ssh_host=192.168.222.135

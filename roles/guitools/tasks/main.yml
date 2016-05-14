@@ -1,4 +1,9 @@
 ---
+- name: "vmtools"
+  dnf: name=open-vm-tools-desktop state=latest
+  become: yes
+  when: ansible_virtualization_role == "guest"
+
 - name: "packages | install"
   dnf: name={{ item }} state=latest
   become: yes

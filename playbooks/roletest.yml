@@ -13,10 +13,11 @@
     #- samba
     #- repo
     #- vbox
-    - xfce
-    - docky
-    - konsole
-    - chrome/browser
+    #- xfce
+    #- docky
+    #- konsole
+    #- chrome/browser
+    - common
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

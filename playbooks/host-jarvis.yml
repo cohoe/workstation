@@ -6,7 +6,7 @@
 - include: home.yml
 
 - name: Ansitest
-  hosts: jarvis
+  hosts: all
   vars:
     - user_background: http://i.grntm.co/wallpaper/Abstract-Blue-14318.jpg
   roles:
