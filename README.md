@@ -11,4 +11,3 @@ Ansible scripts for development environment configuration.
 * Tags
 * Replace xfce4-terminal with konsole because it deals with resizing in a graceful way
 * Add a cronjob to auto delete all the crap chrome launchers that show up.
-* Rebalance equalizer since its awful on laptops
