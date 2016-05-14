@@ -23,6 +23,7 @@
     - <Primary><Alt>KP_8
     - <Primary><Alt>KP_9
     - <Alt>F10
+    - <Alt>space
 
 - name: "keyboard shortcuts | set"
   shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' --create -t string -s {{ item.value }}
