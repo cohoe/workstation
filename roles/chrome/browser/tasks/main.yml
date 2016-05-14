@@ -14,3 +14,8 @@
         src=incognito.desktop
   when: "'chrome' in use_repos"
   become: yes
+
+- name: "junk shortcut cleanup"
+  cron: name="junk chrome shortcuts"
+        minute="*/5"
+        job="rm -f ~/.local/share/applications/chrome-*.desktop > /dev/null"
