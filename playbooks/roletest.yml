@@ -13,8 +13,9 @@
     #- samba
     #- repo
     #- vbox
+    - xfce
     - docky
-    #- konsole
+    - konsole
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

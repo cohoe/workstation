@@ -13,10 +13,10 @@
   with_items:
     - xfce4-notes-plugin
 
-- name: "explorer shortcut | create"
-  copy: dest={{ local_shortcuts_dir }}/explorer.desktop
-        src=explorer.desktop
-  become: yes
+#- name: "explorer shortcut | create"
+#  copy: dest={{ local_shortcuts_dir }}/explorer.desktop
+#        src=explorer.desktop
+#  become: yes
 
 - name: "menus directory | create"
   file: path=~/.config/menus

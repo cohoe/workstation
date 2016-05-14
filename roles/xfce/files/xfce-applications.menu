@@ -16,7 +16,8 @@
         <Filename>xfce4-run.desktop</Filename>
         <Separator/>
         <Filename>launchy.desktop</Filename>
-        <Filename>explorer.desktop</Filename>
+        <Filename>exo-file-manager.desktop</Filename>
+        <Filename>exo-terminal-emulator.desktop</Filename>
         <Separator/>
         <Menuname>Preferences</Menuname>
         <Menuname>Administration</Menuname>
