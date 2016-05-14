@@ -37,4 +37,4 @@
     - { key: '/commands/custom/XF86AudioMute', value: 'amixer set Master toggle' }
     - { key: '/commands/custom/XF86AudioRaiseVolume', value: 'amixer set Master 5%+' }
     - { key: '/commands/custom/<Super>l', value: 'xflock4' }
-    - { key: '/commands/custom/<Super>e', value: 'exo-open --launch FileManager' }
+    - { key: '/commands/custom/<Super>e', value: '"exo-open --launch FileManager"' }

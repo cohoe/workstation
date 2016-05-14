@@ -1,0 +1,16 @@
+---
+# Ansible Test Target
+#
+- include: base.yml
+- include: desktop.yml
+- include: home.yml
+
+- name: Ansitest
+  hosts: jarvis
+  vars:
+#    - user_background: http://img08.deviantart.net/bf3b/i/2004/172/4/b/storm_and_light.jpg
+    - user_background: http://archive.grantcohoe.com/img/wallpaper/wallpaper-panedia.com-00001018-2560x1600-3x.jpg
+  roles:
+    - wallpaper
+  vars_files:
+   - ../vars/global.yml
