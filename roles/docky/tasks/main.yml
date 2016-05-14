@@ -15,11 +15,21 @@
         dest=/tmp/docky-config.xml
 
 - name: "processes | stop"
-  shell: pgrep docky | xargs kill
+  shell: pgrep {{ item }} | xargs kill
   ignore_errors: yes
+  with_items:
+    - docky
+    - gconfd-2
 
 - name: "config | remove"
   shell: gconftool-2 --recursive-unset /apps/docky-2
+
+- name: "cache | remove"
+  file: path={{ item }} state=absent
+  with_items:
+    - "~/.local/share/docky"
+    - "~/.local/share/dockmanager"
+    - "~/.cache/docky"
 
 - name: "config | activate"
   shell: gconftool-2 --load /tmp/docky-config.xml

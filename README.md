@@ -11,5 +11,4 @@ Ansible scripts for development environment configuration.
 * Tags
 * Replace xfce4-terminal with konsole because it deals with resizing in a graceful way
 * Add a cronjob to auto delete all the crap chrome launchers that show up.
-* Docky is being stupid with reruns
 * Might need to touch helpers.rc file on new installs

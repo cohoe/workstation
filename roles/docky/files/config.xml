@@ -49,7 +49,7 @@
     <entry>
       <key>Docky/Interface/DockPreferences/Dock1/Autohide</key>
       <value>
-        <string>None</string>
+        <string>Intellihide</string>
       </value>
     </entry>
     <entry>
@@ -84,7 +84,7 @@
               <string>file:///usr/local/share/applications/konsole.desktop</string>
             </value>
             <value>
-              <string>file:///usr/share/applications/google-chrome.desktop</string>
+              <string>file:///usr/local/share/applications/google-chrome.desktop</string>
             </value>
             <value>
               <string>file:///usr/local/share/applications/Thunar.desktop</string>

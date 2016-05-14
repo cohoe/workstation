@@ -14,7 +14,7 @@
     #- repo
     #- vbox
     - docky
-    - konsole
+    #- konsole
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
