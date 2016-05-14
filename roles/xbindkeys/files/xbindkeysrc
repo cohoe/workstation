@@ -53,9 +53,6 @@
 "skippy-xd --activate-window-picker"
   m:0x0 + b:8
 
-"exo-open --launch FileManager"
-  Mod4 + e
-
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
 #

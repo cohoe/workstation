@@ -13,9 +13,9 @@
     #- samba
     #- repo
     #- vbox
-    #- xfce
-    #- docky
-    #- konsole
+    - xfce
+    - docky
+    - konsole
     - chrome/browser
   vars_files:
     - ../vars/global.yml

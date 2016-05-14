@@ -9,5 +9,3 @@ Ansible scripts for development environment configuration.
 
 ## TODO
 * Tags
-* Might need to touch helpers.rc file on new installs
-* Default web browser on new install???

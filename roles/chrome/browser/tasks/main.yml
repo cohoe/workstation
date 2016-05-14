@@ -19,3 +19,9 @@
   cron: name="junk chrome shortcuts"
         minute="*/5"
         job="rm -f ~/.local/share/applications/chrome-*.desktop > /dev/null"
+
+- name: "preferred browser | set"
+  lineinfile:
+    dest: ~/.config/xfce4/helpers.rc
+    regexp: "^WebBrowser="
+    line: "WebBrowser=google-chrome"

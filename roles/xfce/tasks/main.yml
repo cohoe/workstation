@@ -18,17 +18,20 @@
 #        src=explorer.desktop
 #  become: yes
 
-- name: "menus directory | create"
-  file: path=~/.config/menus
+- name: "directories | create"
+  file: path={{ item }}
         state=directory
+  with_items:
+    - ~/.config/menus
+    - ~/.config/autostart
+
+- name: "helpers file | create"
+  file: path=~/.config/xfce4/helpers.rc
+        state=file
 
 - name: "menus config | create"
   copy: src=xfce-applications.menu
         dest=~/.config/menus/xfce-applications.menu
-
-- name: "autostart directory | create"
-  file: path=~/.config/autostart
-        state=directory
 
 - name: "xfwm4 | set"
   shell: xfconf-query -c xfwm4 -p {{ item.key }} -s {{ item.value }}
