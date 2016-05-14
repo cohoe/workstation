@@ -81,7 +81,7 @@
       <value>
         <list type="string">
             <value>
-              <string>file:///usr/share/applications/xfce4-terminal.desktop</string>
+              <string>file:///usr/local/share/applications/konsole.desktop</string>
             </value>
             <value>
               <string>file:///usr/share/applications/google-chrome.desktop</string>
@@ -125,7 +125,7 @@
       <value>
         <list type="string">
             <value>
-              <string>/usr/share/applications/xfce4-terminal.desktop</string>
+              <string>/usr/local/share/applications/konsole.desktop</string>
             </value>
             <value>
               <string>Desktop</string>

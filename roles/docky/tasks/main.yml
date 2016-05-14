@@ -10,9 +10,16 @@
   copy: src=docky.desktop
         dest=~/.config/autostart/docky.desktop
 
-- name: "config | set"
+- name: "config | download"
   copy: src=config.xml
         dest=/tmp/docky-config.xml
+
+- name: "processes | stop"
+  shell: pgrep docky | xargs kill
+  ignore_errors: yes
+
+- name: "config | remove"
+  shell: gconftool-2 --recursive-unset /apps/docky-2
 
 - name: "config | activate"
   shell: gconftool-2 --load /tmp/docky-config.xml

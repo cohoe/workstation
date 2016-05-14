@@ -1,0 +1,42 @@
+---
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  become: yes
+  with_items:
+    - konsole
+
+- name: "config dir | create"
+  file: path=~/.local/share/konsole
+        recurse=yes
+        state=directory
+
+- name: "rc | create"
+  copy: src=konsolerc
+        dest=~/.config/konsolerc
+
+- name: "profile config | create"
+  copy: src={{ item }}
+        dest=~/.local/share/konsole/{{ item }}
+  with_items:
+    - WhiteOnBlack.colorscheme
+    - Grant.profile
+
+- name: "preferred launcher | create"
+  copy: src=custom-TerminalEmulator.desktop
+        dest=~/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop
+
+- name: "preferred terminal | set"
+  lineinfile:
+    dest: ~/.config/xfce4/helpers.rc
+    regexp: "^TerminalEmulator="
+    line: "TerminalEmulator=custom-TerminalEmulator"
+
+- name: "launchy shortcut | create"
+  copy: src=konsole.desktop
+        dest={{ local_shortcuts_dir }}/konsole.desktop
+  become: yes
+
+- name: "sys shortcut | delete"
+  file: path={{ sys_shortcuts_dir }}/org.kde.konsole.desktop
+        state=absent
+  become: yes

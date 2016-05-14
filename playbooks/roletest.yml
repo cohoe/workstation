@@ -12,7 +12,9 @@
     #- emc
     #- samba
     #- repo
-    - vbox
+    #- vbox
+    - docky
+    - konsole
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
