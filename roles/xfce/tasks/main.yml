@@ -3,7 +3,7 @@
 - include: power.yml
 - include: panel.yml
 - include: thunar.yml
-- include: terminal.yml
+#- include: terminal.yml
 - include: keyboard.yml
 - include: junk.yml
 
