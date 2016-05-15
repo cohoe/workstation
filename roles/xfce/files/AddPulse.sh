@@ -16,7 +16,7 @@ check_existing_plugin() {
     for id in $plugin_ids; do
         name=$($PANEL_QUERY -p "/plugins/plugin-$id")
         if [[ "$name" == "$PLUGIN_NAME" ]]; then
-            exit
+            exit 2
         fi
     done
 }
@@ -83,3 +83,6 @@ set_panel_plugins plugin_ids new_plugin_id
 
 # Reset Panel
 xfce4-panel -r
+
+# Exit
+exit
