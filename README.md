@@ -9,7 +9,6 @@ Ansible scripts for development environment configuration.
 
 ## Post-Install
 * smbpasswd
-* Add Pulse to panel
 
 ## TODO
 * Tags

@@ -25,3 +25,9 @@
   register: vbox_ext_result
   failed_when: "vbox_ext_result.rc != 0 and vbox_ext_result.rc != 1"
   when: '"virtualbox" in "{{ use_repos }}" and "Oracle VM VirtualBox Extension Pack" not in "{{ vbox_exts.stdout }}"'
+
+# Needed for USB attachment
+- name: "user group | add"
+  user: name={{ ansible_env.USER }} append=yes
+        groups=vboxusers
+  become: yes
