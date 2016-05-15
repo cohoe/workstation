@@ -39,3 +39,15 @@
   shell: xfconf-query -c xfce4-panel -p /panels/panel-1/size -n -t int -s 24
   environment:
     DISPLAY: "{{xfce_display}}"
+
+- name: "install pulse script"
+  copy: src=AddPulse.sh
+        dest=/usr/local/bin/AddPulse.sh
+        mode=0755
+  become: yes
+
+- name: "pulse | install"
+  shell: /usr/local/bin/AddPulse.sh
+  register: addpulse
+  changed_when: addpulse.rc == 0
+  failed_when: addpulse.rc == 1
