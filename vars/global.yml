@@ -59,7 +59,6 @@ plex_package: https://downloads.plex.tv/plex-media-server/0.9.16.6.1993-5089475/
 public_share_path: /export/public
 user_public_directory: Public
 
-# krb5
-krb5_default_realm: CORP.EMC.COM
-krb5_domain_realms:
-  - corp.emc.com = CORP.EMC.COM
+# SSL
+#ssl_verify: true
+ssl_verify: false

@@ -1,6 +1,8 @@
 ---
-- copy: dest=/etc/yum.repos.d/google-chrome.repo
-        src=google-chrome.repo
+- template: dest=/etc/yum.repos.d/google-chrome.repo
+            src=google-chrome.repo
 
+# The SSL crap is needed for work :(
 - rpm_key: key=https://dl.google.com/linux/linux_signing_key.pub
            state=present
+           validate_certs={{ ssl_verify }}

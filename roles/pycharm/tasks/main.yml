@@ -8,6 +8,7 @@
 - name: "archive | download"
   get_url: url={{ pycharm_repo }}/{{ pycharm_package }}
            dest=/tmp/{{ pycharm_package }}
+           validate_certs={{ ssl_verify }}
 
 - name: "archive | deploy"
   unarchive: src=/tmp/{{ pycharm_package }}

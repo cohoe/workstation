@@ -5,11 +5,11 @@
   hosts: all
   roles:
     - guitools
+    - xfce
+    - konsole
     - firefox
     - chrome/browser
     - slack
-    - xfce
-    - konsole
     - docky
     - launchy
     - x11

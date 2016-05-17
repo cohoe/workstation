@@ -27,7 +27,12 @@
 
 - name: "helpers file | create"
   file: path=~/.config/xfce4/helpers.rc
-        state=file
+        state=touch
+
+- name: "helpers dir | create"
+  file: path=~/.local/share/xfce4/helpers/
+        state=directory
+        recurse=yes
 
 - name: "menus config | create"
   copy: src=xfce-applications.menu
