@@ -13,11 +13,12 @@
     #- samba
     #- repo
     #- vbox
-    - xfce
+    #- xfce
     #- docky
     #- konsole
     #- chrome/browser
     #- common
+    - sublime
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
