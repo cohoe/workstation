@@ -15,6 +15,16 @@ Ansible scripts for development environment configuration.
 * Tags
 
 ### Desktop
+Bugs:
+* Thunar cannot create trash for NTFS mount
+* PulseAudio was DOA with a crappy default.pa file
+
+Misc Issues:
 * sysctl dev.raid.speed_limit_max=something less than 200000 during normal use
 * disable load-module module-suspend-on-idle in /etc/pulse/default.pa
 * MIME Types (xdg-mime default foo.desktop foo/bar)
+
+TODO:
+* fstab
+* crypt
+* Power settings for UPS desktop
