@@ -17,3 +17,4 @@ Ansible scripts for development environment configuration.
 ### Desktop
 * sysctl dev.raid.speed_limit_max=something less than 200000 during normal use
 * disable load-module module-suspend-on-idle in /etc/pulse/default.pa
+* MIME Types (xdg-mime default foo.desktop foo/bar)
