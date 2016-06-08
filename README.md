@@ -13,3 +13,4 @@ Ansible scripts for development environment configuration.
 ## TODO
 * Tags
 * MIME Types (xdg-mime default foo.desktop foo/bar)
+* Atom minimap package
