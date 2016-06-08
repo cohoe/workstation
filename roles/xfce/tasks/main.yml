@@ -48,6 +48,7 @@
     - { key: "/general/show_dock_shadow", value: 'false' }
     - { key: "/general/snap_to_windows", value: 'true' }
     - { key: "/general/theme", value: "{{ xfce_theme }}" }
+    - { key: "/general/scroll_workspaces", value: 'false' }
 
 - name: "xsettings | font | set"
   shell: xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Sans 10"

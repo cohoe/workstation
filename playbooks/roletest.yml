@@ -18,7 +18,9 @@
     #- konsole
     #- chrome/browser
     #- common
-    - sublime
+    #- sublime
+    #- xfce
+    - atom
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
