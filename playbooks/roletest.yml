@@ -20,7 +20,8 @@
     #- common
     #- sublime
     #- xfce
-    - atom
+    #- atom
+    - clitools
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

@@ -51,3 +51,9 @@
     - setroubleshoot-server
     - gcc
   become: true
+
+- name: "sysctl | set"
+  sysctl: name=dev.raid.speed_limit_max
+          value=80000
+          state=present
+  become: yes

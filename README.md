@@ -20,9 +20,7 @@ Ansible scripts for development environment configuration.
 Bugs:
 * PulseAudio was DOA with a crappy default.pa file
 * Why is acpid installed?
-* Add loop module
 
 Misc Issues:
-* sysctl dev.raid.speed_limit_max=something less than 200000 during normal use
 * disable load-module module-suspend-on-idle in /etc/pulse/default.pa
 * MIME Types (xdg-mime default foo.desktop foo/bar)
