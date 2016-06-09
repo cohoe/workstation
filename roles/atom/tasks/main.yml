@@ -6,3 +6,8 @@
 - name: "install"
   dnf: name=/tmp/atom.rpm state=latest
   become: yes
+
+- name: "plugins | install"
+  shell: apm install {{ item }}
+  with_items:
+    - minimap

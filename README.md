@@ -12,16 +12,15 @@ Ansible scripts for development environment configuration.
 * smbpasswd
 
 ## TODO
-* Tags
-* Atom minimap package
+* Tags for certain refreshers (ie, glibc breaks locale)
 * fstab
-* crypt
 * Power settings for UPS desktop
 
 ### Desktop
 Bugs:
-* Thunar cannot create trash for NTFS mount
 * PulseAudio was DOA with a crappy default.pa file
+* Why is acpid installed?
+* Add loop module
 
 Misc Issues:
 * sysctl dev.raid.speed_limit_max=something less than 200000 during normal use

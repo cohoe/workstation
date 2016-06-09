@@ -1,0 +1,15 @@
+---
+- name: "package | download"
+  get_url: url={{ tc_package }}
+           dest=/tmp/tc.tgz
+
+- name: "package | unzip"
+  unarchive: src=/tmp/tc.tgz
+             dest=/tmp/
+
+- name: "package | extract"
+  shell: tail -n +851 /tmp/truecrypt-7.2-setup-x64 > /tmp/tc-install.tar.gz
+
+- name: "package | install"
+  shell: tar -C / -xpzvf /tmp/tc-install.tar.gz
+  become: yes
