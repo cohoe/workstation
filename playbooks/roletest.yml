@@ -21,7 +21,8 @@
     #- sublime
     #- xfce
     #- atom
-    - clitools
+    #- clitools
+    - perforce
   vars_files:
     - ../vars/global.yml
-    #- ../vars/emc.yml
+    - ../vars/emc.yml
