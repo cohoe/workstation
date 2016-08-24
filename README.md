@@ -17,6 +17,7 @@ Ansible scripts for development environment configuration.
 * Power settings for UPS desktop
 * .tmux.conf needs set -g default-terminal "xterm-256color"
 * tmux needs aliased to tmux -2
+* chrome remote desktop now has a real package!
 
 ### Desktop
 Bugs:
