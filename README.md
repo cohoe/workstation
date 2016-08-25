@@ -18,6 +18,7 @@ Ansible scripts for development environment configuration.
 * .tmux.conf needs set -g default-terminal "xterm-256color"
 * tmux needs aliased to tmux -2
 * chrome remote desktop now has a real package!
+* PIA NetworkManager config
 
 ### Desktop
 Bugs:
