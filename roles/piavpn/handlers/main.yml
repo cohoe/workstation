@@ -1,0 +1,6 @@
+---
+- name: restart NetworkManager
+  become: true
+  service: name={{ item }} state=restarted
+  with_items:
+    - NetworkManager

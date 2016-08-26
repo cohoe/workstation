@@ -25,7 +25,9 @@
     #- perforce
     #- shell
     #- chrome/remote
-    - pulse
+    #- pulse
+    - piavpn
   vars_files:
     - ../vars/global.yml
+    - ../vars/home.yml
     #- ../vars/emc.yml

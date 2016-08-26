@@ -1,0 +1,18 @@
+---
+- name: "ca file | create"
+  copy: dest={{ piavpn_ca }}
+        src=pia-ca.crt
+  become: yes
+
+- name: "create something new"
+  template: src=piavpn.conf
+            dest=/etc/NetworkManager/system-connections/{{item.geo}}
+            owner=root
+            group=root
+            mode=0600
+  become: yes
+  with_items:
+    - { geo: 'US East', host: "us-east" }
+    - { geo: 'US West', host: "us-west" }
+    - { geo: 'Romania', host: "ro" }
+  notify: restart NetworkManager

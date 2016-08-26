@@ -35,6 +35,7 @@
     - acpid
     - dkms
     - unrar
+    - openvpn
   become: true
   tags:
     - packages

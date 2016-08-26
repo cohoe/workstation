@@ -17,7 +17,6 @@
     - horizon
     - perforce
     - anyconnect
-    - openvpn
     - pipeline
     - vbox
   vars_files:

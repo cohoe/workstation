@@ -1,4 +1,0 @@
----
-- name: "install"
-  dnf: name=openvpn state=latest
-  become: yes
