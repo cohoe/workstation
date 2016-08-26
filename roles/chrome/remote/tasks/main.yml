@@ -1,53 +1,7 @@
 ---
-- name: "dependencies | install"
+- name: "package | install"
   dnf: name={{ item }} state=latest
   become: yes
   with_items:
-    - xorg-x11-server-Xvfb
-    - python-psutil
-    - alien
-
-- name: "package | download"
-  get_url: url={{ chrome_remote_package }}
-           dest=/tmp/crd.deb
-
-- name: "package | convert"
-  shell: alien -r crd.deb | cut -d ' ' -f 1
-  args:
-    chdir: /tmp
-  register: rpm_package
-
-- name: "package | install"
-  shell: rpm -i --force /tmp/{{ rpm_package.stdout }}
-  become: yes
-
-- name: "pam config | remove"
-  file: path=/etc/pam.d/chrome-remote-desktop
-        state=absent
-  become: yes
-
-- name: "pam config | set"
-  file: src=/etc/pam.d/system-auth
-        dest=/etc/pam.d/chrome-remote-desktop
-        state=link
-  become: yes
-
-- name: "config file | create"
-  copy: 
-    dest: ~/.chrome-remote-desktop-session
-    content: |
-        startxfce4
-
-- name: "shell vars | create"
-  lineinfile:
-    dest: "/etc/environment"
-    regexp: "CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES"
-    line: export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES=1440x720
-  become: yes
-
-- name: "service | autostart"
-  shell: chkconfig --add chrome-remote-desktop
-  become: yes
-
-- name: "cleanup"
-  file: path=~/rpmbuild state=absent
+    - chrome-remote-desktop
+  when: "'chrome' in use_repos"

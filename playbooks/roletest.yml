@@ -23,7 +23,8 @@
     #- atom
     #- clitools
     #- perforce
-    - shell
+    #- shell
+    - chrome/remote
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml
