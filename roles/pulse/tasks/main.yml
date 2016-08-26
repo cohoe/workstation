@@ -18,3 +18,10 @@
   with_items:
     - enable
     - enable-config
+
+- name: "flat-volumes | disable"
+  lineinfile:
+    dest: /etc/pulse/daemon.conf
+    regexp: "^flat-volumes = "
+    line: "flat-volumes = no"
+  become: yes

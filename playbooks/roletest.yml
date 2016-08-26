@@ -24,7 +24,8 @@
     #- clitools
     #- perforce
     #- shell
-    - chrome/remote
+    #- chrome/remote
+    - pulse
   vars_files:
     - ../vars/global.yml
     #- ../vars/emc.yml

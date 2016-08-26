@@ -21,7 +21,6 @@ Ansible scripts for development environment configuration.
 Bugs:
 * PulseAudio was DOA with a crappy default.pa file
 * Why is acpid installed?
-* flat-volumes=no in /etc/pulse/daemon.conf
 
 Misc Issues:
 * disable load-module module-suspend-on-idle in /etc/pulse/default.pa
