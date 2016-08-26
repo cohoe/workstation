@@ -1,7 +1,11 @@
 ---
-- name: "zsh | install"
-  dnf: name=zsh state=latest
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
   become: yes
+  with_items:
+    - zsh
+    - tmux
+    - screen
 
 - name: "user bin dir | create"
   file: path={{ user_bin_dir }} state=directory
@@ -29,6 +33,7 @@
     - gitignore
     - vimrc
     - screenrc
+    - tmux.conf
 
 # Root dotfiles
 - copy: dest=~/.{{ item }}

@@ -43,8 +43,6 @@
   dnf: name={{ item }} state=latest
   with_items:
     - vim-enhanced
-    - screen
-    - tmux
     - strace
     - git
     - glances

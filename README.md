@@ -15,7 +15,6 @@ Ansible scripts for development environment configuration.
 * Tags for certain refreshers (ie, glibc breaks locale)
 * fstab
 * Power settings for UPS desktop
-* .tmux.conf needs set -g default-terminal "xterm-256color"
 * tmux needs aliased to tmux -2
 * chrome remote desktop now has a real package!
 * PIA NetworkManager config
