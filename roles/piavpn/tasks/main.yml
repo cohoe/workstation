@@ -15,4 +15,7 @@
     - { geo: 'US East', host: "us-east" }
     - { geo: 'US West', host: "us-west" }
     - { geo: 'Romania', host: "ro" }
+    - { geo: 'Ireland', host: "ireland" }
+    - { geo: 'UK London', host: "uk-london" }
+    - { geo: 'CA Toronto', host: "ca-toronto" }
   notify: restart NetworkManager
