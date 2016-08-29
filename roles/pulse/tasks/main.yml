@@ -25,3 +25,10 @@
     regexp: "^flat-volumes = "
     line: "flat-volumes = no"
   become: yes
+
+- name: "suspend-idle | disable"
+  lineinfile:
+    dest: /etc/pulse/default.pa
+    regexp: "load-module module-suspend-on-idle$"
+    line: "# load-module module-suspend-on-idle"
+  become: yes

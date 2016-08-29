@@ -22,5 +22,4 @@ Bugs:
 * Why is acpid installed?
 
 Misc Issues:
-* disable load-module module-suspend-on-idle in /etc/pulse/default.pa
 * MIME Types (xdg-mime default foo.desktop foo/bar)
