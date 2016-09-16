@@ -36,6 +36,7 @@
     - dkms
     - unrar
     - openvpn
+    - rfkill
   become: true
   tags:
     - packages
