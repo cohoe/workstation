@@ -23,6 +23,6 @@
     - kodi
     - steam
     - pulse
-    - vbox
+    #- vbox (this needs some love)
   vars_files:
     - ../vars/global.yml

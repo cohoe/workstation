@@ -15,6 +15,7 @@ Ansible scripts for development environment configuration.
 * Tags for certain refreshers (ie, glibc breaks locale)
 * fstab
 * Power settings for UPS desktop
+* vbox needs version bump
 
 ### Desktop
 Bugs:
