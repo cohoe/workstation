@@ -1,8 +1,8 @@
 ---
 # A home computer
 #
-# include: base.yml
-# include: desktop.yml
+include: base.yml
+include: desktop.yml
 
 - name: Home
   hosts: all
