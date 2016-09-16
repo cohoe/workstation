@@ -7,7 +7,6 @@ Ansible scripts for development environment configuration.
 * SSHD is enabled on target.
 * requiretty is removed from the targets sudoers file.
 * User can passwordless sudo
-* libselinux-python and python2-dnf installed (Fedora 23)
 
 ## Post-Install
 * smbpasswd
