@@ -16,7 +16,7 @@
             dest=~/.remmina/{{ item.name }}.remmina
   with_items:
     - "{{ remmina_hosts }}"
-  when: "{{ remmina_hosts }}"
+  when: remmina_hosts is defined
 
 # Launchy cant deal with shortcuts with more than one entry
 - name: "shortcut | create"
