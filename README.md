@@ -7,6 +7,7 @@ Ansible scripts for development environment configuration.
 * SSHD is enabled on target.
 * requiretty is removed from the targets sudoers file.
 * User can passwordless sudo
+* libselinux-python and python2-dnf installed (Fedora 23)
 
 ## Post-Install
 * smbpasswd
@@ -16,6 +17,7 @@ Ansible scripts for development environment configuration.
 * fstab
 * Power settings for UPS desktop
 * vbox needs version bump
+* Static versions need centralized. Like plex :(
 
 ### Desktop
 Bugs:
