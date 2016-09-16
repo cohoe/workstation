@@ -1,5 +1,5 @@
 ---
 pycharm_repo: https://download.jetbrains.com/python
-pycharm_version: pycharm-community-2016.1.2
+pycharm_version: pycharm-community-2016.2.3
 pycharm_package: "{{ pycharm_version }}.tar.gz"
 pycharm_root: /opt/pycharm
