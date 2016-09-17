@@ -17,11 +17,12 @@ Ansible scripts for development environment configuration.
 * Power settings for UPS desktop
 * vbox needs version bump
 * Static versions need centralized. Like plex :(
-
-### Desktop
-Bugs:
-* PulseAudio was DOA with a crappy default.pa file
-* Why is acpid installed?
-
-Misc Issues:
+* Grub handling for EFI
+* Grub config for resolution (http://forums.fedoraforum.org/showthread.php?t=306271)
+* Purge acpid
+* Power button settings
+* smb-mount and network gvfs mount should be off
+* Thumbnails should be always
 * MIME Types (xdg-mime default foo.desktop foo/bar)
+* PulseAudio was DOA with a crappy default.pa file on IG88. Whats up with that?
+* NVIDIA kernel modules
