@@ -32,7 +32,6 @@
     - tcplay
     - iotop
     - ansible
-    - acpid
     - dkms
     - unrar
     - openvpn

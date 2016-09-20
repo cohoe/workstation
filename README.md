@@ -22,7 +22,6 @@ Ansible scripts for development environment configuration.
 ### System
 * Grub handling for EFI
 * Grub config for resolution (http://forums.fedoraforum.org/showthread.php?t=306271)
-* Purge acpid
 
 ### XFCE
 * Power settings for UPS desktop
