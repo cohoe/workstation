@@ -24,9 +24,7 @@ Ansible scripts for development environment configuration.
 * Grub config for resolution (http://forums.fedoraforum.org/showthread.php?t=306271)
 
 ### XFCE
-* Power settings for UPS desktop
-* Power button settings
-* Monitor never goes to sleep
+* Monitor never goes to sleep. Check DPMS through xfce-power?
 * smb-mount should be off (well, maybe. we must do research)
 
 ### Firewall
