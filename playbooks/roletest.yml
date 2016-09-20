@@ -25,8 +25,9 @@
     #- perforce
     #- shell
     #- chrome/remote
-    - pulse
+    #- pulse
     #- piavpn
+    - grub
   vars_files:
     - ../vars/global.yml
     #- ../vars/home.yml

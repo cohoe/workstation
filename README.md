@@ -20,7 +20,6 @@ Ansible scripts for development environment configuration.
 
 ### System
 * Grub handling for EFI
-* Grub config for resolution (http://forums.fedoraforum.org/showthread.php?t=306271)
 
 ### XFCE
 * Monitor never goes to sleep. Check DPMS through xfce-power?
