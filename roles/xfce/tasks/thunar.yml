@@ -7,6 +7,7 @@
     - { key: '/default-view', value: "ThunarDetailsView" }
     - { key: '/last-view', value: "ThunarDetailsView" }
     - { key: '/last-side-pane', value: "ThunarTreePane" }
+    - { key: '/misc-thumbnail-mode', value: "THUNAR_THUMBNAIL_MODE_ALWAYS" }
 
 - name: "thunar | shortcut | install"
   copy: src={{ sys_shortcuts_dir }}/Thunar.desktop

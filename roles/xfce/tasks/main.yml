@@ -67,6 +67,7 @@
     - { key: "/desktop-icons/file-icons/show-filesystem", type: "bool", value: "false" }
     - { key: "/desktop-icons/file-icons/show-home", type: "bool", value: "false" }
     - { key: "/desktop-icons/file-icons/show-trash", type: "bool", value: "false" }
+    - { key: "/desktop-icons/file-icons/show-removable", type: "bool", value: "false" }
 
 - name: "ristretto | set"
   shell: xfconf-query -c ristretto -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
