@@ -7,17 +7,16 @@ Ansible scripts for development environment configuration.
 * SSHD is enabled on target.
 * requiretty is removed from the targets sudoers file.
 * User can passwordless sudo
+* System updated to most recent kernel/system patch set.
 
 ## Post-Install
 * smbpasswd
 
 ## TODO
-
 ### Organization and Features
 * Static versions need centralized. Like plex :(
-* vbox needs version bump
-* NVIDIA kernel modules
-* MIME Types (xdg-mime default foo.desktop foo/bar)
+* vbox needs version bump. Look to use rpmfusion packages instead.
+* NVIDIA kernel modules. Look to use rpmfusion packages.
 
 ### System
 * Grub handling for EFI
@@ -37,3 +36,4 @@ Ansible scripts for development environment configuration.
 
 ### Long-term
 * Tags for certain refreshers (ie, glibc breaks locale)
+* MIME Types (xdg-mime default foo.desktop foo/bar)
