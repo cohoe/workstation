@@ -28,7 +28,6 @@ Ansible scripts for development environment configuration.
 * Power settings for UPS desktop
 * Power button settings
 * Thumbnails should be always
-* xfce snap at border
 * Monitor never goes to sleep
 * Disable removable devices from desktop
 * smb-mount should be off (well, maybe. we must do research)

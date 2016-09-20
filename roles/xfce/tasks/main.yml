@@ -49,6 +49,9 @@
     - { key: "/general/snap_to_windows", value: 'true' }
     - { key: "/general/theme", value: "{{ xfce_theme }}" }
     - { key: "/general/scroll_workspaces", value: 'false' }
+    - { key: "/general/wrap_layout", value: 'false' }
+    - { key: "/general/wrap_cycle", value: 'false' }
+    - { key: "/general/wrap_windows", value: 'false' }
 
 - name: "xsettings | font | set"
   shell: xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Sans 10"
