@@ -21,8 +21,13 @@ Ansible scripts for development environment configuration.
 * Grub config for resolution (http://forums.fedoraforum.org/showthread.php?t=306271)
 * Purge acpid
 * Power button settings
-* smb-mount and network gvfs mount should be off
 * Thumbnails should be always
 * MIME Types (xdg-mime default foo.desktop foo/bar)
 * PulseAudio was DOA with a crappy default.pa file on IG88. Whats up with that?
 * NVIDIA kernel modules
+* xfce snap at border
+* Monitor never goes to sleep
+* nsswitch.conf needs wins
+* smb-mount should be off
+* add udp/137 inbound connection from local subnet for firewall
+* Disable removable devices from desktop
