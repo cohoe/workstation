@@ -17,6 +17,7 @@ Ansible scripts for development environment configuration.
 * Static versions need centralized. Like plex :(
 * vbox needs version bump. Look to use rpmfusion packages instead.
 * NVIDIA kernel modules. Look to use rpmfusion packages.
+* CRD needs dotdile in homedir (https://support.google.com/chrome/answer/1649523?hl=en)
 
 ### System
 * Grub handling for EFI
