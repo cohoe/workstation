@@ -29,6 +29,7 @@ Ansible scripts for development environment configuration.
 * Monitor never goes to sleep. Check DPMS through xfce-power?
 * smb-mount should be off (well, maybe. we must do research)
 * xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -l" --create -t string (also replace keystroke)
+* Add restart action button
 
 ### Firewall
 * add udp/137 inbound connection from local subnet for firewall
