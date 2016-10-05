@@ -10,7 +10,7 @@
     - firefox
     - chrome/browser
     - slack
-    - docky
+    #- docky
     - launchy
     - x11
     - grub

@@ -19,8 +19,6 @@ Ansible scripts for development environment configuration.
 * NVIDIA kernel modules. Look to use rpmfusion packages.
 * CRD needs dotdile in homedir (https://support.google.com/chrome/answer/1649523?hl=en)
 * plymouth boot screen to solar
-* Disable docky since I don't really use it.
-* Install GIMP
 
 ### System
 * Grub handling for EFI

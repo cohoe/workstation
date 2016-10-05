@@ -16,6 +16,7 @@
     - rdesktop
     - libreoffice
     - scribus
+    - gimp
 
 - name: "other packages | install"
   dnf: name={{ item }} state=latest
