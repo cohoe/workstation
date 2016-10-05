@@ -35,7 +35,8 @@
     - dkms
     - unrar
     - openvpn
-    - rfkill
+    - rfkill # Wifi Control
+    - dnf-plugin-system-upgrade # System upgrade
   become: true
   tags:
     - packages
