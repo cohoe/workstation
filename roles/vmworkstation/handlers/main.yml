@@ -1,4 +1,0 @@
----
-- name: 'restart vmware-workstation-server'
-  action: service name=vmware-workstation-server state=restarted
-  become: yes

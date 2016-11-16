@@ -3,7 +3,6 @@
 - include: power.yml
 - include: panel.yml
 - include: thunar.yml
-#- include: terminal.yml
 - include: keyboard.yml
 - include: junk.yml
 
@@ -13,16 +12,10 @@
   with_items:
     - xfce4-notes-plugin
 
-#- name: "explorer shortcut | create"
-#  copy: dest={{ local_shortcuts_dir }}/explorer.desktop
-#        src=explorer.desktop
-#  become: yes
-
 - name: "directories | create"
   file: path={{ item }}
         state=directory
   with_items:
-    - ~/.config/menus
     - ~/.config/autostart
 
 - name: "helpers file | create"
@@ -33,10 +26,6 @@
   file: path=~/.local/share/xfce4/helpers/
         state=directory
         recurse=yes
-
-- name: "menus config | create"
-  copy: src=xfce-applications.menu
-        dest=~/.config/menus/xfce-applications.menu
 
 - name: "xfwm4 | set"
   shell: xfconf-query -c xfwm4 -p {{ item.key }} -s {{ item.value }}

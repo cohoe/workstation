@@ -11,6 +11,7 @@
         - ssh
         - samba-client
   roles:
+    - common
     - security
     - emc
     - ldap
@@ -19,6 +20,7 @@
     - anyconnect
     - pipeline
     - vbox
+    - samba
   vars_files:
     - ../vars/global.yml
     - ../vars/emc.yml

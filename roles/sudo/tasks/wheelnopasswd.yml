@@ -1,6 +1,6 @@
 ---
 - copy:
-    dest: /etc/sudoers.d/01-wheel.conf
+    dest: /etc/sudoers.d/01-wheel
     mode: 0644
     owner: root
     group: root

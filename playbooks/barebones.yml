@@ -1,0 +1,10 @@
+---
+- name: Barebones
+  hosts: all
+  roles:
+    - common
+    - repo
+    - shell
+    - sudo
+  vars_files:
+    - ../vars/barebones.yml

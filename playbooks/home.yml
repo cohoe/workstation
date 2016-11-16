@@ -15,7 +15,6 @@ include: desktop.yml
     - hdhomerun
     - arduino
     - chrome/remote
-    - plex
     - samba
     - nfs
     - httpd

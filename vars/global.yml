@@ -5,7 +5,6 @@ use_repos:
  - slack
  - rpmfusion
  - flash
- - virtualbox
 
 # Shell
 ohmyzsh_directory: ~/.oh-my-zsh
@@ -15,15 +14,10 @@ user_bin_dir: ~/bin
 # NVM
 nvm_repo: https://github.com/creationix/nvm.git
 nvm_directory: ~/.nvm
-nvm_version: v0.30.2
+nvm_version: v0.32.1
 
 # XFCE
 display: ":0.0"
-
-# Chrony
-time_servers:
- - time.windows.com
- - pool.ntp.org
 
 # Various .desktop file directories
 sys_shortcuts_dir: /usr/share/applications
@@ -38,3 +32,10 @@ user_public_directory: Public
 # SSL
 #ssl_verify: true
 ssl_verify: false
+
+# VBox
+vbox_version: 5.1.8
+vbox_extpack: Oracle_VM_VirtualBox_Extension_Pack-5.1.8-111374.vbox-extpack
+
+# Pycharm
+pycharm_version: pycharm-community-2016.2.3

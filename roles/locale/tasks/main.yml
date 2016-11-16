@@ -1,6 +1,9 @@
 ---
-- name: "package | update"
-  dnf: name=glibc-common state=latest
+- name: "packages | install"
+  dnf: name={{ item }} state=latest
+  with_items:
+    - glibc-common
+    - glibc-locale-source
   become: yes
 
 - name: "day | set"

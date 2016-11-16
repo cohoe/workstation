@@ -6,28 +6,7 @@
     #- login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
     - firewalld_zone: home
   roles:
-    #- clitools
-    #- guitools
-    #- atom
-    #- emc
-    #- samba
-    #- repo
-    #- vbox
-    #- xfce
-    #- docky
-    #- konsole
-    #- chrome/browser
-    #- common
-    #- sublime
-    #- xfce
-    #- atom
-    #- clitools
-    #- perforce
-    #- shell
-    #- chrome/remote
-    #- pulse
-    #- piavpn
-    - grub
+    - remmina
   vars_files:
     - ../vars/global.yml
     #- ../vars/home.yml

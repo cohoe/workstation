@@ -3,19 +3,20 @@ Workstation
 
 Ansible scripts for development environment configuration.
 
-## Requirements
+## Pre-Install Requirements 
 * SSHD is enabled on target.
 * requiretty is removed from the targets sudoers file.
-* User can passwordless sudo
 * System updated to most recent kernel/system patch set.
 
-## Post-Install
+## Installation
+``ansible-playbook -Kk -l localhost playbooks/home.yml``
+
+## Post-Install Steps
 * smbpasswd
 
 ## TODO
 ### Organization and Features
 * Static versions need centralized. Like plex :(
-* vbox needs version bump. Look to use rpmfusion packages instead.
 * NVIDIA kernel modules. Look to use rpmfusion packages.
 * CRD needs dotdile in homedir (https://support.google.com/chrome/answer/1649523?hl=en)
 * plymouth boot screen to solar

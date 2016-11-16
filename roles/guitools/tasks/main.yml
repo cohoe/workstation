@@ -8,7 +8,6 @@
   dnf: name={{ item }} state=latest
   become: yes
   with_items:
-    - numlockx
     - icedtea-web
     - texworks
     - texlive-pdftex
@@ -17,6 +16,7 @@
     - libreoffice
     - scribus
     - gimp
+    - mediawriter
 
 - name: "other packages | install"
   dnf: name={{ item }} state=latest
@@ -24,7 +24,6 @@
   when: '"rpmfusion" in use_repos'
   with_items:
     - vlc
-    - dropbox
 
 - name: "wireshark group | add"
   user: name={{ ansible_env.USER }} append=yes

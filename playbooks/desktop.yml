@@ -10,19 +10,16 @@
     - firefox
     - chrome/browser
     - slack
-    #- docky
     - launchy
     - x11
     - grub
     - remmina
-    #- sublime
     - quicktile
     - pycharm
     - ksexplorer
     - xscreensaver
     - xbindkeys
     - skippy
-    - wine
     - atom
   vars_files:
     - ../vars/global.yml

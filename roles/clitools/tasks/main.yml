@@ -37,6 +37,7 @@
     - openvpn
     - rfkill # Wifi Control
     - dnf-plugin-system-upgrade # System upgrade
+    - numlockx # Enable numlock always
   become: true
   tags:
     - packages

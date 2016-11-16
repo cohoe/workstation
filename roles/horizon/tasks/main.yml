@@ -1,4 +1,8 @@
 ---
+- name: "package dependencies | install"
+  dnf: name=ncurses-compat-libs state=present
+  become: yes
+
 - name: "facts | create"
   copy: dest=/etc/ansible/facts.d/horizon.fact
         src=horizon.fact
@@ -15,6 +19,6 @@
   when: (ansible_local.horizon.horizon_present == false) or (ansible_local.horizon.horizon_version != horizon_version)
 
 - name: "client | install"
-  shell: yes | bash /tmp/{{ horizon_package }}
+  shell: yes | bash /tmp/{{ horizon_package }} --console --eulas-agreed --required
   become: yes
   when: (ansible_local.horizon.horizon_present == false) or (ansible_local.horizon.horizon_version != horizon_version)
