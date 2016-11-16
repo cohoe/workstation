@@ -51,3 +51,9 @@
   register: addpulse
   changed_when: addpulse.rc == 0
   failed_when: addpulse.rc == 1
+
+# Set the action buttons on the top left. Theres probably a better way to do this...
+- name: "action menu | set"
+  shell: xfconf-query -c xfce4-panel -p /plugins/plugin-2/items -n -t string -t string -t string -t string -t string -t string -t string -t string -t string -t string -t string -s "+lock-screen" -s "+switch-user" -s "+separator" -s "+suspend" -s "-hibernate" -s "-separator" -s "+shutdown" -s "+restart" -s "+separator" -s "+logout" -s "-logout-dialog" 
+  environment:
+    DISPLAY: "{{xfce_display}}"
