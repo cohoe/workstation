@@ -1,9 +1,9 @@
 ---
-# A work computer
+# A ConstantContact computer
 #
 #- include: base.yml
 #- include: desktop.yml
-- name: Work
+- name: ctct
   hosts: all
   vars:
     - firewalld_zone: work
@@ -13,14 +13,9 @@
   roles:
     - common
     - security
-    - emc
     - ldap
-    - horizon
-    - perforce
-    - anyconnect
     - pipeline
-    - vbox
     - samba
+    - hipchat
   vars_files:
     - ../vars/global.yml
-    - ../vars/emc.yml

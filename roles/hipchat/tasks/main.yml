@@ -1,0 +1,9 @@
+---
+- name: install repo
+  copy: src=hipchat.repo
+        dest=/etc/yum.repos.d/hipchat.repo
+  become: yes
+
+- name: install package
+  dnf: name=hipchat4 state=present
+  become: yes

@@ -1,0 +1,3 @@
+---
+ldap_uri: "ldap://localhost"
+ldap_base: "dc=example,dc=com"

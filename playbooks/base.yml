@@ -8,6 +8,6 @@
     - shell
     - sudo
     - chrony
-    - locale
+    #- locale
   vars_files:
     - ../vars/global.yml

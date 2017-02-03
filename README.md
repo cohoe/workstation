@@ -20,6 +20,9 @@ Ansible scripts for development environment configuration.
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
 * CRD needs dotdile in homedir (https://support.google.com/chrome/answer/1649523?hl=en)
 * plymouth boot screen to solar
+* vmtools should not be assumed
+* locale either needs fixed or removed.
+* git sslverify can be reenabled. Thanks EMC
 
 ### System
 * Grub handling for EFI

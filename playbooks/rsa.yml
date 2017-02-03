@@ -1,0 +1,26 @@
+---
+# A RSA computer
+#
+#- include: base.yml
+#- include: desktop.yml
+- name: RSA 
+  hosts: all
+  vars:
+    - firewalld_zone: work
+    - firewalld_enabled_services:
+        - ssh
+        - samba-client
+  roles:
+    - common
+    - security
+    - emc
+    - ldap
+    - horizon
+    - perforce
+    - anyconnect
+    - pipeline
+    - vbox
+    - samba
+  vars_files:
+    - ../vars/global.yml
+    - ../vars/emc.yml
