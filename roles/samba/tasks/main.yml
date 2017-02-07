@@ -49,3 +49,10 @@
     - samba-client
   become: yes
   when: secure_firewalld
+
+- name: "firewall custom rules"
+  shell: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_{{ firewalld_zone }}_allow -1 {{ item }}
+  with_items:
+    - "-p udp --sport 137 -j ACCEPT"
+  when: secure_firewalld
+  become: yes

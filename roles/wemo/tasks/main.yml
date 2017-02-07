@@ -14,3 +14,10 @@
     - 54321/udp
   when: secure_firewalld
   become: yes
+
+- name: "custom firewall rules | enable"
+  shell: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_{{ firewalld_zone }}_allow -1 {{ item }}
+  with_items:
+    - "-p udp --sport 1900 -j ACCEPT"
+  when: secure_firewalld
+  become: yes
