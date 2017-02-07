@@ -21,7 +21,6 @@ Ansible scripts for development environment configuration.
 * CRD needs dotdile in homedir (https://support.google.com/chrome/answer/1649523?hl=en)
 * plymouth boot screen to solar
 * vmtools should not be assumed
-* locale either needs fixed or removed.
 
 ### System
 * Grub handling for EFI
@@ -39,5 +38,4 @@ Ansible scripts for development environment configuration.
 * PulseAudio was DOA with a crappy default.pa file on IG88. Whats up with that?
 
 ### Long-term
-* Tags for certain refreshers (ie, glibc breaks locale)
 * MIME Types (xdg-mime default foo.desktop foo/bar)
