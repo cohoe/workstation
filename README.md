@@ -18,7 +18,6 @@ Ansible scripts for development environment configuration.
 ### Organization and Features
 * Static versions need centralized. Like plex :(
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
-* CRD needs dotdile in homedir (https://support.google.com/chrome/answer/1649523?hl=en)
 
 ### System
 

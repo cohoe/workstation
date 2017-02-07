@@ -7,7 +7,7 @@
     - firewalld_zone: home
   roles:
     #- security
-    - grub
+    - chrome/remote
   vars_files:
     - ../vars/global.yml
     #- ../vars/home.yml

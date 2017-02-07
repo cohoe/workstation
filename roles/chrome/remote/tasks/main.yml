@@ -5,3 +5,8 @@
   with_items:
     - chrome-remote-desktop
   when: "'chrome' in use_repos"
+
+- name: "dotfile | setup"
+  copy: dest=~/.chrome-remote-desktop-session
+        content='exec /usr/sbin/lightdm-session "startxfce4"'
+        mode=0755
