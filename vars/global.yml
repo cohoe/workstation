@@ -14,7 +14,7 @@ user_bin_dir: ~/bin
 # NVM
 nvm_repo: https://github.com/creationix/nvm.git
 nvm_directory: ~/.nvm
-nvm_version: v0.32.1
+nvm_version: v0.33.0
 
 # XFCE
 display: ":0.0"
@@ -30,12 +30,11 @@ public_share_path: /export/public
 user_public_directory: Public
 
 # SSL
-#ssl_verify: true
-ssl_verify: false
+ssl_verify: true
 
 # VBox
-vbox_version: 5.1.8
-vbox_extpack: Oracle_VM_VirtualBox_Extension_Pack-5.1.8-111374.vbox-extpack
+vbox_version: 5.1.14
+vbox_extpack: Oracle_VM_VirtualBox_Extension_Pack-5.1.14-112924.vbox-extpack
 
 # Pycharm
 pycharm_version: pycharm-community-2016.2.3

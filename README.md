@@ -16,7 +16,6 @@ Ansible scripts for development environment configuration.
 
 ## TODO
 ### Organization and Features
-* Static versions need centralized. Like plex :(
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
 
 ### System
@@ -26,12 +25,9 @@ Ansible scripts for development environment configuration.
 * smb-mount should be off (well, maybe. we must do research)
 
 ### Firewall
-* add udp/137 inbound connection from local subnet for firewall
-* add udp/1900 inbound connection from local subnet for firewall
 
 ### System Specific
 * fstab
-* PulseAudio was DOA with a crappy default.pa file on IG88. Whats up with that?
 
 ### Long-term
 * MIME Types (xdg-mime default foo.desktop foo/bar)
