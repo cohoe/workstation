@@ -1,5 +1,3 @@
-[http]
-	sslverify = off
 [user]
 	name = Grant Cohoe
     email = grant@grantcohoe.com

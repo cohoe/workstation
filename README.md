@@ -22,7 +22,6 @@ Ansible scripts for development environment configuration.
 * plymouth boot screen to solar
 * vmtools should not be assumed
 * locale either needs fixed or removed.
-* git sslverify can be reenabled. Thanks EMC
 
 ### System
 * Grub handling for EFI
