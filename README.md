@@ -19,10 +19,8 @@ Ansible scripts for development environment configuration.
 * Static versions need centralized. Like plex :(
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
 * CRD needs dotdile in homedir (https://support.google.com/chrome/answer/1649523?hl=en)
-* plymouth boot screen to solar
 
 ### System
-* Grub handling for EFI
 
 ### XFCE
 * Monitor never goes to sleep. Check DPMS through xfce-power?

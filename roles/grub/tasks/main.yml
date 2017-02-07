@@ -1,4 +1,8 @@
 ---
+- name: "efi packages | install"
+  dnf: name=grub2-efi-modules state=latest
+  become: yes
+
 - name: "theme package | install"
   dnf: name=grub2-starfield-theme state=latest
   become: yes
@@ -9,16 +13,20 @@
     regexp: "^GRUB_THEME"
     line: "GRUB_THEME=\"/boot/grub2/themes/system/theme.txt\""
     backup: yes
-  notify: rebuild grub
+  notify:
+    - rebuild mbr grub
+    - rebuild efi grub
   become: yes
 
 - name: "grub | gfxmode"
   lineinfile:
     dest: "/etc/default/grub"
     regexp: "^GRUB_GFXMODE"
-    line: "GRUB_GFXMODE=3440x1440x32,1920x1200x32,1440x900x32,1024x768x32,800x600x32"
+    line: "GRUB_GFXMODE=3440x1440x32,1920x1080x32,1440x900x32,1024x768x32,800x600x32"
     backup: yes
-  notify: rebuild grub
+  notify:
+    - rebuild efi grub
+    - rebuild mbr grub
   become: yes
 
 - name: "extra command line"
@@ -27,7 +35,9 @@
     regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
     line: "GRUB_CMDLINE_LINUX_DEFAULT=\"net.ifnames=0 biosdevname=0 video=vesa:off rhgb quiet\""
     backup: yes
-  notify: rebuild grub
+  notify:
+    - rebuild mbr grub
+    - rebuild efi grub
   become: yes
 
 - name: "gfxpayload_linux"
@@ -36,7 +46,9 @@
     regexp: "^GRUB_GFXPAYLOAD_LINUX=keep"
     line: "GRUB_GFXPAYLOAD_LINUX=keep"
     backup: yes
-  notify: rebuild grub
+  notify:
+    - rebuild mbr grub
+    - rebuild efi grub
   become: yes
 
 - name: "terminal_output"
@@ -45,5 +57,7 @@
     regexp: "^GRUB_TERMINAL_OUTPUT"
     line: "GRUB_TERMINAL_OUTPUT=\"gfxterm\""
     backup: yes
-  notify: rebuild grub
+  notify:
+    - rebuild mbr grub
+    - rebuild efi grub
   become: yes
