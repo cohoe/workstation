@@ -1,8 +1,8 @@
 ---
 # A ConstantContact computer
 #
-#- include: base.yml
-#- include: desktop.yml
+- include: base.yml
+- include: desktop.yml
 - name: ctct
   hosts: all
   vars:
