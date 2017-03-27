@@ -7,6 +7,7 @@ Ansible scripts for development environment configuration.
 * SSHD is enabled on target.
 * requiretty is removed from the targets sudoers file.
 * System updated to most recent kernel/system patch set.
+* Host fingerprint is in known_hosts
 
 ## Installation
 ``ansible-playbook -Kk -l localhost playbooks/home.yml``
