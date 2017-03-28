@@ -1,0 +1,20 @@
+---
+# Drop fact script on remote host
+- name: "nm connection fact | create"
+  copy: dest=/etc/ansible/facts.d/nmconn.fact
+        src=nm-connection.fact
+        mode=0755
+  become: yes
+
+# Reload facts
+- name: "ansible | reload"
+  setup: filter=ansible_local
+
+# Join all search_domains into a space-separated list for ifcfg file
+- name: "domains | set"
+  lineinfile:
+    dest: "/etc/sysconfig/network-scripts/ifcfg-{{ansible_local.nmconn.nmconn}}"
+    regexp: "^DOMAIN="
+    line: "DOMAIN=\"{{ search_domains | join(' ') }}\""
+  become: yes
+  when: search_domains is defined

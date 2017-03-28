@@ -1,0 +1,7 @@
+#!/bin/bash
+
+CONN=$(nmcli connection show | grep enp0s3 | awk '{print $1}')
+
+echo -en "{\n\t"
+    echo "\"nmconn\": \"${CONN}\""
+echo "}"

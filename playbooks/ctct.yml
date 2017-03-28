@@ -1,8 +1,8 @@
 ---
 # A ConstantContact computer
 #
-- include: base.yml
-- include: desktop.yml
+#- include: base.yml
+#- include: desktop.yml
 - name: ctct
   hosts: all
   vars:
@@ -12,10 +12,12 @@
         - samba-client
   roles:
     - common
-    - security
-    - ldap
-    - pipeline
-    - samba
-    - hipchat
+#    - security
+#    - ldap
+#    - pipeline
+#    - samba
+#    - hipchat
+    - dns
   vars_files:
     - ../vars/global.yml
+    - ../vars/ctct.yml
