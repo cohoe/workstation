@@ -3,14 +3,9 @@ Workstation
 
 Ansible scripts for development environment configuration.
 
-## Pre-Install Requirements 
-* SSHD is enabled on target.
-* requiretty is removed from the targets sudoers file.
-* System updated to most recent kernel/system patch set.
-* Host fingerprint is in known_hosts
-
 ## Installation
-``ansible-playbook -Kk -l localhost playbooks/home.yml``
+* Pass all pre-flight checks (```./preflight-checks.sh```)
+* ``ansible-playbook -Kk -l localhost playbooks/home.yml``
 
 ## Post-Install Steps
 * smbpasswd
