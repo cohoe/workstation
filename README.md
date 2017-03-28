@@ -4,7 +4,6 @@ Workstation
 Ansible scripts for development environment configuration.
 
 ## Installation
-* Pass all pre-flight checks (```./preflight-checks.sh```)
 * ``ansible-playbook -Kk -l localhost playbooks/home.yml``
 
 ## Post-Install Steps
