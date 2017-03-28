@@ -20,7 +20,6 @@ Ansible scripts for development environment configuration.
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
 
 ### System
-* Add rvm and any other ruby stuffs (requires konsole --login)
 
 ### XFCE
 * Monitor never goes to sleep. Check DPMS through xfce-power?

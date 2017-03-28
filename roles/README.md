@@ -39,14 +39,20 @@ Workstation configurations in any environment.
 * **xfce**: XFCE desktop environment
 * **xscreensaver**: XScreenSaver configuration
 
-## Work
-A computer at work.
+## EMC
+A computer at EMC.
 * **anyconnect**: Cisco AnyConnect VPN client
 * **emc**: Various corp configuration
 * **horizon**: VMware Horizon View client
 * **ldap**: OpenLDAP client configuration
 * **perforce**: Perforce visual client
 * **pipeline**: Jenkins Pipeline Builder
+
+## CTCT
+A computer at CTCT.
+* **dns**: DNS search domain configuration
+* **rpmbuild**: Tools for RPM building
+* **rvm**: Ruby Version Manager for all users
 
 ## Home
 A computer at home.
