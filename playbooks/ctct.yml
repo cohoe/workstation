@@ -18,6 +18,7 @@
 #    - samba
 #    - hipchat
     - dns
+    - rpmbuild
   vars_files:
     - ../vars/global.yml
     - ../vars/ctct.yml

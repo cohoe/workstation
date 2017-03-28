@@ -21,7 +21,6 @@ Ansible scripts for development environment configuration.
 
 ### System
 * Add rvm and any other ruby stuffs (requires konsole --login)
-* rpmbuild role
 
 ### XFCE
 * Monitor never goes to sleep. Check DPMS through xfce-power?
