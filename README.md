@@ -4,7 +4,7 @@ Workstation
 Ansible scripts for development environment configuration.
 
 ## Installation
-* ``ansible-playbook -Kk -l localhost playbooks/home.yml``
+* ``ansible-playbook -K -l localhost playbooks/home.yml``
 
 ## Post-Install Steps
 * smbpasswd

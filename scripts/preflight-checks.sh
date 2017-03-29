@@ -53,13 +53,13 @@ check_fingerprint() {
 }
 
 ret=0
-check_ssh
-ret=$((${ret}+$?))
+#check_ssh
+#ret=$((${ret}+$?))
 check_sudoers
 ret=$((${ret}+$?))
 check_updates
 ret=$((${ret}+$?))
-check_fingerprint
-ret=$((${ret}+$?))
+#check_fingerprint
+#ret=$((${ret}+$?))
 
 exit ${ret}

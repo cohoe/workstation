@@ -3,11 +3,12 @@
 # Setup Fedora intended to be called from curl
 
 # Install git
+sudo dnf -q update -y
 sudo dnf -q install git redhat-lsb-core ansible -y
 
 # Grab the repo
 cd /tmp
-git clone https://github.com/cohoe/workstation
+git clone -q https://github.com/cohoe/workstation
 cd /tmp/workstation
 
 bash scripts/preflight-checks.sh
@@ -18,6 +19,6 @@ else
     echo "SUCCESS: You're all set!"
     echo ""
     echo "The workstation repo is at /tmp/workstation. An example run would be:"
-    echo "  ansible-playbook -Kk -l localhost playbooks/home.yml"
+    echo "  ansible-playbook -K -l localhost playbooks/home.yml"
     echo ""
 fi
