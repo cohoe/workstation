@@ -3,7 +3,7 @@
 # Setup Fedora intended to be called from curl
 
 # Install git
-sudo dnf install git -y
+sudo dnf -q install git redhat-lsb-core -y
 
 # Grab the repo
 cd /tmp
