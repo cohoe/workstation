@@ -3,12 +3,15 @@
   hosts: all
   vars:
     #- user_background: http://img08.deviantart.net/bf3b/i/2004/172/4/b/storm_and_light.jpg
+    - user_background: http://i.grntm.co/wallpaper/dubai-night.jpg
+    #- user_background: http://i.grntm.co/wallpaper/dubai-marina-night-city-wallpaper.jpg
     #- login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
     - firewalld_zone: home
   roles:
     #- security
     #- samba
-    - rvm
+    #- rvm
+    - wallpaper
   vars_files:
     - ../vars/global.yml
     #- ../vars/home.yml
