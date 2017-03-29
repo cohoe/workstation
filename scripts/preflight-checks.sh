@@ -23,7 +23,12 @@ check_sudoers() {
 }
 
 check_updates() {
-    log_warning_msg "Update checking is not implemented yet."
+    sudo dnf -q check-update > /dev/null
+    rc=$?
+    if [ ${rc} != 0 ]; then
+        log_failure_msg "System has package updates available."
+    fi
+    log_success_msg "System has no updates available."
 }
 
 check_fingerprint() {
@@ -35,12 +40,12 @@ check_fingerprint() {
         if [[ ${key} == "AAAA"* ]]; then
             line=$(grep "${key}" ~/.ssh/known_hosts)
             if [[ ${line} == "localhost"* ]]; then
-                log_success_msg "Localhost SSH key is trusted."
+                log_success_msg "SSH key for localhost is trusted."
                 return
             fi
         fi
     done
-    log_failure_msg "Localhost SSH key is not in known_hosts."
+    log_failure_msg "SSH key for localhost is not in known_hosts."
 }
 
 check_ssh
