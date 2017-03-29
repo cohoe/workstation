@@ -3,12 +3,12 @@
 # Setup Fedora intended to be called from curl
 
 # Install git
-sudo dnf -q update -y
-sudo dnf -q install git redhat-lsb-core ansible -y
+sudo dnf update -y
+sudo dnf install git redhat-lsb-core ansible -y
 
 # Grab the repo
 cd /tmp
-git clone -q https://github.com/cohoe/workstation
+git clone https://github.com/cohoe/workstation
 cd /tmp/workstation
 
 bash scripts/preflight-checks.sh
