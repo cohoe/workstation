@@ -13,9 +13,10 @@
     #- rvm
     #- wallpaper
     #- shell
-    - docker
+    #- docker
+    - ctct
   vars_files:
     - ../vars/global.yml
-    #- ../vars/ctct.yml
+    - ../vars/ctct.yml
     #- ../vars/home.yml
     #- ../vars/emc.yml
