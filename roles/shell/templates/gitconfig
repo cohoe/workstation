@@ -1,6 +1,6 @@
 [user]
 	name = Grant Cohoe
-    email = grant@grantcohoe.com
+    email = {{ git_email }}
 [push]
 	default = simple
 [credential]

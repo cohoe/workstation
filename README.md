@@ -12,7 +12,6 @@ Ansible scripts for development environment configuration.
 ## TODO
 ### Organization and Features
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
-* Git config email as a var
 
 ### System
 * VirtualBox needs fixed

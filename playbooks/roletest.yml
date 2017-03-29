@@ -12,9 +12,9 @@
     #- samba
     #- rvm
     #- wallpaper
-    #- shell
+    - shell
     #- docker
-    - ctct
+    #- ctct
   vars_files:
     - ../vars/global.yml
     - ../vars/ctct.yml

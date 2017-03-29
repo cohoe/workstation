@@ -34,11 +34,14 @@
 - copy: dest=~/.{{ item }}
         src={{ item }}
   with_items:
-    - gitconfig
     - gitignore
     - vimrc
     - screenrc
     - tmux.conf
+
+# Git config
+- template: src=gitconfig
+            dest=~/.gitconfig
 
 # Root dotfiles
 - copy: dest=~/.{{ item }}
