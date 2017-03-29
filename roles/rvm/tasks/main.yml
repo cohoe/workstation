@@ -4,4 +4,5 @@
   command: bash -c "/usr/bin/curl -sSL https://get.rvm.io | bash"
   environment:
     - rvm_ignore_dotfiles: "yes"
-  become: yes
+
+# @TODO Add to dotfiles
