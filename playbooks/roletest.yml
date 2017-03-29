@@ -11,7 +11,8 @@
     #- security
     #- samba
     #- rvm
-    - wallpaper
+    #- wallpaper
+    - shell
   vars_files:
     - ../vars/global.yml
     #- ../vars/home.yml

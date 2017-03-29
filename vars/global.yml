@@ -38,3 +38,6 @@ vbox_extpack: Oracle_VM_VirtualBox_Extension_Pack-5.1.14-112924.vbox-extpack
 
 # Pycharm
 pycharm_version: pycharm-community-2016.2.3
+
+# Face
+user_face: http://i.grntm.co/headshot2.jpg

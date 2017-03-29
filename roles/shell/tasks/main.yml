@@ -72,3 +72,9 @@
   user: name={{ ansible_user_id }}
         shell=/bin/zsh
   become: yes
+
+# Face for login
+- name: "user picture | get"
+  get_url: url={{ user_face }}
+           dest=~/.face
+  when: user_face is defined
