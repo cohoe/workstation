@@ -29,6 +29,14 @@
   with_items:
     - pub
     - priv
+    - ctct
+
+# CTCT Projects
+- git: repo={{ github_url }}/{{ item }}
+       dest=~/Projects/ctct/{{ item }}
+  with_items:
+    - {{ ctct_projects }}
+  when: ctct_projects is defined
 
 # Misc dotfiles
 - copy: dest=~/.{{ item }}

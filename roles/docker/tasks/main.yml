@@ -1,0 +1,23 @@
+---
+
+- name: "packages | install"
+  dnf: name={{ item }}
+       state=latest
+  become: yes
+  with_items:
+    - docker
+    - python-docker-py
+
+- name: "service | enable"
+  action: service name=docker
+          state=started
+          enabled=yes
+  become: yes
+
+- name: "images | pull"
+  docker_image: name={{ item.name }}
+                tag={{ item.tag }}
+  with_items:
+    - { name: "fedora", tag: "latest" }
+    - { name: "centos", tag: "latest" }
+  become: yes

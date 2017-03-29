@@ -46,6 +46,7 @@
     - glances
     - setroubleshoot-server
     - gcc
+    - jq # json parser
   become: true
 
 - name: "sysctl | set"
