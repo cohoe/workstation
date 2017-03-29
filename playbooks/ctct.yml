@@ -20,6 +20,7 @@
     - dns
     - rpmbuild
     - rvm
+    - wallpaper
   vars_files:
     - ../vars/global.yml
     - ../vars/ctct.yml

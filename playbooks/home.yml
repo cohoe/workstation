@@ -22,6 +22,7 @@ include: desktop.yml
     - kodi
     - steam
     - pulse
+    - wallpaper
     #- vbox (this needs some love)
   vars_files:
     - ../vars/global.yml
