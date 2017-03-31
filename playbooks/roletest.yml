@@ -1,4 +1,6 @@
 ---
+#- include: "vbox.yml"
+
 - name: RoleTest
   hosts: all
   vars:
@@ -14,7 +16,14 @@
     #- wallpaper
     #- shell
     #- docker
-    - ctct
+    #- ctct
+
+  tasks:
+    - name: "virtualbox"
+      include_role:
+        name: vbox/guest
+        when: ansible_virtualization_type is 'virtualbox'
+    
   vars_files:
     - ../vars/global.yml
     - ../vars/ctct.yml

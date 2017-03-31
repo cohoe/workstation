@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -e
+
+# Copyright 2017 Grant Cohoe (grant@grantcohoe.com)
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+VBOX_ADDITIONS_BINARY="VBoxLinuxAdditions.run"
+
+mount_return=$(gvfs-mount -d /dev/sr0)
+mount_path=""
+
+# Mount the guest additions ISO to our guest
+if [[ "${mount_return}" == "No volume for device file /dev/sr0" ]]; then
+    echo "ERROR: Guest additions ISO is not inserted."
+    exit 1
+elif [[ "${mount_return}" == "Mounted /dev/sr0 at"* ]]; then
+    mount_path=$(echo "${mount_return}" | sed 's_Mounted /dev/sr0 at __')
+    echo "Mount path is ${mount_path}"
+else
+    echo "ERROR: Something went wrong. The result of gvfs-mount was:"
+    echo "${mount_return}"
+    exit 1
+fi
+
+# Copy the binary to the local filesystem
+temp_dir=$(mktemp -d)
+cp "${mount_path}/${VBOX_ADDITIONS_BINARY}" "${temp_dir}/"
+
+# Unmount the ISO
+gvfs-mount -u ${mount_path}
+
+# Run the guest additions binary
+cd "${temp_dir}"
+sudo bash "${temp_dir}/${VBOX_ADDITIONS_BINARY}"
+
+# Done
+echo "Done"
