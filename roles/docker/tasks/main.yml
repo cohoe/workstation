@@ -1,5 +1,7 @@
 ---
+# Docker
 
+# Install packages
 - name: "packages | install"
   dnf: name={{ item }}
        state=latest
@@ -8,12 +10,14 @@
     - docker
     - python-docker-py
 
+# Enable service
 - name: "service | enable"
   action: service name=docker
           state=started
           enabled=yes
   become: yes
 
+# Pull some images that I use frequently
 - name: "images | pull"
   docker_image: name={{ item.name }}
                 tag={{ item.tag }}

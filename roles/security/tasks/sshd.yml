@@ -1,3 +1,5 @@
+---
+# SSHD config
 - name: sshd | Lock down sshd
   lineinfile:
       dest: /etc/ssh/sshd_config
@@ -27,6 +29,7 @@
   - security
   - ssh
 
+# SSHD ciphers
 - name: sshd | Upgrade sshd ciphers
   lineinfile:
       dest: /etc/ssh/sshd_config
@@ -45,6 +48,7 @@
   - security
   - ssh
 
+# Disable root login when we dont want it
 - name: sshd | disable root login
   lineinfile:
       dest: /etc/ssh/sshd_config
@@ -57,6 +61,7 @@
   - restart sshd
   when: not permit_root_login
 
+# Enable root login when we want it
 - name: sshd | enable root login
   lineinfile:
       dest: /etc/ssh/sshd_config
@@ -69,10 +74,12 @@
   - restart sshd
   when: permit_root_login
 
+# Allow SSH through the firewall
 - name: sshd | enable the ssh port through firewalld
   firewalld:
       port: 22/tcp
       permanent: true
       state: enabled
 
+# Enable the service
 - service: name=sshd state=started enabled=true

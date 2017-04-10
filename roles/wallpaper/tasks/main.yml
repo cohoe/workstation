@@ -1,10 +1,12 @@
 ---
+# Grab the login wallpaper image
 - name: "login wallpaper | get"
   get_url: url={{ login_background }}
            dest=/usr/share/backgrounds/images/login.jpg
   become: yes
   when: login_background is defined
 
+# Set the login wallpaper image
 - name: "login wallpaper | set"
   lineinfile:
     dest: '/etc/lightdm/lightdm-gtk-greeter.conf'
@@ -14,21 +16,25 @@
   become: yes
   when: login_background is defined
 
+# Clear out the user wallpaper
 - name: "user wallpaper | clear"
   file: path=/usr/share/backgrounds/images/user-wallpaper.jpg
         state=absent
   become: yes
 
+# Grab the user wallpapare image
 - name: "user wallpaper | get"
   get_url: url={{ user_background }}
            dest=/usr/share/backgrounds/images/user-wallpaper.jpg
   become: yes
   when: user_background is defined
 
+# Set the user wallpaper
 - name: "user wallpaper | set"
   shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
   environment:
     DISPLAY: "{{ display }}"
   with_items:
     - { key: "/backdrop/screen0/monitor0/workspace0/last-image", type: "string", value: "/usr/share/backgrounds/images/user-wallpaper.jpg" }
+    - { key: "/backdrop/screen0/monitor0/image-path", type: "string", value: "/usr/share/backgrounds/images/user-wallpaper.jpg" }
   when: user_background is defined

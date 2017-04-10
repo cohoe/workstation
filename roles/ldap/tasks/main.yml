@@ -1,9 +1,5 @@
 ---
-- name: "ldap | install"
-  dnf: name=openldap-clients
-       state=latest
-  become: yes
-
+# Set the LDAP config
 - name: "ldap | config"
   template: src=ldap.conf
             dest=/etc/openldap/ldap.conf
