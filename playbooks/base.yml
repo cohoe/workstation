@@ -8,5 +8,6 @@
     - shell
     - sudo
     - chrony
+    - ssl
   vars_files:
     - ../vars/global.yml
