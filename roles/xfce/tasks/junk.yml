@@ -1,4 +1,5 @@
 ---
+# Purge all of the shit applications that get installed by default
 - name: "junk | remove"
   dnf: name={{ item }} state=absent
   become: yes

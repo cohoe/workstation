@@ -1,12 +1,17 @@
 ---
+# GRUB
+
+# Install tools for EFI management
 - name: "efi packages | install"
   dnf: name=grub2-efi-modules state=latest
   become: yes
 
+# Install theme package
 - name: "theme package | install"
   dnf: name=grub2-starfield-theme state=latest
   become: yes
 
+# Set the theme in the GRUB config
 - name: "grub | theme"
   lineinfile:
     dest: "/etc/default/grub"
@@ -18,6 +23,7 @@
     - rebuild efi grub
   become: yes
 
+# Set the graphics modes available for GRUB
 - name: "grub | gfxmode"
   lineinfile:
     dest: "/etc/default/grub"
@@ -29,6 +35,7 @@
     - rebuild mbr grub
   become: yes
 
+# Set some basic kernel parameters
 - name: "extra command line"
   lineinfile:
     dest: "/etc/default/grub"
@@ -40,6 +47,7 @@
     - rebuild efi grub
   become: yes
 
+# This tells Linux to maintain the graphics mode between boot and until X11 starts
 - name: "gfxpayload_linux"
   lineinfile:
     dest: "/etc/default/grub"
@@ -51,6 +59,7 @@
     - rebuild efi grub
   become: yes
 
+# Set the terminal output device. gfxterm uses a graphics driver
 - name: "terminal_output"
   lineinfile:
     dest: "/etc/default/grub"

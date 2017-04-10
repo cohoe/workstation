@@ -3,10 +3,12 @@
 - dnf: name=firefox state=latest
   become: true
 
+# Fuck flash, but we sometimes need it
 - dnf: name=flash-plugin state=latest
   become: true
   when: "'flash' in use_repos"
 
+# Needed for Flash to do certain things
 - seboolean: name=mozilla_plugin_can_network_connect
              state=yes
              persistent=yes
@@ -23,6 +25,7 @@
   environment:
     DISPLAY: "{{ display }}"
 
+# Create desktop shortcut. Probably related to the launchy bug
 - name: "firefox | launcher | create"
   copy: dest={{ local_shortcuts_dir }}/firefox.desktop
         src=firefox.desktop

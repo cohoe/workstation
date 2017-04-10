@@ -1,25 +1,32 @@
 ---
+# Chrome browser
+
+# Install package
 - dnf: name=google-chrome-stable state=latest
   become: true
   when: "'chrome' in use_repos"
 
+# Create a launcher (because of launchy bug)
 - name: "chrome | launcher | create"
   copy: dest={{ local_shortcuts_dir }}/google-chrome.desktop
         src=chrome.desktop
   when: "'chrome' in use_repos"
   become: yes
 
+# Create a dedicated incognito launcher
 - name: "chrome | incognito launcher | create"
   copy: dest={{ local_shortcuts_dir }}/google-chrome-incognito.desktop
         src=incognito.desktop
   when: "'chrome' in use_repos"
   become: yes
 
+# Chrome leaves behind a lot of junk shortcuts. Purge them
 - name: "junk shortcut cleanup"
   cron: name="junk chrome shortcuts"
         minute="*/5"
         job="rm -f ~/.local/share/applications/chrome-*.desktop > /dev/null"
 
+# Set the preferred browser to be chrome in the helpers
 - name: "preferred browser | set"
   lineinfile:
     dest: ~/.config/xfce4/helpers.rc

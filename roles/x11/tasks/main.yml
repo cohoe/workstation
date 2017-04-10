@@ -1,4 +1,5 @@
 ---
+# The zapper will restart X11 with CTRL-ALT-BACKSPACE
 - name: "Install X11 zapper"
   copy: dest="/etc/X11/xorg.conf.d/01-zap.conf"
         src="zap.conf"

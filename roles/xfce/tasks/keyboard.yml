@@ -1,4 +1,5 @@
 ---
+# Purge certain keyboard shortcuts
 - name: "keyboard shortcuts | remove"
   shell: xfconf-query -c xfce4-keyboard-shortcuts -p '/xfwm4/custom/{{ item }}' -r
   environment:
@@ -25,6 +26,7 @@
     - <Alt>F10
     - <Alt>space
 
+# Set certain keyboard shortcuts
 - name: "keyboard shortcuts | set"
   shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' --create -t string -s {{ item.value }}
   environment:

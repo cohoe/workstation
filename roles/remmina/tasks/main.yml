@@ -1,4 +1,5 @@
 ---
+# Install packages
 - name: "package | install"
   dnf: name={{ item }} state=latest
   become: yes
@@ -6,11 +7,13 @@
     - remmina
     - remmina-plugins-*
 
+# Create config directory
 - name: "config | create"
   file: path=~/.remmina
         state=directory
         mode=0700
 
+# Create config files for any hosts that I define
 - name: "files | create"
   template: src=connection.j2
             dest=~/.remmina/{{ item.name }}.remmina

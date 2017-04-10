@@ -1,19 +1,24 @@
 ---
+# Terminal emulator. I use Konsole because it can be resized to match pixel
+# demensions rather than chartacter blocks.
 - name: "packages | install"
   dnf: name={{ item }} state=latest
   become: yes
   with_items:
     - konsole
 
+# Create config directory
 - name: "config dir | create"
   file: path=~/.local/share/konsole
         recurse=yes
         state=directory
 
+# Drop config file
 - name: "rc | create"
   copy: src=konsolerc
         dest=~/.config/konsolerc
 
+# Drop profile
 - name: "profile config | create"
   copy: src={{ item }}
         dest=~/.local/share/konsole/{{ item }}
@@ -21,21 +26,25 @@
     - WhiteOnBlack.colorscheme
     - Grant.profile
 
+# Set a desktop file so that this is the preferred terminal
 - name: "preferred launcher | create"
   copy: src=custom-TerminalEmulator.desktop
         dest=~/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop
 
+# Set the preferred terminal in the XFCE helpers
 - name: "preferred terminal | set"
   lineinfile:
     dest: ~/.config/xfce4/helpers.rc
     regexp: "^TerminalEmulator="
     line: "TerminalEmulator=custom-TerminalEmulator"
 
+# This shortcut is needed since Launchy has a bug
 - name: "launchy shortcut | create"
   copy: src=konsole.desktop
         dest={{ local_shortcuts_dir }}/konsole.desktop
   become: yes
 
+# Remove the existing system shortcut
 - name: "sys shortcut | delete"
   file: path={{ sys_shortcuts_dir }}/org.kde.konsole.desktop
         state=absent

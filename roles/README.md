@@ -26,7 +26,6 @@ Workstation configurations in any environment.
 * **nsswitch**: NSS resolution
 * **pulse**: PulseAudio
 * **pycharm**: Python IDE
-* **quicktile**: Tiling window overlay utility
 * **remmina**: Remote Desktop client
 * **samba**: CIFS server/client
 * **shell**: Personal shell config
@@ -63,8 +62,5 @@ A computer at home.
 * **steam**: Steam game manager
 * **wemo**: Belkin Wemo control utility
 
-## Problematic
-* nsswitch (Currently unused, isn't even right)
-* pulse (Equalizer may get whacked, see how Seefra does and go from there)
-* wallpaper (Doesnt work, at least on Seefra)
-* xbindkeys (Only used for skippy, line should be moved and dependency created)
+## Deprecated
+* **quicktile**: Tiling window overlay utility

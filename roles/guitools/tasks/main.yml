@@ -1,18 +1,18 @@
 ---
+# GUI packages
 - name: "packages | install"
   dnf: name={{ item }} state=latest
   become: yes
   with_items:
-    - icedtea-web
-    - texworks
-    - texlive-pdftex
-    - wireshark-gnome
-    - rdesktop
-    - libreoffice
-    - scribus
-    - gimp
-    - mediawriter
+    - icedtea-web       # Java Webapps
+    - texworks          # LaTeX tools
+    - texlive-pdftex    # LaXeX PDF tools
+    - wireshark-gnome   # Network monitoring
+    - rdesktop          # Remote desktop client
+    - gimp              # Photo manipulation
+    - mediawriter       # USB/ISO tool
 
+# Non-base system packages
 - name: "other packages | install"
   dnf: name={{ item }} state=latest
   become: yes
@@ -20,6 +20,7 @@
   with_items:
     - vlc
 
+# Wireshark permissions
 - name: "wireshark group | add"
   user: name={{ ansible_env.USER }} append=yes
         groups=wireshark

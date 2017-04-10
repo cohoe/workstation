@@ -6,27 +6,32 @@
 - include: keyboard.yml
 - include: junk.yml
 
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
-  become: yes
-  with_items:
-    - xfce4-notes-plugin
+# Not sure if I really still want this...
+#- name: "packages | install"
+#  dnf: name={{ item }} state=latest
+#  become: yes
+#  with_items:
+#    - xfce4-notes-plugin
 
+# Create user autostart directory 
 - name: "directories | create"
   file: path={{ item }}
         state=directory
   with_items:
     - ~/.config/autostart
 
+# helpers is used for default terminal/browser definitions
 - name: "helpers file | create"
   file: path=~/.config/xfce4/helpers.rc
         state=touch
 
+# This directory contains the desktop files used for helpers
 - name: "helpers dir | create"
   file: path=~/.local/share/xfce4/helpers/
         state=directory
         recurse=yes
 
+# Basic XFCE visual settings
 - name: "xfwm4 | set"
   shell: xfconf-query -c xfwm4 -p {{ item.key }} -s {{ item.value }}
   environment:
@@ -42,11 +47,13 @@
     - { key: "/general/wrap_cycle", value: 'false' }
     - { key: "/general/wrap_windows", value: 'false' }
 
+# System font
 - name: "xsettings | font | set"
   shell: xfconf-query -c xsettings -p /Gtk/FontName -t string -s "Sans 10"
   environment:
     DISPLAY: "{{xfce_display}}"
 
+# Desktop icon properties
 - name: "xfce4-desktop | set"
   shell: xfconf-query -c xfce4-desktop -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
   environment:
@@ -58,6 +65,7 @@
     - { key: "/desktop-icons/file-icons/show-trash", type: "bool", value: "false" }
     - { key: "/desktop-icons/file-icons/show-removable", type: "bool", value: "false" }
 
+# Image viewer thumbnail size
 - name: "ristretto | set"
   shell: xfconf-query -c ristretto -p {{ item.key }} --create -t {{ item.type }} -s {{ item.value }}
   environment:
@@ -65,6 +73,7 @@
   with_items:
     - { key: "/window/thumbnails/size", type: "int", value: "5" }
 
+# Reset the desktop environment so that our changes are reflected
 - name: "reset"
   shell: dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true
   environment:

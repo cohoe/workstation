@@ -1,4 +1,7 @@
 ---
+# Thunar is the file browser
+
+# Set certain view settings and thumbnails
 - name: "thunar | create"
   shell: xfconf-query -c thunar -p {{ item.key }} --create -t string -s {{ item.value }}
   environment:
@@ -9,11 +12,13 @@
     - { key: '/last-side-pane', value: "ThunarTreePane" }
     - { key: '/misc-thumbnail-mode', value: "THUNAR_THUMBNAIL_MODE_ALWAYS" }
 
+# Create a desktop shortcut
 - name: "thunar | shortcut | install"
   copy: src={{ sys_shortcuts_dir }}/Thunar.desktop
         dest={{ local_shortcuts_dir }}/Thunar.desktop
   become: yes
 
+# The desktop shortcut does not have a good icon
 - name: "thunar | shortcut | icon"
   lineinfile:
     dest: "{{ local_shortcuts_dir }}/Thunar.desktop"
@@ -21,6 +26,7 @@
     line: "Icon=system-file-manager"
   become: yes
 
+# Packages for Thunar networked file systems
 - name: "thunar | packages | install"
   dnf: name={{ item }} state=latest
   become: yes
@@ -33,6 +39,7 @@
     - gvfs-fuse
     - gvfs-archive
 
+# These packages are needed for thumbnails to actually be generated
 - name: "thunar | special packages | install"
   dnf: name={{ item }} state=latest
   become: yes
