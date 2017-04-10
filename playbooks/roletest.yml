@@ -17,7 +17,8 @@
     #- shell
     #- docker
     #- ctct
-    - ssl
+    #- ssl
+    - clitools
 
 #  tasks:
 #    - name: "virtualbox"

@@ -12,6 +12,8 @@ Ansible scripts for development environment configuration.
 ## TODO
 ### Organization and Features
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
+* Chrome, Slack, Flash, etc repos should be part of their role.
+* Chrome use_repos is not tested in all cases.
 
 ### System
 * VirtualBox needs fixed

@@ -1,10 +1,12 @@
 ---
+# Java
 - name: "java | install"
   dnf: name={{ item }} state=latest
   with_items:
     - java
   become: true
 
+# Python
 - name: "python | install"
   dnf: name={{ item }} state=latest
   with_items:
@@ -12,45 +14,39 @@
     - python-pep8
   become: true
 
+# Common system tools
 - name: "tools | install"
   dnf: name={{ item }} state=latest
   with_items:
-    - bind-utils
-    - openssh-clients
-    - openldap-clients
-    - iftop
-    - nmap
-    - tcpdump
-    - net-snmp-utils
-    - tftp
-    - htop
-    - tcplay
-    - iotop
-    - ansible
-    - dkms
-    - unrar
-    - openvpn
-    - rfkill # Wifi Control
+    - bind-utils        # DNS utilities (nslookup)
+    - openssh-clients   # SSH client (ssh)
+    - openldap-clients  # LDAP client (ldapsearch)
+    - iftop             # Network monitoring
+    - nmap              # Port scanning
+    - tcpdump           # Traffic monitoring
+    - net-snmp-utils    # SNMP client (snmpwalk)
+    - tftp              # TFTP client
+    - htop              # Load monitoring
+    - iotop             # IO monitoring
+    - dkms              # Dynamic kernel modules
+    - unrar             # RAR file tools
+    - openvpn           # VPN
+    - rfkill            # Wifi Control
     - dnf-plugin-system-upgrade # System upgrade
-    - numlockx # Enable numlock always
+    - numlockx          # Enable numlock always
+    - glances           # System load
   become: true
   tags:
     - packages
 
+# Software development tools
 - name: "dev tools | install"
   dnf: name={{ item }} state=latest
   with_items:
-    - vim-enhanced
-    - strace
-    - git
-    - glances
-    - setroubleshoot-server
-    - gcc
-    - jq # json parser
+    - vim-enhanced  # Editor
+    - strace        # Stack debugger
+    - git           # VCS
+    - setroubleshoot-server # SELinux debugging tools
+    - gcc           # Compiler
+    - jq            # json parser
   become: true
-
-- name: "sysctl | set"
-  sysctl: name=dev.raid.speed_limit_max
-          value=80000
-          state=present
-  become: yes
