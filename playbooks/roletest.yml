@@ -17,17 +17,14 @@
     #- shell
     #- docker
     #- ctct
-    #- ssl
-    - clitools
-
-#  tasks:
-#    - name: "virtualbox"
-#      include_role:
-#        name: vbox/guest
-#        when: ansible_virtualization_type is 'virtualbox'
+  tasks:
+    - name: "virtualbox"
+      include_role:
+        name: vbox/guest
+      when: ansible_virtualization_type == "virtualbox"
     
   vars_files:
     - ../vars/global.yml
-    - ../vars/ctct.yml
+    #- ../vars/ctct.yml
     #- ../vars/home.yml
     #- ../vars/emc.yml

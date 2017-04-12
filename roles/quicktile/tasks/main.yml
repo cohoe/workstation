@@ -1,4 +1,10 @@
 ---
+# Look for any power sources. Any entries are usually a laptop, blank is a desktop.
+- name: "battery | detect"
+  shell: /bin/ls /sys/class/power_supply
+  register: power_sources
+  changed_when: false
+
 - name: "packages | install"
   dnf: name={{ item }} state=latest
   become: yes
@@ -28,3 +34,13 @@
   file: src={{ local_shortcuts_dir }}/quicktile.desktop
         dest={{ user_autostart_dir }}/quicktile.desktop
         state=link
+
+- name: "laptop config"
+  copy: src=quicktile.cfg.laptop
+        dest=~/.config/quicktile.cfg
+  when: '"AC" in "{{ power_sources.stdout }}"'
+
+- name: "desktop config"
+  copy: src=quicktile.cfg.desktop
+        dest=~/.config/quicktile.cfg
+  when: '"AC" not in "{{ power_sources.stdout }}"'
