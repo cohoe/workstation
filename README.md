@@ -18,8 +18,6 @@ Ansible scripts for development environment configuration.
 * nsswitch might be broken
 * pulse equalizer might get removed
 * wallpaper didnt work on seefra. works on VMs
-* xbindkeys is only used for skippy. Line should be moved and dependency created.
-* skippy and xbindkeys are not used
 * Atom configuratoin
 
 ### System

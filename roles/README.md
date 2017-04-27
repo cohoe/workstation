@@ -29,12 +29,10 @@ Workstation configurations in any environment.
 * **remmina**: Remote Desktop client
 * **samba**: CIFS server/client
 * **shell**: Personal shell config
-* **skippy**: Mac Expose-like window manager
 * **slack**: Slack desktop application
 * **vbox**: VirtualBox
 * **wallpaper**: User and Login wallpaper
 * **x11**: X11 configuration
-* **xbindkeys**: xbindkeys keystroke manager
 * **xfce**: XFCE desktop environment
 * **xscreensaver**: XScreenSaver configuration
 
@@ -64,3 +62,5 @@ A computer at home.
 
 ## Deprecated
 * **quicktile**: Tiling window overlay utility
+* **skippy**: Mac Expose-like window manager
+* **xbindkeys**: xbindkeys keystroke manager

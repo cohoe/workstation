@@ -14,12 +14,9 @@
     - x11
     - grub
     - remmina
-    - quicktile
     - pycharm
     - ksexplorer
     - xscreensaver
-    #- xbindkeys
-    #- skippy
     - atom
   tasks:
     - name: "virtualbox"
