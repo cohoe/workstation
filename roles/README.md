@@ -55,7 +55,6 @@ A computer at CTCT.
 A computer at home.
 * **arduino**: Arduino IDE
 * **hdhomerun**: SiliconDust HDHomeRun software
-* **kodi**: Kodi media center
 * **piavpn**: PrivateInternetAccess VPN
 * **steam**: Steam game manager
 * **wemo**: Belkin Wemo control utility
@@ -64,3 +63,4 @@ A computer at home.
 * **quicktile**: Tiling window overlay utility
 * **skippy**: Mac Expose-like window manager
 * **xbindkeys**: xbindkeys keystroke manager
+* **kodi**: Kodi media center

@@ -12,7 +12,6 @@ Ansible scripts for development environment configuration.
 ## TODO
 ### Organization and Features
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
-* Chrome, Slack, Flash, etc repos should be part of their role.
 * GRUB MBR vs EFI may not be handled appropiately
 * nsswitch might be broken
 * pulse equalizer might get removed
