@@ -1,6 +1,16 @@
 ---
+# Setup repository
+- name: "slack | repository | create"
+  yum_repository:
+    name: slack
+    description: Slack desktop chat client
+    baseurl: https://packagecloud.io/slacktechnologies/slack/fedora/21/$basearch
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://packagecloud.io/gpg.key
+  become: yes
+
 # Install slack app
 - name: Slack desktop application
   dnf: name=slack state=present
   become: yes
-  when: (ansible_distribution == 'Fedora') and ('slack' in use_repos)

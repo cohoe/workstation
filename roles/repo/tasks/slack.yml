@@ -1,3 +1,0 @@
----
-- template: dest=/etc/yum.repos.d/slack.repo
-            src=slack.repo

@@ -1,8 +1,4 @@
 ---
-- include: slack.yml
-  become: true
-  when: '"slack" in use_repos'
-
 - include: rpmfusion.yml
   become: true
   when: '"rpmfusion" in use_repos'
