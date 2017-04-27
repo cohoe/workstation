@@ -1,3 +1,0 @@
----
-ext_repo: http://download.virtualbox.org/virtualbox
-vbox_extpack_url: "{{ ext_repo }}/{{ vbox_version }}/{{ vbox_extpack }}"

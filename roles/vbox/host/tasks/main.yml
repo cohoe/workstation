@@ -1,34 +1,33 @@
 ---
+- name: "virtualbox | repository | create"
+  yum_repository:
+    name: virtualbox
+    description: Fedora $releasever - $basearch - VirtualBox
+    baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/$releasever/$basearch
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://www.virtualbox.org/download/oracle_vbox.asc
+  become: yes
+
 - name: "packages | install"
   dnf: name={{ item }} state=latest
   become: yes
   with_items:
-    - VirtualBox
-  when: '"rpmfusion" in use_repos'
+    - VirtualBox-5.1
 
-- name: "installed extentions | get"
-  shell: vboxmanage list extpacks
-  register: vbox_exts
+- name: "extpack | installer | install"
+  copy: src=vbm-installext
+        dest=/usr/local/sbin/vbm-installext
+        mode=0775
   become: yes
-  changed_when: false
-  ignore_errors: true
-  when: '"rpmfusion" in use_repos'
 
-- name: "extpack | download"
-  get_url: url={{ vbox_extpack_url }}
-           dest=/tmp/{{ vbox_extpack }}
-  when: '"rpmfusion" in "{{ use_repos }}" and "Oracle VM VirtualBox Extension Pack" not in "{{ vbox_exts.stdout }}"'
-
-- name: "extpack | install"
-  shell: vboxmanage extpack install /tmp/{{ vbox_extpack }}
-  become: yes
-  register: vbox_ext_result
-  failed_when: "vbox_ext_result.rc != 0 and vbox_ext_result.rc != 1"
-  when: '"rpmfusion" in "{{ use_repos }}" and "Oracle VM VirtualBox Extension Pack" not in "{{ vbox_exts.stdout }}"'
+- name: "extpack | installer | run"
+  shell: /usr/local/sbin/vbm-installext
+  register: vboxext_install
+  failed_when: "vboxext_install.rc != 0"
 
 # Needed for USB attachment
 - name: "user group | add"
   user: name={{ ansible_env.USER }} append=yes
         groups=vboxusers
   become: yes
-  when: '"rpmfusion" in use_repos'

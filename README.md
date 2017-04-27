@@ -18,7 +18,6 @@ Ansible scripts for development environment configuration.
 * Atom configuratoin
 
 ### System
-* VirtualBox needs fixed
 
 ### XFCE
 * Monitor never goes to sleep. Check DPMS through xfce-power?
