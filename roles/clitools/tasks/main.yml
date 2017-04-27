@@ -35,6 +35,7 @@
     - dnf-plugin-system-upgrade # System upgrade
     - numlockx          # Enable numlock always
     - glances           # System load
+    - ipmitool          # IPMI remote control tool
   become: true
   tags:
     - packages
@@ -49,4 +50,5 @@
     - setroubleshoot-server # SELinux debugging tools
     - gcc           # Compiler
     - jq            # json parser
+    - ansible-lint  # Ansible linter
   become: true
