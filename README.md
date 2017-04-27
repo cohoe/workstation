@@ -13,7 +13,6 @@ Ansible scripts for development environment configuration.
 ### Organization and Features
 * NVIDIA kernel modules. Packages are broken so this may be a manual thing.
 * GRUB MBR vs EFI may not be handled appropiately
-* nsswitch might be broken
 * pulse equalizer might get removed
 * wallpaper didnt work on seefra. works on VMs
 * Atom configuratoin
