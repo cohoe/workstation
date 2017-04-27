@@ -31,6 +31,20 @@
         state=directory
         recurse=yes
 
+# Set the preferred browser to be chrome in the helpers
+- name: "preferred browser | set"
+  lineinfile:
+    dest: ~/.config/xfce4/helpers.rc
+    regexp: "^WebBrowser="
+    line: "WebBrowser=google-chrome"
+
+# Set the preferred terminal in the XFCE helpers
+- name: "preferred terminal | set"
+  lineinfile:
+    dest: ~/.config/xfce4/helpers.rc
+    regexp: "^TerminalEmulator="
+    line: "TerminalEmulator=custom-TerminalEmulator"
+
 # Basic XFCE visual settings
 - name: "xfwm4 | set"
   shell: xfconf-query -c xfwm4 -p {{ item.key }} -s {{ item.value }}

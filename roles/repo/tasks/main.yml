@@ -1,8 +1,4 @@
 ---
-- include: chrome.yml
-  become: true
-  when: '"chrome" in use_repos'
-
 - include: slack.yml
   become: true
   when: '"slack" in use_repos'

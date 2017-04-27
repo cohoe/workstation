@@ -1,23 +1,32 @@
 ---
 # Chrome browser
 
+# Setup repository
+- name: "chrome | repository | create"
+  yum_repository:
+    name: google-chrome
+    description: Google Chrome web browser
+    baseurl: http://dl.google.com/linux/chrome/rpm/stable/$basearch
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+  become: yes
+
 # Install package
-- dnf: name=google-chrome-stable state=latest
+- name: "chrome | package | install"
+  dnf: name=google-chrome-stable state=latest
   become: true
-  when: "'chrome' in use_repos"
 
 # Create a launcher (because of launchy bug)
 - name: "chrome | launcher | create"
   copy: dest={{ local_shortcuts_dir }}/google-chrome.desktop
         src=chrome.desktop
-  when: "'chrome' in use_repos"
   become: yes
 
 # Create a dedicated incognito launcher
 - name: "chrome | incognito launcher | create"
   copy: dest={{ local_shortcuts_dir }}/google-chrome-incognito.desktop
         src=incognito.desktop
-  when: "'chrome' in use_repos"
   become: yes
 
 # Chrome leaves behind a lot of junk shortcuts. Purge them
@@ -25,10 +34,3 @@
   cron: name="junk chrome shortcuts"
         minute="*/5"
         job="rm -f ~/.local/share/applications/chrome-*.desktop > /dev/null"
-
-# Set the preferred browser to be chrome in the helpers
-- name: "preferred browser | set"
-  lineinfile:
-    dest: ~/.config/xfce4/helpers.rc
-    regexp: "^WebBrowser="
-    line: "WebBrowser=google-chrome"
