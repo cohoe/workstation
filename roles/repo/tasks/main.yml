@@ -2,7 +2,3 @@
 - include: rpmfusion.yml
   become: true
   when: '"rpmfusion" in use_repos'
-
-- include: flash.yml
-  become: true
-  when: '"flash" in use_repos'

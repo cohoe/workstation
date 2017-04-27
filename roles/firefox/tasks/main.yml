@@ -4,9 +4,18 @@
   become: true
 
 # Fuck flash, but we sometimes need it
+- name: "flash | repository | create"
+  yum_repository:
+    name: flash
+    description: Adobe Flash native binary
+    baseurl: https://packagecloud.io/slacktechnologies/slack/fedora/21/$basearch
+    baseurl: http://linuxdownload.adobe.com/linux/$basearch/
+    enabled: yes
+    gpgcheck: no
+  become: yes
+
 - dnf: name=flash-plugin state=latest
   become: true
-  when: "'flash' in use_repos"
 
 # Needed for Flash to do certain things
 - seboolean: name=mozilla_plugin_can_network_connect

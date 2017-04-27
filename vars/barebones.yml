@@ -1,10 +1,7 @@
 ---
 # Package repositories
 use_repos:
-# - chrome
-# - slack
  - rpmfusion
-# - flash
 # - virtualbox
 
 # Shell

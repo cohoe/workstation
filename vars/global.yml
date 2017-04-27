@@ -2,7 +2,6 @@
 # Package repositories
 use_repos:
  - rpmfusion
- - flash
 
 # Shell
 ohmyzsh_directory: ~/.oh-my-zsh
