@@ -21,12 +21,28 @@
     #- repo
     #- vbox/host
     #- slack
-    - atom
+    #- atom
   tasks:
-    - name: "virtualbox"
+    # NVIDIA drivers
+    - name: "determine gpu"
+      shell: bash -c "lspci | grep VGA"
+      register: lspci_gpu
+
+    - name: "include nvidia"
+      include_role:
+        name: nvidia
+      when: "'NVIDIA' in '{{ lspci_gpu.stdout }}'"
+
+    # VirtualBox
+    - name: "virtualbox guest additions"
       include_role:
         name: vbox/guest
       when: ansible_virtualization_type == "virtualbox"
+
+    - name: "virtualbox host"
+      include_role:
+        name: vbox/host
+      when: ansible_virtualization_role == "host"
     
   vars_files:
     - ../vars/global.yml

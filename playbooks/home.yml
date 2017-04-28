@@ -21,6 +21,17 @@ include: desktop.yml
     - steam
     - pulse
     - wallpaper
-    #- vbox (this needs some love)
+
+  tasks:
+    # NVIDIA drivers
+    - name: "determine gpu"
+      shell: bash -c "lspci | grep VGA"
+      register: lspci_gpu
+
+    - name: "include nvidia"
+      include_role:
+        name: nvidia
+      when: "'NVIDIA' in '{{ lspci_gpu.stdout }}'"
+
   vars_files:
     - ../vars/global.yml
