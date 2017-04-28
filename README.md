@@ -15,7 +15,6 @@ Ansible scripts for development environment configuration.
 * GRUB MBR vs EFI may not be handled appropiately
 * pulse equalizer might get removed
 * wallpaper didnt work on seefra. works on VMs
-* Atom configuratoin
 
 ### System
 

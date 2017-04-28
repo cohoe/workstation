@@ -1,7 +1,15 @@
 ---
+# Atom
+#
+# Figure out the package from GitHub
+- name: "package | determine"
+  shell: bash -c "curl -s \"https://api.github.com/repos/atom/atom/releases/latest\" | jq -r '.assets[] | select(.name==\"atom.x86_64.rpm\") | .browser_download_url'"
+  register: atom_package
+  failed_when: '"https://github.com/atom/atom/releases/download" not in "{{ atom_package.stdout }}"'
+
 # Grab the RPM
 - name: "package | download"
-  get_url: url={{ atom_package }}
+  get_url: url={{ atom_package.stdout }}
            dest=/tmp/atom.rpm
 
 # Install it
@@ -15,4 +23,11 @@
   with_items:
     - minimap
 
-# @TODO Configuration
+# Configuration
+- name: "create config directory"
+  file: path=~/.atom
+        state=directory
+
+- name: "create config file"
+  copy: src=config.cson
+        dest=~/.atom/config.cson
