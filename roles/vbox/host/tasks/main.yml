@@ -16,13 +16,13 @@
     - VirtualBox-5.1
 
 - name: "extpack | installer | install"
-  copy: src=vbm-installext
-        dest=/usr/local/sbin/vbm-installext
+  copy: src=vbox-installext
+        dest=/usr/local/sbin/vbox-installext
         mode=0775
   become: yes
 
 - name: "extpack | installer | run"
-  shell: /usr/local/sbin/vbm-installext
+  shell: /usr/local/sbin/vbox-installext
   register: vboxext_install
   failed_when: "vboxext_install.rc != 0"
 
