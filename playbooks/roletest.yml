@@ -20,6 +20,7 @@
     #- nsswitch
     #- repo
     #- vbox/host
+    #- slack
     - atom
   tasks:
     - name: "virtualbox"

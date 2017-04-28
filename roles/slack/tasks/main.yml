@@ -14,3 +14,8 @@
 - name: Slack desktop application
   dnf: name=slack state=present
   become: yes
+
+# Autostart
+- name: "autostart"
+  copy: src=slack-startup.desktop
+        dest={{ user_autostart_dir }}/slack.desktop
