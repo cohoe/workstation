@@ -15,14 +15,14 @@ System-level configurations for any computer.
 ## Desktop
 Workstation configurations in any environment.
 * **atom**: Atom text editor
-* **chrome**: Google Chrome web browser
+* **chrome/browser**: Google Chrome web browser
+* **chrome/remote**: Chrome Remote Desktop agent
 * **firefox**: Mozilla Firefox web browser
 * **guitools**: Personalized graphical toolset
 * **httpd**: Apache web server for local content
 * **konsole**: GUI terminal
 * **ksexplorer**: Java KeyStore explorer
 * **launchy**: Launchy launchbar
-* **nfs**: NFS server
 * **nsswitch**: NSS resolution
 * **pulse**: PulseAudio
 * **pycharm**: Python IDE
@@ -30,7 +30,8 @@ Workstation configurations in any environment.
 * **samba**: CIFS server/client
 * **shell**: Personal shell config
 * **slack**: Slack desktop application
-* **vbox**: VirtualBox
+* **vbox/guest**: VirtualBox guest tools
+* **vbox/host**: VirtualBox host software
 * **wallpaper**: User and Login wallpaper
 * **x11**: X11 configuration
 * **xfce**: XFCE desktop environment
@@ -64,3 +65,4 @@ A computer at home.
 * **skippy**: Mac Expose-like window manager
 * **xbindkeys**: xbindkeys keystroke manager
 * **kodi**: Kodi media center
+* **nfs**: NFS server

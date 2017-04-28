@@ -29,10 +29,6 @@ user_public_directory: Public
 # SSL
 ssl_verify: true
 
-# VBox
-vbox_version: 5.1.14
-vbox_extpack: Oracle_VM_VirtualBox_Extension_Pack-5.1.14-112924.vbox-extpack
-
 # Pycharm
 pycharm_version: pycharm-community-2016.2.3
 
