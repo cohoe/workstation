@@ -4,45 +4,10 @@
 - name: RoleTest
   hosts: all
   vars:
-    #- user_background: http://img08.deviantart.net/bf3b/i/2004/172/4/b/storm_and_light.jpg
-    #- user_background: http://i.grntm.co/wallpaper/dubai-night.jpg
-    #- user_background: http://i.grntm.co/wallpaper/dubai-marina-night-city-wallpaper.jpg
-    #- login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
-    #- firewalld_zone: home
   roles:
-    #- security
-    #- samba
-    #- rvm
-    #- wallpaper
-    #- shell
-    #- docker
-    #- ctct
-    #- nsswitch
-    #- repo
-    #- vbox/host
-    #- slack
-    #- atom
+    - grub
+
   tasks:
-    # NVIDIA drivers
-    - name: "determine gpu"
-      shell: bash -c "lspci | grep VGA"
-      register: lspci_gpu
-
-    - name: "include nvidia"
-      include_role:
-        name: nvidia
-      when: "'NVIDIA' in '{{ lspci_gpu.stdout }}'"
-
-    # VirtualBox
-    - name: "virtualbox guest additions"
-      include_role:
-        name: vbox/guest
-      when: ansible_virtualization_type == "virtualbox"
-
-    - name: "virtualbox host"
-      include_role:
-        name: vbox/host
-      when: ansible_virtualization_role == "host"
     
   vars_files:
     - ../vars/global.yml
