@@ -8,7 +8,6 @@
   yum_repository:
     name: flash
     description: Adobe Flash native binary
-    baseurl: https://packagecloud.io/slacktechnologies/slack/fedora/21/$basearch
     baseurl: http://linuxdownload.adobe.com/linux/$basearch/
     enabled: yes
     gpgcheck: no
