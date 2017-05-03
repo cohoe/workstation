@@ -62,16 +62,28 @@ check_efi() {
     log_success_msg "EFI bootloader found."
 }
 
+check_kernel() {
+    latest_installed=$(for kimg in $(/bin/ls -t /boot/vmlinuz-4*); do echo $kimg; return; done)
+    latest_installed="${latest_installed/\/boot\/vmlinuz-/''}"
+
+    running=$(uname -r)
+
+    if [[ ${latest_installed} != ${running} ]]; then
+        log_failure_msg "Latest kernel is not running. Reboot and try again."
+        return 1
+    fi
+
+    log_success_msg "Latest installed kernel is running."
+}
+
 ret=0
-#check_ssh
-#ret=$((${ret}+$?))
 check_sudoers
 ret=$((${ret}+$?))
 check_updates
 ret=$((${ret}+$?))
-#check_fingerprint
-#ret=$((${ret}+$?))
 check_efi
+ret=$((${ret}+$?))
+check_kernel
 ret=$((${ret}+$?))
 
 exit ${ret}
