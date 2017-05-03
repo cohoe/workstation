@@ -53,10 +53,11 @@ check_fingerprint() {
 }
 
 check_efi() {
-    sudo grub2-probe -t device /boot/efi > /dev/null
+    sudo grub2-probe -t device /boot/efi > /dev/null 2>&1
     rc=$?
     if [ ${rc} != 0 ]; then
         log_failure_msg "EFI bootloader not found."
+        return 1
     fi
     log_success_msg "EFI bootloader found."
 }
