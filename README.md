@@ -8,7 +8,7 @@ Ansible scripts for desktop environment configuration.
 2) Install the OS with relatively sane defaults. Reboot into local OS (select Default for Xfce initial setup).
 3) Run the [setup script](https://github.com/cohoe/workstation/blob/master/scripts/setup-fedora.sh) to do some pre-flight tests and load the repository.
 ```
-curl -L grntm.co/setup | bash
+curl -sL grntm.co/setup | bash
 ```
 4) Run a playbook!
 ```
@@ -17,7 +17,6 @@ ansible-playbook -K -l localhost playbooks/home.yml
 
 5) Run some post-install steps manually
 * smbpasswd
-* launchy catalog refresh (F5)
 
 ## TODO
 ### Immediate Features

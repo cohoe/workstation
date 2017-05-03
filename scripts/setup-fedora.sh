@@ -26,7 +26,7 @@ if [ $? != 0 ]; then
 else
     echo "SUCCESS: You're all set!"
     echo ""
-    echo "The workstation repo is at /tmp/workstation. An example run would be:"
+    echo "The workstation repo is at ${REPO_DIR}. An example run would be:"
     echo "  ansible-playbook -K -l localhost playbooks/home.yml"
     echo ""
 fi
