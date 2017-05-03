@@ -1,8 +1,4 @@
 ---
-- name: "rebuild mbr grub"
-  command: grub2-mkconfig -o /boot/grub2/grub.cfg && grub2-install
-  become: yes
-
 - name: "rebuild efi grub"
   command: grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg && grub2-install
   become: yes

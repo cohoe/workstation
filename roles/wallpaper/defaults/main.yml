@@ -1,2 +1,6 @@
 ---
-login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
+# Windows 10
+#login_background: http://cdn2.alphr.com/sites/alphr/files/2015/07/windows_10_light_and_mirror_background_0.jpg
+
+# Globe
+login_background: http://i.grntm.co/wallpaper/login-globe.jpg

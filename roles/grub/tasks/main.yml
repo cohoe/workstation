@@ -19,7 +19,6 @@
     line: "GRUB_THEME=\"/boot/grub2/themes/system/theme.txt\""
     backup: yes
   notify:
-    - rebuild mbr grub
     - rebuild efi grub
   become: yes
 
@@ -32,7 +31,6 @@
     backup: yes
   notify:
     - rebuild efi grub
-    - rebuild mbr grub
   become: yes
 
 # Set some basic kernel parameters
@@ -43,7 +41,6 @@
     line: "GRUB_CMDLINE_LINUX_DEFAULT=\"net.ifnames=0 biosdevname=0 video=vesa:off rhgb quiet\""
     backup: yes
   notify:
-    - rebuild mbr grub
     - rebuild efi grub
   become: yes
 
@@ -55,7 +52,6 @@
     line: "GRUB_GFXPAYLOAD_LINUX=keep"
     backup: yes
   notify:
-    - rebuild mbr grub
     - rebuild efi grub
   become: yes
 
@@ -67,6 +63,5 @@
     line: "GRUB_TERMINAL_OUTPUT=\"gfxterm\""
     backup: yes
   notify:
-    - rebuild mbr grub
     - rebuild efi grub
   become: yes
