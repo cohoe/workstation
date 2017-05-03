@@ -26,6 +26,7 @@ Workstation configurations in any environment.
 * **nsswitch**: NSS resolution
 * **pulse**: PulseAudio
 * **pycharm**: Python IDE
+* **quicktile**: Tiling window overlay utility
 * **remmina**: Remote Desktop client
 * **samba**: CIFS server/client
 * **shell**: Personal shell config
@@ -61,7 +62,6 @@ A computer at home.
 * **wemo**: Belkin Wemo control utility
 
 ## Deprecated
-* **quicktile**: Tiling window overlay utility
 * **skippy**: Mac Expose-like window manager
 * **xbindkeys**: xbindkeys keystroke manager
 * **kodi**: Kodi media center
