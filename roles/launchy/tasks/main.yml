@@ -8,27 +8,7 @@
   copy: dest="~/launchy.ini"
         src="launchy.ini"
 
-# Create desktop shortcut file
-- name: "shortcut | install"
-  copy: src="launchy.desktop"
-        dest="{{ local_shortcuts_dir }}/launchy.desktop"
-  become: yes
-
 # Autostart
 - name: "Autostart Launchy"
   copy: dest="{{ user_autostart_dir }}/launchy.desktop"
-        src="launchy.desktop"
-
-# Remove the old system shortcut file
-- name: "system shortcut | erase"
-  file: path="{{ sys_shortcuts_dir }}/launchy.desktop"
-        state=absent
-  become: yes
-
-# Launchy doesn't look for a lib64 directory for plugins even though
-# that's where the package added them.
-- name: "plugins | fix"
-  file: src=/usr/lib64/launchy/
-        dest=/usr/lib/launchy
-        state=link
-  become: yes
+        src="{{ sys_shortcuts_dir }}/launchy.desktop"

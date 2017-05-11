@@ -5,8 +5,9 @@
   hosts: all
   vars:
   roles:
-    - grub
-    - shell
+    #- grub
+    #- shell
+    - vbox/host
 
   tasks:
     

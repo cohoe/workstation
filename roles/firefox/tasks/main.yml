@@ -32,9 +32,3 @@
   shell: if [ ! -d ~/.mozilla/firefox ]; then firefox -CreateProfile default; fi
   environment:
     DISPLAY: "{{ display }}"
-
-# Create desktop shortcut. Probably related to the launchy bug
-- name: "firefox | launcher | create"
-  copy: dest={{ local_shortcuts_dir }}/firefox.desktop
-        src=firefox.desktop
-  become: yes

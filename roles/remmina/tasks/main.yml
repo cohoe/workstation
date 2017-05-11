@@ -20,9 +20,3 @@
   with_items:
     - "{{ remmina_hosts }}"
   when: remmina_hosts is defined
-
-# Launchy cant deal with shortcuts with more than one entry
-- name: "shortcut | create"
-  copy: src=remmina.desktop
-        dest={{ local_shortcuts_dir }}/remmina.desktop
-  become: yes

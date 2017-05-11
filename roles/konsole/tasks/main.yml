@@ -31,12 +31,6 @@
   copy: src=custom-TerminalEmulator.desktop
         dest=~/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop
 
-# This shortcut is needed since Launchy has a bug
-- name: "launchy shortcut | create"
-  copy: src=konsole.desktop
-        dest={{ local_shortcuts_dir }}/konsole.desktop
-  become: yes
-
 # Remove the existing system shortcut
 - name: "sys shortcut | delete"
   file: path={{ sys_shortcuts_dir }}/org.kde.konsole.desktop

@@ -20,5 +20,4 @@
         dest={{ local_shortcuts_dir }}/{{ item }}
   become: yes
   with_items:
-    - steam.desktop
     - steambigpicture.desktop
