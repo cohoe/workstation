@@ -11,6 +11,7 @@
     - rdesktop          # Remote desktop client
     - gimp              # Photo manipulation
     - mediawriter       # USB/ISO tool
+    - d-feet            # DBus debugging tool
 
 # Non-base system packages
 - name: "other packages | install"
