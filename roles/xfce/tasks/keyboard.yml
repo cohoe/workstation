@@ -48,3 +48,6 @@
     - { key: '/xfwm4/custom/<Primary><Alt>Left', value: 'move_window_prev_workspace_key' }
     - { key: '/xfwm4/custom/<Primary><Alt>Right', value: 'move_window_next_workspace_key' }
     - { key: '/xfwm4/custom/<Super>d', value: 'show_desktop_key' }
+    # QC35
+    - { key: '/commands/custom/XF86AudioPlay', value: '"amixer set Master toggle"' }
+    - { key: '/commands/custom/XF86AudioPlay', value: '"maxime.py --toggle"' }
