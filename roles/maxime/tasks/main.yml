@@ -1,8 +1,16 @@
 ---
 # Maxime bluetooth connection tool
+
+- name: "install dependencies"
+  pip: name={{ item }}
+  become: yes
+  with_items:
+    - pulsectl
+
 - name: "install script"
   get_url: url=https://raw.githubusercontent.com/cohoe/maxime/master/maxime.py
            dest=/usr/local/bin/maxime.py
+           mode=0755
   become: yes
 
 - name: "install config"

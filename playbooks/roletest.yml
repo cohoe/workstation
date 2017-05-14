@@ -9,6 +9,7 @@
     #- shell
     #- vbox/host
     #- launchy
+    #- slack
     - maxime
 
   tasks:
@@ -16,5 +17,5 @@
   vars_files:
     - ../vars/global.yml
     #- ../vars/ctct.yml
-    - ../vars/home.yml
+    #- ../vars/home.yml
     #- ../vars/emc.yml
