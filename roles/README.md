@@ -60,6 +60,7 @@ A computer at home.
 * **piavpn**: PrivateInternetAccess VPN
 * **steam**: Steam game manager
 * **wemo**: Belkin Wemo control utility
+* **maxime**: Bluetooth audio connection manager
 
 ## Deprecated
 * **skippy**: Mac Expose-like window manager

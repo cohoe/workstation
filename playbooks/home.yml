@@ -21,6 +21,7 @@ include: desktop.yml
     - steam
     - pulse
     - wallpaper
+    - maxime
 
   tasks:
     # NVIDIA drivers
@@ -35,3 +36,4 @@ include: desktop.yml
 
   vars_files:
     - ../vars/global.yml
+    - ../vars/home.yml

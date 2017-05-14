@@ -1,0 +1,14 @@
+---
+# Maxime bluetooth connection tool
+- name: "install script"
+  get_url: url=https://raw.githubusercontent.com/cohoe/maxime/master/maxime.py
+           dest=/usr/local/bin/maxime.py
+  become: yes
+
+- name: "install config"
+  template: src=maxime.ini
+            dest=~/.config/maxime.ini
+
+- name: "install desktop autostart"
+  copy: src=maxime.desktop
+        dest={{ user_autostart_dir }}/maxime.desktop

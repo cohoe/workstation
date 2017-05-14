@@ -8,12 +8,13 @@
     #- grub
     #- shell
     #- vbox/host
-    - launchy
+    #- launchy
+    - maxime
 
   tasks:
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/ctct.yml
-    #- ../vars/home.yml
+    - ../vars/home.yml
     #- ../vars/emc.yml
