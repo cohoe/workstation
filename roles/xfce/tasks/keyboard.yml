@@ -50,4 +50,4 @@
     - { key: '/xfwm4/custom/<Super>d', value: 'show_desktop_key' }
     # QC35
     - { key: '/commands/custom/XF86AudioPlay', value: '"amixer set Master toggle"' }
-    - { key: '/commands/custom/XF86AudioPlay', value: '"maxime.py --toggle"' }
+    - { key: '/commands/custom/XF86AudioNext', value: '"maxime.py --toggle"' }

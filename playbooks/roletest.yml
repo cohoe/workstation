@@ -10,7 +10,8 @@
     #- vbox/host
     #- launchy
     #- slack
-    - maxime
+    #- maxime
+    - xfce
 
   tasks:
     
