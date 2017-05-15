@@ -36,6 +36,7 @@
     - numlockx          # Enable numlock always
     - glances           # System load
     - ipmitool          # IPMI remote control tool
+    - pv                # Pipe monitor (for dd jobs)
   become: true
   tags:
     - packages

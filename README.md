@@ -24,6 +24,8 @@ ansible-playbook -K -l localhost playbooks/home.yml
 * Monitor never goes to sleep. 
   * Check DPMS through xfce-power?
   * Well, maybe. It works on seefra after resetting xscreensaver config and disabling xfce-power
+* VBox keyboard shortcut for guest additions.
+* VBox template for W7 seamless.
 
 ### System Specific
 * fstab
