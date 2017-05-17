@@ -2,3 +2,13 @@
 ohmyzsh_directory: ~/.oh-my-zsh
 ohmyzsh_repo: https://github.com/robbyrussell/oh-my-zsh
 user_bin_dir: ~/.bin
+
+# NVM
+nvm_repo: https://github.com/creationix/nvm.git
+nvm_directory: ~/.nvm
+
+# Face
+user_face: http://i.grntm.co/headshot2.jpg
+
+# Git
+git_email: grant@grantcohoe.com

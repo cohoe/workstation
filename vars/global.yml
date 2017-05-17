@@ -3,11 +3,6 @@
 use_repos:
  - rpmfusion
 
-# NVM
-nvm_repo: https://github.com/creationix/nvm.git
-nvm_directory: ~/.nvm
-nvm_version: v0.33.0
-
 # Various .desktop file directories
 sys_shortcuts_dir: /usr/share/applications
 local_shortcuts_dir: /usr/local/share/applications
@@ -17,9 +12,3 @@ user_autostart_dir: ~/.config/autostart
 # NFS/CIFS
 public_share_path: /export/public
 user_public_directory: Public
-
-# Face
-user_face: http://i.grntm.co/headshot2.jpg
-
-# Git
-git_email: grant@grantcohoe.com

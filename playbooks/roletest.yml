@@ -6,13 +6,13 @@
   vars:
   roles:
     #- grub
-    #- shell
+    - shell
     #- vbox/host
     #- launchy
     #- slack
     #- maxime
     #- xfce
-    - pycharm
+    #- pycharm
 
   tasks:
     

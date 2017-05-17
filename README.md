@@ -26,7 +26,6 @@ ansible-playbook -K -l localhost playbooks/home.yml
   * Well, maybe. It works on seefra after resetting xscreensaver config and disabling xfce-power
 * VBox keyboard shortcut for guest additions.
 * VBox template for W7 seamless.
-* NVM should use jq to find latest version
 
 ### System Specific
 * fstab
