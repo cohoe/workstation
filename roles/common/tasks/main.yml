@@ -21,3 +21,11 @@
         recurse=yes
         state=directory
   become: yes
+
+# Increase the number of watches because Crashplan can be stupid.
+- name: increase user watches
+  sysctl:
+    name: fs.inotify.max_user_watches
+    value: 1048576
+    state: present
+  become: yes
