@@ -11,7 +11,8 @@
     #- launchy
     #- slack
     #- maxime
-    - xfce
+    #- xfce
+    - pycharm
 
   tasks:
     

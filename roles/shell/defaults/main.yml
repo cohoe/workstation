@@ -1,0 +1,4 @@
+---
+ohmyzsh_directory: ~/.oh-my-zsh
+ohmyzsh_repo: https://github.com/robbyrussell/oh-my-zsh
+user_bin_dir: ~/.bin

@@ -10,7 +10,6 @@
 - name: "archive | download"
   get_url: url={{ pycharm_repo }}/{{ pycharm_package }}
            dest=/tmp/{{ pycharm_package }}
-           validate_certs={{ ssl_verify }}
 
 # Extract the archive
 - name: "archive | deploy"
@@ -24,3 +23,14 @@
   template: src=pycharm.desktop
             dest={{ local_shortcuts_dir }}/pycharm.desktop
   become: yes
+
+# Create config directory
+- name: create config directory
+  file: path=~/.{{ pycharm_config_dir }}/config/settingsRepository/repository
+        state=directory
+        recurse=yes
+
+# Load config repository
+- name: load config repository
+  git: repo={{ pycharm_config_repo }}
+       dest=~/.{{ pycharm_config_dir }}/config/settingsRepository/repository

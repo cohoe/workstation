@@ -3,18 +3,10 @@
 use_repos:
  - rpmfusion
 
-# Shell
-ohmyzsh_directory: ~/.oh-my-zsh
-ohmyzsh_repo: https://github.com/robbyrussell/oh-my-zsh
-user_bin_dir: ~/bin
-
 # NVM
 nvm_repo: https://github.com/creationix/nvm.git
 nvm_directory: ~/.nvm
 nvm_version: v0.33.0
-
-# XFCE
-display: ":0.0"
 
 # Various .desktop file directories
 sys_shortcuts_dir: /usr/share/applications
@@ -25,12 +17,6 @@ user_autostart_dir: ~/.config/autostart
 # NFS/CIFS
 public_share_path: /export/public
 user_public_directory: Public
-
-# SSL
-ssl_verify: true
-
-# Pycharm
-pycharm_version: pycharm-community-2016.2.3
 
 # Face
 user_face: http://i.grntm.co/headshot2.jpg
