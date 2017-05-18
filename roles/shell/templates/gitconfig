@@ -1,9 +1,9 @@
 [user]
-	name = Grant Cohoe
+    name = Grant Cohoe
     email = {{ git_email }}
 [push]
-	default = simple
+    default = simple
 [credential]
-	helper = cache --timeout=28800
+    helper = cache --timeout=604800
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
