@@ -68,9 +68,13 @@
     - path.zsh
 
 # NVM
+- name: determine nvm version
+  shell: bash -c "curl -s \"https://api.github.com/repos/creationix/nvm/releases/latest\" | jq -r '.tag_name'"
+  register: nvm_version
+
 - git: repo={{ nvm_repo }}
        dest={{ nvm_directory }}
-       version={{ nvm_version }}
+       version={{ nvm_version.stdout }}
 
 - copy: dest={{ ohmyzsh_directory}}/custom/nvm.zsh
         src=zsh/nvm.zsh

@@ -1,4 +1,6 @@
 ---
+# XFCE
+display: ":0.0"
 xfce_display: "{{ display }}"
 xfce_workspace_count: 2
 xfce_theme: "Redmond"
