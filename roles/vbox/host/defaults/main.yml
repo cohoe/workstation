@@ -1,0 +1,2 @@
+---
+nat_network_name: "{{ ansible_hostname|upper }}-NAT"

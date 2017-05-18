@@ -12,7 +12,8 @@
     #- slack
     #- maxime
     #- xfce
-    - pycharm
+    #- pycharm
+    - vbox/host
 
   tasks:
     

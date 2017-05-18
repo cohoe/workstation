@@ -31,3 +31,13 @@
   user: name={{ ansible_env.USER }} append=yes
         groups=vboxusers
   become: yes
+
+# Config directory
+- name: "create config directory"
+  file: path=~/.config/VirtualBox
+        state=directory
+
+# Configuration
+- name: "configuration file"
+  template: src=VirtualBox.xml
+            dest=~/.config/VirtualBox/VirtualBox.xml
