@@ -18,5 +18,15 @@
             dest=~/.config/maxime.ini
 
 - name: "install desktop autostart"
-  copy: src=maxime.desktop
-        dest={{ user_autostart_dir }}/maxime.desktop
+  get_url: url=https://raw.githubusercontent.com/cohoe/maxime/master/DesktopFiles/maxime.desktop
+           dest={{ user_autostart_dir }}/maxime.desktop
+
+- name: "install desktop shortcuts"
+  get_url: url=https://raw.githubusercontent.com/cohoe/maxime/master/DesktopFiles/{{ item }}.desktop
+           dest={{ user_shortcuts_dir }}/{{ item }}.desktop
+  with_items:
+    - maxime
+    - maxime-headset
+    - maxime-speakers
+    - maxime-status
+    - maxime-wireless
