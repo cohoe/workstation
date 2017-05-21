@@ -51,3 +51,4 @@
     # QC35
     - { key: '/commands/custom/XF86AudioPlay', value: '"amixer set Master toggle"' }
     - { key: '/commands/custom/XF86AudioNext', value: '"maxime.py --toggle"' }
+    - { key: '/commands/custom/XF86AudioPrev', value: '"maxime.py --reconnect"' }

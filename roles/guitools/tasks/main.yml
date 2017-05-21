@@ -12,6 +12,7 @@
     - gimp              # Photo manipulation
     - mediawriter       # USB/ISO tool
     - d-feet            # DBus debugging tool
+    - easytag           # MP3 Tag editor
 
 # Non-base system packages
 - name: "other packages | install"

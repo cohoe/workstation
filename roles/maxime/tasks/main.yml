@@ -30,3 +30,6 @@
     - maxime-speakers
     - maxime-status
     - maxime-wireless
+    - maxime-connect
+    - maxime-disconnect
+    - maxime-reconnect
