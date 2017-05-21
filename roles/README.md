@@ -14,7 +14,6 @@ System-level configurations for any computer.
 
 ## Desktop
 Workstation configurations in any environment.
-* **atom**: Atom text editor
 * **chrome/browser**: Google Chrome web browser
 * **chrome/remote**: Chrome Remote Desktop agent
 * **firefox**: Mozilla Firefox web browser
@@ -37,6 +36,7 @@ Workstation configurations in any environment.
 * **x11**: X11 configuration
 * **xfce**: XFCE desktop environment
 * **xscreensaver**: XScreenSaver configuration
+* **sublime**: Sublime Text
 
 ## EMC
 A computer at EMC.
@@ -67,3 +67,4 @@ A computer at home.
 * **xbindkeys**: xbindkeys keystroke manager
 * **kodi**: Kodi media center
 * **nfs**: NFS server
+* **atom**: Atom text editor

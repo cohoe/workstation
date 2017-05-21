@@ -1,0 +1,10 @@
+---
+sublime_release: 3
+sublime_version_site: https://www.sublimetext.com/{{ sublime_release }}
+sublime_repo: https://download.sublimetext.com
+sublime_package: sublime.bz2
+sublime_root: /opt/sublime
+sublime_packagecontrol_package: https://packagecontrol.io/Package%20Control.sublime-package
+sublime_packagecontrol_file: Package Control.sublime-package
+sublime_theme_file: https://raw.githubusercontent.com/mattchanner/darkula/master/darkula.tmTheme
+sublime_theme_name: darkula.tmTheme

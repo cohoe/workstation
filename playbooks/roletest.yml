@@ -10,15 +10,16 @@
     #- vbox/host
     #- launchy
     #- slack
-    - maxime
+    #- maxime
     #- xfce
     #- pycharm
     #- vbox/host
+    - sublime
 
   tasks:
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/ctct.yml
-    - ../vars/home.yml
+    #- ../vars/home.yml
     #- ../vars/emc.yml

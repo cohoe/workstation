@@ -1,0 +1,51 @@
+---
+# Sublime Text
+#
+# This is gross AF. Would really be nice if they put out an RPM or something.
+# Atom had some nice package management utilities, but it's proven to be too
+# slow and unstable.
+
+- name: create directory
+  file: path={{ sublime_root }}
+        state=directory
+        recurse=yes
+  become: yes
+
+- name: determine version
+  shell: curl -sL {{ sublime_version_site }} | egrep -o -e "The latest build is [0-9]+" | sed 's/^[a-zA-Z ]\+//g'
+  register: sublime_version
+
+- name: download package
+  get_url: url={{ sublime_repo }}/sublime_text_{{ sublime_release }}_build_{{ sublime_version.stdout }}_x64.tar.bz2
+           dest=/tmp/{{ sublime_package }}
+
+- name: install package
+  unarchive: src=/tmp/{{ sublime_package }}
+             dest={{ sublime_root }}
+             copy=no
+  become: yes
+
+- name: install desktop shortcut
+  template: src=sublime.desktop
+            dest={{ user_shortcuts_dir }}/sublime.desktop
+
+- name: create config directory
+  file: path=~/.config/{{ item }}
+        state=directory
+        recurse=yes
+  with_items:
+  - "sublime-text-{{ sublime_release }}"
+  - "sublime-text-{{ sublime_release }}/Installed Packages"
+  - "sublime-text-{{ sublime_release }}/Packages/User"
+
+- name: install theme
+  get_url: url={{ sublime_theme_file }}
+           dest=~/.config/sublime-text-{{ sublime_release }}/Packages/{{ sublime_theme_name }}
+
+- name: install preferences
+  copy: src=Prefences.sublime-settings
+        dest=~/.config/sublime-text-{{ sublime_release }}/Packages/User/Preferences.sublime-settings
+
+- name: enable package control
+  get_url: url={{ sublime_packagecontrol_package }}
+           dest="~/.config/sublime-text-{{ sublime_release }}/Installed Packages/{{ sublime_packagecontrol_file }}"
