@@ -25,6 +25,7 @@ ansible-playbook -K -l localhost playbooks/home.yml
   * Check DPMS through xfce-power?
   * Well, maybe. It works on seefra after resetting xscreensaver config and disabling xfce-power
 * Kill Atom with vengance, replace with Sublime
+* vbox/host should register existing vms
 
 ### System Specific
 * fstab
