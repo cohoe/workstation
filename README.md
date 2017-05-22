@@ -18,16 +18,11 @@ ansible-playbook -K -l localhost playbooks/home.yml
 5) Run some post-install steps manually
 * smbpasswd
 
-## TODO
-### Immediate Features
+## ToDo
 * wallpaper didnt work on seefra. works on VMs
 * Monitor never goes to sleep. 
   * Check DPMS through xfce-power?
   * Well, maybe. It works on seefra after resetting xscreensaver config and disabling xfce-power
 * MIME Types (~/.config/mimeapps.list)
 * vbox/host should register existing vms
-
-### System Specific
-* fstab
-
-### Long-term
+* fstab (for NAS?)

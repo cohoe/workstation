@@ -30,22 +30,25 @@
             dest={{ user_shortcuts_dir }}/sublime.desktop
 
 - name: create config directory
-  file: path=~/.config/{{ item }}
+  file: path={{ item }}
         state=directory
         recurse=yes
   with_items:
-  - "sublime-text-{{ sublime_release }}"
-  - "sublime-text-{{ sublime_release }}/Installed Packages"
-  - "sublime-text-{{ sublime_release }}/Packages/User"
+  - "{{ sublime_config_dir }}"
+  - "{{ sublime_config_dir }}/Installed Packages"
+  - "{{ sublime_config_dir }}/Packages/User"
 
 - name: install theme
   get_url: url={{ sublime_theme_file }}
-           dest=~/.config/sublime-text-{{ sublime_release }}/Packages/{{ sublime_theme_name }}
+           dest={{ sublime_config_dir }}/Packages/{{ sublime_theme_name }}
 
 - name: install preferences
-  copy: src=Prefences.sublime-settings
-        dest=~/.config/sublime-text-{{ sublime_release }}/Packages/User/Preferences.sublime-settings
+  copy: src={{ item }}
+        dest={{ sublime_config_dir }}/Packages/User/{{ item }}
+  with_items:
+    - Prefences.sublime-settings
+    - Default (Linux).sublime-keymap
 
 - name: enable package control
   get_url: url={{ sublime_packagecontrol_package }}
-           dest="~/.config/sublime-text-{{ sublime_release }}/Installed Packages/{{ sublime_packagecontrol_file }}"
+           dest="{{ sublime_config_dir }}/Installed Packages/{{ sublime_packagecontrol_file }}"
