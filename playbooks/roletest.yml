@@ -4,6 +4,10 @@
 - name: RoleTest
   hosts: all
   vars:
+    - secure_firewalld: true
+    - firewalld_zone: home
+    - firewalld_enabled_services:
+        - ssh
   roles:
     #- grub
     #- shell
@@ -11,6 +15,7 @@
     #- launchy
     #- slack
     #- maxime
+    - wemo
     #- xfce
     #- pycharm
     #- vbox/host
