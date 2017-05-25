@@ -26,6 +26,4 @@ ansible-playbook -K -l localhost playbooks/home.yml
 * MIME Types (~/.config/mimeapps.list)
 * vbox/host should register existing vms
 * Switch pycharm repo to git after cloned
-
-### System Specific
-* fstab
+* fstab (for NAS?)

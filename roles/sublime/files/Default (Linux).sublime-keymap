@@ -1,0 +1,3 @@
+[
+    { "keys": ["ctrl+r"], "command": "show_panel", "args": {"panel": "replace", "reverse": false} }
+]
