@@ -61,6 +61,8 @@ A computer at home.
 * **steam**: Steam game manager
 * **wemo**: Belkin Wemo control utility
 * **maxime**: Bluetooth audio connection manager
+* **bluetooth**: System bluetooth configuration
+* **plex/client**: Plex Media Server client
 
 ## Deprecated
 * **skippy**: Mac Expose-like window manager

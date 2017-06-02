@@ -39,6 +39,10 @@ wget --quiet -O "${TMP_DIR}/${extpack_filename}" "${extpack_path}"
 
 # Install
 
+# This is needed to ensure the kernel modules are loaded prior to installing
+# the extpack.
+sudo vboxconfig
+
 # In 5.1.20, vbox added a license parameter to the installer. This appears to
 # be a SHA256 hash of the license file in the extpack gzip archive. It is
 # unknown if the value is going to change as time goes on, so we must deal

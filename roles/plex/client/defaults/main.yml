@@ -1,0 +1,3 @@
+---
+plex_url: http://localhost:32400/web/index.html
+plex_icon: "{{ ansible_user_dir }}/.local/share/icons/plex.png"

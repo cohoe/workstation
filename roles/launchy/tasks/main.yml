@@ -15,7 +15,11 @@
   dnf: name=/tmp/launchy.rpm state=latest
   become: yes
 
-# Create the config file
+# Create the config 
+- name: "Create config directory"
+  file: path=~/.launchy
+        state=directory
+
 - name: "Install Launchy config"
   copy: dest="~/.launchy/launchy.ini"
         src="launchy.ini"

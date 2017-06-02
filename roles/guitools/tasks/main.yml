@@ -27,3 +27,11 @@
   user: name={{ ansible_env.USER }} append=yes
         groups=wireshark
   become: yes
+
+# Local Applications directory
+- name: "create local directories"
+  file: path={{ item }}
+        state=directory
+  with_items:
+    - "{{ user_shortcuts_dir }}"
+    - ~/.local/share/icons

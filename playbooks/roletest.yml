@@ -15,16 +15,18 @@
     #- launchy
     #- slack
     #- maxime
-    - wemo
+    #- wemo
     #- xfce
     #- pycharm
     #- vbox/host
-    - sublime
+    #- sublime
+    #- bluetooth
+    - plex/client
 
   tasks:
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/ctct.yml
-    #- ../vars/home.yml
+    - ../vars/home.yml
     #- ../vars/emc.yml

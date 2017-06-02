@@ -14,6 +14,7 @@
   become: yes
   with_items:
     - VirtualBox-5.1
+    - kernel-devel
 
 - name: "extpack | installer | install"
   copy: src=vbox-installext
@@ -29,7 +30,10 @@
 # Needed for USB attachment
 - name: "user group | add"
   user: name={{ ansible_env.USER }} append=yes
-        groups=vboxusers
+        groups={{ item }}
+  with_items:
+    - vboxusers
+    - disk
   become: yes
 
 # Config directory
