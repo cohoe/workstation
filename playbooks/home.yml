@@ -24,6 +24,7 @@ include: desktop.yml
     - wallpaper
     - bluetooth
     - maxime
+    - plex/client
 
   tasks:
     # NVIDIA drivers

@@ -20,12 +20,13 @@
     #- pycharm
     #- vbox/host
     #- sublime
-    - bluetooth
+    #- bluetooth
+    - plex/client
 
   tasks:
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/ctct.yml
-    #- ../vars/home.yml
+    - ../vars/home.yml
     #- ../vars/emc.yml

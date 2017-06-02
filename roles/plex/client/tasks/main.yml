@@ -1,0 +1,8 @@
+---
+# Plex client
+
+- name: install icon
+  copy: src=plex.png dest={{ plex_icon }}
+
+- name: install desktop shortcut
+  template: src=plex.desktop dest={{ user_shortcuts_dir }}/plex.desktop
