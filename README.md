@@ -27,3 +27,4 @@ ansible-playbook -K -l localhost playbooks/home.yml
 * vbox/host should register existing vms
 * Switch pycharm repo to git after cloned
 * fstab (for NAS?)
+* Bluetooth adapter name
