@@ -1,0 +1,12 @@
+---
+# Bluetooth
+
+- name: set broadcast hostname
+  copy: dest=/etc/machine-info
+        content=PRETTY_HOSTNAME={{ ansible_hostname }}
+  become: yes
+
+- name: restart bluetooth
+  service: name=bluetooth
+           state=restarted
+  become: yes

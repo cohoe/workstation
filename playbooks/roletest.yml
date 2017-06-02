@@ -15,11 +15,12 @@
     #- launchy
     #- slack
     #- maxime
-    - wemo
+    #- wemo
     #- xfce
     #- pycharm
     #- vbox/host
-    - sublime
+    #- sublime
+    - bluetooth
 
   tasks:
     

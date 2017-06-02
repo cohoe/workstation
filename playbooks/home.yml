@@ -22,6 +22,7 @@ include: desktop.yml
     - steam
     - pulse
     - wallpaper
+    - bluetooth
     - maxime
 
   tasks:
