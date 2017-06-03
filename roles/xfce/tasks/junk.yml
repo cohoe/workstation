@@ -40,3 +40,5 @@
     - gnome-terminal
     - midori
     - anaconda-core
+    - xfce4-dict
+    - gnumeric

@@ -6,6 +6,7 @@
   become: yes
   with_items:
     - pulsectl
+    - python2-pexpect
 
 - name: "install script"
   get_url: url=https://raw.githubusercontent.com/cohoe/maxime/master/maxime.py
