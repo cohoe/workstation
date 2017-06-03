@@ -9,5 +9,6 @@
     - sudo
     - chrony
     - ssl
+    - locale
   vars_files:
     - ../vars/global.yml

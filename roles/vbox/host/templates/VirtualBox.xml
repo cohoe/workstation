@@ -31,7 +31,7 @@
         </NATNetwork>
       </NATNetworks>
     </NetserviceRegistry>
-    <SystemProperties defaultMachineFolder="/home/gcohoe/VirtualBox VMs" defaultHardDiskFormat="VDI" VRDEAuthLibrary="VBoxAuth" webServiceAuthLibrary="VBoxAuth" LogHistoryCount="3" exclusiveHwVirt="true"/>
+    <SystemProperties defaultMachineFolder="/home/{{ ansible_user_id }}/VirtualBox VMs" defaultHardDiskFormat="VDI" VRDEAuthLibrary="VBoxAuth" webServiceAuthLibrary="VBoxAuth" LogHistoryCount="3" exclusiveHwVirt="true"/>
     <USBDeviceFilters/>
   </Global>
 </VirtualBox>

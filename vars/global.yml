@@ -12,3 +12,6 @@ user_autostart_dir: ~/.config/autostart
 # NFS/CIFS
 public_share_path: /export/public
 user_public_directory: Public
+
+# System display
+display: ":0.0"

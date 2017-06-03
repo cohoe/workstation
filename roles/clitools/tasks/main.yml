@@ -37,6 +37,7 @@
     - glances           # System load
     - ipmitool          # IPMI remote control tool
     - pv                # Pipe monitor (for dd jobs)
+    - dmidecode         # System information
   become: true
   tags:
     - packages
