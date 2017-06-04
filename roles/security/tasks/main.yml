@@ -8,3 +8,6 @@
 - include: sshd.yml
   become: true
   when: secure_sshd
+
+- name: generate ssh key
+  shell: ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
