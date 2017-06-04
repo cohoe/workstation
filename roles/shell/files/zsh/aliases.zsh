@@ -27,3 +27,4 @@ alias dynamo='java -Djava.library.path=~/Software/DynamoDBLocal/DynamoDBLocal_li
 alias d='docker'
 alias tmux='tmux -2'
 alias nssdig='getent hosts'
+alias dbus-reset='dbus-send --print-reply --dest=org.xfce.Panel /org/xfce/Panel org.xfce.Panel.Terminate boolean:true'

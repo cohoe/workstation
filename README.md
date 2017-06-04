@@ -29,3 +29,4 @@ ToDo
 * vbox/host should register existing vms
 * Switch pycharm repo to git after cloned
 * fstab (for NAS?)
+* Use the anislbe platform/chassis variable to determine desktop vs laptop
