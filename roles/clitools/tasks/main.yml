@@ -38,6 +38,7 @@
     - ipmitool          # IPMI remote control tool
     - pv                # Pipe monitor (for dd jobs)
     - dmidecode         # System information
+    - fuse-exfat        # EXFAT file system
   become: true
   tags:
     - packages
