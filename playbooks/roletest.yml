@@ -21,7 +21,8 @@
     #- vbox/host
     #- sublime
     #- bluetooth
-    - plex/client
+    #- plex/client
+    - piavpn
 
   tasks:
     

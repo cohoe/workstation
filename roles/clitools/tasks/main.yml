@@ -39,6 +39,7 @@
     - pv                # Pipe monitor (for dd jobs)
     - dmidecode         # System information
     - fuse-exfat        # EXFAT file system
+    - ffmpeg            # Media utility
   become: true
   tags:
     - packages

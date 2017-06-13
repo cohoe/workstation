@@ -25,6 +25,7 @@
     - bluetooth
     - maxime
     - plex/client
+    - piavpn
 
   tasks:
     # NVIDIA drivers
