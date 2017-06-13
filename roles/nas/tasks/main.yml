@@ -1,0 +1,25 @@
+---
+# NAS shares and things
+
+#//tars.local/Files           /media/Files            cifs    credentials=/root/.tarscred,uid=1001,gid=1001,user,noauto 0 0
+- name: create mountpoint directories
+  file: path=/media/{{ item }}
+        state=directory
+  with_items:
+    - "{{ nas_shares }}"
+  become: yes
+
+- name: mount devices
+  mount: path=/media/{{ item }}
+         src=//{{ nas_hostname }}/{{ item }}
+         fstype=cifs
+         state=present
+         opts={{ nas_options }}
+  become: yes
+  with_items:
+    - "{{ nas_shares }}"
+
+- name: allow users to mount system cifs shares
+  file: path=/usr/sbin/mount.cifs
+        mode="u+s"
+  become: yes

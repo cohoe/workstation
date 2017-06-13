@@ -26,6 +26,7 @@
     - maxime
     - plex/client
     - piavpn
+    - nas
 
   tasks:
     # NVIDIA drivers
