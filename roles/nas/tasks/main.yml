@@ -23,3 +23,9 @@
   file: path=/usr/sbin/mount.cifs
         mode="u+s"
   become: yes
+
+- name: create credential file
+  copy: content="username=\npassword=\n"
+        dest={{ nas_cred_file }}
+        mode=0400
+  when: nas_cred_file is defined
