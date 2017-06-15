@@ -9,7 +9,7 @@
 # Hide the power icon for any system that does not have a battery or UPS.
 - name: "power icon | hide"
   shell: xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -n -t bool -s "false"
-  when: '"BAT0" not in "{{ power_sources.stdout }}" and "ups" not in "{{ power_sources.stdout }}"'
+  when: ansible_form_factor != "Notebook"
   environment:
     DISPLAY: "{{xfce_display}}"
 
