@@ -38,9 +38,9 @@
 - name: "laptop config"
   copy: src=quicktile.cfg.laptop
         dest=~/.config/quicktile.cfg
-  when: '"AC" in "{{ power_sources.stdout }}"'
+  when: ansible_form_factor == "Notebook"
 
 - name: "desktop config"
   copy: src=quicktile.cfg.desktop
         dest=~/.config/quicktile.cfg
-  when: '"AC" not in "{{ power_sources.stdout }}"'
+  when: ansible_form_factor != "Notebook"
