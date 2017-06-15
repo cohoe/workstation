@@ -1,5 +1,5 @@
 ---
-#- include: base.yml
+- include: base.yml
 
 - name: Graphical desktop stuff
   hosts: all
