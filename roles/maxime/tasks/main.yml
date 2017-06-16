@@ -1,11 +1,17 @@
 ---
 # Maxime bluetooth connection tool
 
-- name: "install dependencies"
+- name: "install pip dependencies"
   pip: name={{ item }}
   become: yes
   with_items:
     - pulsectl
+
+- name: "install non-pip dependencies"
+  dnf: name={{ item }}
+       state=latest
+  become: yes
+  with_items:
     - python2-pexpect
 
 - name: "install script"
