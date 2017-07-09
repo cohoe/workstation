@@ -9,26 +9,12 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    #- grub
-    #- shell
-    #- vbox/host
-    #- launchy
-    #- slack
-    #- maxime
-    #- wemo
-    #- xfce
-    #- pycharm
-    #- vbox/host
-    #- sublime
-    #- bluetooth
-    #- plex/client
-    #- piavpn
-    - nas
+    - aws
 
   tasks:
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/ctct.yml
-    - ../vars/home.yml
+    #- ../vars/home.yml
     #- ../vars/emc.yml

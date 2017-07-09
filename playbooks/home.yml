@@ -27,6 +27,7 @@
     - plex/client
     - piavpn
     - nas
+    - aws
 
   tasks:
     # NVIDIA drivers

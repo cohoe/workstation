@@ -1,0 +1,19 @@
+---
+# AWS Dev
+
+- name: install packages
+  dnf: name={{ item }}
+       state=latest
+  become: yes
+  with_items:
+    - python3-boto3
+    - awscli
+
+- name: create config directory
+  file: path=~/.aws
+        state=directory
+
+- name: create default config
+  copy: src=config
+        dest=~/.aws/config
+        mode=0600
