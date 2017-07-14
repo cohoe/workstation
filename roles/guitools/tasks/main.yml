@@ -6,7 +6,8 @@
   with_items:
     - icedtea-web       # Java Webapps
     - texworks          # LaTeX tools
-    - texlive-pdftex    # LaXeX PDF tools
+    - texlive-pdftex    # LaTeX PDF tools
+    - texlive           # More LaTeX tools
     - wireshark-gnome   # Network monitoring
     - rdesktop          # Remote desktop client
     - gimp              # Photo manipulation
