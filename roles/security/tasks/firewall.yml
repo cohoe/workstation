@@ -55,3 +55,11 @@
     port: "{{ item }}"
   with_items:
     - "{{ firewalld_enabled_ports }}"
+
+# In order for TFTP client to actually work we need to do this.
+# We should be able to do firewall-cmd --add-service tftp-client
+# but there's a bug that prevents that from actually working.
+# https://bugzilla.redhat.com/show_bug.cgi?id=1405695
+- name: "enable tftp firewall"
+  shell: firewall-cmd --permanent --direct --add-rule ipv4 raw OUTPUT 1 -p udp -m udp --dport 69 -j CT --helper tftp
+  become: yes
