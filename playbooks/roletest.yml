@@ -9,7 +9,8 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - aws
+    #- aws
+    - wireshark
 
   tasks:
     

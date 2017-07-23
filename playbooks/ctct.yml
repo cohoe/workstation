@@ -22,6 +22,7 @@
     - rvm
     - wallpaper
     - docker
+    - ctct
 
   vars_files:
     - ../vars/global.yml

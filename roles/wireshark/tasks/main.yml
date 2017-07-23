@@ -1,0 +1,23 @@
+# Wireshark
+
+# Install
+- name: "install packages"
+  dnf: name={{ item }} state=latest
+  become: yes
+  with_items:
+    - wireshark-gnome
+
+# Need to be a part of the group to do captures
+- name: "group | add"
+  user: name={{ ansible_env.USER }} append=yes
+        groups=wireshark
+  become: yes
+
+# Preferences
+- name: "create config directory"
+  file: path=~/.wireshark
+        state=directory
+
+- name: "preferences"
+  copy: src=preferences
+        dest=~/.wireshark/preferences

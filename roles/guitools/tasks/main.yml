@@ -8,7 +8,6 @@
     - texworks          # LaTeX tools
     - texlive-pdftex    # LaTeX PDF tools
     - texlive           # More LaTeX tools
-    - wireshark-gnome   # Network monitoring
     - rdesktop          # Remote desktop client
     - gimp              # Photo manipulation
     - mediawriter       # USB/ISO tool
@@ -22,12 +21,6 @@
   when: '"rpmfusion" in use_repos'
   with_items:
     - vlc
-
-# Wireshark permissions
-- name: "wireshark group | add"
-  user: name={{ ansible_env.USER }} append=yes
-        groups=wireshark
-  become: yes
 
 # Local Applications directory
 - name: "create local directories"

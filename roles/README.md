@@ -11,6 +11,7 @@ System-level configurations for any computer.
 * **repo**: Package repositories
 * **security**: Various system security features
 * **sudo**: Sudo config
+* **ssl**: System-wide SSL trust configuration
 
 ## Desktop
 Workstation configurations in any environment.
@@ -37,6 +38,7 @@ Workstation configurations in any environment.
 * **xfce**: XFCE desktop environment
 * **xscreensaver**: XScreenSaver configuration
 * **sublime**: Sublime Text
+* **wireshark**: Wireshark packet capture
 
 ## EMC
 A computer at EMC.
@@ -52,6 +54,9 @@ A computer at CTCT.
 * **dns**: DNS search domain configuration
 * **rpmbuild**: Tools for RPM building
 * **rvm**: Ruby Version Manager for all users
+* **hipchat**: HipChat chat client
+* **docker**: Docker containers
+* **ctct**: Random configuration
 
 ## Home
 A computer at home.
@@ -63,10 +68,14 @@ A computer at home.
 * **maxime**: Bluetooth audio connection manager
 * **bluetooth**: System bluetooth configuration
 * **plex/client**: Plex Media Server client
+* **aws**: AWS client configuration
+* **nas**: File shares
+* **nvidia**: NVIDIA video drivers
 
 ## Deprecated
-* **skippy**: Mac Expose-like window manager
-* **xbindkeys**: xbindkeys keystroke manager
+* **atom**: Atom text editor
 * **kodi**: Kodi media center
 * **nfs**: NFS server
-* **atom**: Atom text editor
+* **pidgin**: Pidgin chat client
+* **skippy**: Mac Expose-like window manager
+* **xbindkeys**: xbindkeys keystroke manager
