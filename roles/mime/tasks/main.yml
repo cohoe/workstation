@@ -1,0 +1,5 @@
+# MIME types
+
+- name: "mime types"
+  copy: src=mimeapps.list
+        dest=~/.config/mimeapps.list

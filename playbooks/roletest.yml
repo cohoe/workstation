@@ -10,7 +10,8 @@
         - ssh
   roles:
     #- aws
-    - wireshark
+    #- wireshark
+    - mime
 
   tasks:
     

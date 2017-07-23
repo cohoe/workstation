@@ -39,6 +39,7 @@ Workstation configurations in any environment.
 * **xscreensaver**: XScreenSaver configuration
 * **sublime**: Sublime Text
 * **wireshark**: Wireshark packet capture
+* **mime**: MIME type configuration
 
 ## EMC
 A computer at EMC.

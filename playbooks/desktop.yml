@@ -20,6 +20,7 @@
     - sublime
     - quicktile
     - wireshark
+    - mime
 
   tasks:
     # VirtualBox
