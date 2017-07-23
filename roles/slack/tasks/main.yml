@@ -6,7 +6,7 @@
     description: Slack desktop chat client
     baseurl: https://packagecloud.io/slacktechnologies/slack/fedora/21/$basearch
     enabled: yes
-    gpgcheck: yes
+    gpgcheck: no
     gpgkey: https://packagecloud.io/gpg.key
   become: yes
 
