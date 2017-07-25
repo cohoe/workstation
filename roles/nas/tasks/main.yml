@@ -1,7 +1,6 @@
 ---
 # NAS shares and things
 
-#//tars.local/Files           /media/Files            cifs    credentials=/root/.tarscred,uid=1001,gid=1001,user,noauto 0 0
 - name: create mountpoint directories
   file: path=/media/{{ item }}
         state=directory
