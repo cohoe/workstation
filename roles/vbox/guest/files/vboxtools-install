@@ -18,7 +18,7 @@ set -e
 
 VBOX_ADDITIONS_BINARY="VBoxLinuxAdditions.run"
 
-mount_return=$(gvfs-mount -d /dev/sr0)
+mount_return=$(gio mount -d /dev/sr0)
 mount_path=""
 
 # Mount the guest additions ISO to our guest
@@ -29,7 +29,7 @@ elif [[ "${mount_return}" == "Mounted /dev/sr0 at"* ]]; then
     mount_path=$(echo "${mount_return}" | sed 's_Mounted /dev/sr0 at __')
     echo "Mount path is ${mount_path}"
 else
-    echo "ERROR: Something went wrong. The result of gvfs-mount was:"
+    echo "ERROR: Something went wrong. The result of gio mount was:"
     echo "${mount_return}"
     exit 1
 fi
@@ -39,7 +39,7 @@ temp_dir=$(mktemp -d)
 cp "${mount_path}/${VBOX_ADDITIONS_BINARY}" "${temp_dir}/"
 
 # Unmount the ISO
-gvfs-mount -u ${mount_path}
+gio mount -u ${mount_path}
 
 # Run the guest additions binary
 cd "${temp_dir}"
