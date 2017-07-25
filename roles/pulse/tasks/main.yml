@@ -32,3 +32,21 @@
     regexp: "load-module module-suspend-on-idle$"
     line: "# load-module module-suspend-on-idle"
   become: yes
+
+# There is a bug in xfce4-pulseaudio-plugin-0.2.5 that causes the icon to be super big.
+# A patch exists in upstream but a new release has not been cut. This will install
+# the old version of the package since there doesnt seem to be any functionality
+# missing, and now it looks pretty too.
+# https://git.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/commit/?id=bee333f6ecd6e89d89ef68bf880d93b1fe5fff7a
+# https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues/464
+- name: "hack fix for volume icon"
+  dnf: name=http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/x/xfce4-pulseaudio-plugin-0.2.4-5.fc25.x86_64.rpm
+       state=present
+  become: yes
+
+- name: "prevent updates until a patch comes out"
+  lineinfile:
+    dest: /etc/dnf/dnf.conf
+    regexp: "^exclude=xfce4-pulseaudio-plugin"
+    line: "exclude=xfce4-pulseaudio-plugin*"
+  become: yes

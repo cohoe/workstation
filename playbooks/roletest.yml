@@ -12,6 +12,7 @@
     #- aws
     #- wireshark
     #- mime
+    - pulse
 
   tasks:
     
