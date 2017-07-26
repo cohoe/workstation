@@ -1,6 +1,15 @@
 ---
 # Bluetooth
 
+# F24->F25 did not trigger this package. Other installs have. Putting
+# it here explicitly just in case.
+- name: install packages
+  dnf: name={{ item }}
+       state=latest
+  become: yes
+  with_items:
+    - blueman
+
 - name: set broadcast hostname
   copy: dest=/etc/machine-info
         content=PRETTY_HOSTNAME={{ ansible_hostname }}
