@@ -10,6 +10,13 @@
   with_items:
     - blueman
 
+- name: remove packages
+  dnf: name={{ item }}
+       state=absent
+  become: yes
+  with_items:
+    - xfce-bluetooth
+
 - name: set broadcast hostname
   copy: dest=/etc/machine-info
         content=PRETTY_HOSTNAME={{ ansible_hostname }}
