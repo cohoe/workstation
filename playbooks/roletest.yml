@@ -12,7 +12,8 @@
     #- aws
     #- wireshark
     #- mime
-    - pulse
+    #- pulse
+    - repo
 
   tasks:
     
