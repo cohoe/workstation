@@ -21,6 +21,7 @@
     - quicktile
     - wireshark
     - mime
+    - pulse
 
   tasks:
     # VirtualBox
