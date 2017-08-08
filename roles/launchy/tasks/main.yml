@@ -1,18 +1,30 @@
 ---
-# Figure out the package from GitHub
-- name: "package | determine"
-  shell: bash -c "curl -s \"https://api.github.com/repos/cohoe/launchy/releases/latest\" | jq -r '.assets[] | select(.name | startswith(\"launchy-2\")) | .browser_download_url'"
-  register: launchy_package
-  failed_when: '"https://github.com/cohoe/launchy/releases/download" not in "{{ launchy_package.stdout }}"'
+## Figure out the package from GitHub
+#- name: "package | determine"
+#  shell: bash -c "curl -s \"https://api.github.com/repos/cohoe/launchy/releases/latest\" | jq -r '.assets[] | select(.name | startswith(\"launchy-2\")) | .browser_download_url'"
+#  register: launchy_package
+#  failed_when: '"https://github.com/cohoe/launchy/releases/download" not in "{{ launchy_package.stdout }}"'
+#
+## Grab the RPM
+#- name: "package | download"
+#  get_url: url={{ launchy_package.stdout }}
+#           dest=/tmp/launchy.rpm
+#
+## Install it
+#- name: "install"
+#  dnf: name=/tmp/launchy.rpm state=latest
+#  become: yes
 
-# Grab the RPM
-- name: "package | download"
-  get_url: url={{ launchy_package.stdout }}
-           dest=/tmp/launchy.rpm
+# Repo
+- name: "configure repo"
+  copy: src=launchy.repo
+        dest=/etc/yum.repos.d/launchy.repo
+  become: yes
 
-# Install it
+# Install
 - name: "install"
-  dnf: name=/tmp/launchy.rpm state=latest
+  dnf: name=launchy
+       state=latest
   become: yes
 
 # Create the config 

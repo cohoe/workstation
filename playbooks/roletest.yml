@@ -13,7 +13,8 @@
     #- wireshark
     #- mime
     #- pulse
-    - repo
+    #- repo
+    - launchy
 
   tasks:
     
