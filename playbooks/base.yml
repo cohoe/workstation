@@ -3,7 +3,8 @@
   hosts: all
   roles:
     - common
-    - repo
+    - dnf
+    - rpmfusion
     - clitools
     - shell
     - sudo

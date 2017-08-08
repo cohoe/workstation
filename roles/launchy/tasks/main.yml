@@ -21,6 +21,13 @@
         dest=/etc/yum.repos.d/launchy.repo
   become: yes
 
+# Key
+- name: "install repo key"
+  rpm_key: state=present key={{ item}}
+  with_items:
+    - https://packagecloud.io/grantcohoe/launchy/gpgkey
+  become: yes
+
 # Install
 - name: "install"
   dnf: name=launchy

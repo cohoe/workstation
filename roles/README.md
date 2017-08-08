@@ -8,7 +8,8 @@ System-level configurations for any computer.
 * **common**: Required tools for Ansible to work
 * **grub**: GRUB2 boot manager
 * **locale**: Locale configuration
-* **repo**: Package repositories
+* **rpmfusion**: RPMFusion package repos
+* **dnf**: Package manager configuration
 * **security**: Various system security features
 * **sudo**: Sudo config
 * **ssl**: System-wide SSL trust configuration

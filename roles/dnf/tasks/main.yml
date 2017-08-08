@@ -1,8 +1,4 @@
 ---
-- include: rpmfusion.yml
-  become: true
-  when: '"rpmfusion" in use_repos'
-
 - name: "allow only two kernels to be installed at the same time"
   lineinfile:
     dest: /etc/dnf/dnf.conf
