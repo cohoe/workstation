@@ -1,13 +1,4 @@
 ---
-# This is gross AF.
-sublime_release: 3
-sublime_version_site: https://www.sublimetext.com/{{ sublime_release }}
-sublime_repo: https://download.sublimetext.com
-
-# Local temp stuff
-sublime_package: sublime.bz2
-sublime_root: /opt/sublime
-
 # Package Control
 sublime_packagecontrol_package: https://packagecontrol.io/Package%20Control.sublime-package
 sublime_packagecontrol_file: Package Control.sublime-package

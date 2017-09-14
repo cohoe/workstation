@@ -14,9 +14,10 @@
     #- mime
     #- pulse
     #- repo
-    - launchy
-    - dnf
-    - rpmfusion
+    #- launchy
+    #- dnf
+    #- rpmfusion
+    - sublime
 
   tasks:
     

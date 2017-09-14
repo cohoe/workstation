@@ -1,33 +1,21 @@
 ---
 # Sublime Text
 #
-# This is gross AF. Would really be nice if they put out an RPM or something.
-# Atom had some nice package management utilities, but it's proven to be too
-# slow and unstable.
-
-- name: create directory
-  file: path={{ sublime_root }}
-        state=directory
-        recurse=yes
+# Setup repository
+- name: "create repository"
+  yum_repository:
+    name: sublime-text
+    description: Sublime Text - x86_64 - Stable
+    baseurl: https://download.sublimetext.com/rpm/stable/x86_64
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
   become: yes
 
-- name: determine version
-  shell: curl -sL {{ sublime_version_site }} | egrep -o -e "The latest build is [0-9]+" | sed 's/^[a-zA-Z ]\+//g'
-  register: sublime_version
-
-- name: download package
-  get_url: url={{ sublime_repo }}/sublime_text_{{ sublime_release }}_build_{{ sublime_version.stdout }}_x64.tar.bz2
-           dest=/tmp/{{ sublime_package }}
-
-- name: install package
-  unarchive: src=/tmp/{{ sublime_package }}
-             dest={{ sublime_root }}
-             copy=no
+# Install sublime app
+- name: "install sublime"
+  dnf: name=sublime-text state=present
   become: yes
-
-- name: install desktop shortcut
-  template: src=sublime.desktop
-            dest={{ user_shortcuts_dir }}/sublime.desktop
 
 - name: create config directory
   file: path={{ item }}
