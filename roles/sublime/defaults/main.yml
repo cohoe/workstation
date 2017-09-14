@@ -1,4 +1,6 @@
 ---
+sublime_release: 3
+
 # Package Control
 sublime_packagecontrol_package: https://packagecontrol.io/Package%20Control.sublime-package
 sublime_packagecontrol_file: Package Control.sublime-package

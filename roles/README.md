@@ -42,15 +42,6 @@ Workstation configurations in any environment.
 * **wireshark**: Wireshark packet capture
 * **mime**: MIME type configuration
 
-## EMC
-A computer at EMC.
-* **anyconnect**: Cisco AnyConnect VPN client
-* **emc**: Various corp configuration
-* **horizon**: VMware Horizon View client
-* **ldap**: OpenLDAP client configuration
-* **perforce**: Perforce visual client
-* **pipeline**: Jenkins Pipeline Builder
-
 ## CTCT
 A computer at CTCT.
 * **dns**: DNS search domain configuration
@@ -81,3 +72,12 @@ A computer at home.
 * **pidgin**: Pidgin chat client
 * **skippy**: Mac Expose-like window manager
 * **xbindkeys**: xbindkeys keystroke manager
+
+### EMC
+A computer at EMC.
+* **anyconnect**: Cisco AnyConnect VPN client
+* **emc**: Various corp configuration
+* **horizon**: VMware Horizon View client
+* **ldap**: OpenLDAP client configuration
+* **perforce**: Perforce visual client
+* **pipeline**: Jenkins Pipeline Builder
