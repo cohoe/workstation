@@ -36,3 +36,5 @@ ToDo
 * vbox/host should register existing vms
 * Switch pycharm repo to git after cloned
 * Preflight should load repo to persistent directory
+* Resolve hostname in /etc/hosts
+* iwlwifi fix for bluetooth
