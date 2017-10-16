@@ -38,3 +38,4 @@ ToDo
 * Preflight should load repo to persistent directory
 * Resolve hostname in /etc/hosts
 * iwlwifi fix for bluetooth
+* tars CA
