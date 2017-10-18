@@ -10,7 +10,7 @@
 # no one has updated them because that would be hard.
 - name: re-enable MD5 JARs
   lineinfile:
-    dest: /usr/lib/jvm/java/jre/lib/security/java.security
+    dest: /usr/lib/jvm/jre/lib/security/java.security
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   with_items:
