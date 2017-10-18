@@ -39,3 +39,4 @@ ToDo
 * Resolve hostname in /etc/hosts
 * iwlwifi fix for bluetooth
 * tars CA
+* re-enable MD5 in java because IPMI consoles are stupid
