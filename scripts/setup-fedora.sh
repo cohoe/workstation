@@ -7,7 +7,7 @@ sudo dnf update -y
 sudo dnf install git redhat-lsb-core ansible -y
 
 # Grab the repo
-REPO_DIR=/tmp/workstation
+REPO_DIR=/var/tmp/workstation
 
 if [ -d ${REPO_DIR} ]; then
     cd ${REPO_DIR}
@@ -27,6 +27,6 @@ else
     echo "SUCCESS: You're all set!"
     echo ""
     echo "The workstation repo is at ${REPO_DIR}. An example run would be:"
-    echo "  ansible-playbook -K -l localhost playbooks/home.yml"
+    echo "  ansible-playbook -K --ask-vault-pass -l localhost playbooks/home.yml"
     echo ""
 fi
