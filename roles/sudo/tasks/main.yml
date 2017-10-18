@@ -4,6 +4,6 @@
     mode: 0644
     owner: root
     group: root
-    become: yes
     content: |
         %wheel  ALL=(ALL)   NOPASSWD: ALL
+  become: yes
