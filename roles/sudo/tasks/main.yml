@@ -1,3 +1,9 @@
 ---
-- include: wheelnopasswd.yml
-  become: true
+- copy:
+    dest: /etc/sudoers.d/01-wheel
+    mode: 0644
+    owner: root
+    group: root
+    become: yes
+    content: |
+        %wheel  ALL=(ALL)   NOPASSWD: ALL

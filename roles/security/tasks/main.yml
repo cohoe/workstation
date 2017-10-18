@@ -1,11 +1,11 @@
 ---
-- include: keys.yml
+- import_tasks: keys.yml
 
-- include: firewall.yml
+- import_tasks: firewall.yml
   when: secure_firewalld
   become: yes
 
-- include: sshd.yml
+- import_tasks: sshd.yml
   become: true
   when: secure_sshd
 

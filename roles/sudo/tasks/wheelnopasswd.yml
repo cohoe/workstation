@@ -1,8 +1,0 @@
----
-- copy:
-    dest: /etc/sudoers.d/01-wheel
-    mode: 0644
-    owner: root
-    group: root
-    content: |
-        %wheel  ALL=(ALL)   NOPASSWD: ALL
