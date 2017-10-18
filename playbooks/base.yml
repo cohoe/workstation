@@ -11,5 +11,6 @@
     - chrony
     - ssl
     - locale
+    - java
   vars_files:
     - ../vars/global.yml

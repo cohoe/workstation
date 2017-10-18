@@ -1,6 +1,4 @@
 ---
-#- include: "vbox.yml"
-
 - name: RoleTest
   hosts: all
   vars:
@@ -18,7 +16,8 @@
     #- dnf
     #- rpmfusion
     #- sublime
-    - dns
+    #- dns
+    - java
 
   tasks:
     

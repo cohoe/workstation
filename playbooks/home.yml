@@ -1,8 +1,8 @@
 ---
 # A home computer
 #
-- include: base.yml
-- include: desktop.yml
+- import_playbook: base.yml
+- import_playbook: desktop.yml
 
 - name: Home
   hosts: all
@@ -35,7 +35,7 @@
       register: lspci_gpu
 
     - name: "include nvidia"
-      include_role:
+      import_role:
         name: nvidia
       when: "'NVIDIA' in '{{ lspci_gpu.stdout }}'"
 

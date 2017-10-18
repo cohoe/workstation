@@ -32,7 +32,7 @@
 
 # Set certain keyboard shortcuts
 - name: "keyboard shortcuts | set"
-  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' --create -t string -s {{ item.value }}
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' --create -t string -s '{{ item.value }}'
   environment:
     DISPLAY: "{{xfce_display}}"
   with_items:

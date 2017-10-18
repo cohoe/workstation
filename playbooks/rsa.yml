@@ -1,8 +1,8 @@
 ---
 # A RSA computer
 #
-#- include: base.yml
-#- include: desktop.yml
+#- import_playbook: base.yml
+#- import_playbook: desktop.yml
 - name: RSA 
   hosts: all
   vars:

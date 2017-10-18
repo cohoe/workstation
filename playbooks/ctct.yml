@@ -1,8 +1,8 @@
 ---
 # A ConstantContact computer
 #
-- include: base.yml
-- include: desktop.yml
+- import_playbook: base.yml
+- import_playbook: desktop.yml
 - name: ctct
   hosts: all
   vars:
