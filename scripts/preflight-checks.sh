@@ -76,6 +76,15 @@ check_kernel() {
     log_success_msg "Latest installed kernel is running."
 }
 
+check_hostname() {
+    if [[ $(hostname) == "localhost" ]]; then
+        log_failure_msg "Hostname must not be localhost."
+        return 1
+    fi
+
+    log_success_msg "Hostname is set."
+}
+
 ret=0
 check_sudoers
 ret=$((${ret}+$?))
@@ -84,6 +93,8 @@ ret=$((${ret}+$?))
 check_efi
 ret=$((${ret}+$?))
 check_kernel
+ret=$((${ret}+$?))
+check_hostname
 ret=$((${ret}+$?))
 
 exit ${ret}
