@@ -1,6 +1,4 @@
 ---
-#- include: "vbox.yml"
-
 - name: RoleTest
   hosts: all
   vars:

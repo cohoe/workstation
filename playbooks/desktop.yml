@@ -1,5 +1,5 @@
 ---
-- include: base.yml
+- import_playbook: base.yml
 
 - name: Graphical desktop stuff
   hosts: all
@@ -26,12 +26,12 @@
   tasks:
     # VirtualBox
     - name: "virtualbox guest additions"
-      include_role:
+      import_role:
         name: vbox/guest
       when: ansible_virtualization_type == "virtualbox"
 
     - name: "virtualbox host"
-      include_role:
+      import_role:
         name: vbox/host
       when: ansible_virtualization_role == "host"
 
