@@ -16,7 +16,8 @@
     #- dnf
     #- rpmfusion
     #- sublime
-    - dns
+    #- dns
+    - java
 
   tasks:
     

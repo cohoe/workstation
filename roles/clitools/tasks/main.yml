@@ -1,11 +1,4 @@
 ---
-# Java
-- name: "java | install"
-  dnf: name={{ item }} state=latest
-  with_items:
-    - java
-  become: true
-
 # Python
 - name: "python | install"
   dnf: name={{ item }} state=latest
