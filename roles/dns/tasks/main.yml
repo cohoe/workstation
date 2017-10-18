@@ -18,3 +18,16 @@
     line: "DOMAIN=\"{{ search_domains | join(' ') }}\""
   become: yes
   when: search_domains is defined
+
+# We must be able to resolve our own hostname
+- name: configure hosts file
+  lineinfile:
+    dest: "/etc/hosts"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: "^127.0.0.1"
+      line: "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ ansible_hostname }} {{ ansible_hostname }}.localdomain"
+    - regexp: "^::1"
+      line: "::1         localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ ansible_hostname }} {{ ansible_hostname }}.localdomain"
+  become: yes
