@@ -17,7 +17,9 @@
     #- rpmfusion
     #- sublime
     #- dns
-    - java
+    #- java
+    #- xfce
+    - vbox/host
 
   tasks:
     

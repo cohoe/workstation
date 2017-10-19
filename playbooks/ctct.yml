@@ -11,13 +11,11 @@
         - ssh
         - samba-client
   roles:
-    - common
     - security
     - ldap
     - pipeline
     - samba
     - hipchat
-    - dns
     - rpmbuild
     - rvm
     - wallpaper

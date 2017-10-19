@@ -45,3 +45,7 @@
 - name: "configuration file"
   template: src=VirtualBox.xml
             dest=~/.config/VirtualBox/VirtualBox.xml
+
+# Register existing vms
+- name: "register existing VMs"
+  shell: bash -c "find ~/VirtualBox\ VMs -name *.vbox -exec vboxmanage registervm {} \;"

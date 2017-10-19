@@ -33,6 +33,5 @@ ToDo
 * Monitor never goes to sleep. 
   * Check DPMS through xfce-power?
   * Well, maybe. It works on seefra after resetting xscreensaver config and disabling xfce-power
-* vbox/host should register existing vms
 * Switch pycharm repo to git after cloned
 * Create NetworkManager profile
