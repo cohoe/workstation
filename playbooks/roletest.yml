@@ -18,7 +18,8 @@
     #- sublime
     #- dns
     #- java
-    - xfce
+    #- xfce
+    - vbox/host
 
   tasks:
     
