@@ -77,7 +77,7 @@ check_kernel() {
 }
 
 check_hostname() {
-    if [[ $(hostname) == "localhost" ]]; then
+    if [[ $(hostname) == *"localhost"* ]]; then
         log_failure_msg "Hostname must not be localhost."
         return 1
     fi
