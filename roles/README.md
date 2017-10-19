@@ -6,6 +6,7 @@ System-level configurations for any computer.
 * **chrony**: NTP client
 * **clitools**: Personalized command line toolset
 * **common**: Required tools for Ansible to work
+* **dns**: DNS search domain and hostname configuration
 * **grub**: GRUB2 boot manager
 * **locale**: Locale configuration
 * **rpmfusion**: RPMFusion package repos
@@ -41,10 +42,10 @@ Workstation configurations in any environment.
 * **sublime**: Sublime Text
 * **wireshark**: Wireshark packet capture
 * **mime**: MIME type configuration
+* **java**: Java JRE & JDK settings
 
 ## CTCT
 A computer at CTCT.
-* **dns**: DNS search domain configuration
 * **rpmbuild**: Tools for RPM building
 * **rvm**: Ruby Version Manager for all users
 * **hipchat**: HipChat chat client
