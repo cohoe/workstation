@@ -17,7 +17,8 @@
     #- rpmfusion
     #- sublime
     #- dns
-    - java
+    #- java
+    - xfce
 
   tasks:
     
