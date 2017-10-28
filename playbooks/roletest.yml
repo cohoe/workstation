@@ -19,7 +19,8 @@
     #- dns
     #- java
     #- xfce
-    - vbox/host
+    #- vbox/host
+    - xfce
 
   tasks:
     
