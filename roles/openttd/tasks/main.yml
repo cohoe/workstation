@@ -1,0 +1,32 @@
+---
+# OpenTTD
+
+- name: install package
+  dnf: name={{ item }}
+       state=latest
+  become: yes
+  with_items:
+    - openttd
+    - openttd-opengfx
+
+- name: create config directory
+  file: path={{ item }}
+        state=directory
+        mode=0755
+  with_items:
+    - "{{ openttd_user_directory }}"
+    - "{{ openttd_baseset_directory }}"
+
+- name: extract data files
+  unarchive: src="{{ openttd_data_base_url }}/{{ item.package }}/{{ item.version }}/{{ item.package }}-{{ item.version }}-all.zip"
+             dest="{{ openttd_baseset_directory}}/"
+             remote_src=yes
+  with_items:
+    - package: opensfx
+      version: 0.2.3
+    - package: openmsx
+      version: 0.3.1
+
+- name: install config file
+  copy: src=openttd.cfg
+        dest="{{ openttd_user_directory }}/"

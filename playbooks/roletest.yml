@@ -20,7 +20,8 @@
     #- java
     #- xfce
     #- vbox/host
-    - xfce
+    #- xfce
+    - openttd
 
   tasks:
     

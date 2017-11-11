@@ -1,0 +1,4 @@
+---
+openttd_user_directory: ~/.openttd
+openttd_baseset_directory: "{{ openttd_user_directory }}/baseset"
+openttd_data_base_url: https://binaries.openttd.org/extra
