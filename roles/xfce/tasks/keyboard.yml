@@ -42,9 +42,9 @@
     - { key: '/xfwm4/custom/<Super>Right', value: 'tile_right_key' }
     - { key: '/xfwm4/custom/<Primary><Alt><Super>Left', value: 'prev_workspace_key' }
     - { key: '/xfwm4/custom/<Primary><Alt><Super>Right', value: 'next_workspace_key' }
-    - { key: '/commands/custom/XF86AudioLowerVolume', value: '"amixer set Master 5%-"' }
-    - { key: '/commands/custom/XF86AudioMute', value: '"amixer set Master toggle"' }
-    - { key: '/commands/custom/XF86AudioRaiseVolume', value: '"amixer set Master 5%+"' }
+    - { key: '/commands/custom/XF86AudioLowerVolume', value: 'amixer set Master 5%-' }
+    - { key: '/commands/custom/XF86AudioMute', value: 'amixer set Master toggle' }
+    - { key: '/commands/custom/XF86AudioRaiseVolume', value: 'amixer set Master 5%+' }
     - { key: '/commands/custom/<Super>l', value: 'xflock4' }
     - { key: '/commands/custom/<Super>e', value: 'exo-open --launch FileManager' }
     - { key: '/xfwm4/custom/<Primary><Alt>Left', value: 'move_window_prev_workspace_key' }
@@ -54,6 +54,6 @@
     - { key: '/commands/custom/Print', value: 'xfce4-screenshooter -r -s /home/{{ ansible_user_id }}/Pictures/' }
     - { key: '/commands/custom/<Primary>Print', value: 'xfce4-screenshooter -f' }
     # QC35
-    - { key: '/commands/custom/XF86AudioPlay', value: '"amixer set Master toggle"' }
-    - { key: '/commands/custom/XF86AudioNext', value: '"maxime.py --toggle"' }
-    - { key: '/commands/custom/XF86AudioPrev', value: '"maxime.py --reconnect"' }
+    - { key: '/commands/custom/XF86AudioPlay', value: 'amixer set Master toggle' }
+    - { key: '/commands/custom/XF86AudioNext', value: 'maxime.py --toggle' }
+    - { key: '/commands/custom/XF86AudioPrev', value: 'maxime.py --reconnect' }
