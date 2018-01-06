@@ -26,6 +26,8 @@
     - piavpn
     - nas
     - aws
+    - mail
+    - backups
 
   tasks:
     # NVIDIA drivers
