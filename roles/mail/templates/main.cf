@@ -335,11 +335,12 @@ unknown_local_recipient_reject_code = 550
 #relayhost = uucphost
 #relayhost = [an.ip.add.ress]
 
+# http://www.postfix.org/SOHO_README.html
 smtp_sasl_auth_enable = yes
 smtp_tls_security_level = encrypt
 smtp_sasl_tls_security_options = noanonymous
 smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-relayhost = [{{ mail_relay_host }}]
+relayhost = [{{ mail_relay_host }}]:submission
 
 # REJECTING UNKNOWN RELAY USERS
 #

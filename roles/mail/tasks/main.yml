@@ -17,7 +17,7 @@
   copy:
     dest: /etc/postfix/sasl_passwd
     content: |
-        [{{ mail_relay_host }}]    {{ mail_relay_username }}:{{ mail_relay_password }}
+        [{{ mail_relay_host }}]:submission    {{ mail_relay_username }}:{{ mail_relay_password }}
     mode: 0640
   become: yes
 
@@ -26,8 +26,33 @@
             dest=/etc/postfix/main.cf
   become: yes
 
+- name: rebuild sasl hash
+  command: postmap hash:/etc/postfix/sasl_passwd
+  become: yes
+
 - name: enable service
   service: name=postfix
            state=restarted
            enabled=yes
+  become: yes
+
+- name: setup mail forwards
+  copy:
+    dest: "~{{ item }}/.forward"
+    content: |
+        {{ mail_to_address }}
+    mode: 0644
+    owner: "{{ item }}"
+    group: "{{ item }}"
+  become: yes
+  with_items:
+    - "{{ ansible_user_id }}"
+    - root
+
+- name: configure cron to send-as
+  lineinfile:
+    path: /etc/anacrontab
+    regexp: "^MAILFROM"
+    line: "MAILFROM={{ mail_from_address }}"
+    insertbefore: "^MAILTO"
   become: yes
