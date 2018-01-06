@@ -1,0 +1,2 @@
+set name="root@{{ ansible_hostname }}"
+set from="{{ mail_from_address }}"

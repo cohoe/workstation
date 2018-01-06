@@ -1,0 +1,20 @@
+---
+# System email
+
+- name: install packages
+  dnf: name={{ item }}
+       state=latest
+  become: yes
+  with_items:
+    - postfix
+
+- name: enable service
+  service: name=postfix
+           state=started
+           enabled=yes
+  become: yes
+
+- name: set root mailrc
+  template: src=mailrc-root
+            dest=/root/.mailrc
+  become: yes

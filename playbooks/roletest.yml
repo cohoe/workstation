@@ -23,6 +23,7 @@
     #- xfce
     #- openttd
     - backups
+    - mail
 
   tasks:
     

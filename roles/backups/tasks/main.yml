@@ -39,10 +39,12 @@
     - "{{ b2_jobs }}"
 
 - name: install scripts
-  copy: src={{ item }}
-        dest=/usr/local/bin/{{ item }}
+  copy: src={{ item.name }}
+        dest={{ item.path }}/{{ item.name }}
         mode=0755
   become: yes
   with_items:
-    - rclone-backup
-    - z-rclone-backup-cron
+    - name: rclone-backup
+      path: /usr/local/bin
+    - name: z-rclone-backup-cron
+      path: /etc/cron.daily
