@@ -8,13 +8,26 @@
   with_items:
     - postfix
 
-- name: enable service
-  service: name=postfix
-           state=started
-           enabled=yes
-  become: yes
-
 - name: set root mailrc
   template: src=mailrc-root
             dest=/root/.mailrc
+  become: yes
+
+- name: build auth file
+  copy:
+    dest: /etc/postfix/sasl_passwd
+    content: |
+        [{{ mail_relay_host }}]    {{ mail_relay_username }}:{{ mail_relay_password }}
+    mode: 0640
+  become: yes
+
+- name: copy postfix config
+  template: src=main.cf
+            dest=/etc/postfix/main.cf
+  become: yes
+
+- name: enable service
+  service: name=postfix
+           state=restarted
+           enabled=yes
   become: yes
