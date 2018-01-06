@@ -11,6 +11,7 @@
   become: yes
   with_items:
     - http://dl.fedoraproject.org/pub/fedora/linux/releases/27/Everything/x86_64/os/Packages/r/rclone-1.38-1.fc27.x86_64.rpm
+    - perl-File-Slurp
 
 - name: create rclone config
   file: path=/root/.config/rclone
@@ -37,4 +38,11 @@
   with_items:
     - "{{ b2_jobs }}"
 
-#- name: install scripts
+- name: install scripts
+  copy: src={{ item }}
+        dest=/usr/local/bin/{{ item }}
+        mode=0755
+  become: yes
+  with_items:
+    - rclone-backup
+    - z-rclone-backup-cron

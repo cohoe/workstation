@@ -1,0 +1,570 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Data::Dumper;
+use File::Basename;
+use File::Slurp;
+use Getopt::Long;
+
+my $whoami = basename $0;
+my $usage = <<EOF;
+Usage: $whoami [-h|--help] [-v|--verbose [..]] [-q|--quiet] [-n|--dryrun]
+	[--copy-links] [--rclone-config=file] [--ls|--verify condition[,...]
+	rclone-spec-file
+
+    Valid --verify conditions:
+
+    all               - verify all files in backup
+    data=[<]number[%] - verify the specified amount of data (bytes or
+                        percentage of total data size, "<" means hard limit)
+    files=number[%]   - verify the specified number of files
+    age=timespec      - verify files up to the specified age (rclone syntax)
+EOF
+$ENV{RCLONE_FAST_LIST} = 'true';
+
+my $args = &parse_args;
+my $verbose = $args->{verbose};
+print Dumper($args) if $verbose;
+
+my $config = &parse_config($args->{config_file});
+print Dumper($config) if $verbose;
+
+if ($args->{command} eq "verify") {
+    &verify($args, $config);
+}
+else {
+    if ($args->{command} eq "sync") {
+        &archive_special_files($args, $config)
+            if ($config->{archive_specials});
+    }
+
+    my(@cmd) = &make_rclone_cmd($args, $config);
+    if ($verbose) {
+        for (@cmd) {
+            if (/\s/) {
+                print "'$_' ";
+            } else {
+                print "$_ ";
+            }
+        }
+        print("\n");
+    }
+    system(@cmd) and die;
+}
+
+sub unparse_bytes {
+    my($bytes) = @_;
+
+    if ($bytes < 1024) {
+        return "${bytes}B";
+    }
+    elsif ($bytes < 1024 * 1024) {
+        return sprintf("%.1fK", $bytes / 1024);
+    }
+    elsif ($bytes < 1024 * 1024 * 1024) {
+        return sprintf("%.1fM", $bytes / 1024 / 1024);
+    }
+    elsif ($bytes < 1024 * 1024 * 1024 * 1024) {
+        return sprintf("%.1fG", $bytes / 1024 / 1024 / 1024);
+    }
+    else {
+        return sprintf("%.1fT", $bytes / 1024 / 1024 / 1024 / 1024);
+    }
+}
+
+sub verify {
+    # Verifying using cat is slower and more expensive except when every small
+    # numbers of files are being verified. Theoretically, we could figure out
+    # how many files we're verifying and then decide how to verify, but it's
+    # not worth it, given that the most money we could possibly save by doing
+    # that is a small fraction of a cent.
+    # &verify_by_cat(@_);
+    &verify_by_check(@_);
+}
+
+# This code uses "rclone cat" to verify files in the backup. It's preserved
+# here for posterity, even though we're not currently using it, as an example
+# and just in case we need to use it or consult it later.
+sub verify_by_cat {
+    my($args, $config) = @_;
+    my $errors = 0;
+
+    my($verify_all,
+       $verify_size, $verify_size_pct, $verify_size_hard,
+       $verify_count, $verify_count_pct,
+       $verify_age);
+    while (my($type, $spec) = each %{$args->{verify}}) {
+        my $hard = $spec =~ s/^<//;
+        my $pct = $spec =~ s/%$//;
+        if ($type eq 'all') {
+            $verify_all = 1;
+            next;
+        }
+        die "Verify spec \"$args->{verify}->{$type}\" is not a number\n$usage"
+            if ($type ne 'age' and $spec !~ /^\d+$/);
+        if ($type eq 'data') {
+            $verify_size = $spec;
+            $verify_size_pct = $pct;
+            $verify_size_hard = $hard;
+            next;
+        }
+        elsif ($type eq 'files') {
+            $verify_count = $spec;
+            $verify_count_pct = $pct;
+            next;
+        }
+        elsif ($type eq 'age') {
+            $verify_age = $spec;
+        }
+        else {
+            die "Unrecognized verify type \"$type\"\n$usage";
+        }
+    }
+    die "Verify condition \"all\" conflicts with other conditions\n$usage"
+        if ($verify_all and ($verify_size or $verify_count or $verify_age));
+
+    my(@cmd) = &rclone_base_cmd($args, $config);
+    my(@ls_cmd) = (@cmd, &get_filters($config));
+    if ($verify_age) {
+        push(@ls_cmd, "--max-age", $verify_age);
+    }
+    push(@ls_cmd, "ls", $config->{source});
+    my(@files, %sizes);
+    my $total_size = 0;
+    print "Listing files on source...\n" if ($verbose);
+    if ($verify_age) {
+        print("(Limiting listing and verify to files less than $verify_age ",
+              "old)\n") if ($verbose);
+    }
+    open(LS, "-|", @ls_cmd) or die;
+    while (<LS>) {
+        chomp;
+        if (! /^\s*(\d+)\s+(.*)$/) {
+            warn "Unrecognized line in rclone ls output: $_\n";
+            next;
+        }
+        my $size = $1;
+        my $file = $2;
+        $total_size += $size;
+        $sizes{$file} = $size;
+    }
+    if (! close(LS)) {
+        die "@ls_cmd failed\n";
+    }
+    @files = sort { $sizes{$a} <=> $sizes{$b} } keys %sizes;
+    printf("Done (%d files, total size %s)\n",
+           scalar @files, &unparse_bytes($total_size)) if ($verbose);
+
+    if ($verify_size_pct) {
+        $verify_size = int($verify_size / 100 * $total_size) or 1;
+    }
+    if ($verify_count_pct) {
+        $verify_count = int($verify_count / 100 * scalar @files) or 1;
+    }
+
+    if ($verify_all) {
+        print "Verifying entire backup...\n" if ($verbose);
+    }
+    if ($verify_size) {
+        print("Limiting verify to ", &unparse_bytes($verify_size),
+              "...\n") if ($verbose);
+    }
+    if ($verify_count) {
+        print "Limiting verify to $verify_count files...\n" if ($verbose);
+    }
+        
+    my $verified_size = 0;
+    my $verified_count = 0;
+  file:
+    while (@files) {
+        if ($verify_count and $verified_count == $verify_count) {
+            last;
+        }
+        if ($verify_size) {
+            if ($verified_size >= $verify_size) {
+                last;
+            }
+            if ($verify_size_hard) {
+                @files = grep($sizes{$_} < $verify_size - $verified_size,
+                              @files);
+                last if (! @files);
+            }
+        }
+
+        my $file;
+        if ($verify_size) {
+            # Strongly prefer larger files, to minimize the amount of money we
+            # pay for the storage transactions necessary for verification.
+            # Increase $base to make the preference for larger files even
+            # stronger.
+            my $base = 10;
+            my $biggest_size = $sizes{$files[-1]};
+            my $want_size = $biggest_size * log(rand($base-1)+1) / log($base);
+            for (my $i = scalar @files - 1; $i > 0; $i--) {
+                if ($sizes{$files[$i]} <= $want_size) {
+                    $file = splice(@files, $i, 1);
+                    last;
+                }
+            }
+            if (! $file) {
+                $file = splice(@files, 0, 1);
+            }
+        }
+        else {
+            my $i = int(rand(scalar @files));
+            $file = splice(@files, $i, 1);
+        }
+
+        $verified_size += $sizes{$file};
+        $verified_count++;
+        printf("Verifying %s (%s)...\n", $file, &unparse_bytes($sizes{$file}))
+            if ($verbose);
+        my $local_file = "$config->{source}/$file";
+        open(LOCAL, "<", $local_file) or die("open($local_file): $!\n");
+        my $remote_file = "$config->{destination}/$file";
+        open(REMOTE, "-|", @cmd, "cat", $remote_file) or die;
+        my($local_chunk, $remote_chunk);
+        while (read(LOCAL, $local_chunk, 8192)) {
+            if (! read(REMOTE, $remote_chunk, 8192) or
+                length($local_chunk) > length($remote_chunk)) {
+                warn("Verify error: $file is too short in backup\n");
+                $errors++;
+                next file;
+            }
+            if ($local_chunk ne $remote_chunk) {
+                warn("Verify error: contents of $file differ in backup\n");
+                $errors++;
+                next file;
+            }
+        }
+        close(LOCAL);
+        if (read(REMOTE, $remote_chunk, 1)) {
+            warn("Verify error: $file is bigger in backup than locally\n");
+            $errors++;
+            next file;
+        }
+        if (! close(REMOTE)) {
+            warn("Verify error: error reading $remote_file\n");
+            $errors++;
+            next file;
+        }
+        print("File $file verified successfully\n") if ($verbose);
+    }
+    print("Verify successful\n") if ($verbose and ! $errors);
+    exit $errors ? 1 : 0;
+}
+
+sub verify_by_check {
+    my($args, $config) = @_;
+    my $errors = 0;
+
+    my($verify_all,
+       $verify_size, $verify_size_pct, $verify_size_hard,
+       $verify_count, $verify_count_pct,
+       $verify_age);
+    while (my($type, $spec) = each %{$args->{verify}}) {
+        my $hard = $spec =~ s/^<//;
+        my $pct = $spec =~ s/%$//;
+        if ($type eq 'all') {
+            $verify_all = 1;
+            next;
+        }
+        die "Verify spec \"$args->{verify}->{$type}\" is not a number\n$usage"
+            if ($type ne 'age' and $spec !~ /^\d+$/);
+        if ($type eq 'data') {
+            $verify_size = $spec;
+            $verify_size_pct = $pct;
+            $verify_size_hard = $hard;
+            next;
+        }
+        elsif ($type eq 'files') {
+            $verify_count = $spec;
+            $verify_count_pct = $pct;
+            next;
+        }
+        elsif ($type eq 'age') {
+            $verify_age = $spec;
+        }
+        else {
+            die "Unrecognized verify type \"$type\"\n$usage";
+        }
+    }
+    die "Verify condition \"all\" conflicts with other conditions\n$usage"
+        if ($verify_all and ($verify_size or $verify_count or $verify_age));
+
+    my(@cmd) = &rclone_base_cmd($args, $config);
+    my(@ls_cmd) = (@cmd, &get_filters($config));
+    if ($verify_age) {
+        push(@ls_cmd, "--max-age", $verify_age);
+    }
+    push(@ls_cmd, "ls", $config->{source});
+    my(@files, %sizes);
+    my $total_size = 0;
+    print "Listing files on source...\n" if ($verbose);
+    if ($verify_age) {
+        print("(Limiting listing and verify to files less than $verify_age ",
+              "old)\n") if ($verbose);
+    }
+    open(LS, "-|", @ls_cmd) or die;
+    while (<LS>) {
+        chomp;
+        if (! /^\s*(\d+)\s+(.*)$/) {
+            warn "Unrecognized line in rclone ls output: $_\n";
+            next;
+        }
+        my $size = $1;
+        my $file = $2;
+        $total_size += $size;
+        $sizes{$file} = $size;
+    }
+    if (! close(LS)) {
+        die "@ls_cmd failed\n";
+    }
+    @files = sort { $sizes{$a} <=> $sizes{$b} } keys %sizes;
+    printf("Done (%d files, total size %s)\n",
+           scalar @files, &unparse_bytes($total_size)) if ($verbose);
+
+    if ($verify_size_pct) {
+        $verify_size = int($verify_size / 100 * $total_size) or 1;
+    }
+    if ($verify_count_pct) {
+        $verify_count = int($verify_count / 100 * scalar @files) or 1;
+    }
+
+    if ($verify_all) {
+        print "Verifying entire backup...\n" if ($verbose);
+    }
+    if ($verify_size) {
+        print("Limiting verify to ", &unparse_bytes($verify_size),
+              "...\n") if ($verbose);
+    }
+    if ($verify_count) {
+        print "Limiting verify to $verify_count files...\n" if ($verbose);
+    }
+        
+    my $verified_size = 0;
+    my $verified_count = 0;
+    my @files_to_verify;
+    while (@files) {
+        if ($verify_count and $verified_count == $verify_count) {
+            last;
+        }
+        if ($verify_size) {
+            if ($verified_size >= $verify_size) {
+                last;
+            }
+            if ($verify_size_hard) {
+                @files = grep($sizes{$_} < $verify_size - $verified_size,
+                              @files);
+                last if (! @files);
+            }
+        }
+
+        my $file;
+        if ($verify_size) {
+            # Strongly prefer larger files, to minimize the amount of money we
+            # pay for the storage transactions necessary for verification.
+            # Increase $base to make the preference for larger files even
+            # stronger.
+            my $base = 10;
+            my $biggest_size = $sizes{$files[-1]};
+            my $want_size = $biggest_size * log(rand($base-1)+1) / log($base);
+            for (my $i = scalar @files - 1; $i > 0; $i--) {
+                if ($sizes{$files[$i]} <= $want_size) {
+                    $file = splice(@files, $i, 1);
+                    last;
+                }
+            }
+            if (! $file) {
+                $file = splice(@files, 0, 1);
+            }
+        }
+        else {
+            my $i = int(rand(scalar @files));
+            $file = splice(@files, $i, 1);
+        }
+
+        $verified_size += $sizes{$file};
+        $verified_count++;
+        printf("Verifying %s (%s)...\n", $file, &unparse_bytes($sizes{$file}))
+            if ($verbose);
+        push(@files_to_verify, $file);
+    }
+
+    my(@verify_cmd) = @cmd;
+    foreach my $file (@files_to_verify) {
+        $file =~ s/([*?\[\]\{\}\\])/\\$1/g;
+        push(@verify_cmd, "--filter", "+ /$file");
+    }
+    push(@verify_cmd, "--filter", "- *");
+    push(@verify_cmd, "check", "--download", $config->{source},
+         $config->{destination});
+    print("Executing @verify_cmd\n") if ($verbose > 1);
+    if (system(@verify_cmd)) {
+        $errors++;
+        warn("Verify failed\n");
+    }
+    print("Verify successful\n") if ($verbose and ! $errors);
+    exit $errors ? 1 : 0;
+}
+
+sub archive_special_files {
+    my($args, $config) = @_;
+    my $tar_file = $args->{dryrun} ? "/dev/null" : "special-files.tar.gz";
+    my $verbose = $args->{verbose} ? "--verbose" : "";
+    my $cmd = "set -e; " .
+        "cd $config->{source}; " .
+        "find . '!' -type d,f,s -print0 | " .
+        "tar --null --files-from - --create --gzip --file $tar_file $verbose";
+    print "$cmd\n" if ($verbose);
+    system($cmd) and die;
+}
+
+sub get_filters {
+    my($config) = @_;
+    my(@filters);
+
+    push(@filters, "--filter", "- *~", "--filter", "- .#*");
+    foreach my $filter (@{$config->{filters}}) {
+        push(@filters, "--filter", $filter);
+    }
+    return @filters;
+}
+         
+sub rclone_base_cmd {
+    my($args, $config) = @_;
+    my $copy_links = defined($config->{copy_links}) ? $config->{copy_links} :
+        $args->{copy_links};
+    my(@cmd) = ('rclone', $copy_links ? '--copy-links' : '--skip-links');
+    for(1..$verbose) {
+        push(@cmd, "--verbose");
+    }
+    if ($args->{quiet}) {
+        push(@cmd, "--quiet");
+    }
+    if ($args->{rclone_config}) {
+        push(@cmd, '--config', $args->{rclone_config});
+    }
+    return @cmd;
+}
+
+sub make_rclone_cmd {
+    my($args, $config) = @_;
+    my(@cmd) = (&rclone_base_cmd($args, $config), "--delete-excluded",
+                &get_filters($config));
+    if ($args->{dryrun}) {
+        push(@cmd, '--dry-run');
+    }
+    if ($args->{command} eq "sync") {
+        push(@cmd, "sync", $config->{source}, $config->{destination});
+    }
+    else {
+        push(@cmd, "ls", $config->{source});
+    }
+    return(@cmd);
+}
+
+sub parse_args {
+    my($args, $quiet, $dryrun, $rclone_config, $ls, %verify,
+       $command, $config_file, $copy_links);
+    my $verbose = 0;
+
+    GetOptions("h|help" => sub { print $usage; exit; },
+               "v|verbose+" => \$verbose,
+               "q|quiet" => \$quiet,
+               "n|dryrun|dry-run" => \$dryrun,
+               "copy-links" => \$copy_links,
+               "rclone-config=s" => \$rclone_config,
+               "ls" => \$ls,
+               "verify=s" => \%verify) or die $usage;
+    $config_file = shift @ARGV or die;
+    die "File does not exist: $config_file\n" if (! -f $config_file);
+    die "Extra arguments: @ARGV\n" if (@ARGV);
+    if (%verify) {
+        die "Don't specify both --ls and --verify" if ($ls);
+        $command = "verify";
+    } elsif ($ls) {
+        $command = "ls";
+    } else {
+        $command = "sync";
+    }
+    return {
+        verbose => $verbose,
+        quiet => $quiet,
+        dryrun => $dryrun,
+        copy_links => $copy_links,
+        config_file => $config_file,
+        rclone_config => $rclone_config,
+        command => $command,
+        verify => \%verify,
+    };
+}
+
+sub parse_config {
+    my($cf) = @_;
+    my $config = {};
+    my $section;
+    $config = {
+        "filters" => [],
+        "archive_specials" => 1,
+        "copy_links" => undef,
+    };
+    open(CONFIG, "<", $cf) or die "open($cf): $!\n";
+    while (<CONFIG>) {
+        chomp;
+        next if (/^\s*\#/);
+        next if (/^\s*$/);
+        if (/^\[(.*)\]\s*$/) {
+            $section = $1;
+            if ($section !~ /^(default|filters|test-filters)$/) {
+                die "Unrecognized section in $cf: $section\n";
+            }
+            next;
+        }
+        if (! $section) {
+            die "Line in $cf before any section: $_\n";
+        }
+        if ($section eq "default") {
+            if (! /^\s*(source|destination|archive_specials|copy_links)\s*=\s*(.*\S)/) {
+                die "Invalid line in default section: $_\n";
+            }
+            my $key = $1;
+            my $value = $2;
+            if ($key =~ /^(?:archive_specials|copy_links)$/) {
+                $value = &parse_bool($value);
+            }
+            $config->{$key} = $value;
+            next;
+        }
+        if ($section eq "test-filters") {
+            # These are only used when testing filters, 
+            next;
+        }
+        # Only remaining section is [filters]
+        if (! /^[-+] /) {
+            die "Filter does not start with '^[-+] ': $_\n";
+        }
+        push(@{$config->{'filters'}}, $_);
+    }
+    close(CONFIG);
+    die "No source specified\n" if (! $config->{source});
+    die "No destination specified\n" if (! $config->{destination});
+    return $config;
+}
+
+sub parse_bool {
+    local($_) = @_;
+
+    if (/^(?:true|yes|1)$/i) {
+        return 1;
+    }
+    elsif (/^(?:false|no|0)$/i) {
+        return 0;
+    }
+    else {
+        die "Unrecognized boolean value: $_\n";
+    }
+}
+

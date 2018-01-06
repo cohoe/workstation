@@ -1,0 +1,65 @@
+#!/bin/bash
+
+if [ -f /etc/default/rclone-backups ]; then
+    . /etc/default/rclone-backups
+fi
+
+LF=/var/run/rclone-backups.lock
+BD=/etc/rclone-backups
+BACKUPS=$BD/*.conf
+# Uncomment this to print commands instead of executing them.
+#DRYRUN=echo
+
+# We get 1GB of downloads free per day. Divide that by the number of
+# rclone configurations we are doing and allocate that much to each
+# configuration for backup verification.
+
+verify_total=$((1024 * 1024 * 1024))
+number_of_backups=$(ls $BACKUPS | wc -l)
+verify_each=$((verify_total / number_of_backups))
+
+backup() {
+    set -e
+    set -o pipefail
+    cf="$1"; shift
+    tf="${cf##*/}"
+    $DRYRUN rclone-backup --quiet $cf 2>&1 | sed -e "s/^/$tf:/"
+    $DRYRUN rclone-backup --verify "data=<$verify_each" --verify "age=2d" $cf \
+        2>&1 | sed -e "s/^/$tf:/"
+}
+
+echo $$ > $LF.$$
+if ! ln $LF.$$ $LF; then
+    echo "Can't create $LF" 1>&2
+    rm -f $LF.$$
+    exit 1
+fi
+rm -f $LF.$$
+trap "rm -f $LF" EXIT
+
+num_children=0
+
+for file in $BACKUPS; do
+    backup "$file" &
+    ((++num_children))
+done
+
+ok=true
+while ((num_children > 0)); do
+    if ! wait -n; then
+        ok=false
+    fi
+    ((num_children--))
+done
+
+if $ok; then
+    if [ -n "$CANARY" ]; then
+        if ! curl --silent "$CANARY" &>/dev/null; then
+            echo "curl --silent \"$CANARY\" failed" 1>&2
+            exit 1
+        fi
+    fi
+    exit 0
+else
+    exit 1
+fi

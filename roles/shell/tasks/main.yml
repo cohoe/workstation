@@ -90,3 +90,9 @@
   get_url: url={{ user_face }}
            dest=~/.face
   when: user_face is defined
+
+# Setup root paths
+- name: install custom shell paths
+  copy: src=localbin.sh
+        dest=/etc/profile.d/localbin.sh
+  become: yes
