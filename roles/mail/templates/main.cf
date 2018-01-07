@@ -379,6 +379,8 @@ relayhost = [{{ mail_relay_host }}]:submission
 # address masquerading or other forms of address rewriting including
 # username->Firstname.Lastname mapping.
 
+smtp_generic_maps = hash:/etc/postfix/genericmap
+
 # ADDRESS REDIRECTION (VIRTUAL DOMAIN)
 #
 # The VIRTUAL_README document gives information about the many forms
