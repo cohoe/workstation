@@ -7,6 +7,8 @@ fi
 LF=/var/run/rclone-backups.lock
 BD=/etc/rclone-backups
 BACKUPS=$BD/*.conf
+RCLONE_BACKUP=$(which rclone-backup 2>/dev/null || echo /usr/local/bin/rclone-backup)
+
 # Uncomment this to print commands instead of executing them.
 #DRYRUN=echo
 
@@ -23,8 +25,8 @@ backup() {
     set -o pipefail
     cf="$1"; shift
     tf="${cf##*/}"
-    $DRYRUN rclone-backup --quiet $cf 2>&1 | sed -e "s/^/$tf:/"
-    $DRYRUN rclone-backup --verify "data=<$verify_each" --verify "age=2d" $cf \
+    $DRYRUN $RCLONE_BACKUP --quiet $cf 2>&1 | sed -e "s/^/$tf:/"
+    $DRYRUN $RCLONE_BACKUP --verify "data=<$verify_each" --verify "age=2d" $cf \
         2>&1 | sed -e "s/^/$tf:/"
 }
 
