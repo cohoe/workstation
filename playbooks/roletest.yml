@@ -22,8 +22,8 @@
     #- vbox/host
     #- xfce
     #- openttd
-    #- backups
-    - mail
+    - backups
+    #- mail
 
   tasks:
     
