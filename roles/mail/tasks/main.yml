@@ -7,6 +7,7 @@
   become: yes
   with_items:
     - postfix
+    - cyrus-sasl-*
 
 - name: set root mailrc
   template: src=mailrc-root
