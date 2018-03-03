@@ -2,9 +2,12 @@
 
 # Setup Fedora intended to be called from curl
 
-# Install git
+# Simple prereqs
 sudo dnf update -y
 sudo dnf install git redhat-lsb-core ansible -y
+
+# Purge crap that gets in our way
+sudo dnf erase dnfdragora -y
 
 # Grab the repo
 REPO_DIR=/var/tmp/workstation

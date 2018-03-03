@@ -85,6 +85,15 @@ check_hostname() {
     log_success_msg "Hostname is set."
 }
 
+check_dragora() {
+    if [ -f /usr/bin/dnfdragora ]; then
+        log_failure_msg "dnfdragora is present."
+        return 1
+    fi
+
+    log_success_msg "dnfdragora is absent."
+}
+
 ret=0
 check_sudoers
 ret=$((${ret}+$?))
@@ -95,6 +104,8 @@ ret=$((${ret}+$?))
 check_kernel
 ret=$((${ret}+$?))
 check_hostname
+ret=$((${ret}+$?))
+check_dragora
 ret=$((${ret}+$?))
 
 exit ${ret}
