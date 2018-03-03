@@ -33,6 +33,7 @@
     - dmidecode         # System information
     - fuse-exfat        # EXFAT file system
     - ffmpeg            # Media utility
+    - ncdu              # ncurses disk usage
   become: true
   tags:
     - packages
