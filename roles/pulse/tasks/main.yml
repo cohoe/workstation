@@ -39,10 +39,15 @@
 # missing, and now it looks pretty too.
 # https://git.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/commit/?id=bee333f6ecd6e89d89ef68bf880d93b1fe5fff7a
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues/464
+#
+# Ignore errors because if there is an issue here it's likely that we
+# are re-applying a playbook and dnf has already excluded the package.
+# Should be fixed in https://bugzilla.redhat.com/show_bug.cgi?id=1545454
 - name: "hack fix for volume icon"
   dnf: name=http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/x/xfce4-pulseaudio-plugin-0.2.4-5.fc25.x86_64.rpm
        state=present
   become: yes
+  ignore_errors: yes
 
 - name: "prevent updates until a patch comes out"
   lineinfile:
