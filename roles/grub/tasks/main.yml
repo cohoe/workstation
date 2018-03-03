@@ -1,14 +1,19 @@
 ---
 # GRUB
 
-# Install tools for EFI management
-- name: "efi packages | install"
-  dnf: name=grub2-efi-modules state=latest
-  become: yes
+# I believe this can be deprecated in FC27.
+# https://bugzilla.redhat.com/show_bug.cgi?id=1455717
+#
+# The starfield theme is also gone Replace it with breeze.
+
+## Install tools for EFI management
+#- name: "efi packages | install"
+#  dnf: name=grub2-efi-modules state=latest
+#  become: yes
 
 # Install theme package
 - name: "theme package | install"
-  dnf: name=grub2-starfield-theme state=latest
+  dnf: name=grub2-breeze-theme state=latest
   become: yes
 
 # Set the theme in the GRUB config
@@ -16,7 +21,7 @@
   lineinfile:
     dest: "/etc/default/grub"
     regexp: "^GRUB_THEME"
-    line: "GRUB_THEME=\"/boot/grub2/themes/system/theme.txt\""
+    line: "GRUB_THEME=\"/boot/grub2/themes/breeze/theme.txt\""
     backup: yes
   notify:
     - rebuild efi grub
