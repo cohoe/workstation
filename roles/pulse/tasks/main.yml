@@ -40,18 +40,11 @@
 # https://git.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/commit/?id=bee333f6ecd6e89d89ef68bf880d93b1fe5fff7a
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues/464
 #
-# Ignore errors because if there is an issue here it's likely that we
-# are re-applying a playbook and dnf has already excluded the package.
 # Should be fixed in https://bugzilla.redhat.com/show_bug.cgi?id=1545454
+#
+# 20180308 - This will be fixed in FC28 with the release of xfce4-pulseaudio-plugin-0.3.5-1.fc28.x86_64.rpm
+# It is currently available in rawhide.
 - name: "hack fix for volume icon"
-  dnf: name=http://dl.fedoraproject.org/pub/fedora/linux/releases/25/Everything/x86_64/os/Packages/x/xfce4-pulseaudio-plugin-0.2.4-5.fc25.x86_64.rpm
+  dnf: name=http://mirror.rit.edu/fedora/fedora/linux/development/28/Everything/x86_64/os/Packages/x/xfce4-pulseaudio-plugin-0.3.5-1.fc28.x86_64.rpm
        state=present
-  become: yes
-  ignore_errors: yes
-
-- name: "prevent updates until a patch comes out"
-  lineinfile:
-    dest: /etc/dnf/dnf.conf
-    regexp: "^exclude=xfce4-pulseaudio-plugin"
-    line: "exclude=xfce4-pulseaudio-plugin*"
   become: yes
