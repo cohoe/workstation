@@ -3,29 +3,30 @@
 - dnf: name=firefox state=latest
   become: true
 
+# 03/08/18 Imma disable Flash because Flash and see what happens.
 # Fuck flash, but we sometimes need it
-- name: "flash | repository | create"
-  yum_repository:
-    name: flash
-    description: Adobe Flash native binary
-    baseurl: http://linuxdownload.adobe.com/linux/$basearch/
-    enabled: yes
-    gpgcheck: no
-  become: yes
-
-- dnf: name=flash-plugin state=latest
-  become: true
-
-# Needed for Flash to do certain things
-- seboolean: name=mozilla_plugin_can_network_connect
-             state=yes
-             persistent=yes
-  become: true
-
-- seboolean: name=unconfined_mozilla_plugin_transition
-             state=no
-             persistent=yes
-  become: true
+#- name: "flash | repository | create"
+#  yum_repository:
+#    name: flash
+#    description: Adobe Flash native binary
+#    baseurl: http://linuxdownload.adobe.com/linux/$basearch/
+#    enabled: yes
+#    gpgcheck: no
+#  become: yes
+#
+#- dnf: name=flash-plugin state=latest
+#  become: true
+#
+## Needed for Flash to do certain things
+#- seboolean: name=mozilla_plugin_can_network_connect
+#             state=yes
+#             persistent=yes
+#  become: true
+#
+#- seboolean: name=unconfined_mozilla_plugin_transition
+#             state=no
+#             persistent=yes
+#  become: true
 
 # This is needed for Cisco AnyConnect to actually trust anything
 - name: "firefox | profile | create"
