@@ -96,3 +96,8 @@
   copy: src=localbin.sh
         dest=/etc/profile.d/localbin.sh
   become: yes
+
+# Install git switcher
+- name: install git switcher
+  copy: src=git-switch-remote
+        dest={{ user_bin_dir }}/git-switch-remote

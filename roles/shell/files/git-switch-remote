@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Git remote switcher - from SSH to HTTPS and back again.
+# Help from https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash
+
+usage() { echo "$0 usage:" && grep " .)\ #" $0; exit 0; }
+
+while getopts "hr:p:" arg; do
+    case "$arg" in
+        r) # Root of the repository to work on.
+            REPO=$OPTARG
+            ;;
+        p) # Explicitly switch to a given protocol.
+            PROTOCOL=$OPTARG
+            echo "Not implemented yet."
+            exit 1
+            ;;
+        h) # Display this help.
+            usage
+            exit 0
+            ;;
+    esac
+done
+
+# If no explicit directory was given on the CLI, then we
+# default to finding the root of the git repo assumed to
+# be in or above our current directory.
+if [ -z "${REPO}" ]; then
+    REPO=$(git rev-parse --show-toplevel)
+fi
+
+# If no explicit protocol was given on the CLI, then we
+# default to toggling between HTTPS and SSH.
+if [ -z "${PROTOCOL}" ]; then
+    PROTOCOL="TOGGLE"
+fi
+
+if [ ! -d "${REPO}/.git" ]; then
+    echo "Directory ${REPO} is not a Git repo."
+    exit 1
+fi
+
+# Get the current remote of the repo
+cd "${REPO}"
+repo_remote=$(git remote get-url origin)
+
+if [[ "${repo_remote}" = "git@"* ]]; then
+    # Remote is SSH.
+    new_repo_remote=$(echo "${repo_remote}" | sed 's_:_/_' | sed 's_git@_https://_')
+elif [[ "${repo_remote}" = "https://"* ]]; then
+    # Remote is HTTPS.
+    new_repo_remote=$(echo "${repo_remote}" | sed 's_https://_git@_' | sed 's_/_:_')
+fi
+
+git remote set-url origin ${new_repo_remote}
+echo "${repo_remote} -> ${new_repo_remote}"
