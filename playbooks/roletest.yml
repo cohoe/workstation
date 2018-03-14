@@ -24,7 +24,10 @@
     #- openttd
     #- backups
     #- mail
-    - nvidia
+    #- nvidia
+    #- clitools
+    #- shell
+    - pycharm
 
   tasks:
     

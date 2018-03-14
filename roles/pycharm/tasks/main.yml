@@ -34,3 +34,7 @@
 - name: load config repository
   git: repo={{ pycharm_config_repo }}
        dest=~/.{{ pycharm_config_dir }}/config/settingsRepository/repository
+
+# Switch remotes
+- name: reconfigure settings remote
+  shell: git-switch-remote ~/.{{ pycharm_config_dir }}/config/settingsRepository/repository

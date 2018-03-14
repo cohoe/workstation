@@ -101,3 +101,4 @@
 - name: install git switcher
   copy: src=git-switch-remote
         dest={{ user_bin_dir }}/git-switch-remote
+        mode=0755

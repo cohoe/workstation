@@ -2,6 +2,6 @@
 pycharm_repo: https://download.jetbrains.com/python
 pycharm_package: "{{ pycharm_version }}.tar.gz"
 pycharm_root: /opt/pycharm
-pycharm_version: pycharm-community-2017.1.2
-pycharm_config_dir: PyCharmCE2017.1
+pycharm_version: pycharm-community-2017.3.4
+pycharm_config_dir: PyCharmCE2017.3
 pycharm_config_repo: https://github.com/cohoe/intellij-settings
