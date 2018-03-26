@@ -57,3 +57,11 @@
     - { key: '/commands/custom/XF86AudioPlay', value: 'amixer set Master toggle' }
     - { key: '/commands/custom/XF86AudioNext', value: 'maxime.py --toggle' }
     - { key: '/commands/custom/XF86AudioPrev', value: 'maxime.py --reconnect' }
+
+# Make certain keys go away
+- name: reset keys
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' -r
+  environment:
+    DISPLAY: "{{ xfce_display }}"
+  with_items:
+    - '/commands/custom/<Primary><Alt>l'
