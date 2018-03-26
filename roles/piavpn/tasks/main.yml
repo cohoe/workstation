@@ -1,4 +1,11 @@
 ---
+- name: install packages
+  dnf: name={{ item }}
+       state=latest
+  become: yes
+  with_items:
+    - NetworkManager-openvpn-gnome
+
 - name: "ca file | create"
   copy: dest={{ piavpn_ca }}
         src=pia-ca.crt
