@@ -34,6 +34,7 @@
     - fuse-exfat        # EXFAT file system
     - ffmpeg            # Media utility
     - ncdu              # ncurses disk usage
+    - jhead             # JPEG data tool
   become: true
   tags:
     - packages
