@@ -60,7 +60,7 @@
 
 # Make certain keys go away
 - name: reset keys
-  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item.key }}' -r
+  shell: xfconf-query -c xfce4-keyboard-shortcuts -p '{{ item }}' -r
   environment:
     DISPLAY: "{{ xfce_display }}"
   with_items:

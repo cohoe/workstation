@@ -27,7 +27,8 @@
     #- nvidia
     #- clitools
     #- shell
-    - pycharm
+    #- pycharm
+    - nvidia
 
   tasks:
     
