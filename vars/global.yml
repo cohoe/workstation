@@ -15,3 +15,5 @@ user_public_directory: Public
 
 # System display
 display: ":0.0"
+
+user_bin_dir: ~/.bin
