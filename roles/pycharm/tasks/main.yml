@@ -37,4 +37,4 @@
 
 # Switch remotes
 - name: reconfigure settings remote
-  shell: {{user_bin_dir}}/git-switch-remote ~/.{{ pycharm_config_dir }}/config/settingsRepository/repository
+  shell: "{{user_bin_dir}}/git-switch-remote ~/.{{ pycharm_config_dir }}/config/settingsRepository/repository"
