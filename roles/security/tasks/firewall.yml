@@ -4,7 +4,6 @@
   dnf: name={{ item }} state=latest
   with_items:
     - firewalld
-    - python-firewall
 
 # Enable firewalld
 - name: "firewalld | enable"
