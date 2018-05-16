@@ -43,8 +43,9 @@
 # Should be fixed in https://bugzilla.redhat.com/show_bug.cgi?id=1545454
 #
 # 20180308 - This will be fixed in FC28 with the release of xfce4-pulseaudio-plugin-0.3.5-1.fc28.x86_64.rpm
+# 20180516 - It's fixed!!!
 # It is currently available in rawhide.
-- name: "hack fix for volume icon"
-  dnf: name=http://mirror.rit.edu/fedora/fedora/linux/development/28/Everything/x86_64/os/Packages/x/xfce4-pulseaudio-plugin-0.3.5-1.fc28.x86_64.rpm
-       state=present
-  become: yes
+#- name: "hack fix for volume icon"
+#  dnf: name=http://mirror.rit.edu/fedora/fedora/linux/development/28/Everything/x86_64/os/Packages/x/xfce4-pulseaudio-plugin-0.3.5-1.fc28.x86_64.rpm
+#       state=present
+#  become: yes
