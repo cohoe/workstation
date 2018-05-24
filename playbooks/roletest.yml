@@ -28,9 +28,7 @@
     #- clitools
     #- shell
     #- pycharm
-    - nvidia
-
-  tasks:
+    #- nvidia
     
   vars_files:
     - ../vars/global.yml
