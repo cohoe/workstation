@@ -3,6 +3,7 @@
   dnf: name={{ item }} state=latest
   with_items:
     - java
+    - icedtea-web
   become: true
 
 # The fact that I need to do this is stupid. But nearly every IPMI
@@ -20,4 +21,15 @@
       line: "jdk.jar.disabledAlgorithms=MD2, RSA keySize < 1024"
     - regexp: "^jdk.tls.disabledAlgorithms"
       line: "jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 768, \\"
+  become: yes
+
+- name: re-enable old iDRAC consoles
+  lineinfile:
+    dest: /etc/crypto-policies/back-ends/java.config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  with_items:
+    - regexp: "^jdk.tls.disabledAlgorithms"
+      line: "jdk.tls.disabledAlgorithms=DH keySize < 1023, SSLv2, SSLv3, DHE_DSS, RSA_EXPORT, DHE_DSS_EXPORT, DHE_RSA_EXPORT, DH_DSS_EXPORT, DH_RSA_EXPORT, DH_anon, ECDH_anon, DH_RSA, DH_DSS, ECDH, DES_CBC, RC4_40, RC4_128, DES40_CBC, RC2, HmacMD5"
   become: yes

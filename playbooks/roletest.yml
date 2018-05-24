@@ -7,32 +7,9 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    #- aws
-    #- wireshark
-    #- mime
-    #- pulse
-    #- repo
-    #- launchy
-    #- dnf
-    #- rpmfusion
-    #- sublime
-    #- dns
-    #- java
-    #- xfce
-    #- vbox/host
-    #- xfce
-    #- openttd
-    #- backups
-    #- mail
-    #- nvidia
-    #- clitools
-    #- shell
-    #- pycharm
-    #- nvidia
-    - pycharm
+    - java
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/ctct.yml
     #- ../vars/home.yml
-    #- ../vars/emc.yml
