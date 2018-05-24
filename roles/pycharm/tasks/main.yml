@@ -1,40 +1,32 @@
 ---
-# Create install directory
-- name: "directory | create"
-  file: path={{ pycharm_root }}
+# Install package
+- name: install package
+  dnf: name={{ pycharm_package }}
+       state=latest
+  become: yes
+
+- name: figure out package version
+  shell: rpm -qa {{ pycharm_package }} | sed 's/{{ pycharm_package }}-\([0-9]\+.[0-9]\)\(.*\)$/\1/'
+  register: pycharm_package_version
+  changed_when: false
+
+- name: set the pycharm config dir
+  set_fact:
+    pycharm_config_dir: "{{ pycharm_config_prefix }}{{ pycharm_package_version.stdout }}"
+
+- name: create configuration dir
+  file: path=~/{{ pycharm_config_dir }}/{{ item }}
         state=directory
         recurse=yes
-  become: yes
+  with_items:
+    - config/settingsRepository/repository
+    - config/options
 
-# Download the archive
-- name: "archive | download"
-  get_url: url={{ pycharm_repo }}/{{ pycharm_package }}
-           dest=/tmp/{{ pycharm_package }}
-
-# Extract the archive
-- name: "archive | deploy"
-  unarchive: src=/tmp/{{ pycharm_package }}
-             dest={{ pycharm_root }}
-             copy=no
-  become: yes
-
-# Create desktop shortcut
-- name: "shortcut | install"
-  template: src=pycharm.desktop
-            dest={{ local_shortcuts_dir }}/pycharm.desktop
-  become: yes
-
-# Create config directory
-- name: create config directory
-  file: path=~/.{{ pycharm_config_dir }}/config/settingsRepository/repository
-        state=directory
-        recurse=yes
-
-# Load config repository
+# In order for this to take effect, on first pycharm run you gotta
+# do an initial overrite local settings. Not sure why, but it got me what I wanted.
 - name: load config repository
   git: repo={{ pycharm_config_repo }}
-       dest=~/.{{ pycharm_config_dir }}/config/settingsRepository/repository
+       dest=~/{{ pycharm_config_dir }}/config/settingsRepository/repository
 
-# Switch remotes
-- name: reconfigure settings remote
-  shell: "{{user_bin_dir}}/git-switch-remote ~/.{{ pycharm_config_dir }}/config/settingsRepository/repository"
+- name: switch config repo to ssh
+  shell: "{{ user_bin_dir }}/git-switch-remote -r ~/{{ pycharm_config_dir }}/config/settingsRepository/repository"

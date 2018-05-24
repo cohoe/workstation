@@ -29,6 +29,7 @@
     #- shell
     #- pycharm
     #- nvidia
+    - pycharm
     
   vars_files:
     - ../vars/global.yml
