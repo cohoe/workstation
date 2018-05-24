@@ -23,6 +23,7 @@
       line: "jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 768, \\"
   become: yes
 
+# https://sourceforge.net/p/turbovnc/mailman/message/35524085/
 - name: re-enable old iDRAC consoles
   lineinfile:
     dest: /etc/crypto-policies/back-ends/java.config
