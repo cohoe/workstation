@@ -12,8 +12,6 @@ while getopts "hr:p:" arg; do
             ;;
         p) # Explicitly switch to a given protocol.
             PROTOCOL=$OPTARG
-            echo "Not implemented yet."
-            exit 1
             ;;
         h) # Display this help.
             usage
@@ -44,12 +42,33 @@ fi
 cd "${REPO}"
 repo_remote=$(git remote get-url origin)
 
-if [[ "${repo_remote}" = "git@"* ]]; then
-    # Remote is SSH.
-    new_repo_remote=$(echo "${repo_remote}" | sed 's_:_/_' | sed 's_git@_https://_')
-elif [[ "${repo_remote}" = "https://"* ]]; then
-    # Remote is HTTPS.
-    new_repo_remote=$(echo "${repo_remote}" | sed 's_https://_git@_' | sed 's_/_:_')
+if [[ "${PROTOCOL}" = "TOGGLE" ]]; then
+    if [[ "${repo_remote}" = "git@"* ]]; then
+        # Remote is currently SSH.
+        new_repo_remote=$(echo "${repo_remote}" | sed 's_:_/_' | sed 's_git@_https://_')
+    elif [[ "${repo_remote}" = "https://"* ]]; then
+        # Remote is currently HTTPS.
+        new_repo_remote=$(echo "${repo_remote}" | sed 's_https://_git@_' | sed 's_/_:_')
+    fi
+elif [[ "${PROTOCOL}" = "ssh" ]]; then
+    if [[ "${repo_remote}" != "git@"* ]]; then
+        # Remote is currently HTTPS.
+        new_repo_remote=$(echo "${repo_remote}" | sed 's_https://_git@_' | sed 's_/_:_')
+    else
+        # No change
+        new_repo_remote=${repo_remote}
+    fi
+elif [[ "${PROTOCOL}" = "https" ]]; then
+    if [[ "${repo_remote}" != "https://"* ]]; then
+        # Remote is currently SSH.
+        new_repo_remote=$(echo "${repo_remote}" | sed 's_:_/_' | sed 's_git@_https://_')
+    else
+        # No change
+        new_repo_remote=${repo_remote}
+    fi
+else
+    echo "Protocol '${PROTOCOL}' not supported."
+    exit 1
 fi
 
 git remote set-url origin ${new_repo_remote}
