@@ -4,7 +4,6 @@
   dnf: name={{ item }} state=latest
   become: yes
   with_items:
-    - icedtea-web       # Java Webapps
     - texworks          # LaTeX tools
     - texlive-pdftex    # LaTeX PDF tools
     - texlive           # More LaTeX tools
