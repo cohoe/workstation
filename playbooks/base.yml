@@ -5,6 +5,7 @@
     - common
     - dnf
     - rpmfusion
+    - fedorarepos
     - clitools
     - shell
     - sudo

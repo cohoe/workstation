@@ -7,7 +7,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - java
+    - nvidia
     
   vars_files:
     - ../vars/global.yml
