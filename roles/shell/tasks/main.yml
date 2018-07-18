@@ -71,6 +71,7 @@
 - name: determine nvm version
   shell: bash -c "curl -s \"https://api.github.com/repos/creationix/nvm/releases/latest\" | jq -r '.tag_name'"
   register: nvm_version
+  changed_when: false
 
 - git: repo={{ nvm_repo }}
        dest={{ nvm_directory }}

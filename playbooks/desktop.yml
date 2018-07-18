@@ -1,5 +1,6 @@
 ---
-- import_playbook: base.yml
+# Only comment this out if testing something new
+#- import_playbook: base.yml
 
 - name: Graphical desktop stuff
   hosts: all
