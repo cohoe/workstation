@@ -14,7 +14,6 @@
     - security
     - pipeline
     - samba
-    - hipchat
     - rpmbuild
     - rvm
     - wallpaper
