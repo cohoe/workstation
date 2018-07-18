@@ -2,6 +2,7 @@
 - name: "python-dnf | install"
   shell: dnf install python-dnf -y
   become: yes
+  warn: False
 
 # python-firewall was removed in FC28
 - name: "packages | install"

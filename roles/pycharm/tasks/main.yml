@@ -17,6 +17,7 @@
   shell: rpm -qa {{ pycharm_package }} | sed 's/{{ pycharm_package }}-\([0-9]\+.[0-9]\)\(.*\)$/\1/'
   register: pycharm_package_version
   changed_when: false
+  warn: false
 
 - name: set the pycharm config dir
   set_fact:

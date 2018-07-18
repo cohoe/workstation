@@ -12,7 +12,6 @@
         - samba-client
   roles:
     - security
-    - ldap
     - pipeline
     - samba
     - hipchat
@@ -21,6 +20,13 @@
     - wallpaper
     - docker
     - ctct
+
+  tasks:
+    - copy:
+        dest: /etc/buildinfo
+        content: "{{ ansible_date_time.iso8601 }}"
+        mode: 0644
+      become: yes
 
   vars_files:
     - ../vars/global.yml
