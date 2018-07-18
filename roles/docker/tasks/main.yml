@@ -9,6 +9,7 @@
   with_items:
     - docker
     - python-docker-py
+    - python3-docker-py
 
 # Enable service
 - name: "service | enable"
