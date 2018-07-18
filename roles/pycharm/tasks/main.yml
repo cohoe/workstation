@@ -14,10 +14,11 @@
   become: yes
 
 - name: figure out package version
-  shell: rpm -qa {{ pycharm_package }} | sed 's/{{ pycharm_package }}-\([0-9]\+.[0-9]\)\(.*\)$/\1/'
+  shell:
+    cmd: rpm -qa {{ pycharm_package }} | sed 's/{{ pycharm_package }}-\([0-9]\+.[0-9]\)\(.*\)$/\1/'
+    warn: false
   register: pycharm_package_version
   changed_when: false
-  warn: false
 
 - name: set the pycharm config dir
   set_fact:
