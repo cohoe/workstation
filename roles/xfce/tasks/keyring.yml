@@ -1,0 +1,13 @@
+---
+# Seahorse Keyring Tool
+# https://bugzilla.redhat.com/show_bug.cgi?id=1471552
+- name: enable auto keyring
+  lineinfile:
+    path: /etc/xdg/autostart/{{ item }}.desktop
+    regexp: "^OnlyShowIn"
+    line: "OnlyShowIn=GNOME;Unity;MATE;XFCE;"
+  with_items:
+    - gnome-keyring-pkcs11
+    - gnome-keyring-secrets
+    - gnome-keyring-ssh
+  become: yes

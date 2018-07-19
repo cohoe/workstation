@@ -7,7 +7,8 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - nvidia
+    #- nvidia
+    - xfce
     
   vars_files:
     - ../vars/global.yml
