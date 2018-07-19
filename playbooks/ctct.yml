@@ -21,10 +21,21 @@
     - ctct
 
   tasks:
+    # Log when we last ran
     - copy:
         dest: /etc/buildinfo
         content: "{{ ansible_date_time.iso8601 }}"
         mode: 0644
+      become: yes
+    # It seems that no matter what, the Fedora installer leaves some files
+    # inappropriately labeled. This generates a bunch of SELinux alerts on
+    # first proper login. This will get the filesystem back to a "sane"
+    # state. Anything after this will need fixing.
+    #
+    # This command must be the last thing we run on the system to ensure
+    # everything gets relabeled appropriately.
+    - name: fix filesystem selinux labels
+      shell: restorecon -r /
       become: yes
 
   vars_files:
