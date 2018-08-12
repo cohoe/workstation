@@ -8,7 +8,8 @@
         - ssh
   roles:
     #- nvidia
-    - xfce
+    #- xfce
+    - konsole
     
   vars_files:
     - ../vars/global.yml

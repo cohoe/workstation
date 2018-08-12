@@ -14,9 +14,14 @@
         state=directory
 
 # Drop config file
-- name: "rc | create"
-  copy: src=konsolerc
-        dest=~/.config/konsolerc
+- name: "config files"
+  copy: src={{ item.src }}
+        dest={{ item.dest }}
+  with_items:
+    - src: konsolerc
+      dest: ~/.config/konsolerc
+    - src: konsole.kmessagebox
+      dest: ~/.config/konsole.kmessagebox
 
 # Drop profile
 - name: "profile config | create"
