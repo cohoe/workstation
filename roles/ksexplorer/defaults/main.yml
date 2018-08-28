@@ -1,5 +1,5 @@
 ---
-ksexplorer_repo: https://github.com/kaikramer/keystore-explorer/releases/download/v5.1.1
-ksexplorer_version: kse-511
+ksexplorer_repo: https://github.com/kaikramer/keystore-explorer/releases/download/v5.3.2
+ksexplorer_version: kse-532
 ksexplorer_package: "{{ ksexplorer_version }}.zip"
 ksexplorer_root: /opt/kse
