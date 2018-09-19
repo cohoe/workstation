@@ -9,7 +9,8 @@
   roles:
     #- nvidia
     #- xfce
-    - konsole
+    #- konsole
+    - slack
     
   vars_files:
     - ../vars/global.yml

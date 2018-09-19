@@ -19,3 +19,10 @@
 - name: "autostart"
   copy: src=slack-startup.desktop
         dest={{ user_autostart_dir }}/slack.desktop
+
+- name: install dark theme
+  blockinfile:
+    path: /usr/lib/slack/resources/app.asar.unpacked/src/static/ssb-interop.js
+    block: "{{ lookup('file', '../roles/slack/files/dark.js') }}"
+    marker: "// {mark} ANSIBLE MANAGED BLOCK"
+  become: yes
