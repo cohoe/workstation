@@ -22,9 +22,3 @@
   copy: dest={{ local_shortcuts_dir }}/google-chrome-incognito.desktop
         src=incognito.desktop
   become: yes
-
-# Chrome leaves behind a lot of junk shortcuts. Purge them
-- name: "junk shortcut cleanup"
-  cron: name="junk chrome shortcuts"
-        minute="*/5"
-        job="rm -f ~/.local/share/applications/chrome-*.desktop > /dev/null"
