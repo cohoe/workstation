@@ -10,9 +10,10 @@
     #- nvidia
     #- xfce
     #- konsole
-    - slack
+    #- slack
+    - ctct
     
   vars_files:
     - ../vars/global.yml
-    #- ../vars/ctct.yml
+    - ../vars/ctct.yml
     #- ../vars/home.yml
