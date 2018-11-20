@@ -18,7 +18,7 @@ set -e
 
 VBOX_ADDITIONS_BINARY="VBoxLinuxAdditions.run"
 
-mount_return=$(gio mount -d /dev/sr0)
+mount_return=$(gio mount -d /dev/sr0 2>&1 || true)
 mount_path=""
 
 # Mount the guest additions ISO to our guest
@@ -27,12 +27,15 @@ if [[ "${mount_return}" == "No volume for device file /dev/sr0" ]]; then
     exit 1
 elif [[ "${mount_return}" == "Mounted /dev/sr0 at"* ]]; then
     mount_path=$(echo "${mount_return}" | sed 's_Mounted /dev/sr0 at __')
-    echo "Mount path is ${mount_path}"
+elif [[ "${mount_return}" == *"is already mounted"* ]]; then
+    mount_path=$(echo "${mount_return}" | sed -E "s_^(.*)\`(.*)'\._\2_")
 else
     echo "ERROR: Something went wrong. The result of gio mount was:"
     echo "${mount_return}"
     exit 1
 fi
+
+echo "Mount path is ${mount_path}"
 
 # Copy the binary to the local filesystem
 temp_dir=$(mktemp -d)
