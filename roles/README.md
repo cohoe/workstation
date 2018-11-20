@@ -35,7 +35,6 @@ Workstation configurations in any environment.
 * **slack**: Slack desktop application
 * **vbox/guest**: VirtualBox guest tools
 * **vbox/host**: VirtualBox host software
-* **wallpaper**: User and Login wallpaper
 * **x11**: X11 configuration
 * **xfce**: XFCE desktop environment
 * **xscreensaver**: XScreenSaver configuration

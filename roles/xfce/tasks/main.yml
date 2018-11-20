@@ -6,6 +6,7 @@
 - import_tasks: keyboard.yml
 - import_tasks: junk.yml
 - import_tasks: keyring.yml
+- import_tasks: wallpaper.yml
 
 # Not sure if I really still want this...
 #- name: "packages | install"
