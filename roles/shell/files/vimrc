@@ -68,3 +68,4 @@ set scrolloff=10
 
 set pastetoggle=<F2>
 
+set virtualedit=onemore
