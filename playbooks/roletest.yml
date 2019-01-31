@@ -1,6 +1,6 @@
 ---
 - name: RoleTest
-  hosts: all
+  hosts: localhost
   vars:
     - secure_firewalld: true
     - firewalld_zone: home
@@ -13,6 +13,8 @@
     #- slack
 #    - ctct
     - common
+    - dnf
+    - rpmfusion
     
   vars_files:
     - ../vars/global.yml
