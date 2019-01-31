@@ -1,34 +1,32 @@
 ---
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
+- name: install shell packages
+  dnf:
+    name:
+      - zsh
+      - tmux
+      - screen
+    state: latest
   become: yes
-  with_items:
-    - zsh
-    - tmux
-    - screen
 
 # This is needed for face to work. Only user should write to satisfy sshd
-- name: "home dir permissions"
-  file: path=~
-        mode=0751
+- name: set homedir permissions
+  file:
+    path: ~
+    mode: 0751
 
-- name: "user bin dir | create"
-  file: path={{ user_bin_dir }} state=directory
-
-- name: "Home subdirectories | create"
-  file: path=~/{{ item }}
-        state=directory
-  with_items:
-    - Software
+- name: create user bin directory
+  file:
+    path: "{{ user_bin_dir }}"
+    state: directory
 
 # Projects directory
-- file: path=~/Projects
-        state=directory
-- file: path=~/Projects/{{ item }}
-        state=directory
-  with_items:
-    - pub
-    - priv
+- name: create projects directory
+  file:
+    path:
+      - ~/Projects
+      - ~/Projects/pub
+      - ~/Projects/priv
+    state: directory
 
 # Misc dotfiles
 - copy: dest=~/.{{ item }}
