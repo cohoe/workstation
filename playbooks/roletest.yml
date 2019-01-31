@@ -15,6 +15,7 @@
     - common
     - dnf
     - rpmfusion
+    - fedorarepos
     
   vars_files:
     - ../vars/global.yml

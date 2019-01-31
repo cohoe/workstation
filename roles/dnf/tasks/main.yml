@@ -1,5 +1,5 @@
 ---
-- name: "allow only two kernels to be installed at the same time"
+- name: allow only two kernels to be installed at the same time
   lineinfile:
     dest: /etc/dnf/dnf.conf
     regexp: "^installonly_limit="

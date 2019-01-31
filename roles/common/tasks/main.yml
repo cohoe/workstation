@@ -1,11 +1,11 @@
 ---
-- name: "manually install python-dnf libs"
+- name: manually install python-dnf libs
   shell:
     cmd: dnf install python2-dnf -y
     warn: false
   become: yes
 
-- name: "install python selinux bindings"
+- name: install python selinux bindings
   dnf:
     name:
       - python2-libsemanage
@@ -13,13 +13,13 @@
     state: present
   become: yes
 
-- name: "update all packages"
+- name: update all packages
   dnf:
     name: '*'
     state: latest
   become: yes
 
-- name: "create ansible facts directory"
+- name: create ansible facts directory
   file:
     path: /etc/ansible/facts.d
     recurse: yes

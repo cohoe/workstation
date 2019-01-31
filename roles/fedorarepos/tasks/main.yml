@@ -1,5 +1,6 @@
 ---
 - name: install fedora workstation repos
-  dnf: name=fedora-workstation-repositories
-       state=present
+  dnf:
+    name: fedora-workstation-repositories
+    state: present
   become: yes
