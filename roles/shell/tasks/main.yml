@@ -8,7 +8,7 @@
     state: latest
   become: yes
 
-- import_tasks: "{{ task_item }}"
+- include_tasks: "{{ task_item }}"
   with_items:
     - homedir.yml
     - zsh.yml
