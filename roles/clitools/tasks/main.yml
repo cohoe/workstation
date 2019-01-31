@@ -1,53 +1,54 @@
 ---
 # Python
-- name: "python | install"
-  dnf: name={{ item }} state=latest
-  with_items:
-    - python-virtualenvwrapper
-    - python-pep8
+- name: install basic python tools
+  dnf:
+    name:
+      - python-virtualenvwrapper
+      - python-pep8
+    state: latest
   become: true
 
 # Common system tools
-- name: "tools | install"
-  dnf: name={{ item }} state=latest
-  with_items:
-    - bind-utils        # DNS utilities (nslookup)
-    - openssh-clients   # SSH client (ssh)
-    - openldap-clients  # LDAP client (ldapsearch)
-    - iftop             # Network monitoring
-    - nmap              # Port scanning
-    - tcpdump           # Traffic monitoring
-    - net-snmp-utils    # SNMP client (snmpwalk)
-    - tftp              # TFTP client
-    - htop              # Load monitoring
-    - iotop             # IO monitoring
-    - dkms              # Dynamic kernel modules
-    - unrar             # RAR file tools
-    - openvpn           # VPN
-    - rfkill            # Wifi Control
-    - dnf-plugin-system-upgrade # System upgrade
-    - numlockx          # Enable numlock always
-    - glances           # System load
-    - ipmitool          # IPMI remote control tool
-    - pv                # Pipe monitor (for dd jobs)
-    - dmidecode         # System information
-    - fuse-exfat        # EXFAT file system
-    - ffmpeg            # Media utility
-    - ncdu              # ncurses disk usage
-    - jhead             # JPEG data tool
+- name: install common system tools
+  dnf:
+    name:
+      - bind-utils        # DNS utilities (nslookup)
+      - openssh-clients   # SSH client (ssh)
+      - openldap-clients  # LDAP client (ldapsearch)
+      - iftop             # Network monitoring
+      - nmap              # Port scanning
+      - tcpdump           # Traffic monitoring
+      - net-snmp-utils    # SNMP client (snmpwalk)
+      - tftp              # TFTP client
+      - htop              # Load monitoring
+      - iotop             # IO monitoring
+      - dkms              # Dynamic kernel modules
+      - unrar             # RAR file tools
+      - openvpn           # VPN
+      - rfkill            # Wifi Control
+      - dnf-plugin-system-upgrade # System upgrade
+      - numlockx          # Enable numlock always
+      - glances           # System load
+      - ipmitool          # IPMI remote control tool
+      - pv                # Pipe monitor (for dd jobs)
+      - dmidecode         # System information
+      - fuse-exfat        # EXFAT file system
+      - ffmpeg            # Media utility
+      - ncdu              # ncurses disk usage
+      - jhead             # JPEG data tool
+    state: latest
   become: true
-  tags:
-    - packages
 
 # Software development tools
-- name: "dev tools | install"
+- name: install software development tools
   dnf: name={{ item }} state=latest
-  with_items:
-    - vim-enhanced  # Editor
-    - strace        # Stack debugger
-    - git           # VCS
-    - setroubleshoot-server # SELinux debugging tools
-    - gcc           # Compiler
-    - jq            # json parser
-    - ansible-lint  # Ansible linter
+    name:
+      - vim-enhanced  # Editor
+      - strace        # Stack debugger
+      - git           # VCS
+      - setroubleshoot-server # SELinux debugging tools
+      - gcc           # Compiler
+      - jq            # json parser
+      - ansible-lint  # Ansible linter
+    state: latest
   become: true
