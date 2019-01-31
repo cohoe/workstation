@@ -1,0 +1,17 @@
+# NodeJS Version Manager
+
+- name: determine nvm version
+  shell: bash -c "curl -s \"https://api.github.com/repos/creationix/nvm/releases/latest\" | jq -r '.tag_name'"
+  register: nvm_version
+  changed_when: false
+
+- name: download nvm
+  git:
+    repo: "{{ nvm_repo }}"
+    dest: "{{ nvm_directory }}"
+    version: "{{ nvm_version.stdout }}"
+
+- name: configure nvm in ohmyzsh
+  copy:
+    src: zsh/nvm.zsh
+    dest: "{{ ohmyzsh_directory}}/custom/nvm.zsh"

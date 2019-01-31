@@ -1,0 +1,26 @@
+# This is needed for face to work. Only user should write to satisfy sshd
+- name: set homedir permissions
+  file:
+    path: '~'
+    mode: 0751
+
+- name: create user bin directory
+  file:
+    path: '~/.bin'
+    state: directory
+
+# Projects directory
+- name: create projects directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/Projects
+    - ~/Projects/pub
+    - ~/Projects/priv
+
+# Face for login
+- name: "user picture | get"
+  get_url:
+    url: "{{ user_face }}"
+    dest: '~/.face'

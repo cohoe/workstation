@@ -1,8 +1,4 @@
 ---
-# Package repositories
-use_repos:
- - rpmfusion
-
 # Various .desktop file directories
 sys_shortcuts_dir: /usr/share/applications
 local_shortcuts_dir: /usr/local/share/applications

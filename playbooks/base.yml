@@ -9,7 +9,6 @@
     - clitools
     - shell
     - sudo
-    - chrony
     - ssl
     - locale
     - java
