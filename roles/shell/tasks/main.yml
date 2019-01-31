@@ -8,12 +8,14 @@
     state: latest
   become: yes
 
-- import_tasks: "{{ item }}"
+- import_tasks: "{{ task_item }}"
   with_items:
     - homedir.yml
     - zsh.yml
     - git.yml
-    - nvm.yml
+#    - nvm.yml # DISABLING NVM UNTIL I ACTUALLY NEED IT AGAIN
+  loop_control:
+    loop_var: task_item
 
 - name: install user dotfiles
   copy:

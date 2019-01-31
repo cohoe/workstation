@@ -1,5 +1,6 @@
 ---
-- copy:
+- name: configure sudoers
+  copy:
     dest: /etc/sudoers.d/01-wheel
     mode: 0644
     owner: root

@@ -1,18 +1,15 @@
 ---
-
-# Install SSL CA certificates
-- name: "ca | trust"
-  get_url: url={{ sslca_repo }}/{{ item }}
-           dest=/etc/pki/ca-trust/source/anchors/{{ item }}
-           validate_certs=False
+- name: install SSL CAs to trust
+  get_url:
+    url: "{{ item.url }}"
+    dest: "/etc/pki/ca-trust/source/anchors/{{ item.dest }}"
+    validate_certs: False
   with_items: "{{ sslca_list }}"
   become: true
-  notify:
-    - update-ca-trust
   when: sslca_list is defined
 
 # Update the system SSL CA store manually. This could be needed
-# for later stuff, otherwise the notify would be sufficient.
+# for later stuff, otherwise a notify handler would be sufficient.
 - name: 'update-ca-trust manually'
   shell: 'update-ca-trust'
   become: yes

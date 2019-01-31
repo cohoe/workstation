@@ -1,6 +1,4 @@
 ---
-# Locale
-#
 # Set time to en_GB so that Monday is the first day of the week
 - name: "set time locale"
   lineinfile:

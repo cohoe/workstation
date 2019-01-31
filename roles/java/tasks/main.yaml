@@ -1,9 +1,10 @@
-# Java
-- name: "java | install"
-  dnf: name={{ item }} state=latest
-  with_items:
-    - java
-    - icedtea-web
+---
+- name: install java
+  dnf:
+    name:
+      - java
+      - icedtea-web
+    state: latest
   become: true
 
 # The fact that I need to do this is stupid. But nearly every IPMI
