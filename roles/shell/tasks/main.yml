@@ -8,96 +8,34 @@
     state: latest
   become: yes
 
-# This is needed for face to work. Only user should write to satisfy sshd
-- name: set homedir permissions
-  file:
-    path: ~
-    mode: 0751
-
-- name: create user bin directory
-  file:
-    path: "{{ user_bin_dir }}"
-    state: directory
-
-# Projects directory
-- name: create projects directory
-  file:
-    path:
-      - ~/Projects
-      - ~/Projects/pub
-      - ~/Projects/priv
-    state: directory
-
-# Misc dotfiles
-- copy: dest=~/.{{ item }}
-        src={{ item }}
+- import_tasks: "{{ item }}"
   with_items:
-    - gitignore
+    - homedir.yml
+    - zsh.yml
+    - git.yml
+    - nvm.yml
+
+- name: install user dotfiles
+  copy:
+    dest: "~/.{{ item }}"
+    src: "{{ item }}"
+  with_items:
     - vimrc
     - screenrc
     - tmux.conf
 
-# Git config
-- template: src=gitconfig
-            dest=~/.gitconfig
-
-# Root dotfiles
-- copy: dest=~/.{{ item }}
-        src={{ item }}
+- name: install root dotfiles
+  copy:
+    dest: "~/.{{ item }}"
+    src: "{{ item }}"
   become: yes
   with_items:
     - vimrc
     - screenrc
 
-# zshrc
-- copy: dest=~/.zshrc
-        src=zsh/zshrc
-
-# ohmyzsh
-- git: repo={{ ohmyzsh_repo }}
-       dest={{ ohmyzsh_directory }}
-
-# Custom files
-- copy: dest={{ ohmyzsh_directory }}/custom/{{ item }}
-        src=zsh/{{ item }}
-  with_items:
-    - aliases.zsh
-    - environment.zsh
-    - path.zsh
-
-# NVM
-- name: determine nvm version
-  shell: bash -c "curl -s \"https://api.github.com/repos/creationix/nvm/releases/latest\" | jq -r '.tag_name'"
-  register: nvm_version
-  changed_when: false
-
-- git: repo={{ nvm_repo }}
-       dest={{ nvm_directory }}
-       version={{ nvm_version.stdout }}
-
-- copy: dest={{ ohmyzsh_directory}}/custom/nvm.zsh
-        src=zsh/nvm.zsh
-
-
-- name: "user | shell | set"
-  user: name={{ ansible_user_id }}
-        shell=/bin/zsh
-  become: yes
-
-# Face for login
-- name: "user picture | get"
-  get_url: url={{ user_face }}
-           dest=~/.face
-  when: user_face is defined
-
 # Setup root paths
 - name: install custom shell paths
-  copy: src=localbin.sh
-        dest=/etc/profile.d/localbin.sh
+  copy:
+    src: localbin.sh
+    dest: /etc/profile.d/localbin.sh
   become: yes
-
-# Install git switcher
-- name: install git switcher
-  copy: src=git-switch-remote
-        dest={{ user_bin_dir }}/git-switch-remote
-        mode=0755

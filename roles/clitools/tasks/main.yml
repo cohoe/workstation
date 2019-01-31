@@ -41,7 +41,7 @@
 
 # Software development tools
 - name: install software development tools
-  dnf: name={{ item }} state=latest
+  dnf:
     name:
       - vim-enhanced  # Editor
       - strace        # Stack debugger
