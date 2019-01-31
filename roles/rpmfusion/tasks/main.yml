@@ -11,8 +11,9 @@
 - name: install rpmfusion keys
   rpm_key:
     state: present
-    key:
-      - http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-{{ ansible_distribution_version }}
-      - http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ ansible_distribution_version }}
+    key: "{{ item }}"
+  with_items:
+    - http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-{{ ansible_distribution_version }}
+    - http://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ ansible_distribution_version }}
   when: ansible_distribution == 'Fedora'
   become: yes
