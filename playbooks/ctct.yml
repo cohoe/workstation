@@ -15,7 +15,6 @@
     - pipeline
     - rpmbuild
     - rvm
-    - docker
     - ctct
 
   tasks:

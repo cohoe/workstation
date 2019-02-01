@@ -8,6 +8,7 @@
         - ssh
   roles:
 #    - grub
+    - rvm
     
   vars_files:
     - ../vars/global.yml

@@ -1,23 +1,23 @@
 ---
-- name: "install"
-  dnf: name={{ item }} state=latest
+- name: enable repo
+  lineinfile:
+    path: /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
+    insertafter: ^\[rpmfusion-nonfree-steam\]
+    regexp: ^enabled
+    line: enabled=1
   become: yes
-  when: '"rpmfusion" in use_repos'
-  with_items:
-    - steam
-    - xboxdrv
 
-- name: "service start"
-  action: service name={{ item }}
-          state=started
-          enabled=yes
+- name: install
+  dnf:
+    name:
+      - steam
+      - xboxdrv
+    state: latest
   become: yes
-  with_items:
-    - xboxdrv
 
-- name: "shortcuts | install"
-  copy: src={{ item }}
-        dest={{ local_shortcuts_dir }}/{{ item }}
+- name: start xbox controller drivers
+  service:
+    name: xboxdrv
+    state: started
+    enabled: yes
   become: yes
-  with_items:
-    - steambigpicture.desktop

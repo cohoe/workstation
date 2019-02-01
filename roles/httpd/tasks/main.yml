@@ -1,12 +1,13 @@
 ---
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
+- name: install packages
+  dnf:
+    name:
+      - httpd
+      - mod_ssl
+    state: latest
   become: yes
-  with_items:
-    - httpd
-    - mod_ssl
 
-- name: "userdir enable"
+- name: enable public shares for homedir
   lineinfile:
     dest: "/etc/httpd/conf.d/userdir.conf"
     regexp: "UserDir ([a-zA-Z]+)$"
@@ -14,7 +15,7 @@
   become: yes
   notify: restart httpd
 
-- name: "userdir config"
+- name: configure httpd for user public dirs
   lineinfile:
     dest: "/etc/httpd/conf.d/userdir.conf"
     regexp: "^<Directory(.*)/public_html\">$"
@@ -23,29 +24,30 @@
   become: yes
   notify: restart httpd
 
-- name: "selinux | set"
-  seboolean: name={{ item }}
-             state=yes
-             persistent=yes
+- name: selinux
+  seboolean:
+    name: "{{ item }}"
+    state: yes
+    persistent: yes
   with_items:
     - httpd_enable_homedirs
     - httpd_read_user_content
   become: yes
 
-- name: "directory | set"
-  file: path=~/{{ user_public_directory }}
-        state=directory
-        setype=public_content_rw_t
+- name: set directory context
+  file:
+    path: "~/{{ user_public_directory }}"
+    state: directory
+    setype: public_content_rw_t
 
-- name: "services | enable"
-  action: service name={{ item }}
-          state=started
-          enabled=yes
+- name: enable webserver
+  service:
+    name: httpd
+    state: started
+    enabled: yes
   become: yes
-  with_items:
-    - httpd
 
-- name: "firewalld | services | enable"
+- name: allow through firewall
   firewalld:
     zone: "{{ firewalld_zone }}"
     permanent: yes

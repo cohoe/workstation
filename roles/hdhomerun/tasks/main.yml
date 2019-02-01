@@ -1,11 +1,14 @@
 ---
-- name: "package | install"
-  dnf: name=hdhomerun state=latest
+- name: install package
+  dnf:
+    name: hdhomerun
+    state: latest
   become: yes
 
 # Firewall
-- name: "firewall | rules"
-  shell: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_{{ firewalld_zone }}_allow -1 {{ item }}
+- name: firewall rules
+  shell:
+    cmd: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_{{ firewalld_zone }}_allow -1 {{ item }}
   with_items:
     - "-p udp --sport 65001 -j ACCEPT"
     - "-p tcp --sport 65001 -j ACCEPT"
