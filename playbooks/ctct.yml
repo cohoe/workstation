@@ -13,7 +13,6 @@
   roles:
     - security
     - pipeline
-    - samba
     - rpmbuild
     - rvm
     - docker

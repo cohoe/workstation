@@ -4,7 +4,7 @@
   become: yes
 
 - name: "groups | add"
-  user: name={{ ansible_env.USER }} append=yes
+  user: name={{ ansible_user_id }} append=yes
         groups={{ item }}
   with_items:
     - dialout

@@ -1,28 +1,35 @@
 ---
-# Docker
-
-# Install packages
-- name: "packages | install"
-  dnf: name={{ item }}
-       state=latest
-  become: yes
-  with_items:
-    - docker
-    - python-docker-py
-    - python3-docker-py
-
-# Enable service
-- name: "service | enable"
-  action: service name=docker
-          state=started
-          enabled=yes
+- name: install
+  dnf:
+    name:
+      - docker
+      - python2-docker-py
+      - python3-docker-py
+    state: latest
   become: yes
 
-# Pull some images that I use frequently
-- name: "images | pull"
-  docker_image: name={{ item.name }}
-                tag={{ item.tag }}
+ name: add user to group
+  user:
+    name: "{{ ansible_user_id }}"
+    append: yes
+    groups: wireshark
+  become: yes
+
+- name: enable service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+
+# Must become until group privileges take effect
+- name: pull frequent images
+  docker_image:
+    name: "{{ item.name }}"
+    tag: "{{ item.tag }}"
   with_items:
-    - { name: "fedora", tag: "latest" }
-    - { name: "centos", tag: "latest" }
+    - name: "fedora"
+      tag: "latest"
+    - name: "centos"
+      tag: "latest"
   become: yes

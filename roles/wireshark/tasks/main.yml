@@ -7,7 +7,7 @@
 
 - name: add user to group
   user:
-    name: "{{ ansible_env.USER }}"
+    name: "{{ ansible_user_id }}"
     append: yes
     groups: wireshark
   become: yes

@@ -24,6 +24,7 @@
     - mime
     - pulse
     - bluetooth
+    - docker
 
   tasks:
     # VirtualBox
