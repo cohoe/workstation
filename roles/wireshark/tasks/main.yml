@@ -1,7 +1,7 @@
 ---
 - name: install
   dnf:
-    name: wireshark-gnome
+    name: wireshark
     state: latest
   become: yes
 
