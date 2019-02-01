@@ -7,9 +7,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-#    - chrome/browser
 #    - grub
-#    - pycharm
     
   vars_files:
     - ../vars/global.yml
