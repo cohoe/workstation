@@ -26,7 +26,6 @@
     - bluetooth
     - docker
     - dns
-    - httpd
 
   tasks:
     # VirtualBox

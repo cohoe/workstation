@@ -13,6 +13,7 @@
         - ssh
   roles:
     - security
+    - httpd
     - hdhomerun
     - arduino
     - steam

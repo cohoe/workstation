@@ -1,40 +1,34 @@
 ---
-# Install firewalld tools
-- name: "firewalld | install"
-  dnf: name={{ item }} state=latest
-  with_items:
-    - firewalld
+- name: install firewalld
+  dnf:
+    name: firewalld
+    state: latest
+    
+- name: enable firewalld
+  service:
+    name: firewalld
+    enabled: true
+    state: started
 
-# Enable firewalld
-- name: "firewalld | enable"
-  service: name=firewalld
-           enabled=true
-           state=started
-
-# Get a list of zones
-- name: "firewalld | zones | get"
+- name: list firewalld zones
   shell: firewall-cmd --get-zones
   register: firewall_zones
   changed_when: false
 
-# Get the default firewall zone
-- name: "firewalld | default zone | get"
+- name: get default firewalld zone
   shell: firewall-cmd --get-default-zone
   register: firewall_default_zone
   changed_when: false
 
-# Create our new zone if it does not already exist
-- name: "firewalld | zone | create"
+- name: create new zone if it does not already exist
   shell: firewall-cmd --permanent --new-zone={{ firewalld_zone }} && firewall-cmd --reload
   when: firewalld_zone not in firewall_zones.stdout
 
-# Set the default zone
-- name: "firewalld | default zone | set"
+- name: set default zone
   shell: firewall-cmd --set-default-zone={{ firewalld_zone }}
   when: firewalld_zone not in firewall_default_zone.stdout
 
-# Enable certain well defined services through the firewall
-- name: "firewalld | services | enable"
+- name: allow known services
   firewalld:
     zone: "{{ firewalld_zone }}"
     permanent: yes
@@ -44,8 +38,7 @@
   with_items:
     - "{{ firewalld_enabled_services }}"
 
-# Enable certain ports through the firewall
-- name: "firewalld | ports | enable"
+- name: allow known ports
   firewalld:
     zone: "{{ firewalld_zone }}"
     permanent: yes

@@ -12,6 +12,7 @@
         - samba-client
   roles:
     - security
+    - httpd
     - pipeline
     - rpmbuild
     - rvm
