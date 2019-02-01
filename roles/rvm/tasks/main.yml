@@ -1,6 +1,6 @@
 ---
 # Install RVM
-- name: "install"
+- name: install
   shell:
     cmd: bash -c "/usr/bin/curl -sSL https://get.rvm.io | bash"
   environment:

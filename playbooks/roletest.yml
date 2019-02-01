@@ -9,9 +9,9 @@
   roles:
 #    - grub
     - rvm
-    - dns
-    - nsswitch
-    - openttd
+#    - dns
+#    - nsswitch
+#    - openttd
 
     
   vars_files:
