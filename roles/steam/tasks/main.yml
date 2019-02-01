@@ -2,8 +2,9 @@
 - name: enable repo
   lineinfile:
     path: /etc/yum.repos.d/rpmfusion-nonfree-steam.repo
-    insertafter: ^\[rpmfusion-nonfree-steam\]
-    regexp: ^enabled
+    firstmatch: yes
+    insertbefore: ^\[rpmfusion-nonfree-steam-debuginfo
+    regexp: ^enabled=\d
     line: enabled=1
   become: yes
 
