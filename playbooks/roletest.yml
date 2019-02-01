@@ -9,6 +9,10 @@
   roles:
 #    - grub
     - rvm
+    - dns
+    - nsswitch
+    - openttd
+
     
   vars_files:
     - ../vars/global.yml
