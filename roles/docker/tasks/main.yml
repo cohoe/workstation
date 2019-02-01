@@ -3,12 +3,12 @@
   dnf:
     name:
       - docker
-      - python2-docker-py
-      - python3-docker-py
+      - python2-docker
+      - python3-docker
     state: latest
   become: yes
 
- name: add user to group
+- name: add user to group
   user:
     name: "{{ ansible_user_id }}"
     append: yes
