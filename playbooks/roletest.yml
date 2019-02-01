@@ -7,15 +7,25 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    #- nvidia
-    #- xfce
-    #- konsole
-    #- slack
-#    - ctct
-    - common
-    - dnf
-    - rpmfusion
-    - fedorarepos
+    - guitools
+    - xfce
+    - konsole
+    - firefox
+#    - chrome/browser
+    - slack
+    - launchy
+    - x11
+#    - grub
+    - remmina
+#    - pycharm
+    - ksexplorer
+    - xscreensaver
+    - sublime
+    - quicktile
+    - wireshark
+    - mime
+    - pulse
+    - bluetooth
     
   vars_files:
     - ../vars/global.yml

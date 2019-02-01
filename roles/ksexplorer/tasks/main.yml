@@ -1,25 +1,6 @@
 ---
-# Create install directory
-- name: "directory | create"
-  file: path={{ ksexplorer_root }}
-        state=directory
-        recurse=yes
-  become: yes
-
-# Download archive
-- name: "archive | download"
-  get_url: url={{ ksexplorer_repo }}/{{ ksexplorer_package }}
-           dest=/tmp/{{ ksexplorer_package }}
-
-# Install archive
-- name: "archive | deploy"
-  unarchive: src=/tmp/{{ ksexplorer_package }}
-             dest={{ ksexplorer_root }}
-             copy=no
-  become: yes
-
-# Create shortcut
-- name: "shortcut | install"
-  template: src=ksexplorer.desktop
-            dest={{ local_shortcuts_dir }}/ksexplorer.desktop
+- name: install
+  dnf:
+    name: https://github.com/kaikramer/keystore-explorer/releases/download/v5.4.1/kse-5.4.1.noarch.rpm
+    state: present
   become: yes

@@ -12,13 +12,14 @@
     gpgkey: https://dl.google.com/linux/linux_signing_key.pub
   become: yes
 
-# Install package
-- name: "chrome | package | install"
-  dnf: name=google-chrome-stable state=latest
+- name: install chrome
+  dnf:
+    name: google-chrome-stable
+    state: latest
   become: true
 
-# Create a dedicated incognito launcher
-- name: "chrome | incognito launcher | create"
-  copy: dest={{ local_shortcuts_dir }}/google-chrome-incognito.desktop
-        src=incognito.desktop
+- name: create chrome incognito launcher
+  copy:
+    dest: "{{ local_shortcuts_dir }}/google-chrome-incognito.desktop"
+    src: incognito.desktop
   become: yes

@@ -1,31 +1,21 @@
 ---
-# GUI packages
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
+- name: install gui packages
+  dnf:
+    name:
+      - texworks          # LaTeX tools
+      - texlive-pdftex    # LaTeX PDF tools
+      - texlive           # More LaTeX tools
+      - rdesktop          # Remote desktop client
+      - gimp              # Photo manipulation
+      - mediawriter       # USB/ISO tool
+      - d-feet            # DBus debugging tool
+      - easytag           # MP3 Tag editor
+      - libreoffice       # Office suite
+      - vlc               # Video player
+    state: latest
   become: yes
-  with_items:
-    - texworks          # LaTeX tools
-    - texlive-pdftex    # LaTeX PDF tools
-    - texlive           # More LaTeX tools
-    - rdesktop          # Remote desktop client
-    - gimp              # Photo manipulation
-    - mediawriter       # USB/ISO tool
-    - d-feet            # DBus debugging tool
-    - easytag           # MP3 Tag editor
-    - libreoffice       # Office suite
 
-# Non-base system packages
-- name: "other packages | install"
-  dnf: name={{ item }} state=latest
-  become: yes
-  when: '"rpmfusion" in use_repos'
-  with_items:
-    - vlc
-
-# Local Applications directory
-- name: "create local directories"
-  file: path={{ item }}
-        state=directory
-  with_items:
-    - "{{ user_shortcuts_dir }}"
-    - ~/.local/share/icons
+- name: create local share applications dir
+  file:
+    path: ~/.local/share/applications
+    state: directory

@@ -30,7 +30,7 @@
 
 - name: "install desktop shortcuts"
   get_url: url=https://raw.githubusercontent.com/cohoe/maxime/master/DesktopFiles/{{ item }}.desktop
-           dest={{ user_shortcuts_dir }}/{{ item }}.desktop
+           dest=~/.local/share/applications/{{ item }}.desktop
   with_items:
     - maxime
     - maxime-headset

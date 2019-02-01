@@ -1,52 +1,36 @@
 ---
-## Figure out the package from GitHub
-#- name: "package | determine"
-#  shell: bash -c "curl -s \"https://api.github.com/repos/cohoe/launchy/releases/latest\" | jq -r '.assets[] | select(.name | startswith(\"launchy-2\")) | .browser_download_url'"
-#  register: launchy_package
-#  failed_when: '"https://github.com/cohoe/launchy/releases/download" not in "{{ launchy_package.stdout }}"'
-#
-## Grab the RPM
-#- name: "package | download"
-#  get_url: url={{ launchy_package.stdout }}
-#           dest=/tmp/launchy.rpm
-#
-## Install it
-#- name: "install"
-#  dnf: name=/tmp/launchy.rpm state=latest
-#  become: yes
-
-# Repo
-- name: "configure repo"
-  copy: src=launchy.repo
-        dest=/etc/yum.repos.d/launchy.repo
+- name: create launchy repo
+  copy:
+    src: launchy.repo
+    dest: /etc/yum.repos.d/launchy.repo
   become: yes
 
-# Key
-- name: "install repo key"
-  rpm_key: state=present key={{ item}}
-  with_items:
-    - https://packagecloud.io/grantcohoe/launchy/gpgkey
+- name: install key
+  rpm_key:
+    state: present
+    key: https://packagecloud.io/grantcohoe/launchy/gpgkey
   become: yes
 
-# Install
-- name: "install"
-  dnf: name=launchy
-       state=latest
+- name: install
+  dnf:
+    name: launchy
+    state: latest
   become: yes
 
-# Create the config 
-- name: "Create config directory"
-  file: path=~/.launchy
-        state=directory
+- name: create configuration directory
+  file:
+    path: ~/.launchy
+    state: directory
 
-- name: "Install Launchy config"
-  copy: dest="~/.launchy/launchy.ini"
-        src="launchy.ini"
+- name: install config
+  copy:
+    dest: "~/.launchy/launchy.ini"
+    src: launchy.ini
 
-# Autostart
-- name: "Autostart Launchy"
-  copy: dest="{{ user_autostart_dir }}/launchy.desktop"
-        src="{{ sys_shortcuts_dir }}/launchy.desktop"
+- name: configure autostart
+  copy:
+    dest: "{{ user_autostart_dir }}/launchy.desktop"
+    src: "{{ sys_shortcuts_dir }}/launchy.desktop"
 
 - name: "Set XFCE autostart"
   lineinfile:

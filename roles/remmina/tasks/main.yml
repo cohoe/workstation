@@ -1,22 +1,22 @@
 ---
-# Install packages
-- name: "package | install"
-  dnf: name={{ item }} state=latest
+- name: install
+  dnf:
+    name:
+      - remmina
+      - 'remmina-plugins-*'
+    state: latest
   become: yes
-  with_items:
-    - remmina
-    - remmina-plugins-*
 
-# Create config directory
-- name: "config | create"
-  file: path=~/.remmina
-        state=directory
-        mode=0700
+- name: create config directory
+  file:
+    path: '~/.remmina'
+    state: directory
+    mode: 0700
 
-# Create config files for any hosts that I define
-- name: "files | create"
-  template: src=connection.j2
-            dest=~/.remmina/{{ item.name }}.remmina
+- name: create known host configs
+  template:
+    src: connection.j2
+    dest: "~/.remmina/{{ item.name }}.remmina"
   with_items:
     - "{{ remmina_hosts }}"
   when: remmina_hosts is defined

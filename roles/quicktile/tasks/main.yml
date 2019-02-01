@@ -5,42 +5,49 @@
   register: power_sources
   changed_when: false
 
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
-  become: yes
-  with_items:
-    - pygtk2
-    - pygobject2
-    - dbus-python
-    - gnome-python2-libwnck
-    - python-xlib
-
-- name: "target | create"
-  file: path=/opt/quicktile/
-        state=directory
+- name: install dependencies
+  dnf:
+    name:
+      - pygtk2
+      - pygobject2
+      - dbus-python
+      - gnome-python2-libwnck
+      - python-xlib
+    state: latest
   become: yes
 
-- name: "repo | install"
-  git: repo=https://github.com/ssokolow/quicktile
-       dest=/opt/quicktile
+- name: create install directory
+  file:
+    path: /opt/quicktile/
+    state: directory
   become: yes
 
-- name: "shortcut | install"
-  copy: src=quicktile.desktop
-        dest={{ local_shortcuts_dir }}/quicktile.desktop
+- name: clone source repository
+  git:
+    repo: https://github.com/ssokolow/quicktile
+    dest: /opt/quicktile
   become: yes
 
-- name: "autostart | install"
-  file: src={{ local_shortcuts_dir }}/quicktile.desktop
-        dest={{ user_autostart_dir }}/quicktile.desktop
-        state=link
+- name: create desktop shortcut
+  copy:
+    src: quicktile.desktop
+    dest: "{{ local_shortcuts_dir }}/quicktile.desktop"
+  become: yes
+
+- name: configure autostart
+  file:
+    src: "{{ local_shortcuts_dir }}/quicktile.desktop"
+    dest: "{{ user_autostart_dir }}/quicktile.desktop"
+    state: link
 
 - name: "laptop config"
-  copy: src=quicktile.cfg.laptop
-        dest=~/.config/quicktile.cfg
+  copy:
+    src: quicktile.cfg.laptop
+    dest: '~/.config/quicktile.cfg'
   when: ansible_form_factor == "Notebook"
 
 - name: "desktop config"
-  copy: src=quicktile.cfg.desktop
-        dest=~/.config/quicktile.cfg
+  copy:
+    src: quicktile.cfg.desktop
+    dest: '~/.config/quicktile.cfg'
   when: ansible_form_factor != "Notebook"
