@@ -5,19 +5,19 @@
 - name: Graphical desktop stuff
   hosts: all
   roles:
+      #- xfce
+      #- konsole
+      #- grub
+      #- xscreensaver
     - guitools
-    - xfce
-    - konsole
     - firefox
     - chrome/browser
     - slack
     - launchy
     - x11
-    - grub
     - remmina
     - pycharm
     - ksexplorer
-    - xscreensaver
     - sublime
     - quicktile
     - wireshark
@@ -27,17 +27,17 @@
     - docker
     - dns
 
-  tasks:
+#  tasks:
     # VirtualBox
-    - name: "virtualbox guest additions"
-      import_role:
-        name: vbox/guest
-      when: ansible_virtualization_type == "virtualbox"
-
-    - name: "virtualbox host"
-      import_role:
-        name: vbox/host
-      when: ansible_virtualization_role == "host"
+#    - name: "virtualbox guest additions"
+#      import_role:
+#        name: vbox/guest
+#      when: ansible_virtualization_type == "virtualbox"
+#
+#    - name: "virtualbox host"
+#      import_role:
+#        name: vbox/host
+#      when: ansible_virtualization_role == "host"
 
   vars_files:
     - ../vars/global.yml

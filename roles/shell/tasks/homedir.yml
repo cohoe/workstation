@@ -4,10 +4,15 @@
     path: '~'
     mode: 0751
 
-- name: create user bin directory
+# autostart was in xfce and was needed for cinnamon so
+# it might as well be here
+- name: create home subdirs
   file:
-    path: '~/.bin'
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - '~/.bin'
+    - '~/.config/autostart'
 
 # Projects directory
 - name: create projects directory
