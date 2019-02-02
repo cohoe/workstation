@@ -1,8 +1,5 @@
 ---
-# Sublime Text
-#
-# Setup repository
-- name: "create repository"
+- name: create repository
   yum_repository:
     name: sublime-text
     description: Sublime Text - x86_64 - Stable
@@ -12,31 +9,36 @@
     gpgkey: https://download.sublimetext.com/sublimehq-rpm-pub.gpg
   become: yes
 
-# Install sublime app
-- name: "install sublime"
-  dnf: name=sublime-text state=present
+- name: install
+  dnf:
+    name: sublime-text
+    state: present
   become: yes
 
 - name: create config directory
-  file: path={{ item }}
-        state=directory
-        recurse=yes
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
   with_items:
   - "{{ sublime_config_dir }}"
   - "{{ sublime_config_dir }}/Installed Packages"
   - "{{ sublime_config_dir }}/Packages/User"
 
 - name: install theme
-  get_url: url={{ sublime_theme_file }}
-           dest={{ sublime_config_dir }}/Packages/{{ sublime_theme_name }}
+  get_url:
+    url: "{{ sublime_theme_file }}"
+    dest: "{{ sublime_config_dir }}/Packages/{{ sublime_theme_name }}"
 
 - name: install preferences
-  copy: src={{ item }}
-        dest={{ sublime_config_dir }}/Packages/User/{{ item }}
+  copy:
+    src: "{{ item }}"
+    dest: "{{ sublime_config_dir }}/Packages/User/{{ item }}"
   with_items:
     - Prefences.sublime-settings
     - Default (Linux).sublime-keymap
 
 - name: enable package control
-  get_url: url={{ sublime_packagecontrol_package }}
-           dest="{{ sublime_config_dir }}/Installed Packages/{{ sublime_packagecontrol_file }}"
+  get_url:
+    url: "{{ sublime_packagecontrol_package }}"
+    dest: "{{ sublime_config_dir }}/Installed Packages/{{ sublime_packagecontrol_file }}"

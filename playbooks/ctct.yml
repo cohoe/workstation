@@ -12,11 +12,10 @@
         - samba-client
   roles:
     - security
+    - httpd
     - pipeline
-    - samba
     - rpmbuild
     - rvm
-    - docker
     - ctct
 
   tasks:
@@ -33,9 +32,10 @@
     #
     # This command must be the last thing we run on the system to ensure
     # everything gets relabeled appropriately.
-    - name: fix filesystem selinux labels
-      shell: restorecon -r /
-      become: yes
+    # @TODO maybe fc29 fixed this?
+#    - name: fix filesystem selinux labels
+#      shell: restorecon -r /
+#      become: yes
 
   vars_files:
     - ../vars/global.yml

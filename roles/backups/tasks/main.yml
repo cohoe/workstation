@@ -1,6 +1,4 @@
 ---
-# Backups
-#
 # Until CloudBerry supports filename encryption, I will be using rclone.
 # https://blog.kamens.us/2017/08/24/backing-up-from-unix-to-backblaze-b2-using-rclone/
 - name: install rclone
@@ -11,34 +9,39 @@
   become: yes
 
 - name: create rclone config
-  file: path=/root/.config/rclone
-        state=directory
+  file:
+    path: /root/.config/rclone
+    state: directory
   become: yes
   with_items:
     - /root/.config/rclone
 
 - name: configure rclone
-  template: src=rclone.conf
-            dest=/root/.config/rclone/rclone.conf
-            mode=0640
+  template:
+    src: rclone.conf
+    dest: /root/.config/rclone/rclone.conf
+    mode: 0640
   become: yes
 
 - name: create job config directory
-  file: path=/etc/rclone-backups
-        state=directory
+  file:
+    path: /etc/rclone-backups
+    state: directory
   become: yes
 
 - name: create backup configs
-  template: src=job.conf
-            dest=/etc/rclone-backups/{{ item.name }}.conf
+  template:
+    src: job.conf
+    dest: "/etc/rclone-backups/{{ item.name }}.conf"
   become: yes
   with_items:
     - "{{ b2_jobs }}"
 
 - name: install scripts
-  copy: src={{ item.name }}
-        dest={{ item.path }}/{{ item.name }}
-        mode=0755
+  copy:
+    src: "{{ item.name }}"
+    dest: "{{ item.path }}/{{ item.name }}"
+    mode: 0755
   become: yes
   with_items:
     - name: rclone-backup

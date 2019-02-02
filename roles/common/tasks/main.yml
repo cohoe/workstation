@@ -1,9 +1,19 @@
 ---
+- name: see if python2-dnf is installed
+  shell:
+    cmd: rpm -qi python2-dnf
+    warn: false
+  become: yes
+  register: python_libs_installed
+  failed_when: false
+  changed_when: false
+
 - name: manually install python-dnf libs
   shell:
     cmd: dnf install python2-dnf -y
     warn: false
   become: yes
+  when: python_libs_installed.rc != 0
 
 - name: install python selinux bindings
   dnf:

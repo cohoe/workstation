@@ -7,15 +7,12 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    #- nvidia
-    #- xfce
-    #- konsole
-    #- slack
-#    - ctct
-    - common
-    - dnf
-    - rpmfusion
-    - fedorarepos
+#    - grub
+    - rvm
+#    - dns
+#    - nsswitch
+#    - openttd
+
     
   vars_files:
     - ../vars/global.yml

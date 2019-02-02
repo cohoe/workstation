@@ -1,13 +1,14 @@
 ---
-# Install package dependencies
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
+- name: install dependncies
+  dnf:
+    name:
+      - ruby-devel
+      - redhat-rpm-config
+      - zlib-devel
+    state: latest
   become: yes
-  with_items:
-    - ruby-devel
-    - redhat-rpm-config
-    - zlib-devel
 
-# Install the pipeline builder
-- name: "gem | install"
-  gem: name=jenkins_pipeline_builder state=latest
+- name: install pipeline builder
+  gem:
+    name: jenkins_pipeline_builder
+    state: latest

@@ -1,6 +1,5 @@
 ---
-# Setup repository
-- name: "slack | repository | create"
+- name: create slack repository
   yum_repository:
     name: slack
     description: Slack desktop chat client
@@ -10,15 +9,16 @@
     gpgkey: https://packagecloud.io/gpg.key
   become: yes
 
-# Install slack app
 - name: Slack desktop application
-  dnf: name=slack state=present
+  dnf:
+    name: slack
+    state: present
   become: yes
 
-# Autostart
-- name: "autostart"
-  copy: src=slack-startup.desktop
-        dest={{ user_autostart_dir }}/slack.desktop
+- name: autostart slack
+  copy:
+    src: slack-startup.desktop
+    dest: "{{ user_autostart_dir }}/slack.desktop"
 
 - name: install dark theme
   blockinfile:

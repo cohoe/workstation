@@ -1,36 +1,30 @@
 ---
-# Screensaver Config
-
-# Install packages
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
+- name: install
+  dnf:
+    name: xscreensaver
+    state: latest
   become: yes
-  with_items:
-    - xscreensaver
 
-# Set configuration
-- name: "config | create"
-  file: path=~/.xscreensaver
-        state=touch
+- name: create config file
+  file:
+    path: '~/.xscreensaver'
+    state: touch
 
-# Disable when we are a VM
-- name: "disable"
+- name: disable
   lineinfile:
     dest: ~/.xscreensaver
     regexp: "^mode"
     line: "mode:\toff"
   when: ansible_virtualization_role == "guest"
 
-# Enable when we are a real box
-- name: "enable"
+- name: enable
   lineinfile:
     dest: ~/.xscreensaver
     regexp: "^mode"
     line: "mode:\tone"
   when: ansible_virtualization_role != "guest"
 
-# Pick the flurry screensaver
-- name: "set"
+- name: select screensaver
   lineinfile:
     dest: ~/.xscreensaver
     regexp: "^selected"

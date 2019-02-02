@@ -13,23 +13,21 @@
         - ssh
   roles:
     - security
+    - httpd
     - hdhomerun
     - arduino
-    - chrome/remote
-    - samba
-    - httpd
     - steam
     - maxime
-    - plex/client
     - piavpn
     - nas
     - aws
     - mail
     - backups
+    - openttd
+    - nsswitch
 
   tasks:
     # NVIDIA drivers
-    # @TODO make this go away
     - name: "determine gpu"
       shell: bash -c "lspci | grep VGA"
       register: lspci_gpu
@@ -53,9 +51,10 @@
     #
     # This command must be the last thing we run on the system to ensure
     # everything gets relabeled appropriately.
-    - name: fix filesystem selinux labels
-      shell: restorecon -r /
-      become: yes
+    # @TODO disabling this to test fc29. Maybe that will work?
+#    - name: fix filesystem selinux labels
+#      shell: restorecon -r /
+#      become: yes
 
   vars_files:
     - ../vars/global.yml

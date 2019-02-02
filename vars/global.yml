@@ -2,7 +2,6 @@
 # Various .desktop file directories
 sys_shortcuts_dir: /usr/share/applications
 local_shortcuts_dir: /usr/local/share/applications
-user_shortcuts_dir: ~/.local/share/applications
 user_autostart_dir: ~/.config/autostart
 
 # NFS/CIFS

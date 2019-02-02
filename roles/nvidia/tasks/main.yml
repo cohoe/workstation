@@ -1,20 +1,16 @@
 ---
-# NVIDIA display drivers
-
-# Figure out the latest version that we need
-- name: "discover driver version"
-  shell: bash -c 'curl "{{ nvidia_repo }}/latest.txt" | cut -d " " -f 2'
-  register: package_path
-
-# Download
-- name: "create local directory"
-  file: path=/opt/nvidia
-        state=directory
-        owner={{ ansible_env.USER }}
-        group={{ ansible_env.USER }}
+- name: enable repo
+  lineinfile:
+    path: /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
+    firstmatch: yes
+    insertbefore: ^\[rpmfusion-nonfree-nvidia-driver-debuginfo
+    regexp: ^enabled=\d
+    line: enabled=1
   become: yes
 
-- name: "download driver package"
-  get_url: url={{ nvidia_repo }}/{{ package_path.stdout }}
-           dest=/opt/nvidia/
-           mode=0755
+- name: install
+  dnf:
+    name:
+      - kmod-nvidia
+    state: latest
+  become: yes

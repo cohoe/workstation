@@ -1,17 +1,16 @@
 ---
-# System email
-
 - name: install packages
-  dnf: name={{ item }}
-       state=latest
+  dnf:
+    name:
+      - postfix
+      - cyrus-sasl-*
+    state: latest
   become: yes
-  with_items:
-    - postfix
-    - cyrus-sasl-*
 
 - name: set root mailrc
-  template: src=mailrc-root
-            dest=/root/.mailrc
+  template:
+    src: mailrc-root
+    dest: /root/.mailrc
   become: yes
 
 - name: build auth file
@@ -31,8 +30,9 @@
   become: yes
 
 - name: copy postfix config
-  template: src=main.cf
-            dest=/etc/postfix/main.cf
+  template:
+    src: main.cf
+    dest: /etc/postfix/main.cf
   become: yes
 
 - name: rebuild hashes
@@ -43,9 +43,10 @@
     - genericmap
 
 - name: enable service
-  service: name=postfix
-           state=restarted
-           enabled=yes
+  service:
+    name: postfix
+    state: restarted
+    enabled: yes
   become: yes
 
 - name: setup mail forwards

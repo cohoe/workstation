@@ -24,6 +24,8 @@
     - mime
     - pulse
     - bluetooth
+    - docker
+    - dns
 
   tasks:
     # VirtualBox

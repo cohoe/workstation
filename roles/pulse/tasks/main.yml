@@ -1,51 +1,30 @@
 ---
-- name: "packages | install"
-  dnf: name={{ item }} state=latest
+- name: install packages
+  dnf:
+    name: pulseaudio-equalizer
+    state: latest
   become: yes
-  with_items:
-    - pulseaudio-equalizer
 
-- name: "config directory | create"
-  file: path=~/.pulse
-        state=directory
+- name: create configuration directory
+  file:
+    path: '~/.pulse'
+    state: directory
 
-- name: "equalizer config | copy"
-  copy: src=equalizerrc
-        dest=~/.pulse/equalizerrc
+- name: create equalizer config
+  copy:
+    src: equalizerrc
+    dest: '~/.pulse/equalizerrc'
 
-- name: "equalizer | enable"
-  shell: pulseaudio-equalizer {{ item }}
+- name: enable equalizer
+  shell:
+    cmd: "pulseaudio-equalizer {{ item }}"
   with_items:
     - enable
     - enable-config
 
-- name: "flat-volumes | disable"
+- name: disable flat volume
   lineinfile:
     dest: /etc/pulse/daemon.conf
     regexp: "^flat-volumes = "
     line: "flat-volumes = no"
   become: yes
-
-- name: "suspend-idle | disable"
-  lineinfile:
-    dest: /etc/pulse/default.pa
-    regexp: "load-module module-suspend-on-idle$"
-    line: "# load-module module-suspend-on-idle"
-  become: yes
-
-# There is a bug in xfce4-pulseaudio-plugin-0.2.5 that causes the icon to be super big.
-# A patch exists in upstream but a new release has not been cut. This will install
-# the old version of the package since there doesnt seem to be any functionality
-# missing, and now it looks pretty too.
-# https://git.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/commit/?id=bee333f6ecd6e89d89ef68bf880d93b1fe5fff7a
-# https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues/464
-#
-# Should be fixed in https://bugzilla.redhat.com/show_bug.cgi?id=1545454
-#
-# 20180308 - This will be fixed in FC28 with the release of xfce4-pulseaudio-plugin-0.3.5-1.fc28.x86_64.rpm
-# 20180516 - It's fixed!!!
-# It is currently available in rawhide.
-#- name: "hack fix for volume icon"
-#  dnf: name=http://mirror.rit.edu/fedora/fedora/linux/development/28/Everything/x86_64/os/Packages/x/xfce4-pulseaudio-plugin-0.3.5-1.fc28.x86_64.rpm
-#       state=present
-#  become: yes

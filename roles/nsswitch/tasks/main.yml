@@ -1,5 +1,5 @@
 ---
-- name: "hosts | set"
+- name: enable mdns resolution
   lineinfile:
     dest: /etc/nsswitch.conf
     regexp: "^hosts:"

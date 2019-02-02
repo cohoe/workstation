@@ -29,7 +29,7 @@
 
 # Needed for USB attachment
 - name: "user group | add"
-  user: name={{ ansible_env.USER }} append=yes
+  user: name={{ ansible_user_id }} append=yes
         groups={{ item }}
   with_items:
     - vboxusers

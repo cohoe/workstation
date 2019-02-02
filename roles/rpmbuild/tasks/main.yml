@@ -1,10 +1,9 @@
 ---
-# Install packages
-- name: "rpmbuild packages | install"
-  dnf: name={{ item }}
-       state=latest
+- name: install rpmbuild tools
+  dnf:
+    name:
+      - yum-utils
+      - rpm-build
+      - rpmdevtools
+    state: latest
   become: yes
-  with_items:
-    - yum-utils
-    - rpm-build
-    - rpmdevtools

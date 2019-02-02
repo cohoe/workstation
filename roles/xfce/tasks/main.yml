@@ -1,12 +1,12 @@
 ---
-- import_tasks: session.yml
-- import_tasks: power.yml
-- import_tasks: panel.yml
-- import_tasks: thunar.yml
-- import_tasks: keyboard.yml
-- import_tasks: junk.yml
-- import_tasks: keyring.yml
-- import_tasks: wallpaper.yml
+- include_tasks: session.yml
+- include_tasks: power.yml
+- include_tasks: panel.yml
+- include_tasks: thunar.yml
+- include_tasks: keyboard.yml
+- include_tasks: junk.yml
+- include_tasks: keyring.yml
+- include_tasks: wallpaper.yml
 
 # Not sure if I really still want this...
 #- name: "packages | install"

@@ -1,5 +1,4 @@
 ---
-# Enable repo
 - name: enable repo
   lineinfile:
     path: /etc/yum.repos.d/_copr_phracek-PyCharm.repo
@@ -7,7 +6,6 @@
     line: enabled=1
   become: yes
 
-# Install package
 - name: install package
   dnf: name={{ pycharm_package }}
        state=latest

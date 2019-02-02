@@ -1,30 +1,13 @@
 ---
-# Bluetooth
-
-# F24->F25 did not trigger this package. Other installs have. Putting
-# it here explicitly just in case.
-# And of course F26 replaced it with Blueberry...
-- name: install packages
-  dnf: name={{ item }}
-       state=latest
-  become: yes
-  with_items:
-    #- blueman
-    - blueberry
-
-- name: remove packages
-  dnf: name={{ item }}
-       state=absent
-  become: yes
-  with_items:
-    - xfce-bluetooth
-
 - name: set broadcast hostname
-  copy: dest=/etc/machine-info
-        content=PRETTY_HOSTNAME={{ ansible_hostname }}
+  copy:
+    dest: /etc/machine-info
+    content: |
+      PRETTY_HOSTNAME={{ ansible_hostname }}
   become: yes
 
 - name: restart bluetooth
-  service: name=bluetooth
-           state=restarted
+  service:
+    name: bluetooth
+    state: restarted
   become: yes

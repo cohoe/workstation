@@ -46,4 +46,3 @@
   with_items:
     - gstreamer1-libav
     - tumbler-extras
-  when: '"rpmfusion" in use_repos'

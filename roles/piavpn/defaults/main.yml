@@ -1,4 +1,3 @@
 ---
-piavpn_ca: /etc/openvpn/pia-ca.crt
 piavpn_user: USERNAME
 piavpn_secret: SECRET
