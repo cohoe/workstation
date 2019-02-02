@@ -25,6 +25,7 @@
     - backups
     - openttd
     - nsswitch
+    - veracrypt
 
   tasks:
     # NVIDIA drivers
