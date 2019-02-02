@@ -1,45 +1,109 @@
 ---
-- name: turn off gui sounds
+#- name: turn off gui sounds
+#  dconf:
+#    key: "/org/cinnamon/sounds/{{ item }}"
+#    value: 'false'
+#  with_items:
+#    - close-enabled
+#    - login-enabled
+#    - logout-enabled
+#    - map-enabled
+#    - maximize-enabled
+#    - minimize-enabled
+#    - notification-enabled
+#    - plug-enabled
+#    - switch-enabled
+#    - tile-enabled
+#    - unmaximize-enabled
+#    - unplug-enabled
+#
+#- name: hide menubar
+#  dconf:
+#    key: /org/gnome/terminal/legacy/default-show-menubar
+#    value: 'false'
+#
+#- name: configure terminal preferences
+#  dconf:
+#    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/{{ item.key }}"
+#    value: "{{ item.value }}"
+#  with_dict:
+#    visible-name: "'cohoe'"
+#    use-theme-colors: 'false'
+#    foreground-color: "'rgb(255,255,255)'"
+#    background-color: "'rgb(0,0,0)'"
+#    audible-bell: 'false'
+#    use-transparent-background: 'true'
+#    background-transparency-percent: 20
+#    login-shell: 'true'
+# 
+#- name: set default profile
+#  dconf:
+#    key: "/org/gnome/terminal/legacy/profiles:/{{ item.key }}"
+#    value: "{{ item.value }}"
+#  with_dict:
+#    list: "['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']"
+#    default: "'b1dcc9dd-5262-4d8d-a863-c897e6d979b9'"
+#
+#- name: nemo
+#  dconf:
+#    key: "{{ item.key }}"
+#    value: "{{ item.value }}"
+#  with_dict:
+#    /org/nemo/preferences/default-folder-viewer: "'list-view'"
+#    /org/nemo/window-state/sidebar-width: 210
+#    /org/nemo/preferences/click-double-parent-folder: "'true'"
+#    /org/nemo/preferences/executable-text-activation: "'display'"
+#    /org/nemo/preferences/swap-trash-delete: "'true'"
+#    /org/nemo/preferences/close-device-view-on-device-eject: "'true'"
+#    /org/nemo/preferences/date-format: "'iso'"
+#    /org/nemo/preferences/show-advanced-permissions: "'true'"
+#    /org/nemo/preferences/show-image-thumbnails: "'always'"
+#    /org/nemo/preferences/thumbnail-limit: "uint64 104857600"
+#    /org/nemo/preferences/tooltips-in-list-view: "'true'"
+#    /org/nemo/preferences/tooltips-show-file-type: "'true'"
+#    /org/nemo/preferences/tooltips-show-birth-date: "'true'"
+#    /org/nemo/preferences/show-open-in-terminal-toolbar: "'true'"
+#    /org/nemo/window-state/side-pane-view: "'tree'"
+#
+#- name: set clock format
+#  dconf:
+#    key: "/org/cinnamon/desktop/interface/clock-use-24h"
+#    value: 'false'
+
+- name: configure panel applets
   dconf:
-    key: "/org/cinnamon/sounds/{{ item }}"
-    value: 'false'
+    key: "/org/cinnamon/enabled-applets"
+    value: "['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:blueberry@cinnamon.org:10', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:9:sound@cinnamon.org:13']"
+
+- name: configure start menu
+  copy:
+    src: menu.json
+    dest: ~/.cinnamon/configs/menu@cinnamon.org/1.json
+
+- name: configure panel size
+  dconf:
+    key: "/org/cinnamon/panels-height"
+    value: "['1:28']"
+
+- name: copy wallpaper
+  copy:
+    src: user-wallpaper.jpg
+    dest: /usr/share/backgrounds/images/user-wallpaper.jpg
+  become: yes
+
+- name: set wallpaper
+  dconf:
+    key: "/org/cinnamon/desktop/background/{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    picture-options: "'zoom'"
+    picture-uri: "'file:///usr/share/backgrounds/images/user-wallpaper.jpg'"
+
+- name: disable builtin desktop shortcuts
+  dconf:
+    key: "/org/nemo/desktop/{{ item }}"
+    value: "false"
   with_items:
-    - close-enabled
-    - login-enabled
-    - logout-enabled
-    - map-enabled
-    - maximize-enabled
-    - minimize-enabled
-    - notification-enabled
-    - plug-enabled
-    - switch-enabled
-    - tile-enabled
-    - unmaximize-enabled
-    - unplug-enabled
-
-- name: hide menubar
-  dconf:
-    key: /org/gnome/terminal/legacy/default-show-menubar
-    value: 'false'
-
-- name: configure terminal preferences
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/{{ item.key }}"
-    value: "{{ item.value }}"
-  with_dict:
-    visible-name: "'cohoe'"
-    use-theme-colors: 'false'
-    foreground-color: "'rgb(255,255,255)'"
-    background-color: "'rgb(0,0,0)'"
-    audible-bell: 'false'
-    use-transparent-background: 'true'
-    background-transparency-percent: 20
-    login-shell: 'true'
- 
-- name: set default profile
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/{{ item.key }}"
-    value: "{{ item.value }}"
-  with_dict:
-    list: "['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']"
-    default: "'b1dcc9dd-5262-4d8d-a863-c897e6d979b9'"
+    - computer-icon-visible
+    - home-icon-visible
+    - trash-icon-visible
