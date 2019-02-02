@@ -1,0 +1,28 @@
+---
+- name: configure iscsid
+  lineinfile:
+    path: /etc/iscsi/iscsid.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  become: yes
+  with_items:
+    - regexp: "(#)?node.session.auth.authmethod = (.*)$"
+      line: "node.session.auth.authmethod = CHAP"
+    - regexp: "(#)?node.session.auth.username = (.*)$"
+      line: "node.session.auth.username = {{ iscsi_server_user }}"
+    - regexp: "(#)?node.session.auth.password = (.*)$"
+      line: "node.session.auth.password = {{ iscsi_server_pass }}"
+    - regexp: "(#)?node.session.auth.username_in = (.*)$"
+      line: "node.session.auth.username_in = {{ iscsi_client_user }}"
+    - regexp: "(#)?node.session.auth.password_in = (.*)$"
+      line: "node.session.auth.password_in = {{ iscsi_client_pass }}"
+    - regexp: "(#)?discovery.sendtargets.auth.authmethod = (.*)$"
+      line: "discovery.sendtargets.auth.authmethod = CHAP"
+    - regexp: "(#)?discovery.sendtargets.auth.username = (.*)$"
+      line: "discovery.sendtargets.auth.username = {{ iscsi_server_user }}"
+    - regexp: "(#)?discovery.sendtargets.auth.password = (.*)$"
+      line: "discovery.sendtargets.auth.password = {{ iscsi_server_pass }}"
+    - regexp: "(#)?discovery.sendtargets.auth.username_in = (.*)$"
+      line: "discovery.sendtargets.auth.username_in = {{ iscsi_client_user }}"
+    - regexp: "(#)?discovery.sendtargets.auth.password_in = (.*)$"
+      line: "discovery.sendtargets.auth.password_in = {{ iscsi_client_pass }}"
