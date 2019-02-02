@@ -8,10 +8,11 @@
         - ssh
   roles:
 #    - grub
-    - rvm
+#    - rvm
 #    - dns
 #    - nsswitch
 #    - openttd
+    - cinnamon
 
     
   vars_files:

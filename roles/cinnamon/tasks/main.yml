@@ -1,0 +1,45 @@
+---
+- name: turn off gui sounds
+  dconf:
+    key: "/org/cinnamon/sounds/{{ item }}"
+    value: 'false'
+  with_items:
+    - close-enabled
+    - login-enabled
+    - logout-enabled
+    - map-enabled
+    - maximize-enabled
+    - minimize-enabled
+    - notification-enabled
+    - plug-enabled
+    - switch-enabled
+    - tile-enabled
+    - unmaximize-enabled
+    - unplug-enabled
+
+- name: hide menubar
+  dconf:
+    key: /org/gnome/terminal/legacy/default-show-menubar
+    value: 'false'
+
+- name: configure terminal preferences
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    visible-name: "'cohoe'"
+    use-theme-colors: 'false'
+    foreground-color: "'rgb(255,255,255)'"
+    background-color: "'rgb(0,0,0)'"
+    audible-bell: 'false'
+    use-transparent-background: 'true'
+    background-transparency-percent: 20
+    login-shell: 'true'
+ 
+- name: set default profile
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    list: "['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']"
+    default: "'b1dcc9dd-5262-4d8d-a863-c897e6d979b9'"
