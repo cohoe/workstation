@@ -1,0 +1,39 @@
+---
+- name: create setup location
+  file:
+    path: /tmp/veracrypt-setup
+    state: directory
+
+- name: acquire setup archive
+  unarchive:
+    src: https://launchpad.net/veracrypt/trunk/1.23/+download/veracrypt-1.23-setup.tar.bz2
+    dest: /tmp/veracrypt-setup
+    remote_src: yes
+
+- name: extract setup script
+  shell:
+    cmd: /tmp/veracrypt-setup/veracrypt-1.23-setup-gui-x64 --tar xf 
+    chdir: /tmp/veracrypt-setup/
+
+- name: find offset
+  shell:
+    cmd: grep -m 1 PACKAGE_START veracrypt_install_gui_x64.sh | cut -d '=' -f 2
+    chdir: /tmp/veracrypt-setup/
+  register: package_offset
+  changed_when: false
+
+- name: extract archive
+  shell:
+    cmd: tail -n +{{ package_offset.stdout }} ./veracrypt_install_gui_x64.sh > veracrypt_1.23_gui_amd64.tar.gz
+    chdir: /tmp/veracrypt-setup/
+
+- name: deploy archive to system
+  shell:
+    cmd: tar -C / --no-overwrite-dir -xpzvf veracrypt_1.23_gui_amd64.tar.gz
+    chdir: /tmp/veracrypt-setup/
+    warn: false
+
+- name: cleanup
+  file:
+    path: /tmp/veracrypt-setup
+    state: absent

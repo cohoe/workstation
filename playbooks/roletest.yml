@@ -12,8 +12,9 @@
 #    - dns
 #    - nsswitch
 #    - openttd
-    - cinnamon
+    #- cinnamon
     #- iscsid
+    - veracrypt
 
     
   vars_files:
