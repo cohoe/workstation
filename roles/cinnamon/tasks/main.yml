@@ -70,40 +70,75 @@
 #    key: "/org/cinnamon/desktop/interface/clock-use-24h"
 #    value: 'false'
 
-- name: configure panel applets
+#- name: configure panel applets
+#  dconf:
+#    key: "/org/cinnamon/enabled-applets"
+#    value: "['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:blueberry@cinnamon.org:10', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:9:sound@cinnamon.org:13']"
+#
+#- name: configure start menu
+#  copy:
+#    src: menu.json
+#    dest: ~/.cinnamon/configs/menu@cinnamon.org/1.json
+#
+#- name: configure panel size
+#  dconf:
+#    key: "/org/cinnamon/panels-height"
+#    value: "['1:28']"
+#
+#- name: copy wallpaper
+#  copy:
+#    src: user-wallpaper.jpg
+#    dest: /usr/share/backgrounds/images/user-wallpaper.jpg
+#  become: yes
+#
+#- name: set wallpaper
+#  dconf:
+#    key: "/org/cinnamon/desktop/background/{{ item.key }}"
+#    value: "{{ item.value }}"
+#  with_dict:
+#    picture-options: "'zoom'"
+#    picture-uri: "'file:///usr/share/backgrounds/images/user-wallpaper.jpg'"
+#
+#- name: disable builtin desktop shortcuts
+#  dconf:
+#    key: "/org/nemo/desktop/{{ item }}"
+#    value: "false"
+#  with_items:
+#    - computer-icon-visible
+#    - home-icon-visible
+#    - trash-icon-visible
+#
+- name: effects
   dconf:
-    key: "/org/cinnamon/enabled-applets"
-    value: "['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:blueberry@cinnamon.org:10', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:9:sound@cinnamon.org:13']"
+    key: "{{ item }}"
+    value: "'false'"
+  with_items:
+    - /org/cinnamon/desktop-effects
+    - /org/cinnamon/desktop-effects-on-dialogs
+    - /org/cinnamon/desktop-effects-on-menus
 
-- name: configure start menu
-  copy:
-    src: menu.json
-    dest: ~/.cinnamon/configs/menu@cinnamon.org/1.json
-
-- name: configure panel size
+- name: configure zoom
   dconf:
-    key: "/org/cinnamon/panels-height"
-    value: "['1:28']"
-
-- name: copy wallpaper
-  copy:
-    src: user-wallpaper.jpg
-    dest: /usr/share/backgrounds/images/user-wallpaper.jpg
-  become: yes
-
-- name: set wallpaper
-  dconf:
-    key: "/org/cinnamon/desktop/background/{{ item.key }}"
+    key: "{{ item.key }}"
     value: "{{ item.value }}"
   with_dict:
-    picture-options: "'zoom'"
-    picture-uri: "'file:///usr/share/backgrounds/images/user-wallpaper.jpg'"
-
-- name: disable builtin desktop shortcuts
-  dconf:
-    key: "/org/nemo/desktop/{{ item }}"
-    value: "false"
-  with_items:
-    - computer-icon-visible
-    - home-icon-visible
-    - trash-icon-visible
+    /org/cinnamon/desktop/a11y/magnifier/scroll-at-edges: "true"
+    /org/cinnamon/desktop/a11y/applications/screen-magnifier-enabled: "true"
+    /org/gnome/desktop/a11y/applications/screen-keyboard-enabled: "false"
+    /org/cinnamon/desktop/a11y/keyboard/togglekeys-enable-osd: "'true'"
+    /org/cinnamon/desktop/interface/first-day-of-week: 1
+    /org/cinnamon/muffin/sync-to-vblank: "true"
+    /org/cinnamon/desktop/notifications/display-notifications: "true"
+    /org/cinnamon/desktop/notifications/bottom-notifications: "true"
+    /org/cinnamon/show-media-keys-osd: "'small'"
+    /org/cinnamon/desktop/privacy/remember-recent-files: "false"
+    /org/cinnamon/settings-daemon/plugins/power/lock-on-suspend: "true"
+    /org/cinnamon/desktop/screensaver/lock-enabled: "true"
+    /org/cinnamon/desktop/screensaver/lock-delay: "uint32 0"
+    /org/cinnamon/desktop/session/idle-delay: "uint32 900"
+    /org/cinnamon/desktop/wm/preferences/action-double-click-titlebar: "'toggle-maximize-vertically'"
+    /org/cinnamon/muffin/placement-mode: "'center'"
+    /org/cinnamon/alttab-switcher-style: "'icons+thumbnails'"
+    /org/cinnamon/alttab-minimized-aware: "true"
+    /org/cinnamon/alttab-switcher-delay: "0"
+    /org/cinnamon/muffin/tile-maximize: "true"
