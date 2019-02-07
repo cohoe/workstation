@@ -1,0 +1,20 @@
+---
+- name: set clock format
+  dconf:
+    key: "/org/cinnamon/desktop/interface/clock-use-24h"
+    value: 'false'
+
+- name: configure panel applets
+  dconf:
+    key: "/org/cinnamon/enabled-applets"
+    value: "['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:3:removable-drives@cinnamon.org:7', 'panel1:right:4:user@cinnamon.org:8', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:blueberry@cinnamon.org:10', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:9:sound@cinnamon.org:13']"
+
+- name: configure start menu
+  copy:
+    src: menu.json
+    dest: ~/.cinnamon/configs/menu@cinnamon.org/1.json
+
+- name: configure panel size
+  dconf:
+    key: "/org/cinnamon/panels-height"
+    value: "['1:28']"

@@ -25,7 +25,18 @@
     - ~/Projects/priv
 
 # Face for login
-- name: "user picture | get"
+- name: download user face picture
   get_url:
     url: "{{ user_face }}"
     dest: '~/.face'
+
+- name: see if face needs resized
+  shell:
+    cmd: jhead ~/.face | grep Resolution | awk '{print $3}'
+  register: face_size
+  changed_when: false
+
+- name: resize face
+  shell:
+    cmd: convert -scale 128x128 ~/.face ~/.face
+  when: '"128" not in face_size.stdout'

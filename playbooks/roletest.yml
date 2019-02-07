@@ -15,6 +15,7 @@
     - cinnamon
     #- iscsid
     #- veracrypt
+    #- shell
 
     
   vars_files:
