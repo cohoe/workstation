@@ -30,6 +30,7 @@
     /org/cinnamon/muffin/sync-to-vblank: "true"
     /org/cinnamon/desktop/notifications/display-notifications: "true"
     /org/cinnamon/desktop/notifications/bottom-notifications: "true"
+    /org/cinnamon/desktop/notifications/remove-old: "true"
     /org/cinnamon/show-media-keys-osd: "'small'"
     /org/cinnamon/desktop/privacy/remember-recent-files: "false"
     /org/cinnamon/settings-daemon/plugins/power/lock-on-suspend: "true"
@@ -42,6 +43,7 @@
     /org/cinnamon/alttab-minimized-aware: "true"
     /org/cinnamon/alttab-switcher-delay: "0"
     /org/cinnamon/muffin/tile-maximize: "true"
+    /org/blueberry/obex-enabled: "false"
 
 - name: copy wallpaper
   copy:

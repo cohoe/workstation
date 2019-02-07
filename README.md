@@ -30,4 +30,4 @@ ansible-playbook -K -l localhost playbooks/home.yml
 ToDo
 ----
 * Create NetworkManager profile
-* nemo video thumbnails
+* maxime and the future of the ladspa plugin

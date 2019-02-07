@@ -13,9 +13,15 @@
     /org/nemo/preferences/date-format: "'iso'"
     /org/nemo/preferences/show-advanced-permissions: "'true'"
     /org/nemo/preferences/show-image-thumbnails: "'always'"
-    /org/nemo/preferences/thumbnail-limit: "uint64 104857600"
+    /org/nemo/preferences/thumbnail-limit: "uint64 34359738368"
     /org/nemo/preferences/tooltips-in-list-view: "'true'"
     /org/nemo/preferences/tooltips-show-file-type: "'true'"
     /org/nemo/preferences/tooltips-show-birth-date: "'true'"
     /org/nemo/preferences/show-open-in-terminal-toolbar: "'true'"
     /org/nemo/window-state/side-pane-view: "'tree'"
+
+- name: install thumbnailer backend
+  dnf:
+    name: ffmpegthumbnailer
+    state: latest
+  become: yes

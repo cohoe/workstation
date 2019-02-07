@@ -16,9 +16,10 @@
     #- iscsid
     #- veracrypt
     #- shell
+    #- maxime
 
     
   vars_files:
     - ../vars/global.yml
 #    - ../vars/ctct.yml
-    #- ../vars/home.yml
+#    - ../vars/home.yml
