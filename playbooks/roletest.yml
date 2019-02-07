@@ -12,11 +12,12 @@
 #    - dns
 #    - nsswitch
 #    - openttd
-    - cinnamon
+    #- cinnamon
     #- iscsid
     #- veracrypt
     #- shell
     #- maxime
+    - franz
 
     
   vars_files:

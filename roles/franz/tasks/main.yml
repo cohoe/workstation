@@ -1,0 +1,25 @@
+---
+- name: test if franz is installed
+  stat:
+    path: "/opt/franz/franz-{{ franz_version }}/franz"
+  register: franz_stat
+
+- name: include install
+  import_tasks: install.yml
+  when: franz_stat.stat.exists == False
+  become: yes
+
+- name: install desktop file
+  template:
+    src: franz.desktop
+    dest: ~/.local/share/applications/franz.desktop
+
+- name: create config directory
+  file:
+    path: ~/.config/Franz/config
+    state: directory
+
+- name: settings
+  copy:
+    src: settings.json
+    dest: ~/.config/Franz/config/settings.json
