@@ -31,4 +31,3 @@ ToDo
 ----
 * Create NetworkManager profile
 * maxime and the future of the ladspa plugin
-* screenshot select
