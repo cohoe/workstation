@@ -11,7 +11,7 @@
 - name: effects
   dconf:
     key: "{{ item }}"
-    value: "'false'"
+    value: "false"
   with_items:
     - /org/cinnamon/desktop-effects
     - /org/cinnamon/desktop-effects-on-dialogs

@@ -11,7 +11,6 @@
       - d-feet            # DBus debugging tool
       - easytag           # MP3 Tag editor
       - libreoffice       # Office suite
-      - vlc               # Video player
     state: latest
   become: yes
 

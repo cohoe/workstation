@@ -18,3 +18,8 @@
   dconf:
     key: "/org/cinnamon/panels-height"
     value: "['1:28']"
+
+- name: favorite apps
+  dconf:
+    key: /org/cinnamon/favorite-apps
+    value: "['launchy.desktop', 'cinnamon-settings.desktop']"

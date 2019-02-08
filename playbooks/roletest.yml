@@ -12,12 +12,14 @@
 #    - dns
 #    - nsswitch
 #    - openttd
-    #- cinnamon
     #- iscsid
     #- veracrypt
     #- shell
     #- maxime
-    - franz
+    #- franz
+    #- konsole
+    #- cinnamon
+    - vlc
 
     
   vars_files:
