@@ -5,13 +5,16 @@
 ** is running, your changes will be overwritten later, without taking effect.
 ** Use VBoxManage or the VirtualBox Manager GUI to make changes.
 -->
-<VirtualBox xmlns="http://www.virtualbox.org/" version="1.12-linux">
+<VirtualBox xmlns="http://www.virtualbox.org/" version="1.14-linux">
   <Global>
     <ExtraData>
+      <ExtraDataItem name="GUI/Details/Elements" value="general,system,preview,display,storage,audio,network,usb,sharedFolders,description"/>
+      <ExtraDataItem name="GUI/LastItemSelected" value="n=GLOBAL"/>
+      <ExtraDataItem name="GUI/UpdateCheckCount" value="2"/>
       <ExtraDataItem name="GUI/Input/MachineShortcuts" value="InstallGuestAdditions=I"/>
       <ExtraDataItem name="GUI/HideDescriptionForWizards" value="NewVM"/>
       <ExtraDataItem name="GUI/SuppressMessages" value="remindAboutAutoCapture,confirmInputCapture,remindAboutMouseIntegration,warnAboutInaccessibleMedia,confirmGoingSeamless"/>
-      <ExtraDataItem name="GUI/UpdateDate" value="1 w, 0, stable, 5.1"/>
+      <ExtraDataItem name="GUI/UpdateDate" value="never"/>
     </ExtraData>
     <MachineRegistry/>
     <NetserviceRegistry>

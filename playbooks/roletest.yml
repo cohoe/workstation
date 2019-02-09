@@ -19,7 +19,8 @@
     #- franz
     #- konsole
     #- cinnamon
-    - vlc
+    #- vlc
+    - vbox/host
 
     
   vars_files:
