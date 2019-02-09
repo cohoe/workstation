@@ -20,12 +20,7 @@ curl -sL grntm.co/setup | bash
 ansible-playbook -K -l localhost playbooks/home.yml
 ```
 
-5) Run some post-install steps manually
-```
-~ # smbpasswd
-```
-
-6) Reboot
+5) Reboot
 
 ToDo
 ----
