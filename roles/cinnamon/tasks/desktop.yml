@@ -58,3 +58,11 @@
   with_dict:
     picture-options: "'zoom'"
     picture-uri: "'file:///usr/share/backgrounds/images/user-wallpaper.jpg'"
+
+- name: sleep settings:
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:
+    - /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac: 900
+    - /org/cinnamon/settings-daemon/plugins/power/sleep-display-battery: 900
