@@ -69,3 +69,5 @@ set scrolloff=10
 set pastetoggle=<F2>
 
 set virtualedit=onemore
+
+set viminfo='100,<1000,s10,h
