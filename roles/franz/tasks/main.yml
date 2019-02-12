@@ -14,12 +14,37 @@
     src: franz.desktop
     dest: ~/.local/share/applications/franz.desktop
 
-- name: create config directory
+- name: create config directories
   file:
-    path: ~/.config/Franz/config
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - ~/.config/Franz/config
+    - ~/.config/Franz/recipes
+    - ~/.config/Franz/recipes/slack
+    - ~/.config/Franz/recipes/messenger
+    - ~/.config/Franz/recipes/googlecalendar
 
 - name: settings
   copy:
     src: settings.json
     dest: ~/.config/Franz/config/settings.json
+    backup: yes
+
+# Darkmode themes
+# Really need a way to auto-update these as I suspect the CSS classes will change pretty frequently
+# * Slack is detailed in https://github.com/cohoe/workstation/issues/30
+#   The file was generated with the base CSS from Github + the overrides I put 
+#   in the customCustomCSS var. They should get unified a bit. I really should
+#   do a PR....
+# * [FB] Messenger comes from https://userstyles.org/styles/134433/dark-night-facebook-messenger
+#   with notes and things from https://github.com/meetfranz/franz/issues/960
+# * Google Calendar: https://userstyles.org/styles/143026/dark-google-calendar-2019
+- name: custom service darkmode css
+  copy:
+    src: "{{ item }}"
+    dest: "~/.config/Franz/recipes/{{ item }}/darkmode.css"
+  with_items:
+    - slack
+    - messenger
+    - googlecalendar
