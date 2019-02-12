@@ -13,7 +13,6 @@
     - firefox
     - vlc
     - chrome/browser
-    - slack
     - launchy
     - x11
     - remmina
@@ -27,6 +26,7 @@
     - bluetooth
     - docker
     - dns
+    - franz
 
 #  tasks:
     # VirtualBox
