@@ -24,3 +24,5 @@
       line: "qt-recentplay=0"
     - regexp: "metadata-network-access=.*$"
       line: "#metadata-network-access=0"
+    - regexp: "one-instance=.*$"
+      line: "one-instance=1"
