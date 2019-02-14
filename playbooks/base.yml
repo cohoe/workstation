@@ -12,5 +12,6 @@
     - ssl
     - java
     - rvm
+    - grub
   vars_files:
     - ../vars/global.yml

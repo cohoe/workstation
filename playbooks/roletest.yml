@@ -21,8 +21,9 @@
     #- cinnamon
     #- vlc
     #- vbox/host
-    - shell
-    - rvm
+    #- shell
+    #- rvm
+    - grub
 
     
   vars_files:
