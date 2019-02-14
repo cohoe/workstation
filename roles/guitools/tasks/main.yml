@@ -11,6 +11,7 @@
       - d-feet            # DBus debugging tool
       - easytag           # MP3 Tag editor
       - libreoffice       # Office suite
+      - gparted           # Partition editor
     state: latest
   become: yes
 

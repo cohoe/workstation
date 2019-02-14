@@ -18,6 +18,7 @@
     - aliases.zsh
     - environment.zsh
     - path.zsh
+    - rvm.zsh
 
 - name: "set user shell"
   user:

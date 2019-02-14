@@ -11,5 +11,6 @@
     - sudo
     - ssl
     - java
+    - rvm
   vars_files:
     - ../vars/global.yml

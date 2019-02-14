@@ -16,11 +16,13 @@
     #- veracrypt
     #- shell
     #- maxime
-    - franz
+    #- franz
     #- konsole
     #- cinnamon
     #- vlc
     #- vbox/host
+    - shell
+    - rvm
 
     
   vars_files:
