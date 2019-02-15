@@ -14,7 +14,7 @@
 #    - openttd
     #- iscsid
     #- veracrypt
-    #- shell
+    - shell
     #- maxime
     #- franz
     #- konsole
@@ -32,7 +32,7 @@
     #- security
     #- pulse
     #- nas
-    - vbox/host
+    #- vbox/host
 
     
   vars_files:
