@@ -1,8 +1,8 @@
 ---
 # A home computer
 #
-#- import_playbook: base.yml
-#- import_playbook: desktop.yml
+- import_playbook: base.yml
+- import_playbook: desktop.yml
 
 - name: Home
   hosts: all
@@ -37,14 +37,16 @@
     - name: "include nvidia"
       import_role:
         name: nvidia
-      when: "'NVIDIA' in '{{ lspci_gpu.stdout }}'"
+      when: "'NVIDIA' in lspci_gpu.stdout"
 
     # Log when we last ran
-    - copy:
+    - name: log run date to file
+      copy:
         dest: /etc/buildinfo
         content: "{{ ansible_date_time.iso8601 }}"
         mode: 0644
       become: yes
+
     # It seems that no matter what, the Fedora installer leaves some files
     # inappropriately labeled. This generates a bunch of SELinux alerts on
     # first proper login. This will get the filesystem back to a "sane"

@@ -22,18 +22,14 @@
     path: ~/.launchy
     state: directory
 
+# don't force this since window position and history can change
 - name: install config
   copy:
     dest: "~/.launchy/launchy.ini"
     src: launchy.ini
+    force: no
 
 - name: configure autostart
   copy:
     dest: "{{ user_autostart_dir }}/launchy.desktop"
     src: "{{ sys_shortcuts_dir }}/launchy.desktop"
-
-- name: "Set XFCE autostart"
-  lineinfile:
-    dest: "{{ user_autostart_dir }}/launchy.desktop"
-    regexp: "^X-XFCE-Autostart-Override"
-    line: "X-XFCE-Autostart-Override=true"

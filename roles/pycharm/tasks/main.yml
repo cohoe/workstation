@@ -7,13 +7,14 @@
   become: yes
 
 - name: install package
-  dnf: name={{ pycharm_package }}
-       state=latest
+  dnf:
+    name: pycharm-community
+    state: present
   become: yes
 
 - name: figure out package version
   shell:
-    cmd: rpm -qa {{ pycharm_package }} | sed 's/{{ pycharm_package }}-\([0-9]\+.[0-9]\)\(.*\)$/\1/'
+    cmd: rpm -qa pycharm-community | sed 's/pycharm-community-\([0-9]\+.[0-9]\)\(.*\)$/\1/'
     warn: false
   register: pycharm_package_version
   changed_when: false
@@ -23,9 +24,10 @@
     pycharm_config_dir: "{{ pycharm_config_prefix }}{{ pycharm_package_version.stdout }}"
 
 - name: create configuration dir
-  file: path=~/{{ pycharm_config_dir }}/{{ item }}
-        state=directory
-        recurse=yes
+  file:
+    path: "~/{{ pycharm_config_dir }}/{{ item }}"
+    state: directory
+    recurse: yes
   with_items:
     - config/settingsRepository/repository
     - config/options
@@ -33,8 +35,21 @@
 # In order for this to take effect, on first pycharm run you gotta
 # do an initial overrite local settings. Not sure why, but it got me what I wanted.
 - name: load config repository
-  git: repo={{ pycharm_config_repo }}
-       dest=~/{{ pycharm_config_dir }}/config/settingsRepository/repository
+  git:
+    repo: "{{ pycharm_config_repo }}"
+    dest: "~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
 
-- name: switch config repo to ssh
-  shell: "{{ user_bin_dir }}/git-switch-remote -r ~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
+# This stuff can probably go away
+#- name: find git remote method
+#  shell:
+#    cmd: git --no-pager config --local --get remote.origin.url
+#    chdir: "~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
+#  register: config_remote
+#  changed_when: false
+#
+#- debug: var=config_remote
+#
+#- name: switch config repo to ssh
+#  shell:
+#    cmd: "{{ user_bin_dir }}/git-switch-remote -r ~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
+#  when: "'git@' not in config_remote.stdout"

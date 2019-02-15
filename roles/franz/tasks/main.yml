@@ -42,7 +42,7 @@
 # * Google Calendar: https://userstyles.org/styles/143026/dark-google-calendar-2019
 - name: custom service darkmode css
   copy:
-    src: "{{ item }}"
+    src: "{{ item }}.css"
     dest: "~/.config/Franz/recipes/{{ item }}/darkmode.css"
   with_items:
     - slack

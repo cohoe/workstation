@@ -3,3 +3,4 @@
   copy:
     src: mimeapps.list
     dest: '~/.config/mimeapps.list'
+    backup: yes

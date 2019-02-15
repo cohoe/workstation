@@ -23,10 +23,18 @@
     #- vbox/host
     #- shell
     #- rvm
-    - grub
+    #- grub
+    #- launchy
+    #- pycharm
+    #- bluetooth
+    #- hdhomerun
+    #- mail
+    - security
+    - pulse
+    - nas
 
     
   vars_files:
     - ../vars/global.yml
 #    - ../vars/ctct.yml
-#    - ../vars/home.yml
+    - ../vars/home.yml

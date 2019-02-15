@@ -1,0 +1,13 @@
+---
+- name: rebuild hashes
+  command: postmap hash:/etc/postfix/{{ item }}
+  become: yes
+  with_items:
+    - sasl_passwd
+    - genericmap
+
+- name: restart postfix
+  service:
+    name: postfix
+    state: restarted
+  become: yes
