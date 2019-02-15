@@ -29,12 +29,13 @@
     #- bluetooth
     #- hdhomerun
     #- mail
-    - security
-    - pulse
-    - nas
+    #- security
+    #- pulse
+    #- nas
+    - vbox/host
 
     
   vars_files:
     - ../vars/global.yml
 #    - ../vars/ctct.yml
-    - ../vars/home.yml
+    #- ../vars/home.yml
