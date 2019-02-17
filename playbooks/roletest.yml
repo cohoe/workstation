@@ -14,7 +14,7 @@
 #    - openttd
     #- iscsid
     #- veracrypt
-    - shell
+    #- shell
     #- maxime
     #- franz
     #- konsole
@@ -33,6 +33,7 @@
     #- pulse
     #- nas
     #- vbox/host
+    - spotify
 
     
   vars_files:

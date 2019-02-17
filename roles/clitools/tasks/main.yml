@@ -36,6 +36,7 @@
       - ffmpeg            # Media utility
       - ncdu              # ncurses disk usage
       - jhead             # JPEG data tool
+      - ltrace            # Library call trace
     state: latest
   become: true
 

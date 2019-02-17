@@ -1,0 +1,46 @@
+---
+# To clear this:
+# 1) sudo dnf erase -y spotify-client
+# 2) sudo dnf reinstall lpf-spotify-client -y
+# 3) sudo rm -rf /var/lib/lpf/rpms/spotify-client
+# 4) sudo gpasswd -d grant pkg-build
+
+- name: install base packages
+  dnf:
+    name: lpf-spotify-client
+    state: latest
+  become: yes
+
+# Even the CLI based approval is interactive. Screw that. Since lpf is
+# just a collection of bash scripts that write metadata to files on disk
+# we can pretend to be that.
+- name: approve package
+  copy:
+    content: |
+        build-wait
+    dest: /var/lib/lpf/packages/spotify-client/state
+  become: yes
+
+- name: add user to build group
+  user:
+    name: "{{ ansible_user_id }}"
+    append: yes
+    groups: pkg-build
+  become: yes
+
+# This is super-hackish.
+# User is not part of the pkg-build group until the next login/reboot.
+# This causes weird Termination errors with lpf. So this will go and
+# spawn a new shell (shell? session? whatevs) with the appropriate
+# permissions. And because we need to ensure that there is no 
+# DISPLAY variable in the environment, we need a bash -c to exec a
+# more complex command string.
+# Oh and even if it is successful, it still errors out (probably
+# something with this weird execution nonsense) despite building
+# successfully. So we're gonna change the failed condition.
+- name: build package
+  shell:
+    cmd: "sudo -u {{ ansible_user_id }} bash -c \"unset DISPLAY && lpf build spotify-client\""
+    warn: False
+  register: build_results
+  failed_when: "'build completed' not in build_results.stdout"
