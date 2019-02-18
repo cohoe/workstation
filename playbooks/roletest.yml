@@ -7,36 +7,9 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-#    - grub
-#    - rvm
-#    - dns
-#    - nsswitch
-#    - openttd
-    #- iscsid
-    #- veracrypt
-    #- shell
-    #- maxime
-    #- franz
-    #- konsole
-    #- cinnamon
-    #- vlc
-    #- vbox/host
-    #- shell
-    #- rvm
-    #- grub
-    #- launchy
-    #- pycharm
-    #- bluetooth
-    #- hdhomerun
-    #- mail
-    #- security
-    #- pulse
-    #- nas
-    #- vbox/host
-    - spotify
-
+    - ssl
     
   vars_files:
     - ../vars/global.yml
 #    - ../vars/ctct.yml
-    #- ../vars/home.yml
+    - ../vars/home.yml
