@@ -1,5 +1,0 @@
-[hipchat]
-name=Hipchat
-baseurl=http://atlassian.artifactoryonline.com/atlassian/hipchat-yum-client
-enabled=1
-gpgcheck=0

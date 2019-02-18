@@ -1,5 +1,0 @@
----
-anyconnect_repo: http://www.asc.edu/downloads/CiscoVPN/anyconnect/old/
-anyconnect_version: 3.1.05178
-
-anyconnect_package: anyconnect-linux-64-{{ anyconnect_version }}-k9.pkg
