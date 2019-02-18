@@ -17,7 +17,7 @@
     - /org/cinnamon/desktop-effects-on-dialogs
     - /org/cinnamon/desktop-effects-on-menus
 
-- name: configure zoom
+- name: misc configuration items
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
@@ -44,6 +44,9 @@
     /org/cinnamon/alttab-switcher-delay: "0"
     /org/cinnamon/muffin/tile-maximize: "true"
     /org/blueberry/obex-enabled: "false"
+    /org/cinnamon/desktop/media-handling/autorun-x-content-start-app: "['x-content/unix-software', 'x-content/bootable-media']"
+    /org/cinnamon/desktop/media-handling/autorun-x-content-ignore: "['x-content/bootable-media']"
+    /org/cinnamon/desktop/media-handling/autorun-x-content-open-folder: '@as []'
 
 - name: copy wallpaper
   copy:
@@ -59,10 +62,10 @@
     picture-options: "'zoom'"
     picture-uri: "'file:///usr/share/backgrounds/images/user-wallpaper.jpg'"
 
-- name: sleep settings:
+- name: sleep settings
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  with_items:
+  with_dict:
     - /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac: 900
     - /org/cinnamon/settings-daemon/plugins/power/sleep-display-battery: 900
