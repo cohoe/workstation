@@ -37,6 +37,7 @@
       - ncdu              # ncurses disk usage
       - jhead             # JPEG data tool
       - ltrace            # Library call trace
+      - ImageMagick       # Image tools
     state: latest
   become: true
 

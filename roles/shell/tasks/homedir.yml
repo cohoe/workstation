@@ -25,10 +25,17 @@
     - ~/Projects/priv
 
 # Face for login
+# Heads up - this requires ImageMagick and jhead which are provided in clitools
+- name: test if face exists
+  stat:
+    path: "~/.face"
+  register: face_stat
+
 - name: download user face picture
   get_url:
     url: "{{ user_face }}"
     dest: '~/.face'
+  when: face_stat.stat.exists == False
 
 - name: see if face needs resized
   shell:
