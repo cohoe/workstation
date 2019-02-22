@@ -9,7 +9,10 @@
   roles:
     #- ssl
     #- cinnamon
-    - shell
+    #- shell
+
+  tasks:
+    - include_tasks: ../roles/cinnamon/tasks/junk.yml
     
   vars_files:
     - ../vars/global.yml

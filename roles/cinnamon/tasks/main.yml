@@ -10,5 +10,6 @@
     - sounds
     - terminal
     - desktop
+    - junk
   loop_control:
     loop_var: task_item
