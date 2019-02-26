@@ -31,3 +31,4 @@
   copy:
     src: openttd.cfg
     dest: "{{ openttd_user_directory }}/"
+    force: no

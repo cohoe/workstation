@@ -38,6 +38,7 @@
       - jhead             # JPEG data tool
       - ltrace            # Library call trace
       - ImageMagick       # Image tools
+      - livecd-tools      # live cd/usb tols
     state: latest
   become: true
 
