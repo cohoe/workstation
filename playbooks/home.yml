@@ -22,7 +22,8 @@
     - nas
     - aws
     - mail
-    - backups
+    - backups/workstation
+    - backups/nas
     - openttd
     - nsswitch
     - veracrypt

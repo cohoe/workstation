@@ -10,11 +10,12 @@
     #- ssl
     #- cinnamon
     #- shell
+    - backups/nas
 
   tasks:
-    - include_tasks: ../roles/cinnamon/tasks/junk.yml
+    #- include_tasks: ../roles/cinnamon/tasks/junk.yml
     
   vars_files:
-    - ../vars/global.yml
+#    - ../vars/global.yml
 #    - ../vars/ctct.yml
-#    - ../vars/home.yml
+    - ../vars/home.yml

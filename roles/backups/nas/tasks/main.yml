@@ -1,0 +1,33 @@
+---
+- name: install packages
+  dnf:
+    name:
+      - rclone-browser
+      - rclone
+    state: present
+  become: yes
+
+# This is different than the workstation backups because those run as root.
+# These happen as me
+- name: create config directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items: 
+    - '~/.config/rclone'
+    - '~/.config/rclone-browser'
+
+# Don't install the NAS configs on the laptop. Will be a little tin-foil-y
+- name: rclone config file
+  template:
+    src: rclone.conf.j2
+    dest: '~/.config/rclone/rclone.conf'
+    mode: 0600
+  when: ansible_form_factor != "Notebook"
+
+- name: browser config file
+  copy:
+    src: rclone-browser.conf
+    dest: '~/.config/rclone-browser/rclone-browser.conf'
+    force: no
