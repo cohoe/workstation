@@ -71,3 +71,7 @@ set pastetoggle=<F2>
 set virtualedit=onemore
 
 set viminfo='100,<1000,s10,h
+
+" Explicity enable modeline because FreeBSD can be dumb
+set modeline
+set modelines=5
