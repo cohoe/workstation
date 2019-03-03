@@ -1,0 +1,12 @@
+---
+- name: test if rvm is installed
+  stat:
+    path: ~/.rvm/scripts/rvm
+  register: rvm_stat
+
+- name: download and prepare
+  shell:
+    cmd: bash -c "/usr/bin/curl -sSL https://get.rvm.io | bash"
+  environment:
+    - rvm_ignore_dotfiles: "yes"
+  when: rvm_stat.stat.exists == False

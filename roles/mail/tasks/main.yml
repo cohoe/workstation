@@ -20,6 +20,8 @@
         [{{ mail_relay_host }}]:submission    {{ mail_relay_username }}:{{ mail_relay_password }}
     mode: 0640
   become: yes
+  notify:
+    - rebuild hashes
 
 - name: build user map file
   copy:
@@ -28,24 +30,21 @@
         root@{{ ansible_fqdn }} {{ mail_from_address }}
     mode: 0644
   become: yes
+  notify:
+    - rebuild hashes
 
 - name: copy postfix config
   template:
     src: main.cf
     dest: /etc/postfix/main.cf
   become: yes
-
-- name: rebuild hashes
-  command: postmap hash:/etc/postfix/{{ item }}
-  become: yes
-  with_items:
-    - sasl_passwd
-    - genericmap
+  notify:
+    - restart postfix
 
 - name: enable service
   service:
     name: postfix
-    state: restarted
+    state: started
     enabled: yes
   become: yes
 
@@ -61,3 +60,8 @@
   with_items:
     - "{{ ansible_user_id }}"
     - root
+
+# This forces the handlers to run now rather than at the end of the play.
+# A lot more can go wrong there.
+- name: run mail handlers now
+  meta: flush_handlers

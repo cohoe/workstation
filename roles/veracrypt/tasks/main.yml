@@ -1,0 +1,10 @@
+---
+- name: test if veracrypt is installed
+  stat:
+    path: /usr/bin/veracrypt
+  register: veracrypt_stat
+
+- name: include install
+  import_tasks: install.yml
+  when: veracrypt_stat.stat.exists == False
+  become: yes

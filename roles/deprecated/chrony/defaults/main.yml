@@ -1,4 +1,0 @@
----
-time_servers:
- - time.windows.com
- - pool.ntp.org

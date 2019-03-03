@@ -1,9 +1,0 @@
----
-# Pidgin IM client
-- name: install pidgin and plugins
-  dnf: name={{ item }} state=latest
-  become: yes
-  with_items:
-    - pidgin
-    - pidgin-hangouts
-    - pidgin-facebook

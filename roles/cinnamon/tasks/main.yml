@@ -1,0 +1,15 @@
+---
+
+- name: load components
+  include_tasks: "{{ task_item }}.yml"
+  with_items:
+    - panel
+    - nemo
+    - keyboard
+    - login
+    - sounds
+    - terminal
+    - desktop
+    - junk
+  loop_control:
+    loop_var: task_item

@@ -29,4 +29,5 @@
     content: "username=\npassword=\n"
     dest: "{{ nas_cred_file }}"
     mode: 0400
+    force: no
   when: nas_cred_file is defined

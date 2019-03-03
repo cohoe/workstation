@@ -1,9 +1,0 @@
----
-# Install RVM
-- name: install
-  shell:
-    cmd: bash -c "/usr/bin/curl -sSL https://get.rvm.io | bash"
-  environment:
-    - rvm_ignore_dotfiles: "yes"
-
-# @TODO Add to dotfiles

@@ -1,0 +1,27 @@
+---
+- name: nemo
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    /org/nemo/preferences/default-folder-viewer: "'list-view'"
+    /org/nemo/window-state/sidebar-width: 260
+    /org/nemo/preferences/click-double-parent-folder: "'true'"
+    /org/nemo/preferences/executable-text-activation: "'display'"
+    /org/nemo/preferences/swap-trash-delete: "'true'"
+    /org/nemo/preferences/close-device-view-on-device-eject: "'true'"
+    /org/nemo/preferences/date-format: "'iso'"
+    /org/nemo/preferences/show-advanced-permissions: "'true'"
+    /org/nemo/preferences/show-image-thumbnails: "'always'"
+    /org/nemo/preferences/thumbnail-limit: "uint64 34359738368"
+    /org/nemo/preferences/tooltips-in-list-view: "'true'"
+    /org/nemo/preferences/tooltips-show-file-type: "'true'"
+    /org/nemo/preferences/tooltips-show-birth-date: "'true'"
+    /org/nemo/preferences/show-open-in-terminal-toolbar: "'true'"
+    /org/nemo/window-state/side-pane-view: "'tree'"
+
+- name: install thumbnailer backend
+  dnf:
+    name: ffmpegthumbnailer
+    state: latest
+  become: yes

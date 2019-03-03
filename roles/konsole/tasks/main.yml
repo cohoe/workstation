@@ -32,9 +32,9 @@
     - Grant.profile
 
 # Set a desktop file so that this is the preferred terminal
-- name: "preferred launcher | create"
-  copy: src=custom-TerminalEmulator.desktop
-        dest=~/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop
+#- name: "preferred launcher | create"
+##  copy: src=custom-TerminalEmulator.desktop
+#        dest=~/.local/share/xfce4/helpers/custom-TerminalEmulator.desktop
 
 # Remove the existing system shortcut
 - name: "sys shortcut | delete"

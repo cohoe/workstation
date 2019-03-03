@@ -1,6 +1,0 @@
----
-# Set the LDAP config
-- name: "ldap | config"
-  template: src=ldap.conf
-            dest=/etc/openldap/ldap.conf
-  become: yes

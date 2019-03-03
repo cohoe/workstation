@@ -7,14 +7,15 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-#    - grub
-    - rvm
-#    - dns
-#    - nsswitch
-#    - openttd
+    #- ssl
+    #- cinnamon
+    #- shell
+    - backups/nas
 
+  tasks:
+    #- include_tasks: ../roles/cinnamon/tasks/junk.yml
     
   vars_files:
-    - ../vars/global.yml
+#    - ../vars/global.yml
 #    - ../vars/ctct.yml
-    #- ../vars/home.yml
+    - ../vars/home.yml

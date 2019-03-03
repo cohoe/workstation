@@ -13,7 +13,8 @@
     - homedir.yml
     - zsh.yml
     - git.yml
-#    - nvm.yml # DISABLING NVM UNTIL I ACTUALLY NEED IT AGAIN
+    - rvm.yml
+    - nvm.yml
   loop_control:
     loop_var: task_item
 
@@ -21,6 +22,7 @@
   copy:
     dest: "~/.{{ item }}"
     src: "{{ item }}"
+    backup: yes
   with_items:
     - vimrc
     - screenrc

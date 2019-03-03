@@ -1,5 +1,0 @@
-[libdefaults]
-default_realm = CORP.EMC.COM
-
-[domain_realm]
-corp.emc.com = CORP.EMC.COM

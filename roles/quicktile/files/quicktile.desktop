@@ -2,7 +2,7 @@
 Version=1.0
 Name=QuickTile
 Comment=Window-Tiling Helper
-Exec=/opt/quicktile/quicktile.py --daemonize
+Exec=/opt/quicktile/quicktile.sh --daemonize
 Terminal=false
 Type=Application
 Icon=

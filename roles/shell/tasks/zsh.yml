@@ -14,10 +14,13 @@
   copy:
     src: "zsh/{{ item }}"
     dest: "{{ ohmyzsh_directory }}/custom/{{ item }}"
+    backup: yes
   with_items:
     - aliases.zsh
     - environment.zsh
     - path.zsh
+    - rvm.zsh
+    - gt.zsh
 
 - name: "set user shell"
   user:

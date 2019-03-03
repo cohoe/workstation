@@ -5,13 +5,15 @@
     state: latest
   become: yes
 
-# Firewall
 - name: firewall rules
-  shell:
-    cmd: firewall-cmd --permanent --direct --add-rule ipv4 filter IN_{{ firewalld_zone }}_allow -1 {{ item }}
-  with_items:
-    - "-p udp --sport 65001 -j ACCEPT"
-    - "-p tcp --sport 65001 -j ACCEPT"
-    - "-p udp --sport 5004 -j ACCEPT"
-  when: secure_firewalld
+  firewalld:
+    rich_rule: "{{ item }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    zone: "{{ firewalld_zone }}"
   become: yes
+  with_items:
+    - rule family=ipv4 source-port port="65001" protocol="udp" accept
+    - rule family=ipv4 source-port port="65001" protocol="tcp" accept
+    - rule family=ipv4 source-port port="5004" protocol="udp" accept

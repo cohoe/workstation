@@ -4,10 +4,15 @@
     path: '~'
     mode: 0751
 
-- name: create user bin directory
+# autostart was in xfce and was needed for cinnamon so
+# it might as well be here
+- name: create home subdirs
   file:
-    path: '~/.bin'
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - '~/.bin'
+    - '~/.config/autostart'
 
 # Projects directory
 - name: create projects directory
@@ -20,7 +25,25 @@
     - ~/Projects/priv
 
 # Face for login
-- name: "user picture | get"
+# Heads up - this requires ImageMagick and jhead which are provided in clitools
+- name: test if face exists
+  stat:
+    path: "~/.face"
+  register: face_stat
+
+- name: download user face picture
   get_url:
     url: "{{ user_face }}"
     dest: '~/.face'
+  when: face_stat.stat.exists == False
+
+- name: see if face needs resized
+  shell:
+    cmd: jhead ~/.face | grep Resolution | awk '{print $3}'
+  register: face_size
+  changed_when: false
+
+- name: resize face
+  shell:
+    cmd: convert -scale 128x128 ~/.face ~/.face
+  when: '"128" not in face_size.stdout'

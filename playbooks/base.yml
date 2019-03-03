@@ -10,7 +10,7 @@
     - shell
     - sudo
     - ssl
-    - locale
     - java
+    - grub
   vars_files:
     - ../vars/global.yml

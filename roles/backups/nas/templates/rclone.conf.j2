@@ -1,0 +1,29 @@
+# Configured with Workstation
+
+{% for directory in nas_backup.directories %}
+[{{ directory }}]
+type = crypt
+remote = {{ nas_backup.account.name }}:{{ nas_backup.bucket }}/{{ directory }}
+filename_encryption = standard
+password = {{ nas_backup.password }}
+password2 = {{ nas_backup.password2 }}
+
+{% endfor %}
+[{{ nas_backup.account.name }}]
+account = {{ nas_backup.account.id }}
+type = b2
+key = {{ nas_backup.account.key }}
+bucket = {{ nas_backup.bucket }}
+
+[backblaze]
+type = b2
+account = {{ b2_account }}
+key = {{ b2_key }}
+endpoint = 
+
+[{{ b2_bucket }}]
+type = crypt
+remote = backblaze:{{ b2_bucket }}
+filename_encryption = standard
+password = {{ b2_password }}
+password2 = {{ b2_password2 }}

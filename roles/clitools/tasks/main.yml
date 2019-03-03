@@ -36,6 +36,10 @@
       - ffmpeg            # Media utility
       - ncdu              # ncurses disk usage
       - jhead             # JPEG data tool
+      - ltrace            # Library call trace
+      - ImageMagick       # Image tools
+      - livecd-tools      # live cd/usb tols
+      - android-tools     # Android tools
     state: latest
   become: true
 

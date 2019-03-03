@@ -1,0 +1,3 @@
+- name: update-ca-trust
+  shell: update-ca-trust
+  become: yes

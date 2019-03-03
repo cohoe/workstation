@@ -1,26 +1,29 @@
 ---
-- name: install packages
-  dnf:
-    name: pulseaudio-equalizer
-    state: latest
-  become: yes
-
-- name: create configuration directory
-  file:
-    path: '~/.pulse'
-    state: directory
-
-- name: create equalizer config
-  copy:
-    src: equalizerrc
-    dest: '~/.pulse/equalizerrc'
-
-- name: enable equalizer
-  shell:
-    cmd: "pulseaudio-equalizer {{ item }}"
-  with_items:
-    - enable
-    - enable-config
+# Disabling this until a good case is made to bring it back
+# and deal with the pain and suffering it causes
+#
+#- name: install packages
+#  dnf:
+#    name: pulseaudio-equalizer
+#    state: latest
+#  become: yes
+#
+#- name: create configuration directory
+#  file:
+#    path: '~/.pulse'
+#    state: directory
+#
+#- name: create equalizer config
+#  copy:
+#    src: equalizerrc
+#    dest: '~/.pulse/equalizerrc'
+#
+#- name: enable equalizer
+#  shell:
+#    cmd: "pulseaudio-equalizer {{ item }}"
+#  with_items:
+#    - enable
+#    - enable-config
 
 - name: disable flat volume
   lineinfile:

@@ -5,9 +5,9 @@
     content: |
       PRETTY_HOSTNAME={{ ansible_hostname }}
   become: yes
+  notify: restart bluetooth
 
-- name: restart bluetooth
-  service:
-    name: bluetooth
-    state: restarted
-  become: yes
+# This forces the handlers to run now rather than at the end of the play.
+# A lot more can go wrong there.
+- name: run bluetooth handlers now
+  meta: flush_handlers

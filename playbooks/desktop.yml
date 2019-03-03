@@ -5,19 +5,16 @@
 - name: Graphical desktop stuff
   hosts: all
   roles:
+    - cinnamon
     - guitools
-    - xfce
-    - konsole
     - firefox
+    - vlc
     - chrome/browser
-    - slack
     - launchy
     - x11
-    - grub
     - remmina
     - pycharm
     - ksexplorer
-    - xscreensaver
     - sublime
     - quicktile
     - wireshark
@@ -26,9 +23,9 @@
     - bluetooth
     - docker
     - dns
+    - franz
 
   tasks:
-    # VirtualBox
     - name: "virtualbox guest additions"
       import_role:
         name: vbox/guest

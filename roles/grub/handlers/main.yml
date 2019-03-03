@@ -1,4 +1,5 @@
 ---
-- name: "rebuild efi grub"
-  command: grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg && grub2-install
+- name: rebuild efi grub
+  command: grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
   become: yes
+

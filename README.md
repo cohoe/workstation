@@ -20,18 +20,9 @@ curl -sL grntm.co/setup | bash
 ansible-playbook -K -l localhost playbooks/home.yml
 ```
 
-5) Run some post-install steps manually
-```
-~ # smbpasswd
-```
-
-6) Reboot
+5) Reboot
 
 ToDo
 ----
-* wallpaper didnt work on seefra. works on VMs
-* Monitor never goes to sleep. 
-  * Check DPMS through xfce-power?
-  * Well, maybe. It works on seefra after resetting xscreensaver config and disabling xfce-power
-* Switch pycharm repo to git after cloned
 * Create NetworkManager profile
+* maxime and the future of the ladspa plugin

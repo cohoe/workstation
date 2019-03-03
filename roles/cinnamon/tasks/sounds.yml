@@ -1,0 +1,23 @@
+---
+- name: turn off gui sounds
+  dconf:
+    key: "/org/cinnamon/sounds/{{ item }}"
+    value: 'false'
+  with_items:
+    - close-enabled
+    - login-enabled
+    - logout-enabled
+    - map-enabled
+    - maximize-enabled
+    - minimize-enabled
+    - notification-enabled
+    - plug-enabled
+    - switch-enabled
+    - tile-enabled
+    - unmaximize-enabled
+    - unplug-enabled
+
+- name: turn off volume sounds
+  dconf:
+    key: /org/cinnamon/desktop/sound/volume-sound-enabled
+    value: "false"

@@ -1,0 +1,9 @@
+---
+- name: login window
+  copy:
+    src: slick-greeter.conf
+    dest: /etc/lightdm/slick-greeter.conf
+    owner: root
+    group: root
+    mode: 0664
+  become: yes

@@ -7,10 +7,7 @@
   with_items: "{{ sslca_list }}"
   become: true
   when: sslca_list is defined
+  notify: update-ca-trust
 
-# Update the system SSL CA store manually. This could be needed
-# for later stuff, otherwise a notify handler would be sufficient.
-- name: 'update-ca-trust manually'
-  shell: 'update-ca-trust'
-  become: yes
-  when: sslca_list is defined
+- name: flush handlers
+  meta: flush_handlers

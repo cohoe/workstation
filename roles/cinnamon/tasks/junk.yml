@@ -1,0 +1,13 @@
+---
+- name: remove junk
+  dnf:
+    name:
+      - xfburn
+      - parole
+      - xed
+      - thunderbird
+      - pidgin
+      - hexchat
+      - xawtv
+    state: absent
+  become: yes

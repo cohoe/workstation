@@ -1,72 +1,25 @@
 ---
-# GRUB
+- name: set fact
+  set_fact:
+    kernel_boot_params:
+    - net.ifnames=0
+    - biosdevname=0
+    - pci=noaer
 
-# I believe this can be deprecated in FC27.
-# https://bugzilla.redhat.com/show_bug.cgi?id=1455717
-#
-# The starfield theme is also gone Replace it with breeze.
-
-## Install tools for EFI management
-#- name: "efi packages | install"
-#  dnf: name=grub2-efi-modules state=latest
-#  become: yes
-
-# Install theme package
-- name: "theme package | install"
-  dnf: name=grub2-breeze-theme state=latest
-  become: yes
-
-# Set the theme in the GRUB config
-- name: "grub | theme"
+# GRUB_CMDLINE_LINUX_DEFAULT applies to normal boot (not recovery boot). It
+# also happens to not get set by the OS installer. We will use this to our
+# advantage and set what those defaults shoudl be here.
+- name: set kernel boot parameters
   lineinfile:
     dest: "/etc/default/grub"
-    regexp: "^GRUB_THEME"
-    line: "GRUB_THEME=\"/boot/grub2/themes/breeze/theme.txt\""
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT=(.*)$"
+    line: "GRUB_CMDLINE_LINUX_DEFAULT=\"{{ kernel_boot_params|join(' ') }}\""
     backup: yes
+  become: yes
   notify:
     - rebuild efi grub
-  become: yes
 
-# Set the graphics modes available for GRUB
-- name: "grub | gfxmode"
-  lineinfile:
-    dest: "/etc/default/grub"
-    regexp: "^GRUB_GFXMODE"
-    line: "GRUB_GFXMODE=3440x1440x32,1920x1080x32,1440x900x32,1024x768x32,800x600x32"
-    backup: yes
-  notify:
-    - rebuild efi grub
-  become: yes
-
-# Set some basic kernel parameters
-- name: "extra command line"
-  lineinfile:
-    dest: "/etc/default/grub"
-    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
-    line: "GRUB_CMDLINE_LINUX_DEFAULT=\"net.ifnames=0 biosdevname=0 video=vesa:off rhgb quiet\""
-    backup: yes
-  notify:
-    - rebuild efi grub
-  become: yes
-
-# This tells Linux to maintain the graphics mode between boot and until X11 starts
-- name: "gfxpayload_linux"
-  lineinfile:
-    dest: "/etc/default/grub"
-    regexp: "^GRUB_GFXPAYLOAD_LINUX=keep"
-    line: "GRUB_GFXPAYLOAD_LINUX=keep"
-    backup: yes
-  notify:
-    - rebuild efi grub
-  become: yes
-
-# Set the terminal output device. gfxterm uses a graphics driver
-- name: "terminal_output"
-  lineinfile:
-    dest: "/etc/default/grub"
-    regexp: "^GRUB_TERMINAL_OUTPUT"
-    line: "GRUB_TERMINAL_OUTPUT=\"gfxterm\""
-    backup: yes
-  notify:
-    - rebuild efi grub
-  become: yes
+# This forces the handlers to run now rather than at the end of the play.
+# A lot more can go wrong there.
+- name: run grub handlers now
+  meta: flush_handlers

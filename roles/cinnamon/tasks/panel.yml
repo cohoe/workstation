@@ -1,0 +1,35 @@
+---
+- name: clock configuration
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    /org/cinnamon/desktop/interface/clock-use-24h: "false"
+    /org/cinnamon/desktop/interface/clock-show-date: "true"
+
+- name: configure panel applets
+  dconf:
+    key: "/org/cinnamon/enabled-applets"
+    value: "['panel1:right:0:systray@cinnamon.org:0', 'panel1:left:0:menu@cinnamon.org:1', 'panel1:left:3:window-list@cinnamon.org:4', 'panel1:right:1:keyboard@cinnamon.org:5', 'panel1:right:2:notifications@cinnamon.org:6', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:blueberry@cinnamon.org:10', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:calendar@cinnamon.org:12', 'panel1:right:9:sound@cinnamon.org:13']"
+
+# @TODO find a dynamic way to build these. There are a lot of assumptions here
+# about the indexing of these files
+- name: configure panel applets
+  copy:
+    src: "{{ item.src }}"
+    dest: "~/.cinnamon/configs/{{ item.dest }}"
+  with_items:
+    - src: menu.json
+      dest: "menu@cinnamon.org/1.json"
+    - src: calendar.json
+      dest: "calendar@cinnamon.org/12.json"
+
+- name: configure panel size
+  dconf:
+    key: "/org/cinnamon/panels-height"
+    value: "['1:28']"
+
+- name: favorite apps
+  dconf:
+    key: /org/cinnamon/favorite-apps
+    value: "['launchy.desktop', 'cinnamon-settings.desktop']"

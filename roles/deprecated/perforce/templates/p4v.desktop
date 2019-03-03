@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=P4V
-Icon={{ perforce_p4v_root }}/p4v/lib/p4v/P4VResources/icons/P4-V_96x96.png
-Exec={{ perforce_p4v_root }}/p4v/bin/p4v
-Terminal=false
-Categories=Development;
-Comment=Perforce visual client
