@@ -9,7 +9,6 @@
     - clitools
     - shell
     - sudo
-    - ssl
     - java
     - grub
   vars_files:

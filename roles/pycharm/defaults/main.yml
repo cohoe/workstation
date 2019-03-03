@@ -1,4 +1,4 @@
 ---
 pycharm_config_prefix: .PyCharmCE
-#pycharm_config_repo: https://github.com/cohoe/intellij-settings
-pycharm_config_repo: git@github.com:cohoe/intellij-settings
+pycharm_config_repo: https://github.com/cohoe/intellij-settings
+#pycharm_config_repo: git@github.com:cohoe/intellij-settings

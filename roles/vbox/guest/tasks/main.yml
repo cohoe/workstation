@@ -1,15 +1,15 @@
 ---
-
-- name: "packages | install"
-  dnf: name={{ item }}
-       state=present
+- name: install dependencies
+  dnf:
+    name:
+      - "kernel-devel-{{ ansible_kernel }}"
+      - gcc
+    state: present
   become: yes
-  with_items:
-    - "kernel-devel-{{ ansible_kernel }}"
-    - gcc
 
-- name: "script | install"
-  copy: src=vboxtools-install
-        dest=/usr/local/sbin/vboxtools-install
-        mode=0775
+- name: install tools installer script
+  copy:
+    src: vboxtools-install
+    dest: /usr/local/sbin/vboxtools-install
+    mode: 0775
   become: yes

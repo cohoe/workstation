@@ -40,16 +40,14 @@
     dest: "~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
 
 # This stuff can probably go away
-#- name: find git remote method
-#  shell:
-#    cmd: git --no-pager config --local --get remote.origin.url
-#    chdir: "~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
-#  register: config_remote
-#  changed_when: false
-#
-#- debug: var=config_remote
-#
-#- name: switch config repo to ssh
-#  shell:
-#    cmd: "{{ user_bin_dir }}/git-switch-remote -r ~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
-#  when: "'git@' not in config_remote.stdout"
+- name: find git remote method
+  shell:
+    cmd: git --no-pager config --local --get remote.origin.url
+    chdir: "~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
+  register: config_remote
+  changed_when: false
+
+- name: switch config repo to ssh
+  shell:
+    cmd: "{{ user_bin_dir }}/git-switch-remote -r ~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
+  when: "'git@' not in config_remote.stdout"

@@ -11,8 +11,11 @@
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
+
+  # Security and SSL need to be here so that it gets the vars file
   roles:
     - security
+    - ssl
     - httpd
     - hdhomerun
     - arduino

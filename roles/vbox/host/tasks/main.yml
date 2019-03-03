@@ -47,10 +47,13 @@
     - disk
   become: yes
 
-- name: create config directory
+- name: create directories
   file:
-    path: '~/.config/VirtualBox'
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - '~/.config/VirtualBox'
+    - "~/VirtualBox\ VMs"
 
 - name: create configuration file
   template:
