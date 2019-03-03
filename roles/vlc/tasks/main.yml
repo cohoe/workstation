@@ -1,15 +1,15 @@
 ---
-#- name: install vlc
-#  dnf:
-#    name: vlc
-#    state: latest
-#  become: yes
-#
+- name: install vlc
+  dnf:
+    name: vlc
+    state: latest
+  become: yes
+
+# Apparently the create below is recursive?
 #- name: create config directory
 #  file:
 #    path: ~/.config/vlc
 #    state: directory
-#
 
 - name: configure
   lineinfile:

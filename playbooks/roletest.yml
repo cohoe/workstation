@@ -11,7 +11,8 @@
     #- cinnamon
     #- shell
     #- backups/nas
-    - nas
+    #- nas
+    - vlc
 
   tasks:
     #- include_tasks: ../roles/cinnamon/tasks/junk.yml
@@ -19,4 +20,4 @@
   vars_files:
     - ../vars/global.yml
 #    - ../vars/ctct.yml
-    - ../vars/home.yml
+#    - ../vars/home.yml
