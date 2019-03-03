@@ -1,4 +1,10 @@
 ---
+- name: install login wallpaper
+  copy:
+    src: login.jpg
+    dest: /usr/share/backgrounds/images/login.jpg
+  become: yes
+
 - name: login window
   copy:
     src: slick-greeter.conf

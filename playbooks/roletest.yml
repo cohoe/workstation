@@ -8,14 +8,15 @@
         - ssh
   roles:
     #- ssl
-    #- cinnamon
+    - cinnamon
     #- shell
     #- backups/nas
     #- nas
-    - vlc
+    #- vlc
 
   tasks:
     #- include_tasks: ../roles/cinnamon/tasks/junk.yml
+    #- include_tasks: ../roles/cinnamon/tasks/login.yml
     
   vars_files:
     - ../vars/global.yml
