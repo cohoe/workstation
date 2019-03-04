@@ -32,5 +32,6 @@
     force: no
   when: nas_cred_file is defined
 
-- include_tasks: iscsi.yml
+- name: iscsi
+  include_tasks: iscsi.yml
   when: ansible_form_factor != "Notebook"

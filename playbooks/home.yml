@@ -21,7 +21,6 @@
     - arduino
     - steam
     - maxime
-    - piavpn
     - nas
     - aws
     - mail
@@ -31,6 +30,7 @@
     - nsswitch
     - veracrypt
     - spotify
+    - piavpn
 
   tasks:
     # NVIDIA drivers

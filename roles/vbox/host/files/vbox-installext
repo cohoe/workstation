@@ -25,6 +25,10 @@ VBOX_REPO_HOST="http://download.virtualbox.org"
 VBOX_EXTPACK_PREFIX="Oracle_VM_VirtualBox_Extension_Pack-"
 VBOX_EXTPACK_SUFFIX=".vbox-extpack"
 
+# This is needed to ensure the kernel modules are loaded prior to installing
+# the extpack.
+sudo vboxconfig
+
 # Figure out which version of vbox we are working with
 raw_version=$($VBOXMANAGE -v)
 version=$(echo "${raw_version}" | cut -d 'r' -f 1)
@@ -38,10 +42,6 @@ extpack_path="${VBOX_REPO_HOST}/virtualbox/${version}/${extpack_filename}"
 wget --quiet -O "${TMP_DIR}/${extpack_filename}" "${extpack_path}"
 
 # Install
-
-# This is needed to ensure the kernel modules are loaded prior to installing
-# the extpack.
-sudo vboxconfig
 
 # In 5.1.20, vbox added a license parameter to the installer. This appears to
 # be a SHA256 hash of the license file in the extpack gzip archive. It is
