@@ -54,6 +54,7 @@
     src: "wallpaper-{{ ansible_form_factor }}.jpg"
     dest: /usr/share/backgrounds/images/user-wallpaper.jpg
   become: yes
+  when: ansible_form_factor is search("Desktop|Notebook")
 
 - name: set wallpaper
   dconf:
@@ -62,6 +63,7 @@
   with_dict:
     picture-options: "'zoom'"
     picture-uri: "'file:///usr/share/backgrounds/images/user-wallpaper.jpg'"
+  when: ansible_form_factor is search("Desktop|Notebook")
 
 - name: power and sleep settings
   dconf:
@@ -75,3 +77,4 @@
     /org/cinnamon/settings-daemon/plugins/power/lid-close-ac-action: "'blank'"
     /org/cinnamon/settings-daemon/plugins/power/lid-close-battery-action: "'blank'"
     /org/cinnamon/settings-daemon/plugins/power/idle-dim-battery: "false"
+  when: ansible_form_factor is search("Desktop|Notebook")
