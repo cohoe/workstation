@@ -50,7 +50,7 @@
 
 - name: copy wallpaper
   copy:
-    src: user-wallpaper.jpg
+    src: "wallpaper-{{ ansible_form_factor }}.jpg"
     dest: /usr/share/backgrounds/images/user-wallpaper.jpg
   become: yes
 
