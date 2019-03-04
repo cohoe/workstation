@@ -71,7 +71,7 @@
     /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac: 900
     /org/cinnamon/settings-daemon/plugins/power/sleep-display-battery: 900
     /org/cinnamon/settings-daemon/plugins/power/lock-on-suspend: "true"
-    /org/cinnamon/settings-daemon/plugins/power/button-power: "'suspend'"
-    /org/cinnamon/settings-daemon/plugins/power/lid-close-ac-action: "'nothing'"
-    /org/cinnamon/settings-daemon/plugins/power/lid-close-battery-action: "'nothing'"
+    /org/cinnamon/settings-daemon/plugins/power/button-power: "'hibernate'"
+    /org/cinnamon/settings-daemon/plugins/power/lid-close-ac-action: "'blank'"
+    /org/cinnamon/settings-daemon/plugins/power/lid-close-battery-action: "'blank'"
     /org/cinnamon/settings-daemon/plugins/power/idle-dim-battery: "false"
