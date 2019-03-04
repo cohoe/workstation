@@ -33,7 +33,6 @@
     /org/cinnamon/desktop/notifications/remove-old: "true"
     /org/cinnamon/show-media-keys-osd: "'small'"
     /org/cinnamon/desktop/privacy/remember-recent-files: "false"
-    /org/cinnamon/settings-daemon/plugins/power/lock-on-suspend: "true"
     /org/cinnamon/desktop/screensaver/lock-enabled: "true"
     /org/cinnamon/desktop/screensaver/lock-delay: "uint32 0"
     /org/cinnamon/desktop/session/idle-delay: "uint32 900"
@@ -47,6 +46,8 @@
     /org/cinnamon/desktop/media-handling/autorun-x-content-start-app: "['x-content/unix-software', 'x-content/bootable-media']"
     /org/cinnamon/desktop/media-handling/autorun-x-content-ignore: "['x-content/bootable-media']"
     /org/cinnamon/desktop/media-handling/autorun-x-content-open-folder: '@as []'
+    /org/cinnamon/settings-daemon/peripherals/touchpad/natural-scroll: "false" 
+    /org/cinnamon/settings-daemon/peripherals/touchpad/scrolling-method: 1
 
 - name: copy wallpaper
   copy:
@@ -62,10 +63,15 @@
     picture-options: "'zoom'"
     picture-uri: "'file:///usr/share/backgrounds/images/user-wallpaper.jpg'"
 
-- name: sleep settings
+- name: power and sleep settings
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   with_dict:
-    - /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac: 900
-    - /org/cinnamon/settings-daemon/plugins/power/sleep-display-battery: 900
+    /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac: 900
+    /org/cinnamon/settings-daemon/plugins/power/sleep-display-battery: 900
+    /org/cinnamon/settings-daemon/plugins/power/lock-on-suspend: "true"
+    /org/cinnamon/settings-daemon/plugins/power/button-power: "'suspend'"
+    /org/cinnamon/settings-daemon/plugins/power/lid-close-ac-action: "'nothing'"
+    /org/cinnamon/settings-daemon/plugins/power/lid-close-battery-action: "'nothing'"
+    /org/cinnamon/settings-daemon/plugins/power/idle-dim-battery: "false"
