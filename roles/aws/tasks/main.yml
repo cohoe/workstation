@@ -12,6 +12,7 @@
     path: '~/.aws'
     state: directory
 
+# @TODO profiles and credentials
 - name: create default config
   copy:
     src: config
