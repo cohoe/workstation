@@ -7,6 +7,14 @@
     state: present
   become: yes
 
+# 20190306: fc29 still ships 5.2.x not 6.0.4 that I need for cinnamon
+# to not be in software mode.
+- name: remove integrated tools
+  dnf:
+    name: virtualbox-guest-additions
+    state: absent
+  become: yes
+
 - name: install tools installer script
   copy:
     src: vboxtools-install
