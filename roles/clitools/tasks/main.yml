@@ -3,6 +3,7 @@
 - name: install basic python tools
   dnf:
     name:
+      - python3-virtualenv
       - python-virtualenvwrapper
       - python-pep8
     state: latest
