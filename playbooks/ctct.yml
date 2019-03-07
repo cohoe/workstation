@@ -11,14 +11,11 @@
         - ssh
         - samba-client
   roles:
-    - security
-    - ssl
-    - httpd
-    #- pipeline
-    #- rpmbuild
-    #- rvm
-    #- ctct
-    - aws
+    #- security
+    #- ssl
+    #- httpd
+    - ctct
+    #- aws
 
   tasks:
     - name: log run date to file

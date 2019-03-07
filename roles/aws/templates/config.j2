@@ -1,0 +1,12 @@
+[default]
+{% for key, value in aws.defaults.items() %}
+{{ key }} = {{ value }}
+{% endfor %}
+
+{% for profile in aws.profiles %}
+[profile {{ profile.name }}]
+{% for key, value in profile.options.items() %}
+{{ key }} = {{ value }}
+{% endfor %}
+
+{% endfor %}
