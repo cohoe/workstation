@@ -7,31 +7,13 @@
     state: latest
   become: true
 
+# https://fedoraproject.org/wiki/Changes/JavaCryptoPolicies
+# https://sourceforge.net/p/turbovnc/mailman/message/35524085/
 # The fact that I need to do this is stupid. But nearly every IPMI
 # console out there requires old-ass java crap to work. And of course
 # no one has updated them because that would be hard.
-- name: re-enable MD5 JARs
-  lineinfile:
-    dest: /usr/lib/jvm/jre/lib/security/java.security
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-  with_items:
-    - regexp: "^jdk.certpath.disabledAlgorithms"
-      line: "jdk.certpath.disabledAlgorithms=MD2, SHA1 jdkCA & usage TLSServer, \\"
-    - regexp: "^jdk.jar.disabledAlgorithms"
-      line: "jdk.jar.disabledAlgorithms=MD2, RSA keySize < 1024"
-    - regexp: "^jdk.tls.disabledAlgorithms"
-      line: "jdk.tls.disabledAlgorithms=SSLv3, RC4, DH keySize < 768, \\"
-  become: yes
-
-# https://sourceforge.net/p/turbovnc/mailman/message/35524085/
-- name: re-enable old iDRAC consoles
-  lineinfile:
+- name: de-secure java
+  copy:
+    src: java.config
     dest: /etc/crypto-policies/back-ends/java.config
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    backup: yes
-  with_items:
-    - regexp: "^jdk.tls.disabledAlgorithms"
-      line: "jdk.tls.disabledAlgorithms=DH keySize < 1023, SSLv2, SSLv3, DHE_DSS, RSA_EXPORT, DHE_DSS_EXPORT, DHE_RSA_EXPORT, DH_DSS_EXPORT, DH_RSA_EXPORT, DH_anon, ECDH_anon, DH_RSA, DH_DSS, ECDH, DES_CBC, RC4_40, RC4_128, DES40_CBC, RC2, HmacMD5"
   become: yes
