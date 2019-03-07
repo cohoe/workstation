@@ -1,8 +1,12 @@
 ---
 - name: create launchy repo
-  copy:
-    src: launchy.repo
-    dest: /etc/yum.repos.d/launchy.repo
+  yumrepo:
+    name: launchy
+    baseurl: https://packagecloud.io/grantcohoe/launchy/fedora/$releasever/$basearch
+    repo_gpgcheck: yes
+    gpgcheck: no
+    enabled: yes
+    gpgkey: https://packagecloud.io/grantcohoe/launchy/gpgkey
   become: yes
 
 - name: install key
