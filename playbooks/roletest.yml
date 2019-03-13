@@ -14,7 +14,8 @@
     #- nas
     #- vlc
     #- java
-    - ctct
+    #- ctct
+    - dns
     #- aws
 
   tasks:
