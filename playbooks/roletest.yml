@@ -8,11 +8,12 @@
         - ssh
   roles:
     #- ssl
-    - cinnamon
+    #- cinnamon
     #- shell
     #- backups/nas
     #- nas
     #- vlc
+    - fonts
 
   tasks:
     #- include_tasks: ../roles/cinnamon/tasks/junk.yml
