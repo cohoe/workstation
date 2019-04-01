@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connections>
+{% for ldap_env, connections in ldap_connections.items() %}
+{% if connections %}
+{% for connection in connections %}
+  <connection id="{{ connection.name | to_uuid }}" name="{{ connection.name }}" host="{{ connection.host }}" port="636" encryptionMethod="LDAPS" networkProvider="APACHE_DIRECTORY_LDAP_API" authMethod="SIMPLE" bindPrincipal="{{ connection.username }}" bindPassword="{{ connection.password }}" saslRealm="" saslQop="AUTH" saslSecStrenght="HIGH" saslMutualAuth="true" krb5CredentialsConf="USE_NATIVE" krb5Config="DEFAULT" krb5ConfigFile="" krb5Realm="" krb5KdcHost="" krb5KdcPort="88" readOnly="false" timeout="30000">
+    <extendedProperties>
+      <extendedProperty key="ldapbrowser.pagedSearch" value="false"/>
+      <extendedProperty key="detectedProperties.supportedControls" value="1.3.6.1.4.1.4203.1.9.1.1;2.16.840.1.113730.3.4.18;2.16.840.1.113730.3.4.2;1.3.6.1.4.1.4203.1.10.1;1.2.840.113556.1.4.319;1.2.826.0.1.3344810.2.3;1.3.6.1.1.13.2;1.3.6.1.1.13.1;1.3.6.1.1.12"/>
+      <extendedProperty key="ldapbrowser.modifyModeNoEMR" value="0"/>
+      <extendedProperty key="detectedProperties.supportedExtensions" value="1.3.6.1.4.1.1466.20037;1.3.6.1.4.1.4203.1.11.1;1.3.6.1.4.1.4203.1.11.3;1.3.6.1.1.8"/>
+      <extendedProperty key="ldapbrowser.fetchSubentries" value="false"/>
+      <extendedProperty key="ldapbrowser.aliasesDereferencingMethod" value="1"/>
+      <extendedProperty key="ldapbrowser.manageDsaIT" value="false"/>
+      <extendedProperty key="ldapbrowser.pagedSearchScrollMode" value="true"/>
+      <extendedProperty key="ldapbrowser.pagedSearchSize" value="100"/>
+      <extendedProperty key="ldapbrowser.fetchOperationalAttributes" value="false"/>
+      <extendedProperty key="ldapbrowser.modifyMode" value="0"/>
+      <extendedProperty key="detectedProperties.serverType" value="OPENLDAP_2_3"/>
+      <extendedProperty key="ldapbrowser.timeLimit" value="0"/>
+      <extendedProperty key="detectedProperties.supportedFeatures" value="1.3.6.1.1.14;1.3.6.1.4.1.4203.1.5.1;1.3.6.1.4.1.4203.1.5.2;1.3.6.1.4.1.4203.1.5.3;1.3.6.1.4.1.4203.1.5.4;1.3.6.1.4.1.4203.1.5.5"/>
+      <extendedProperty key="ldapbrowser.fetchBaseDns" value="true"/>
+      <extendedProperty key="ldapbrowser.countLimit" value="1000"/>
+      <extendedProperty key="ldapbrowser.referralsHandlingMethod" value="3"/>
+      <extendedProperty key="ldapbrowser.modifyOrder" value="0"/>
+    </extendedProperties>
+  </connection>
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+{% for connection in ad_connections %}
+  <connection id="{{ connection.name | to_uuid }}" name="{{ connection.name }}" host="{{ connection.host }}" port="3269" encryptionMethod="LDAPS" networkProvider="APACHE_DIRECTORY_LDAP_API" authMethod="SIMPLE" bindPrincipal="{{ connection.username }}" bindPassword="" saslRealm="" saslQop="AUTH" saslSecStrenght="HIGH" saslMutualAuth="false" krb5CredentialsConf="USE_NATIVE" krb5Config="DEFAULT" krb5ConfigFile="" krb5Realm="" krb5KdcHost="" krb5KdcPort="88" readOnly="false">
+    <extendedProperties>
+      <extendedProperty key="ldapbrowser.pagedSearch" value="false"/>
+      <extendedProperty key="detectedProperties.supportedControls" value="1.2.840.113556.1.4.319;1.2.840.113556.1.4.801;1.2.840.113556.1.4.473;1.2.840.113556.1.4.528;1.2.840.113556.1.4.417;1.2.840.113556.1.4.619;1.2.840.113556.1.4.841;1.2.840.113556.1.4.529;1.2.840.113556.1.4.805;1.2.840.113556.1.4.521;1.2.840.113556.1.4.970;1.2.840.113556.1.4.1338;1.2.840.113556.1.4.474;1.2.840.113556.1.4.1339;1.2.840.113556.1.4.1340;1.2.840.113556.1.4.1413;2.16.840.1.113730.3.4.9;2.16.840.1.113730.3.4.10;1.2.840.113556.1.4.1504;1.2.840.113556.1.4.1852;1.2.840.113556.1.4.802;1.2.840.113556.1.4.1907;1.2.840.113556.1.4.1948;1.2.840.113556.1.4.1974;1.2.840.113556.1.4.1341;1.2.840.113556.1.4.2026;1.2.840.113556.1.4.2064;1.2.840.113556.1.4.2065;1.2.840.113556.1.4.2066"/>
+      <extendedProperty key="ldapbrowser.modifyModeNoEMR" value="0"/>
+      <extendedProperty key="detectedProperties.supportedExtensions" value="1.3.6.1.4.1.1466.20037;1.3.6.1.4.1.1466.101.119.1;1.2.840.113556.1.4.1781;1.3.6.1.4.1.4203.1.11.3"/>
+      <extendedProperty key="ldapbrowser.fetchSubentries" value="false"/>
+      <extendedProperty key="ldapbrowser.aliasesDereferencingMethod" value="1"/>
+      <extendedProperty key="ldapbrowser.manageDsaIT" value="false"/>
+      <extendedProperty key="ldapbrowser.pagedSearchScrollMode" value="true"/>
+      <extendedProperty key="ldapbrowser.pagedSearchSize" value="100"/>
+      <extendedProperty key="ldapbrowser.fetchOperationalAttributes" value="false"/>
+      <extendedProperty key="ldapbrowser.modifyMode" value="0"/>
+      <extendedProperty key="detectedProperties.serverType" value="MICROSOFT_ACTIVE_DIRECTORY_2003"/>
+      <extendedProperty key="ldapbrowser.timeLimit" value="0"/>
+      <extendedProperty key="ldapbrowser.fetchBaseDns" value="true"/>
+      <extendedProperty key="ldapbrowser.countLimit" value="1000"/>
+      <extendedProperty key="ldapbrowser.referralsHandlingMethod" value="3"/>
+      <extendedProperty key="ldapbrowser.modifyOrder" value="0"/>
+    </extendedProperties>
+  </connection>
+{% endfor %}
+</connections>

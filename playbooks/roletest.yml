@@ -2,7 +2,6 @@
 - name: RoleTest
   hosts: localhost
   vars:
-    - secure_firewalld: true
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
@@ -13,6 +12,7 @@
     #- backups/nas
     #- nas
     #- vlc
+    - apacheds
 
   tasks:
     #- include_tasks: ../roles/cinnamon/tasks/junk.yml

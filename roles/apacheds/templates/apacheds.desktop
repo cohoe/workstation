@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Apache Directory Studio
+Exec=/opt/ApacheDirectoryStudio/ApacheDirectoryStudio/ApacheDirectoryStudio
+Terminal=false
+Type=Application
+Icon=/opt/ApacheDirectoryStudio/ApacheDirectoryStudio/icon.xpm
+Categories=Network;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connectionFolders>
+  <connectionFolder id="0" name="">
+    <connections>
+{% for connection in ad_connections %}
+      <connection id="{{ connection.name | to_uuid }}"/>
+{% endfor %}
+    </connections>
+    <subFolders>
+{% for ldap_env, connections in ldap_connections.items() %}
+      <subFolder id="{{ ldap_env | to_uuid }}"/>
+{% endfor %}
+    </subFolders>
+  </connectionFolder>
+{% for ldap_env, connections in ldap_connections.items() %}
+  <connectionFolder id="{{ ldap_env | to_uuid }}" name="{{ ldap_env }}">
+    <connections>
+{% if connections %}
+{% for connection in connections %}
+      <connection id="{{ connection.name | to_uuid }}"/>
+{% endfor %}
+{% endif %}
+    </connections>
+    <subFolders/>
+  </connectionFolder>
+{% endfor %}
+</connectionFolders>

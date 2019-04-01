@@ -1,7 +1,7 @@
 ---
 - name: test if apacheds is installed
   stat:
-    path: /opt/apacheds/ApacheDirectoryStudio
+    path: /opt/ApacheDirectoryStudio/ApacheDirectoryStudio
   register: apacheds_stat
 
 - name: include install
@@ -9,7 +9,32 @@
   when: apacheds_stat.stat.exists == False
   become: yes
 
-#- name: install desktop file
-#  template:
-#    src: franz.desktop
-#    dest: ~/.local/share/applications/franz.desktop
+- name: install desktop file
+  template:
+    src: apacheds.desktop
+    dest: ~/.local/share/applications/apacheds.desktop
+
+- name: create config directory
+  file:
+    path: "~/.ApacheDirectoryStudio/.metadata/.plugins/{{ item }}"
+    state: directory
+    recurse: yes
+    mode: 0750
+  with_items:
+    - org.apache.directory.studio.connection.core
+    - org.eclipse.core.runtime/.settings
+
+- name: configure connections and folders
+  template:
+    src: "{{ item }}"
+    dest: "~/.ApacheDirectoryStudio/.metadata/.plugins/org.apache.directory.studio.connection.core/{{ item }}"
+    force: no
+  with_items:
+    - connections.xml
+    - connectionFolders.xml
+
+- name: configure preferences
+  copy:
+    src: org.apache.directory.studio.rcp.prefs
+    dest: ~/.ApacheDirectoryStudio/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.apache.directory.studio.rcp.prefs
+    force: no

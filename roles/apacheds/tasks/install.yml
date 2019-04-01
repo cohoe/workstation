@@ -1,17 +1,12 @@
 ---
 - name: create directory
   file:
-    path: /opt/franz
+    path: /opt/ApacheDirectoryStudio
     state: directory
   become: yes
 
 - name: grab archive
   unarchive:
-    src: "https://github.com/meetfranz/franz/releases/download/v{{ franz_version }}/franz-{{ franz_version }}.tar.gz"
-    dest: /opt/franz/
+    src: "{{ apacheds_package }}"
+    dest: /opt/ApacheDirectoryStudio
     remote_src: yes
-
-- name: copy icon
-  copy:
-    src: franz.png
-    dest: /opt/franz/franz.png
