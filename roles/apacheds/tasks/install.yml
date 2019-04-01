@@ -1,0 +1,17 @@
+---
+- name: create directory
+  file:
+    path: /opt/franz
+    state: directory
+  become: yes
+
+- name: grab archive
+  unarchive:
+    src: "https://github.com/meetfranz/franz/releases/download/v{{ franz_version }}/franz-{{ franz_version }}.tar.gz"
+    dest: /opt/franz/
+    remote_src: yes
+
+- name: copy icon
+  copy:
+    src: franz.png
+    dest: /opt/franz/franz.png

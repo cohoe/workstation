@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Apache Directory Studio
+Exec=/opt/franz/franz-{{ franz_version }}/franz
+Terminal=false
+Type=Application
+Icon=/opt/franz/franz.png
+Categories=Network;

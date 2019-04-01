@@ -1,0 +1,3 @@
+---
+apacheds_version: 2.0.0.v20180908-M14
+apacheds_package: "http://apache.mirrors.tds.net/directory/studio/{{ apacheds_version }}/ApacheDirectoryStudio-{{ apacheds_version }}-linux.gtk.x86_64.tar.gz"

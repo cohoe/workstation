@@ -58,4 +58,3 @@
     - http
     - https
   become: yes
-  when: secure_firewalld

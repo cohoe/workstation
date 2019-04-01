@@ -2,7 +2,6 @@
 - import_tasks: keys.yml
 
 - import_tasks: firewall.yml
-  when: secure_firewalld
   become: yes
 
 - import_tasks: sshd.yml

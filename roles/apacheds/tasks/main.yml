@@ -1,0 +1,15 @@
+---
+- name: test if apacheds is installed
+  stat:
+    path: /opt/apacheds/ApacheDirectoryStudio
+  register: apacheds_stat
+
+- name: include install
+  import_tasks: install.yml
+  when: apacheds_stat.stat.exists == False
+  become: yes
+
+#- name: install desktop file
+#  template:
+#    src: franz.desktop
+#    dest: ~/.local/share/applications/franz.desktop
