@@ -1,0 +1,22 @@
+---
+# https://blog.livthomas.net/adding-color-emojis-to-chrome-on-fedora/
+- name: install package
+  dnf:
+    name: google-noto-emoji-color-fonts
+    state: present
+  become: yes
+
+- name: create config directory
+  file:
+    path: ~/.config/fontconfig/
+    state: directory
+
+- name: configure file
+  copy:
+    src: fonts.conf
+    dest: ~/.config/fontconfig/fonts.conf
+  notify:
+    - regenerate font cache
+
+- name: run font handlers now
+  meta: flush_handlers

@@ -1,0 +1,4 @@
+---
+- name: regenerate font cache
+  shell:
+    cmd: fc-cache -f

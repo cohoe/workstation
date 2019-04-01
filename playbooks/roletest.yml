@@ -13,10 +13,6 @@
     #- backups/nas
     #- nas
     #- vlc
-    #- java
-    #- ctct
-    - dns
-    #- aws
 
   tasks:
     #- include_tasks: ../roles/cinnamon/tasks/junk.yml
