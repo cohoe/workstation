@@ -6,19 +6,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    #- ssl
-    #- cinnamon
-    #- shell
-    #- backups/nas
-    #- nas
-    #- vlc
-    #- apacheds
-    #- franz
     - pycharm
-
-  tasks:
-    #- include_tasks: ../roles/cinnamon/tasks/junk.yml
-    #- include_tasks: ../roles/cinnamon/tasks/login.yml
     
   vars_files:
     - ../vars/global.yml

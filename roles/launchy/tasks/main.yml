@@ -1,7 +1,8 @@
 ---
 - name: create launchy repo
-  yumrepo:
+  yum_repository:
     name: launchy
+    description: custom launchy build
     baseurl: https://packagecloud.io/grantcohoe/launchy/fedora/$releasever/$basearch
     repo_gpgcheck: yes
     gpgcheck: no
