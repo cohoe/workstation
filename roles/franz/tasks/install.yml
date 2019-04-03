@@ -7,7 +7,7 @@
 
 - name: grab archive
   unarchive:
-    src: "https://github.com/meetfranz/franz/releases/download/v{{ franz_version }}/franz-{{ franz_version }}.tar.gz"
+    src: "https://github.com/meetfranz/franz/releases/download/v{{ franz_version.stdout }}/franz-{{ franz_version.stdout }}.tar.gz"
     dest: /opt/franz/
     remote_src: yes
 
