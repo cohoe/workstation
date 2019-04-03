@@ -13,7 +13,8 @@
     #- nas
     #- vlc
     #- apacheds
-    - franz
+    #- franz
+    - pycharm
 
   tasks:
     #- include_tasks: ../roles/cinnamon/tasks/junk.yml

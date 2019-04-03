@@ -32,14 +32,22 @@
     - config/settingsRepository/repository
     - config/options
 
+- name: test for config repo git
+  stat:
+    path: "~/{{ pycharm_config_dir }}/config/settingsRepository/repository/.git"
+  register: config_repo_git
+
 # In order for this to take effect, on first pycharm run you gotta
 # do an initial overrite local settings. Not sure why, but it got me what I wanted.
+# Only load then on first-run. After we switch to SSH-based, we won't be able
+# to clone until the keys are added to Github. An initial set is good enough
+# until Pycharm can start doing the real work.
 - name: load config repository
   git:
     repo: "{{ pycharm_config_repo }}"
     dest: "~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
+  when: config_repo_git.stat.exists == False
 
-# This stuff can probably go away
 - name: find git remote method
   shell:
     cmd: git --no-pager config --local --get remote.origin.url
@@ -49,5 +57,5 @@
 
 - name: switch config repo to ssh
   shell:
-    cmd: "{{ user_bin_dir }}/git-switch-remote -r ~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
+    cmd: "{{ user_bin_dir }}/git-switch-remote -p ssh -r ~/{{ pycharm_config_dir }}/config/settingsRepository/repository"
   when: "'git@' not in config_remote.stdout"
