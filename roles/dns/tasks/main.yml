@@ -23,11 +23,9 @@
 - name: configure hosts file
   lineinfile:
     dest: "/etc/hosts"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
+    regexp: "^{{ item.address }}(.*)$"
+    line: "{{ item.address }}    {{ item.names | join(' ') }}"
   with_items:
-    - regexp: "^127.0.0.1"
-      line: "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ ansible_hostname }} {{ ansible_hostname }}.localdomain"
-    - regexp: "^::1"
-      line: "::1         localhost localhost.localdomain localhost4 localhost4.localdomain4 {{ ansible_hostname }} {{ ansible_hostname }}.localdomain"
+    - "{{ hosts_default }}"
+    - "{{ hosts_custom }}"
   become: yes
