@@ -63,7 +63,7 @@ check_efi() {
 }
 
 check_kernel() {
-    latest_installed=$(for kimg in $(/bin/ls -t /boot/vmlinuz-4*); do echo $kimg; return; done)
+    latest_installed=$(for kimg in $(/bin/ls -t /boot/vmlinuz-*); do echo $kimg; return; done)
     latest_installed="${latest_installed/\/boot\/vmlinuz-/''}"
 
     running=$(uname -r)
