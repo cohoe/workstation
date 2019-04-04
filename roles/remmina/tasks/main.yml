@@ -7,16 +7,26 @@
     state: latest
   become: yes
 
-- name: create config directory
+- name: create config directories
   file:
-    path: '~/.remmina'
+    path: "{{ item }}"
     state: directory
     mode: 0700
+  with_items:
+    - '~/.remmina'
+    - '~/.config/remmina'
+
+- name: initial config file
+  copy:
+    src: remmina.pref
+    dest: '~/.config/remmina/remmina.pref'
+    force: no
 
 - name: create known host configs
   template:
     src: connection.j2
     dest: "~/.remmina/{{ item.name }}.remmina"
+    force: no
   with_items:
     - "{{ remmina_hosts }}"
   when: remmina_hosts is defined
