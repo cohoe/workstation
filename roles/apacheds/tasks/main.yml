@@ -1,4 +1,11 @@
 ---
+- name: install dependencies
+  dnf:
+    name:
+      - gtk-murrine-engine
+    state: present
+  become: yes
+
 - name: test if apacheds is installed
   stat:
     path: /opt/ApacheDirectoryStudio/ApacheDirectoryStudio
