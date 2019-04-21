@@ -17,3 +17,4 @@
     src: config.j2
     dest: '~/.aws/config'
     mode: 0600
+    force: no
