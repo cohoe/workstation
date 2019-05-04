@@ -2,7 +2,9 @@
 # https://blog.livthomas.net/adding-color-emojis-to-chrome-on-fedora/
 - name: install package
   dnf:
-    name: google-noto-emoji-color-fonts
+    name:
+      - google-noto-emoji-color-fonts
+      - bitstream-vera-sans-fonts
     state: present
   become: yes
 
