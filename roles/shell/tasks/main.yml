@@ -36,6 +36,7 @@
   with_items:
     - vimrc
     - screenrc
+    - tmux.conf
 
 # Setup root paths
 - name: install custom shell paths

@@ -22,7 +22,7 @@
     - rvm.zsh
     - gt.zsh
 
-- name: "set user shell"
+- name: set user shell
   user:
     name: "{{ ansible_user_id }}"
     shell: /bin/zsh
