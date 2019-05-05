@@ -23,6 +23,7 @@
     - ~/Projects
     - ~/Projects/pub
     - ~/Projects/priv
+    - ~/Projects/CFCC
 
 # Face for login
 # Heads up - this requires ImageMagick and jhead which are provided in clitools
