@@ -53,3 +53,10 @@
     - slack
     - messenger
     - googlecalendar
+
+# Until https://github.com/meetfranz/plugins/issues/310 gets merged, I have to apply
+# my patch manually
+- name: fix googlecalendar loading
+  copy:
+    src: googlecalendar-webview.js
+    dest: "~/.config/Franz/recipes/googlecalendar/webview.js"
