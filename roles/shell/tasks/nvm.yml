@@ -1,6 +1,6 @@
 ---
 - name: determine nvm version
-  shell: bash -c "curl -s \"https://api.github.com/repos/creationix/nvm/releases/latest\" | jq -r '.tag_name'"
+  shell: bash -c "curl -sL \"https://api.github.com/repos/creationix/nvm/releases/latest\" | jq -r '.tag_name'"
   register: nvm_version
   changed_when: false
 

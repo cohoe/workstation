@@ -1,6 +1,6 @@
 ---
 - name: determine latest franz version
-  shell: bash -c "curl -s \"https://api.github.com/repos/meetfranz/franz/releases/latest\" | jq -r '.tag_name' | sed 's/v//'"
+  shell: bash -c "curl -sL \"https://api.github.com/repos/meetfranz/franz/releases/latest\" | jq -r '.tag_name' | sed 's/v//'"
   register: franz_version
   changed_when: false
 
