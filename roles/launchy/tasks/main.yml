@@ -37,4 +37,4 @@
 - name: configure autostart
   copy:
     dest: "{{ user_autostart_dir }}/launchy.desktop"
-    src: "{{ sys_shortcuts_dir }}/launchy.desktop"
+    src: autostart.desktop

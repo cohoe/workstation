@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Launchy
+Comment=Keystroke Launcher
+# This prevents the no-skin weirdness that Cinnamon did
+Exec=bash -l -c '/usr/bin/launchy'
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=launchy_icon
+Categories=Utility;
