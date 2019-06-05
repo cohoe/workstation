@@ -12,13 +12,5 @@
   dnf:
     name:
       - steam
-      - xboxdrv
     state: latest
-  become: yes
-
-- name: start xbox controller drivers
-  service:
-    name: xboxdrv
-    state: started
-    enabled: yes
   become: yes
