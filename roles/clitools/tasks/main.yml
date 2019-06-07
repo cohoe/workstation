@@ -4,8 +4,8 @@
   dnf:
     name:
       - python3-virtualenv
-      - python-virtualenvwrapper
-      - python-pep8
+      - python3-virtualenvwrapper
+      - python3-pep8
     state: latest
   become: true
 

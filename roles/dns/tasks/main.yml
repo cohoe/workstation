@@ -20,12 +20,21 @@
   when: search_domains is defined
 
 # We must be able to resolve our own hostname
-- name: configure hosts file
+- name: configure hosts file with default stuff
   lineinfile:
     dest: "/etc/hosts"
     regexp: "^{{ item.address }}(.*)$"
     line: "{{ item.address }}    {{ item.names | join(' ') }}"
   with_items:
     - "{{ hosts_default }}"
+  become: yes
+
+- name: configure hosts file with custom stuff
+  lineinfile:
+    dest: "/etc/hosts"
+    regexp: "^{{ item.address }}(.*)$"
+    line: "{{ item.address }}    {{ item.names | join(' ') }}"
+  with_items:
     - "{{ hosts_custom }}"
+  when: hosts_custom is defined
   become: yes

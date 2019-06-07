@@ -6,9 +6,9 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - dns
+    - launchy
     
   vars_files:
     - ../vars/global.yml
-    - ../vars/ctct.yml
+#    - ../vars/ctct.yml
 #    - ../vars/home.yml

@@ -18,7 +18,9 @@
 
 - name: install
   dnf:
-    name: launchy
+    name:
+      - launchy
+      - gtk-murrine-engine
     state: latest
   become: yes
 
@@ -37,4 +39,4 @@
 - name: configure autostart
   copy:
     dest: "{{ user_autostart_dir }}/launchy.desktop"
-    src: "{{ sys_shortcuts_dir }}/launchy.desktop"
+    src: autostart.desktop
