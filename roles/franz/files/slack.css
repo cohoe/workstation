@@ -1112,6 +1112,9 @@ ts-jumper ts-jumper-container {
   .p-message_pane .c-message_list.c-virtual_list--scrollbar > .c-scrollbar__hider {
       z-index: 0;
   }
+  .p-message_pane .c-message_list.c-virtual_list--scrollbar>.c-scrollbar__hider:before, .p-message_pane .c-message_list:not(.c-virtual_list--scrollbar):before {
+    background: var(--background) !important;
+  }
   .inline_message_input_container, .inline_file_upload {
     background: transparent !important;
     color: var(--text) !important;
@@ -1121,4 +1124,21 @@ ts-jumper ts-jumper-container {
     border-bottom: 1px solid var(--border-dim) !important;
     background: var(--background) !important;
     box-shadow: none !important;
+  }
+
+  .p-workspace {
+    background-color:  var(--background) !important;
+    color: var(--text) !important;
+  }
+
+  .p-classic_nav__model__title__info {
+    color: var(--text) !important;
+  }
+
+  .p-classic_nav__model__button, .p-classic_nav__right__button {
+    color: var(--text) !important;
+  }
+
+  .p-workspace__input .p-message_input_field {
+    background: transparent !important;
   }
