@@ -1142,3 +1142,11 @@ ts-jumper ts-jumper-container {
   .p-workspace__input .p-message_input_field {
     background: transparent !important;
   }
+
+  .p-classic_nav__right__search__placeholder, .p-classic_nav__right__search__icon {
+    color: var(--text) !important;
+  }
+
+  .p-classic_nav__right__search {
+    border: 1px solid var(--text) !important;
+  }
