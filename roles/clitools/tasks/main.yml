@@ -19,8 +19,6 @@
       - iftop             # Network monitoring
       - nmap              # Port scanning
       - tcpdump           # Traffic monitoring
-      - net-snmp-utils    # SNMP client (snmpwalk)
-      - tftp              # TFTP client
       - htop              # Load monitoring
       - iotop             # IO monitoring
       - dkms              # Dynamic kernel modules
@@ -31,7 +29,6 @@
       - numlockx          # Enable numlock always
       - glances           # System load
       - ipmitool          # IPMI remote control tool
-      - pv                # Pipe monitor (for dd jobs)
       - dmidecode         # System information
       - fuse-exfat        # EXFAT file system
       - ffmpeg            # Media utility
@@ -41,8 +38,14 @@
       - ImageMagick       # Image tools
       - livecd-tools      # live cd/usb tols
       - android-tools     # Android tools
+      - iperf3            # Network throughput
     state: latest
   become: true
+
+# Deprecated
+#      - net-snmp-utils    # SNMP client (snmpwalk)
+#      - tftp              # TFTP client
+#      - pv                # Pipe monitor (for dd jobs)
 
 # Software development tools
 - name: install software development tools
