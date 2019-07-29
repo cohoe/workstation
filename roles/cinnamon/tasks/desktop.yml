@@ -48,6 +48,8 @@
     /org/cinnamon/desktop/media-handling/autorun-x-content-open-folder: '@as []'
     /org/cinnamon/settings-daemon/peripherals/touchpad/natural-scroll: "false" 
     /org/cinnamon/settings-daemon/peripherals/touchpad/scrolling-method: 1
+    /org/cinnamon/desktop/wm/preferences/num-workspaces: 2
+    /org/cinnamon/workspace-osd-visible: "false"
 
 - name: copy wallpaper
   copy:

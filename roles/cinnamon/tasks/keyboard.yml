@@ -9,3 +9,5 @@
     /org/cinnamon/desktop/keybindings/media-keys/screenshot: "['<Shift>Print']"
     /org/cinnamon/desktop/keybindings/media-keys/area-screenshot: "['Print']"
     /org/cinnamon/desktop/keybindings/media-keys/window-screenshot: "@as []"
+    /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-left: "['<Primary><Alt><Super>Left']"
+    /org/cinnamon/desktop/keybindings/wm/switch-to-workspace-right: "['<Primary><Alt><Super>Right']"
