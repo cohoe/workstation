@@ -17,6 +17,7 @@
     use-transparent-background: 'true'
     background-transparency-percent: 20
     login-shell: 'true'
+    bold-is-bright: 'true'
  
 - name: set default profile
   dconf:
