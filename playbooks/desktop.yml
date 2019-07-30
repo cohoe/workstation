@@ -29,7 +29,6 @@
     - pulse
     - bluetooth
     - docker
-    - dns
     - franz
 
   tasks:

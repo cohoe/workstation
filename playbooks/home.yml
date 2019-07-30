@@ -12,6 +12,7 @@
 
   # Security and SSL need to be here so that it gets the vars file
   roles:
+    - dns
     - security
     - ssl
     - httpd

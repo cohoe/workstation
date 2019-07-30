@@ -10,6 +10,7 @@
         - ssh
         - samba-client
   roles:
+    - dns
     - security
     - ssl
     - httpd
