@@ -7,7 +7,6 @@
         - ssh
   roles:
     - dns
-    - launchy
     
   vars_files:
     - ../vars/global.yml
