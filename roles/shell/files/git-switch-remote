@@ -3,7 +3,7 @@
 # Git remote switcher - from SSH to HTTPS and back again.
 # Help from https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash
 
-usage() { echo "$0 usage:" && grep " .)\ #" $0; exit 0; }
+usage() { echo "$0 usage:" && grep " .)\ \#" $0; exit 0; }
 
 while getopts "hr:p:" arg; do
     case "$arg" in
@@ -70,6 +70,9 @@ else
     echo "Protocol '${PROTOCOL}' not supported."
     exit 1
 fi
+
+# Strip any trailing slashes (they often appear in HTTPS URIs and break SSH)
+new_repo_remote=$(echo "${new_repo_remote}" | sed 's_/$__')
 
 git remote set-url origin ${new_repo_remote}
 echo "${repo_remote} -> ${new_repo_remote}"
