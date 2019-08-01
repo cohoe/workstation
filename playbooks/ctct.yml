@@ -11,6 +11,7 @@
         - samba-client
   roles:
     - dns
+    - remmina
     - security
     - ssl
     - httpd

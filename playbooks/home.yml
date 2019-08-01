@@ -10,9 +10,10 @@
     - firewalld_enabled_services:
         - ssh
 
-  # Security and SSL need to be here so that it gets the vars file
+  # Security, SSL, dns, remmina need to be here so that it gets the vars file
   roles:
     - dns
+    - remmina
     - security
     - ssl
     - httpd
