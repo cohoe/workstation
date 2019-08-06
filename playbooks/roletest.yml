@@ -6,7 +6,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - cinnamon
+    - shell
     
   vars_files:
     - ../vars/global.yml

@@ -10,3 +10,33 @@
   environment:
     - rvm_ignore_dotfiles: "yes"
   when: rvm_stat.stat.exists == False
+
+- name: list keys
+  shell:
+    cmd: gpg2 --list-keys
+  register: gpg_keys
+  changed_when: false
+
+- name: install rvm keys
+  shell:
+    cmd: "gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys {{ item }}"
+  when: item not in gpg_keys.stdout
+  with_items:
+    - 409B6B1796C275462A1703113804BB82D39DC0E3
+    - 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+- name: rvm packages
+  dnf:
+    name:
+      - autoconf
+      - automake
+      - bison
+      - gcc-c++
+      - libffi-devel
+      - libtool
+      - libyaml-devel
+      - readline-devel
+      - sqlite-devel
+      - openssl-devel
+    state: present
+  become: yes
