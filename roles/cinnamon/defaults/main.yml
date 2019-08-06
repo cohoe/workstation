@@ -1,0 +1,4 @@
+---
+idle_delay:
+  guest: "uint32 0"
+  host: "uint32 900"
