@@ -1,0 +1,11 @@
+---
+- name: load components
+  include_tasks: "{{ task_item }}.yml"
+  with_items:
+    - dns
+    - connection
+  loop_control:
+    loop_var: task_item
+
+- name: flush handlers
+  meta: flush_handlers

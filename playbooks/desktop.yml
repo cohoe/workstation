@@ -27,7 +27,7 @@
     - mime
     - pulse
     - bluetooth
-    - docker
+    - podman
     - franz
 
   tasks:

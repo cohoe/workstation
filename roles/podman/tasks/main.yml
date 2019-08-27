@@ -1,0 +1,8 @@
+---
+- name: install
+  dnf:
+    name:
+      - podman
+      - docker-compose
+    state: latest
+  become: yes

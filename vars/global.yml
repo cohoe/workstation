@@ -12,3 +12,6 @@ user_public_directory: Public
 display: ":0.0"
 
 user_bin_dir: ~/.bin
+
+# Connection
+connection_name: Primary

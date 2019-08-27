@@ -2,7 +2,7 @@
 # Join all search_domains into a space-separated list for ifcfg file
 - name: set search domains
   shell:
-    cmd: "nmcli conn mod \"$(nmcli -g name -c no conn show -a)\" ipv4.dns-search \"{{ search_domains | join(',') }}\""
+    cmd: "nmcli conn mod \"$(nmcli -g name -c no conn show -a --order t:a:p | head -1)\" ipv4.dns-search \"{{ search_domains | join(',') }}\""
   become: yes
   when: search_domains is defined and search_domains != ansible_dns.search
   notify:
@@ -27,6 +27,3 @@
     - "{{ hosts_custom }}"
   when: hosts_custom is defined
   become: yes
-
-- name: flush handlers
-  meta: flush_handlers

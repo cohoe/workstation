@@ -10,7 +10,7 @@
         - ssh
         - samba-client
   roles:
-    - dns
+    - network
     - remmina
     - security
     - ssl

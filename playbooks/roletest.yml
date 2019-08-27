@@ -6,7 +6,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - shell
+    - network
     
   vars_files:
     - ../vars/global.yml

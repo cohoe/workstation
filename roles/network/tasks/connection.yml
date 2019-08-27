@@ -1,0 +1,16 @@
+---
+# Figure out our NetworkManager connection
+- name: determine networkmanager connection
+  shell:
+    cmd: "nmcli -g name -c no conn show -a --order t:a:p | head -1"
+  changed_when: false
+  register: nmconn
+  become: yes
+
+- name: set connection name
+  shell:
+    cmd: "nmcli conn mod \"$(nmcli -g name -c no conn show -a --order t:a:p | head -1)\" connection.id \"{{ connection_name }}\""
+  become: yes
+  when: connection_name is defined and nmconn.stdout != connection_name
+  notify:
+    - restart NetworkManager

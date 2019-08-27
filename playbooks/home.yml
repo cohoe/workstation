@@ -12,7 +12,7 @@
 
   # Security, SSL, dns, remmina need to be here so that it gets the vars file
   roles:
-    - dns
+    - network
     - remmina
     - security
     - ssl
