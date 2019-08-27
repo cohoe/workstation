@@ -48,6 +48,10 @@ image/x-portable-pixmap=gimp.desktop;eom.desktop;
 image/x-xbitmap=gimp.desktop;eom.desktop;
 image/x-xpixmap=gimp.desktop;eom.desktop;
 text/markdown=sublime_text.desktop;
+video/x-flv=vlc.desktop;
+application/xml=sublime_text.desktop;
+audio/x-mpegurl=vlc.desktop;
+video/webm=vlc.desktop;
 
 [Default Applications]
 text/x-python=sublime_text.desktop
@@ -100,3 +104,7 @@ image/x-icb=eom.desktop
 image/x-ico=eom.desktop
 image/x-png=eom.desktop
 text/markdown=sublime_text.desktop
+video/x-flv=vlc.desktop
+application/xml=sublime_text.desktop
+audio/x-mpegurl=vlc.desktop
+video/webm=vlc.desktop
