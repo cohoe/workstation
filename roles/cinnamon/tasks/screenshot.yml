@@ -1,4 +1,10 @@
 ---
+- name: install better screenshooter
+  dnf:
+    name: xfce4-screenshooter
+    state: latest
+  become: yes
+
 - name: create custom keyboard shortcuts
   dconf:
     key: "{{ item.key }}"
