@@ -11,5 +11,6 @@
     - terminal
     - desktop
     - junk
+    - screenshot
   loop_control:
     loop_var: task_item
