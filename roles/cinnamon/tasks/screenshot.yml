@@ -5,6 +5,19 @@
     state: latest
   become: yes
 
+- name: clear out stock shortcuts
+  dconf:
+    key: "/org/cinnamon/desktop/keybindings/media-keys/{{ item }}"
+    value: "@as []"
+  with_items:
+    - area-screenshot
+    - area-screenshot-clip
+    - screensaver
+    - screenshot
+    - screenshot-clip
+    - window-screenshot
+    - window-screenshot-clip
+
 - name: create custom keyboard shortcuts
   dconf:
     key: "{{ item.key }}"
