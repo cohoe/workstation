@@ -19,7 +19,7 @@
 
 - name: install rvm keys
   shell:
-    cmd: "gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys {{ item }}"
+    cmd: "gpg2 --keyserver hkps://hkps.pool.sks-keyservers.net --recv-keys {{ item }}"
   when: item not in gpg_keys.stdout
   with_items:
     - 409B6B1796C275462A1703113804BB82D39DC0E3
