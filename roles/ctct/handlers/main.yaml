@@ -1,4 +1,10 @@
 ---
 - name: restart networkmanager
-  service: name=NetworkManager state=restarted
+  service:
+    name: NetworkManager
+    state: restarted
   become: yes
+
+- name: wait 10s for NetworkManager to get back up
+  pause:
+    seconds: 10

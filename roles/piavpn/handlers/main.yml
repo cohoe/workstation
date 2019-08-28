@@ -4,3 +4,7 @@
   service:
     name: NetworkManager
     state: restarted
+
+- name: wait 10s for NetworkManager to get back up
+  pause:
+    seconds: 10
