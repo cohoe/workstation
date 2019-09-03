@@ -29,6 +29,7 @@
     - bluetooth
     - podman
     - franz
+    - redshift
 
   tasks:
     - name: "virtualbox guest additions"

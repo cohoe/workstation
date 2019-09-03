@@ -1,0 +1,14 @@
+---
+- name: install package
+  dnf:
+    name:
+      - redshift-gtk
+      - redshift
+    state: present
+  become: yes
+
+- name: autostart
+  copy:
+    src: "redshift-gtk.desktop"
+    dest: "{{ user_autostart_dir }}/quicktile.desktop"
+  when: ansible_virtualization_role != 'guest'
