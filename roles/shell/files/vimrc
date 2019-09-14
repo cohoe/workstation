@@ -46,11 +46,11 @@ set numberwidth=2
 set hlsearch
 
 " Set the number of spaces one tab equals
-set ts=4
-set tabstop=4
+set ts=2
+set tabstop=2
 
 " Indentations should be tabstop spaces
-set shiftwidth=4
+set shiftwidth=2
 
 " Use spaces instead of tabs
 set expandtab
@@ -75,3 +75,10 @@ set viminfo='100,<1000,s10,h
 " Explicity enable modeline because FreeBSD can be dumb
 set modeline
 set modelines=5
+
+" Disable powerline
+let g:powerline_loaded = 1
+
+" shift-tab
+" https://stackoverflow.com/questions/4766230/map-shift-tab-in-vim-to-inverse-tab-in-vim
+inoremap <S-Tab> <C-d>
