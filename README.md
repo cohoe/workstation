@@ -5,7 +5,7 @@ Ansible scripts for desktop environment configuration.
 
 Features
 --------
-Check the [Roles Readme](https://github.com/cohoe/workstation/blob/master/roles/README.md) for an overview of what features are implemented.
+Browse through the [Rolese](https://github.com/cohoe/workstation/blob/master/roles/) to see what features are implemented.
 
 Usage
 -----
