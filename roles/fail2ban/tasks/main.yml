@@ -1,0 +1,27 @@
+---
+# https://fedoraproject.org/wiki/Fail2ban_with_FirewallD
+- name: install package
+  dnf:
+    name:
+      - fail2ban
+      - fail2ban-systemd
+      - fail2ban-firewalld
+  become: yes
+
+- name: set config file
+  template:
+    src: local.j2.conf
+    dest: /etc/fail2ban/jail.d/local.conf
+  become: yes
+  notify:
+    - restart f2b
+
+- name: enable f2b service
+  service:
+    name: fail2ban
+    enabled: yes
+    state: started
+  become: yes
+
+- name: run font handlers now
+  meta: flush_handlers
