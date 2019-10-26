@@ -7,11 +7,3 @@
 - import_tasks: sshd.yml
   become: true
   when: secure_sshd
-
-- name: test for existing ssh key
-  stat: path=~/.ssh/id_rsa
-  register: sshkey_stat
-
-- name: generate ssh key
-  shell: ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
-  when: sshkey_stat.stat.exists == False

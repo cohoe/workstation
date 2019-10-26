@@ -6,7 +6,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - fail2ban
+    - security
     
   vars_files:
     - ../vars/global.yml
