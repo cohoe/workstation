@@ -19,7 +19,8 @@
     - fonts
     - launchy
     - x11
-    - pycharm
+    - pycharm # might deprecate this
+    - idea
     - ksexplorer
     - sublime
     - quicktile

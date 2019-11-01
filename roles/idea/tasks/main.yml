@@ -1,0 +1,18 @@
+---
+- name: yum repo
+  yum_repository:
+    name: copr:copr.fedorainfracloud.org:crimsonidol:dev-tools
+    description: Copr repo for dev-tools owned by crimsonidol
+    baseurl: https://copr-be.cloud.fedoraproject.org/results/crimsonidol/dev-tools/fedora-$releasever-$basearch/
+    gpgcheck: 1
+    gpgkey: https://copr-be.cloud.fedoraproject.org/results/crimsonidol/dev-tools/pubkey.gpg
+    enabled: yes
+  become: yes
+
+- name: install package
+  dnf:
+    name:
+      - intellij-idea-ultimate
+      - intellij-idea-ultimate-jre
+    state: present
+  become: yes
