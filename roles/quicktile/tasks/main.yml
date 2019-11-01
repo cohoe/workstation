@@ -39,6 +39,7 @@
     src: "{{ local_shortcuts_dir }}/quicktile.desktop"
     dest: "{{ user_autostart_dir }}/quicktile.desktop"
     state: link
+    force: yes
 
 - name: "laptop config"
   copy:
