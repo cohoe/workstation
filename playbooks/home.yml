@@ -29,7 +29,6 @@
     - openttd
     - nsswitch
     - veracrypt
-    - spotify
     - piavpn
 
   tasks:
