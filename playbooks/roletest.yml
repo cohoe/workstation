@@ -5,14 +5,14 @@
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
-  #roles:
-  #  - spotify
-  tasks:
-    - import_role:
-        name: cinnamon
-        tasks_from: keyboard
+  roles:
+    - ctct
+#  tasks:
+#    - import_role:
+#        name: cinnamon
+#        tasks_from: keyboard
     
   vars_files:
     - ../vars/global.yml
-#    - ../vars/ctct.yml
+    - ../vars/ctct.yml
 #    - ../vars/home.yml
