@@ -6,6 +6,6 @@
 # Maybe it didn't in the first place? Well it does it when calling openconnect
 # manually, but not via NetworkManager
 
-if [[ "$1" = "vpn0" && "$2" = "up" ]]; then
+if [[ "$1" = "vpn0" && "$2" = "vpn-up" ]]; then
   ip route add default dev ${1}
 fi
