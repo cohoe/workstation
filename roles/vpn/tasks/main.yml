@@ -1,0 +1,23 @@
+---
+- name: VPN connections
+  template:
+    src: "nmconn-{{ item.type }}.j2"
+    dest: "/etc/NetworkManager/system-connections/{{ item.name }}"
+    mode: 0600
+    owner: root
+    group: root
+  become: yes
+  notify:
+    - restart networkmanager
+  with_items:
+    "{{ vpn_connections }}"
+
+- name: GlobalProtect gateway fix script
+  file:
+    src: 100-gp_gateway
+    dest: /etc/NetworkManager/dispatcher.d/100-gp_gateway
+    mod: 0755
+  become: yes
+
+- name: flush
+  meta: flush_handlers
