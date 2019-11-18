@@ -1,0 +1,25 @@
+[connection]
+id={{ item.key }}
+uuid={{ item.key | to_uuid }}
+type=vpn
+autoconnect=false
+permissions=
+
+[vpn]
+gateway={{ item.value.gateway }}
+ipsec-enabled=yes
+ipsec-psk={{ item.value.ipsec_psk }}
+ipsec-remote-id={{ item.value.remote_id }}
+password-flags=0
+user={{ item.value.user }}
+service-type=org.freedesktop.NetworkManager.l2tp
+
+[ipv4]
+dns-search=
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+dns-search=
+ip6-privacy=0
+method=auto

@@ -1,0 +1,30 @@
+[connection]
+id={{ item.key }}
+uuid={{ item.key | to_uuid }}
+type=vpn
+permissions=
+
+[vpn]
+ca={{ item.value.ca }}
+cert={{ item.value.cert }}
+key={{ item.value.key }}
+cert-pass-flags=0
+comp-lzo=adaptive
+connection-type=tls
+dev=tun
+remote={{ item.value.remote }}
+remote-cert-tls=server
+service-type=org.freedesktop.NetworkManager.openvpn
+
+[vpn-secrets]
+no-secret=True
+
+[ipv4]
+dns-search=
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+dns-search=
+ip6-privacy=0
+method=auto

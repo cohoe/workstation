@@ -1,6 +1,6 @@
 [connection]
-id={{ item.name }}
-uuid={{ item.name | to_uuid }}
+id={{ item.key }}
+uuid={{ item.key | to_uuid }}
 type=vpn
 autoconnect=false
 permissions=
@@ -11,7 +11,7 @@ autoconnect-flags=0
 certsigs-flags=0
 cookie-flags=2
 enable_csd_trojan=no
-gateway={{ item.gateway }}
+gateway={{ item.value.gateway }}
 gateway-flags=2
 gwcert-flags=2
 lasthost-flags=0
@@ -23,8 +23,8 @@ xmlconfig-flags=0
 service-type=org.freedesktop.NetworkManager.openconnect
 
 [vpn-secrets]
-form:_login:user={{ item.username }}
-lasthost={{ item.gateway }}
+form:_login:user={{ item.value.username }}
+lasthost={{ item.value.gateway }}
 save_passwords=yes
 
 [ipv4]
@@ -36,5 +36,3 @@ addr-gen-mode=stable-privacy
 dns-search=
 ip6-privacy=0
 method=auto
-
-# vim: ft=dosini
