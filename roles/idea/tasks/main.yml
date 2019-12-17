@@ -10,3 +10,4 @@
   copy:
     src: intellij.desktop
     dest: /usr/local/share/applications/intellij.desktop
+  become: yes
