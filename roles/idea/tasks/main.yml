@@ -11,6 +11,7 @@
     cmd: snap list | grep intellij | awk '{print $3}'
   become: yes
   register: intellij_rev
+  changed_when: false
 
 - name: install desktop shortcut
   template:

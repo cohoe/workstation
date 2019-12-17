@@ -18,3 +18,4 @@
   shell:
     cmd: snap wait system seed.loaded
   become: yes
+  changed_when: false
