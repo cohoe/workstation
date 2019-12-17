@@ -6,6 +6,7 @@
     - dnf
     - rpmfusion
     - fedorarepos
+    - snapd
     - clitools
     - shell
     - sudo
@@ -19,7 +20,6 @@
     - fonts
     - launchy
     - x11
-    - pycharm # might deprecate this
     - idea
     - ksexplorer
     - sublime
