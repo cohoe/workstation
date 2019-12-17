@@ -1,0 +1,14 @@
+---
+- name: install snapd package
+  dnf:
+    name:
+      - snapd
+    state: present
+  become: yes
+
+- name: classic symlink
+  file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    state: link
+  become: yes

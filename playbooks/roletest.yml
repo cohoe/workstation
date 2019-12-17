@@ -7,7 +7,8 @@
         - ssh
   roles:
     #- ctct
-    - vpn
+    - snapd
+    - idea
 #  tasks:
 #    - import_role:
 #        name: cinnamon
@@ -15,5 +16,5 @@
     
   vars_files:
     - ../vars/global.yml
-    - ../vars/ctct.yml
+#    - ../vars/ctct.yml
 #    - ../vars/home.yml
