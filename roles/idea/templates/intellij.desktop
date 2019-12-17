@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IntelliJ IDEA Ultimate
+GenericName=IntelliJ IDEA Ultimate
+Exec=/var/lib/snapd/snap/bin/intellij-idea-ultimate
+Terminal=false
+Icon=/var/lib/snapd/snap/intellij-idea-ultimate/{{ intellij_rev.stdout }}/bin/idea.png
+Type=Application
+Categories=Development;

@@ -13,7 +13,8 @@
     state: link
   become: yes
 
-- name: try waiting
+# https://bugs.launchpad.net/snapd/+bug/1826662
+- name: wait for snapd to become ready
   shell:
     cmd: snap wait system seed.loaded
   become: yes
