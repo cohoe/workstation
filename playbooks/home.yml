@@ -30,6 +30,7 @@
     - nsswitch
     - veracrypt
     - piavpn
+    - vpn
 
   tasks:
     # NVIDIA drivers

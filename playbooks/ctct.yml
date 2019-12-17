@@ -18,6 +18,7 @@
     - ctct
     - aws
     - apacheds
+    - vpn
 
   tasks:
     - name: log run date to file
