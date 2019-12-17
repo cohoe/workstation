@@ -1,28 +1,12 @@
 ---
-# https://docs.fedoraproject.org/en-US/quick-docs/installing-spotify/
-
-- name: test if spotify is built
-  stat:
-    path: /var/lib/lpf/rpms/spotify-client/
-  register: spotify_rpm_stat
-
-# Only build if we need to
-- name: include build
-  import_tasks: build.yml
-  when: spotify_rpm_stat.stat.exists == False
-
-- name: see if spotify is already installed
-  shell:
-    cmd: rpm -qi spotify-client
-    warn: false
+- name: install spotify snap
+  snap:
+    name: spotify
+    state: present
   become: yes
-  register: spotify_installed
-  failed_when: false
-  changed_when: false
 
-- name: manually install spotify
-  shell:
-    cmd: dnf install -y /var/lib/lpf/rpms/spotify-client/spotify-client*.rpm
-    warn: false
+- name: install desktop shortcut
+  copy:
+    src: spotify.desktop
+    dest: /usr/local/share/applications/spotify.desktop
   become: yes
-  when: spotify_installed.rc != 0

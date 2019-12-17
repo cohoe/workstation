@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Spotify
+GenericName=Spotify
+Exec=/var/lib/snapd/snap/bin/spotify
+Terminal=false
+Icon=spotify
+Type=Application
+Categories=
