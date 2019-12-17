@@ -6,15 +6,8 @@
     classic: yes
   become: yes
 
-- name: get installed revision
-  shell:
-    cmd: snap list | grep intellij | awk '{print $3}'
-  become: yes
-  register: intellij_rev
-  changed_when: false
-
 - name: install desktop shortcut
-  template:
+  copy:
     src: intellij.desktop
     dest: /usr/local/share/applications/intellij.desktop
   become: yes
