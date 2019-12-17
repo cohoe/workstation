@@ -39,6 +39,7 @@
       - livecd-tools      # live cd/usb tols
       - android-tools     # Android tools
       - iperf3            # Network throughput
+      - speedtest-cli     # Speedtest
     state: latest
   become: true
 
