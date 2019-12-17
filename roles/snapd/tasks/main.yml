@@ -12,3 +12,8 @@
     dest: /snap
     state: link
   become: yes
+
+- name: try waiting
+  shell:
+    cmd: snap wait system seed.loaded
+  become: yes
