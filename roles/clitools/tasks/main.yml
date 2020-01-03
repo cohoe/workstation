@@ -40,6 +40,7 @@
       - android-tools     # Android tools
       - iperf3            # Network throughput
       - speedtest-cli     # Speedtest
+      - p7zip             # 7z support
     state: latest
   become: true
 
