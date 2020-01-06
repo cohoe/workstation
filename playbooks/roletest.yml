@@ -6,13 +6,13 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - franz
-#  tasks:
-#    - import_role:
-#        name: cinnamon
-#        tasks_from: keyboard
+    #- franz
+  tasks:
+    - import_role:
+        name: security
+        tasks_from: keys
     
   vars_files:
     - ../vars/global.yml
-#    - ../vars/ctct.yml
+    - ../vars/ctct.yml
 #    - ../vars/home.yml
