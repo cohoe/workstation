@@ -60,3 +60,9 @@
   copy:
     src: googlecalendar-webview.js
     dest: "~/.config/Franz/recipes/googlecalendar/webview.js"
+
+# https://github.com/paveyry/better-hangoutschat/releases/download/v3.4.1/electron-dark.zip
+- name: install new electron
+  copy:
+    src: electron-dark.asar
+    dest: "/opt/franz/franz-{{ franz_version.stdout }}/resources/electron.asar"
