@@ -1,0 +1,7 @@
+---
+- name: misc configuration items
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    /org/cinnamon/settings-daemon/peripherals/mouse/motion-acceleration: 7.3

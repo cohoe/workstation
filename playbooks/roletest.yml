@@ -9,10 +9,10 @@
     #- franz
   tasks:
     - import_role:
-        name: security
-        tasks_from: keys
+        name: cinnamon
+        tasks_from: desktop
     
   vars_files:
     - ../vars/global.yml
-    - ../vars/ctct.yml
+#    - ../vars/ctct.yml
 #    - ../vars/home.yml

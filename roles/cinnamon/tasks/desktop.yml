@@ -10,12 +10,17 @@
 
 - name: effects
   dconf:
-    key: "{{ item }}"
-    value: "false"
-  with_items:
-    - /org/cinnamon/desktop-effects
-    - /org/cinnamon/desktop-effects-on-dialogs
-    - /org/cinnamon/desktop-effects-on-menus
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_dict:
+    /org/cinnamon/muffin/desktop-effects: "false"
+    /org/cinnamon/desktop-effects-on-dialogs: "false"
+    /org/cinnamon/desktop-effects-on-menus: "false"
+    /org/cinnamon/enable-vfade: "false"
+    /org/cinnamon/startup-animation: "false"
+    /org/cinnamon/desktop-effects-minimize-effect: "'none'"
+    /org/cinnamon/desktop-effects-close-effect: "'none'"
+    /org/cinnamon/desktop-effects-map-effect: "'none'"
 
 - name: misc configuration items
   dconf:
@@ -55,6 +60,7 @@
   copy:
     src: "wallpaper/wallpaper-{{ ansible_form_factor }}.jpg"
     dest: /usr/share/backgrounds/images/user-wallpaper.jpg
+    force: no
   become: yes
 
 - name: set wallpaper
