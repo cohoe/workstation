@@ -23,6 +23,8 @@
       dest: "menu@cinnamon.org/1.json"
     - src: calendar.json
       dest: "calendar@cinnamon.org/12.json"
+    - src: sound.json
+      dest: "sound@cinnamon.org/sound@cinnamon.org.json"
 
 - name: configure panel size
   dconf:
