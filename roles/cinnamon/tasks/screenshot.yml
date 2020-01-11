@@ -12,7 +12,6 @@
   with_items:
     - area-screenshot
     - area-screenshot-clip
-    - screensaver
     - screenshot
     - screenshot-clip
     - window-screenshot

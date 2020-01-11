@@ -6,11 +6,11 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    #- franz
+    #- cinnamon
   tasks:
     - import_role:
         name: cinnamon
-        tasks_from: desktop
+        tasks_from: mouse
     
   vars_files:
     - ../vars/global.yml
