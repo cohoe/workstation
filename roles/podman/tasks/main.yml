@@ -3,6 +3,6 @@
   dnf:
     name:
       - podman
-      - docker-compose
+      - podman-compose
     state: latest
   become: yes
