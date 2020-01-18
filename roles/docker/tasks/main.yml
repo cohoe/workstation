@@ -1,8 +1,20 @@
 ---
+# The docker package that ships with Fedora is old and not maintained anymore.
+# To get newer docker you need to go to the source.
+- name: install repo
+  yum_repository:
+    name: docker-ce-stable
+    description: Docker CE Stable - $basearch
+    baseurl: https://download.docker.com/linux/fedora/$releasever/$basearch/stable
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/fedora/gpg
+  become: yes
+
 - name: install
   dnf:
     name:
-      - docker
+      - docker-ce
       - docker-compose
       - python3-docker
     state: latest
@@ -21,6 +33,8 @@
     groups: docker
   become: yes
 
+# https://bugzilla.redhat.com/show_bug.cgi?id=1746355
+# Haven't tested this with docker-ce
 - name: enable service
   service:
     name: docker
@@ -33,6 +47,7 @@
   docker_image:
     name: "{{ item.name }}"
     tag: "{{ item.tag }}"
+    source: pull
   with_items:
     - name: "fedora"
       tag: "latest"
