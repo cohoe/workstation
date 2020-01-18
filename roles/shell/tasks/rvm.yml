@@ -37,6 +37,8 @@
       - libyaml-devel
       - readline-devel
       - sqlite-devel
-      - openssl-devel
+      #- openssl-devel
+      # this is compat for M2Crypto-related reasons.
+      - compat-openssl10-devel
     state: present
   become: yes
