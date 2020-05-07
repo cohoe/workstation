@@ -1,0 +1,10 @@
+---
+# @TODO grab operator-sdk binary
+#
+- name: install packages
+  dnf:
+    name:
+      - origin-clients
+      - python3-ansible-runner
+      - python3-openshift
+  become: yes

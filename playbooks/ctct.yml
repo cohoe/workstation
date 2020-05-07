@@ -19,6 +19,7 @@
     - aws
     - apacheds
     - vpn
+    - openshift
 
   tasks:
     - name: log run date to file
