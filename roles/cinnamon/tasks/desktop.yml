@@ -55,6 +55,7 @@
     /org/cinnamon/settings-daemon/peripherals/touchpad/scrolling-method: 1
     /org/cinnamon/desktop/wm/preferences/num-workspaces: 2
     /org/cinnamon/workspace-osd-visible: "false"
+    /org/cinnamon/desktop/wm/preferences/mouse-button-modifier: "''"
 
 - name: copy wallpaper
   copy:
