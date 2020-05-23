@@ -12,6 +12,7 @@
       - easytag           # MP3 Tag editor
       - libreoffice       # Office suite
       - gparted           # Partition editor
+      - camorama          # Webcam viewer
     state: latest
   become: yes
 
