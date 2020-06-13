@@ -1,31 +1,19 @@
 ---
-# Look for any power sources. Any entries are usually a laptop, blank is a desktop.
-- name: "battery | detect"
-  shell: /bin/ls /sys/class/power_supply
-  register: power_sources
-  changed_when: false
-
 - name: install dependencies
   dnf:
     name:
-      - pygtk2
-      - pygobject2
-      - dbus-python
-      - gnome-python2-libwnck
-      - python-xlib
+      - python3-gobject
+      - python3-xlib
+      - python3-dbus
+      - gtk3
+      - libwnck3
     state: latest
   become: yes
 
-- name: create install directory
-  file:
-    path: /opt/quicktile/
-    state: directory
-  become: yes
-
-- name: clone source repository
-  git:
-    repo: https://github.com/ssokolow/quicktile
-    dest: /opt/quicktile
+- name: install module
+  pip:
+    name: https://github.com/ssokolow/quicktile/archive/master.zip
+    state: present
   become: yes
 
 - name: create desktop shortcut
@@ -41,14 +29,7 @@
     state: link
     force: yes
 
-- name: "laptop config"
+- name: configuration
   copy:
-    src: quicktile.cfg.laptop
+    src: quicktile.cfg
     dest: '~/.config/quicktile.cfg'
-  when: ansible_form_factor == "Notebook"
-
-- name: "desktop config"
-  copy:
-    src: quicktile.cfg.desktop
-    dest: '~/.config/quicktile.cfg'
-  when: ansible_form_factor != "Notebook"
