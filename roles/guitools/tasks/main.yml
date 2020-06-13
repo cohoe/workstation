@@ -2,17 +2,18 @@
 - name: install gui packages
   dnf:
     name:
-      - texworks          # LaTeX tools
-      - texlive-pdftex    # LaTeX PDF tools
-      - texlive           # More LaTeX tools
-      - rdesktop          # Remote desktop client
-      - gimp              # Photo manipulation
-      - mediawriter       # USB/ISO tool
-      - d-feet            # DBus debugging tool
-      - easytag           # MP3 Tag editor
-      - libreoffice       # Office suite
-      - gparted           # Partition editor
-      - camorama          # Webcam viewer
+      - texworks             # LaTeX tools
+      - texlive-pdftex       # LaTeX PDF tools
+      - texlive              # More LaTeX tools
+      - rdesktop             # Remote desktop client
+      - gimp                 # Photo manipulation
+      - mediawriter          # USB/ISO tool
+      - d-feet               # DBus debugging tool
+      - easytag              # MP3 Tag editor
+      - libreoffice          # Office suite
+      - gparted              # Partition editor
+      - camorama             # Webcam viewer
+      - simplescreenrecorder # Screen Recorder
     state: latest
   become: yes
 
