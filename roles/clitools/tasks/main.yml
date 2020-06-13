@@ -5,7 +5,6 @@
     name:
       - python3-virtualenv
       - python3-virtualenvwrapper
-      - python3-pep8
     state: latest
   become: true
 
