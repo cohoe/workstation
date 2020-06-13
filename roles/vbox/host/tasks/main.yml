@@ -12,7 +12,7 @@
 - name: install packages
   dnf:
     name:
-      - VirtualBox-6.0
+      - VirtualBox-6.1
       - kernel-devel
     state: latest
   become: yes
