@@ -18,14 +18,12 @@
 
 - name: extract data files
   unarchive:
-    src: "{{ openttd_data_base_url }}/{{ item.package }}/{{ item.version }}/{{ item.package }}-{{ item.version }}-all.zip"
+    src: "{{ item }}"
     dest: "{{ openttd_baseset_directory}}/"
     remote_src: yes
   with_items:
-    - package: opensfx
-      version: 0.2.3
-    - package: openmsx
-      version: 0.3.1
+    - https://cdn.openttd.org/opensfx-releases/0.2.3/opensfx-0.2.3-source.tar.gz
+    - https://cdn.openttd.org/openmsx-releases/0.3.1/openmsx-0.3.1-all.zip
 
 - name: install config file
   copy:
