@@ -1,26 +1,16 @@
 ---
-- name: install non-pip dependencies
+- name: install dependencies
   dnf:
     name:
-      - python2-pexpect
+      - python3-pexpect
       - glib2-devel
       - gobject-introspection-devel
       - cairo-devel
       - cairo-gobject-devel
+      - python3-gobject
+      - python3-pulsectl
     state: latest
   become: yes
-
-# Executable is needed because maxime is py27 but I default the
-# Ansible interpreter to 3
-- name: install pip dependencies
-  pip:
-    name: pulsectl
-    state: latest
-    executable: /usr/bin/pip
-  become: yes
-  with_items:
-    - pulsectl
-    - PyGObject
 
 - name: install script
   get_url:
