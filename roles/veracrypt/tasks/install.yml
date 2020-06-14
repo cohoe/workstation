@@ -10,14 +10,16 @@
     dest: /tmp/veracrypt-setup
     remote_src: yes
 
+# For some reason this needs rootish perms to do extraction in /tmp? This is done in main.yml
 - name: extract setup script
   shell:
     cmd: /tmp/veracrypt-setup/veracrypt-1.23-setup-gui-x64 --tar xf 
     chdir: /tmp/veracrypt-setup/
 
+# Grep may have changed and now treats the file as binary so you need to tell it to pretend its text.
 - name: find offset
   shell:
-    cmd: grep -m 1 PACKAGE_START veracrypt_install_gui_x64.sh | cut -d '=' -f 2
+    cmd: grep -a -m 1 PACKAGE_START veracrypt_install_gui_x64.sh | cut -d '=' -f 2
     chdir: /tmp/veracrypt-setup/
   register: package_offset
   changed_when: false
