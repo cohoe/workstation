@@ -15,7 +15,6 @@
     - network
     - remmina
     - security
-    - ssl
     - httpd
     - hdhomerun
     - arduino
@@ -29,7 +28,6 @@
     - openttd
     - nsswitch
     - veracrypt
-    - piavpn
     - vpn
 
   tasks:

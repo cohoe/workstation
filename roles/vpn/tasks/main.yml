@@ -12,27 +12,6 @@
   with_dict:
     "{{ vpn_connections }}"
 
-- name: build list of files that should exist
-  set_fact:
-    conn_files: "{{ vpn_connections.keys() | map('regex_replace', '^', '/etc/NetworkManager/system-connections/') | list }}"
-
-- name: get a list of all vpn connections currently on the system
-  find:
-    path: /etc/NetworkManager/system-connections
-    file_type: file
-  register: local_vpn_files
-
-- name: purge old vpns
-  file:
-    path: "{{ item.path }}"
-    state: absent
-  become: yes
-  when: item.path not in conn_files
-  with_items:
-    "{{ local_vpn_files.files }}"
-  notify:
-    - restart networkmanager
-
 - name: GlobalProtect gateway fix script
   copy:
     src: 100-gp_gateway.sh

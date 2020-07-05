@@ -13,7 +13,6 @@
     - network
     - remmina
     - security
-    - ssl
     - httpd
     - ctct
     - aws

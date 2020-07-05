@@ -5,19 +5,16 @@ type=vpn
 permissions=
 
 [vpn]
-ca={{ item.value.ca }}
-cert={{ item.value.cert }}
-key={{ item.value.key }}
-cert-pass-flags=0
-comp-lzo=adaptive
-connection-type=tls
+ca=/etc/pki/tls/certs/ca-bundle.crt
+compress=lzo
+connection-type=password
 dev=tun
+dev-type=tun
+password-flags=1
 remote={{ item.value.remote }}
 remote-cert-tls=server
+username={{ item.value.username }}
 service-type=org.freedesktop.NetworkManager.openvpn
-
-[vpn-secrets]
-no-secret=True
 
 [ipv4]
 dns-search=
@@ -28,3 +25,5 @@ addr-gen-mode=stable-privacy
 dns-search=
 ip6-privacy=0
 method=auto
+
+# vim: ft=dosini

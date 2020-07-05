@@ -10,6 +10,7 @@
     - clitools
     - shell
     - sudo
+    - tls
     - java
     - grub
     - cinnamon
