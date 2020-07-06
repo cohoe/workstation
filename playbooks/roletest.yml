@@ -6,13 +6,13 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - vpn
+    #- vpn
   tasks:
-    #- import_role:
-    #    name: cinnamon
-    #    tasks_from: mouse
+    - import_role:
+        name: cinnamon
+        tasks_from: panel
     
   vars_files:
     - ../vars/global.yml
 #    - ../vars/ctct.yml
-    - ../vars/home.yml
+#    - ../vars/home.yml
