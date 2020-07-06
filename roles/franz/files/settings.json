@@ -1,5 +1,4 @@
 {
-  "autoLaunchInBackground": false,
   "runInBackground": true,
   "enableSystemTray": true,
   "minimizeToSystemTray": false,
@@ -10,8 +9,7 @@
   "darkMode": true,
   "locale": "en-US",
   "fallbackLocale": "en-US",
-  "beta": false,
-  "isAppMuted": false,
+  "beta": true,
   "enableGPUAcceleration": true,
   "serviceLimit": 5
 }

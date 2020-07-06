@@ -7,7 +7,7 @@ nvm_repo: https://github.com/creationix/nvm.git
 nvm_directory: ~/.nvm
 
 # Face
-user_face: http://i.grntm.co/headshot2.jpg
+user_face: http://i.grntm.co/headshot3.jpg
 
 # Git
 git_email: grant@grantcohoe.com
