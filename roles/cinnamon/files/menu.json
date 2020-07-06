@@ -27,6 +27,7 @@
             "keys": [
                 "menu-custom",
                 "menu-icon",
+                "menu-icon-size",
                 "menu-label"
             ]
         },
@@ -44,11 +45,15 @@
             "type": "section",
             "title": "Layout and content",
             "keys": [
-                "favbox-min-height",
                 "show-category-icons",
+                "category-icon-size",
                 "show-application-icons",
+                "application-icon-size",
                 "favbox-show",
+                "fav-icon-size",
+                "favbox-min-height",
                 "show-places",
+                "show-recents",
                 "menu-editor-button"
             ]
         },
@@ -79,9 +84,22 @@
         "default": "cinnamon-symbolic",
         "description": "Icon",
         "tooltip": "Select an icon to show in the panel.",
+        "default_icon": "cinnamon-symbolic",
         "dependency": "menu-custom",
         "indent": true,
         "value": "fedora-logo-icon"
+    },
+    "menu-icon-size": {
+        "type": "spinbutton",
+        "default": 32,
+        "min": 16,
+        "max": 96,
+        "step": 1,
+        "units": "px",
+        "description": "Icon size",
+        "dependency": "menu-custom",
+        "indent": true,
+        "value": 24.0
     },
     "menu-label": {
         "type": "entry",
@@ -99,6 +117,7 @@
         "max": 1000,
         "step": 10,
         "units": "px",
+        "dependency": "favbox-show",
         "description": "Minimum height of the favorites section",
         "tooltip": "The minimum size allocated for the favorites section (this has an impact on the overall height of the menu).",
         "value": 300
@@ -110,12 +129,36 @@
         "tooltip": "Choose whether or not to show icons on categories.",
         "value": true
     },
+    "category-icon-size": {
+        "type": "spinbutton",
+        "default": 22,
+        "min": 16,
+        "max": 48,
+        "step": 1,
+        "units": "px",
+        "description": "Categories icon size",
+        "dependency": "show-category-icons",
+        "indent": true,
+        "value": 22
+    },
     "show-application-icons": {
         "type": "switch",
         "default": true,
         "description": "Show application icons",
         "tooltip": "Choose whether or not to show icons on applications.",
         "value": true
+    },
+    "application-icon-size": {
+        "type": "spinbutton",
+        "default": 22,
+        "min": 16,
+        "max": 48,
+        "step": 1,
+        "units": "px",
+        "description": "Applications icon size",
+        "dependency": "show-application-icons",
+        "indent": true,
+        "value": 22
     },
     "favbox-show": {
         "type": "switch",
@@ -124,12 +167,31 @@
         "tooltip": "Choose whether or not to show the left pane of the menu.",
         "value": true
     },
+    "fav-icon-size": {
+        "type": "spinbutton",
+        "default": 32,
+        "min": 16,
+        "max": 64,
+        "step": 1,
+        "units": "px",
+        "description": "Favorites icon size",
+        "dependency": "favbox-show",
+        "indent": true,
+        "value": 32
+    },
     "show-places": {
         "type": "switch",
         "default": true,
         "description": "Show bookmarks and places",
         "tooltip": "Choose whether or not to show bookmarks and places in the menu.",
         "value": false
+    },
+    "show-recents": {
+        "type": "switch",
+        "default": true,
+        "description": "Show recents",
+        "tooltip": "Choose whether or not to show recents in the menu.",
+        "value": true
     },
     "enable-autoscroll": {
         "type": "switch",
@@ -177,5 +239,5 @@
         "callback": "_launch_editor",
         "tooltip": "Press this button to customize your menu entries."
     },
-    "__md5__": "e12917237ad76024f58ecdbf80340e6e"
+    "__md5__": "9fef899d7c11697066b5f3c4d8479daf"
 }
