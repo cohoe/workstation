@@ -10,7 +10,7 @@
   tasks:
     - import_role:
         name: cinnamon
-        tasks_from: panel
+        tasks_from: login
     
   vars_files:
     - ../vars/global.yml

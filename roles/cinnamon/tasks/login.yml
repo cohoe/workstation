@@ -13,3 +13,11 @@
     group: root
     mode: 0664
   become: yes
+
+# This seems to require a reboot. Restart systemd-logind wasn't enough.
+- name: ensure user processes are killed at logout
+  lineinfile:
+    path: /etc/systemd/logind.conf
+    regexp: ^#?KillUserProcesses(.*)
+    line: KillUserProcesses=yes
+  become: yes
