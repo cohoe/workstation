@@ -12,3 +12,14 @@
     src: intellij.desktop
     dest: /usr/local/share/applications/intellij.desktop
   become: yes
+
+# https://youtrack.jetbrains.com/issue/CPP-12199
+# https://forum.snapcraft.io/t/wayland-dconf-and-xdg-runtime-dir/186/16
+- name: fix xdg directory
+  file:
+    src: "/run/user/{{ ansible_user_uid }}/"
+    dest: "/run/user/{{ ansible_user_uid }}/snap.intellij-idea-ultimate"
+    state: link
+    force: no
+  become: yes
+  
