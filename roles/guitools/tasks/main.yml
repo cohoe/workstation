@@ -22,3 +22,9 @@
   file:
     path: ~/.local/share/applications
     state: directory
+
+- name: disable solaar autostart
+  file:
+    path: /etc/xdg/autostart/solaar.desktop
+    state: absent
+  become: yes
