@@ -14,6 +14,7 @@
       - gparted              # Partition editor
       - camorama             # Webcam viewer
       - simplescreenrecorder # Screen Recorder
+      - solaar               # Logitech Mouse utility
     state: latest
   become: yes
 
