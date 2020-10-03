@@ -29,6 +29,7 @@
     - nsswitch
     - veracrypt
     - vpn
+    - android
 
   tasks:
     # NVIDIA drivers

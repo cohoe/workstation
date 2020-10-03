@@ -5,12 +5,10 @@
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
-  roles:
-    #- vpn
   tasks:
     - import_role:
-        name: cinnamon
-        tasks_from: login
+        name: android
+#        tasks_from: login
     
   vars_files:
     - ../vars/global.yml

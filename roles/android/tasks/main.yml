@@ -1,0 +1,14 @@
+---
+- name: android things
+  dnf:
+    name:
+      - android-tools
+      - python3-pyserial
+    state: latest
+  become: true
+
+- name: disable and remove ModemManager
+  dnf:
+    name: ModemManager
+    state: absent
+  become: true
