@@ -15,6 +15,7 @@
       - camorama             # Webcam viewer
       - simplescreenrecorder # Screen Recorder
       - solaar               # Logitech Mouse utility
+      - rawtherapee          # RAW processing
     state: latest
   become: yes
 
