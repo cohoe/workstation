@@ -7,10 +7,10 @@
         - ssh
   tasks:
     - import_role:
-        name: android
-#        tasks_from: login
+        name: nas
+        tasks_from: iscsi
     
   vars_files:
     - ../vars/global.yml
 #    - ../vars/ctct.yml
-#    - ../vars/home.yml
+    - ../vars/home.yml

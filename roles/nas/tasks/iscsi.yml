@@ -1,5 +1,7 @@
 ---
 # https://www.server-world.info/en/note?os=Fedora_24&p=iscsi&f=2
+# https://kb.open-e.com/how-can-i-connect-to-iscsi-target-from-linux-console_962.html
+# iscsiadm --mode discovery --type sendtargets --portal 192.168.1.10
 # sudo iscsiadm -m discovery -t {{ nas_hostname }}
 # ls /var/lib/iscsi/send_targets/{{ nas_hostname }},3260
 # iscsiadm -m node --login
