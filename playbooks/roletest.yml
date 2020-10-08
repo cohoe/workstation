@@ -7,8 +7,8 @@
         - ssh
   tasks:
     - import_role:
-        name: nas
-        tasks_from: iscsi
+        name: maxime
+        #tasks_from: iscsi
     
   vars_files:
     - ../vars/global.yml

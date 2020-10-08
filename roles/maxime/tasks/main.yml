@@ -9,6 +9,7 @@
       - cairo-gobject-devel
       - python3-gobject
       - python3-pulsectl
+      - python3-configparser
     state: latest
   become: yes
 
