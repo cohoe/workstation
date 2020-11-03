@@ -20,7 +20,7 @@
     backup: yes
   become: yes
   notify:
-    - rebuild efi grub
+    - rebuild grub
 
 # This forces the handlers to run now rather than at the end of the play.
 # A lot more can go wrong there.

@@ -1,5 +1,6 @@
 ---
-- name: rebuild efi grub
-  command: grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+# The VPS doesn't do UEFI booting :(
+- name: rebuild grub
+  command: grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg && grub2-mkconfig -o /boot/grub2/grub.cfg
   become: yes
 
