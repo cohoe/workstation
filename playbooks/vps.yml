@@ -14,5 +14,6 @@
     - shell
     - sudo
     - tls
+    - cockpit
   vars_files:
     - ../vars/global.yml

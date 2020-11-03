@@ -1,0 +1,6 @@
+---
+- name: remove cockpit
+  dnf:
+    name: cockpit
+    state: absent
+  become: yes
