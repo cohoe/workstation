@@ -1,0 +1,15 @@
+---
+- name: VPS
+  hosts: all
+  vars:
+    - firewalld_zone: home
+    - firewalld_enabled_services:
+        - ssh
+  roles:
+    - common
+    - dnf
+    - rpmfusion
+    - fedorarepos
+    - security
+  vars_files:
+    - ../vars/global.yml
