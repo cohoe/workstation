@@ -15,5 +15,6 @@
     - sudo
     - tls
     - cockpit
+    - docker
   vars_files:
     - ../vars/global.yml
