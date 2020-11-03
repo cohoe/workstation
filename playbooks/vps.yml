@@ -10,5 +10,9 @@
     - dnf
     - rpmfusion
     - security
+    - clitools
+    - shell
+    - sudo
+    - tls
   vars_files:
     - ../vars/global.yml
