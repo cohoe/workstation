@@ -2,9 +2,12 @@
 - name: set fact
   set_fact:
     kernel_boot_params:
-    - net.ifnames=0
-    - biosdevname=0
+    # Shut up and deal with it.
+    #- net.ifnames=0
+    #- biosdevname=0
     - pci=noaer
+    # cgroupsv2 and docker is a hot mess. And Podman sucks.
+    - systemd.unified_cgroup_hierarchy=0
 
 # GRUB_CMDLINE_LINUX_DEFAULT applies to normal boot (not recovery boot). It
 # also happens to not get set by the OS installer. We will use this to our

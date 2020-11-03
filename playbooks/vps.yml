@@ -16,5 +16,6 @@
     - tls
     - cockpit
     - docker
+    - grub
   vars_files:
     - ../vars/global.yml
