@@ -41,16 +41,3 @@
     state: started
     enabled: yes
   become: yes
-
-# Must become until group privileges take effect
-- name: pull frequent images
-  docker_image:
-    name: "{{ item.name }}"
-    tag: "{{ item.tag }}"
-    source: pull
-  with_items:
-    - name: "fedora"
-      tag: "latest"
-    - name: "centos"
-      tag: "latest"
-  become: yes

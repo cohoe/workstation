@@ -20,11 +20,13 @@
 # For some reason I get a "General error" from the main key server
 - name: install rvm keys
   shell:
-    cmd: "curl -sSL {{ item }} | gpg2 --import"
-  when: item not in gpg_keys.stdout
+    cmd: "curl -sSL {{ item.url }} | gpg2 --import"
+  when: item.hash not in gpg_keys.stdout
   with_items:
-    - https://rvm.io/mpapis.asc
-    - https://rvm.io/pkuczynski.asc
+    - url: https://rvm.io/mpapis.asc
+      hash: 409B6B1796C275462A1703113804BB82D39DC0E3
+    - url: https://rvm.io/pkuczynski.asc
+      hash: 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 
 - name: rvm packages
   dnf:
