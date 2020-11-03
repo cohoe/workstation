@@ -1,10 +1,12 @@
 ---
+# Fedora 33 ditched Vim
 - name: install shell packages
   dnf:
     name:
       - zsh
       - tmux
       - screen
+      - vim
     state: latest
   become: yes
 

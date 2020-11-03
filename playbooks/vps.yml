@@ -9,7 +9,6 @@
     - common
     - dnf
     - rpmfusion
-    - fedorarepos
     - security
   vars_files:
     - ../vars/global.yml

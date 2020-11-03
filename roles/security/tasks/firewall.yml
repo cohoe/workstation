@@ -56,3 +56,13 @@
 #- name: "enable tftp firewall"
 #  shell: firewall-cmd --permanent --direct --add-rule ipv4 raw OUTPUT 1 -p udp -m udp --dport 69 -j CT --helper tftp
 #  become: yes
+
+# Fedora 32 changes the default backened to nftables, which fucks with
+# Docker/Podman. Also makes iptables not work.
+- name: switch firewalld backend
+  lineinfile:
+    path: /etc/firewalld/firewalld.conf
+    regexp: '^FirewallBackend'
+    line: 'FirewallBackend=iptables'
+  become: yes
+  notify: restart firewalld
