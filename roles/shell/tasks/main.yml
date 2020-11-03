@@ -1,12 +1,12 @@
 ---
-# Fedora 33 ditched Vim
+# Fedora 33 ditched Vim. vim-enhanced came from shell
 - name: install shell packages
   dnf:
     name:
       - zsh
       - tmux
       - screen
-      - vim
+      - vim-enhanced
     state: latest
   become: yes
 

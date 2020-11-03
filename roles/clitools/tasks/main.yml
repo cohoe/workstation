@@ -52,7 +52,6 @@
 - name: install software development tools
   dnf:
     name:
-      - vim-enhanced  # Editor
       - strace        # Stack debugger
       - git           # VCS
       - setroubleshoot-server # SELinux debugging tools
