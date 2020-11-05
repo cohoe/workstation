@@ -1,3 +1,9 @@
 ---
 fail2ban:
-  exclude: []
+  exclude:
+    - 127.0.0.1/8
+    - 192.168.0.0/16
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+mail_to_address: root+f2b@localhost
+mail_from_address: root+f2b@localhost

@@ -33,6 +33,7 @@
     - franz
     - redshift
     - spotify
+    - fail2ban
 
   tasks:
     - name: "virtualbox guest additions"

@@ -1,4 +1,12 @@
 ---
+- name: install packages
+  dnf:
+    name:
+      - NetworkManager-openvpn
+      - NetworkManager-openconnect
+    state: present
+  become: yes
+
 - name: VPN connections
   template:
     src: "nmconn-{{ item.value.type }}.j2"

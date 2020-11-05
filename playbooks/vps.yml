@@ -5,17 +5,23 @@
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
+        - http
+        - https
   roles:
-    - common
-    - dnf
-    - rpmfusion
-    - security
-    - clitools
-    - shell
-    - sudo
-    - tls
-    - cockpit
-    - docker
-    - grub
+#    - common
+#    - dnf
+#    - rpmfusion
+#    - security
+#    - clitools
+#    - shell
+#    - sudo
+#    - tls
+#    - cockpit
+#    - docker
+#    - grub
+#    - vpn
+#    - fail2ban
+    - openvpn
   vars_files:
     - ../vars/global.yml
+    - ../vars/vps.yaml

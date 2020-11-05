@@ -1,0 +1,59 @@
+---
+- name: install openvpn
+  dnf:
+    name: openvpn
+    state: present
+  become: yes
+
+# There is a known issue where a cipher doesn't work anymore
+# https://fedoraproject.org/wiki/Changes/New_default_cipher_in_OpenVPN
+# And they haven't fixed it in years....
+- name: install corrected unit template
+  copy:
+    src: openvpn-server@.service
+    dest: /usr/lib/systemd/system/openvpn-server@.service
+    mode: 0644
+  become: yes
+  notify:
+    - reload systemd
+
+- name: create secrets directory
+  file:
+    path: /etc/openvpn/secrets
+    state: directory
+    mode: 0750
+    owner: root
+    group: openvpn
+  become: yes
+
+- name: create secrets
+  copy:
+    dest: "/etc/openvpn/secrets/{{ item.name }}.key"
+    content: "{{ item.content }}"
+    mode: 0600
+  become: yes
+  with_items: "{{ openvpn_secrets }}"
+  no_log: true
+
+- name: create configurations
+  file:
+    path: "/etc/openvpn/{{ item.type }}/{{ item.name }}.conf"
+    content: "{{ item.content }}"
+    mode: 0600
+  become: yes
+  with_items: "{{ openvpn_configs }}"
+  no_log: true
+
+# This forces the handlers to run now rather than at the end of the play.
+# A lot more can go wrong there.
+- name: run bluetooth handlers now
+  meta: flush_handlers
+
+- name: start connections
+  service:
+    name: "openvpn-{{ item.type }}@{{ item.name }}"
+    enabled: yes
+    state: started
+  become: yes
+  with_items: "{{ openvpn_configs }}"
+  no_log: true
