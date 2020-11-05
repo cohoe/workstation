@@ -3,3 +3,9 @@
   shell:
     cmd: systemctl daemon-reload
   become: yes
+
+- name: restart resolved
+  service:
+    name: systemd-resolved
+    state: restarted
+  become: yes

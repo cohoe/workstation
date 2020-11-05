@@ -17,14 +17,27 @@
   notify:
     - reload systemd
 
-- name: create secrets directory
+- name: create custom directories
   file:
-    path: /etc/openvpn/secrets
+    path: "{{ item }}"
     state: directory
     mode: 0750
     owner: root
     group: openvpn
   become: yes
+  with_items:
+    - /etc/openvpn/secrets
+    - /etc/openvpn/scripts
+
+# https://github.com/jonathanio/update-systemd-resolved
+- name: install helper
+  get_url:
+    url: https://raw.githubusercontent.com/jonathanio/update-systemd-resolved/master/update-systemd-resolved
+    dest: /etc/openvpn/scripts/update-systemd-resolved
+    mode: 0755
+  become: yes
+  notify:
+    - restart resolved
 
 - name: create secrets
   copy:
