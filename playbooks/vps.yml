@@ -20,8 +20,9 @@
 #    - docker
 #    - grub
 #    - vpn
-#    - fail2ban
+    - fail2ban
     - openvpn
+    - vps
   vars_files:
     - ../vars/global.yml
     - ../vars/vps.yaml

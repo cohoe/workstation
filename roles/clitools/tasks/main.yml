@@ -40,6 +40,7 @@
       - iperf3            # Network throughput
       - speedtest-cli     # Speedtest
       - p7zip             # 7z support
+      - openssl           # OpenSSL tools
     state: latest
   become: true
 

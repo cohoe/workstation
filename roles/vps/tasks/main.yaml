@@ -1,0 +1,19 @@
+---
+- name: create backup directory
+  file:
+    path: /backups
+    state: directory
+    owner: root
+    group: wheel
+    mode: 0750
+  become: yes
+
+- name: enable network services
+  service:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  become: yes
+  with_items:
+    - systemd-networkd
+    - systemd-resolved
