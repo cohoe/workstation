@@ -41,6 +41,7 @@
       - speedtest-cli     # Speedtest
       - p7zip             # 7z support
       - openssl           # OpenSSL tools
+      - bridge-utils      # Bridge tools
     state: latest
   become: true
 
