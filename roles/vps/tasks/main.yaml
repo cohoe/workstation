@@ -16,4 +16,13 @@
   become: yes
   with_items:
     - systemd-networkd
-    - systemd-resolved
+
+- name: cleanup backups
+  cron:
+    name: cleanup backups
+    minute: 0
+    hour: 3
+    job: /usr/bin/find /opt/backups -type f -mtime +3 -delete
+    user: root
+    cron_file: cleanup_backups
+  become: yes
