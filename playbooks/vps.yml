@@ -2,6 +2,7 @@
 - name: VPS
   hosts: all
   vars:
+    - ohmyzsh_theme: grant
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
@@ -28,8 +29,11 @@
 
   tasks:
     - import_role:
-        name: logrotate
-        tasks_from: vps.yaml
+        name: shell
+        tasks_from: zsh
+#    - import_role:
+#        name: logrotate
+#        tasks_from: vps.yaml
   vars_files:
     - ../vars/global.yml
 #    - ../vars/vps.yaml

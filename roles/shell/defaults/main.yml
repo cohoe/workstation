@@ -1,6 +1,7 @@
 ---
 ohmyzsh_directory: ~/.oh-my-zsh
 ohmyzsh_repo: https://github.com/robbyrussell/oh-my-zsh
+ohmyzsh_theme: lukerandall
 
 # NVM
 nvm_repo: https://github.com/creationix/nvm.git

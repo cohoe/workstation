@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="gianu"
-ZSH_THEME="lukerandall"
+ZSH_THEME="{{ ohmyzsh_theme }}"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

@@ -1,8 +1,8 @@
 # ZSH
 
 - name: install zshrc
-  copy:
-    src: zsh/zshrc
+  template:
+    src: zshrc
     dest: ~/.zshrc
 
 - name: download oh-my-zsh
@@ -10,17 +10,23 @@
     repo: "{{ ohmyzsh_repo }}"
     dest: "{{ ohmyzsh_directory }}"
 
-- name: insert custom ohmyzsh config
+- name: copy custom configuration
   copy:
-    src: "zsh/{{ item }}"
-    dest: "{{ ohmyzsh_directory }}/custom/{{ item }}"
+    src: zsh/
+    dest: "{{ ohmyzsh_directory }}/custom"
+    #force: yes
     backup: yes
-  with_items:
-    - aliases.zsh
-    - environment.zsh
-    - path.zsh
-    - rvm.zsh
-    - gt.zsh
+#- name: insert custom ohmyzsh config
+#  copy:
+#    src: "zsh/{{ item }}"
+#    dest: "{{ ohmyzsh_directory }}/custom/{{ item }}"
+#    backup: yes
+#  with_items:
+#    - aliases.zsh
+#    - environment.zsh
+#    - path.zsh
+#    - rvm.zsh
+#    - gt.zsh
 
 - name: set user shell
   user:
