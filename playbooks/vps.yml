@@ -23,8 +23,13 @@
 #    - fail2ban
 #    - openvpn
 #    - vps
-    - mail
-    - backups/workstation
+#    - mail
+#    - backups/workstation
+
+  tasks:
+    - import_role:
+        name: logrotate
+        tasks_from: vps.yaml
   vars_files:
     - ../vars/global.yml
-    - ../vars/vps.yaml
+#    - ../vars/vps.yaml

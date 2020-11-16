@@ -1,0 +1,9 @@
+/opt/logs/traefik/*.log {
+  size 100M
+  rotate 3
+  missingok
+  notifempty
+  postrotate
+    /usr/bin/docker kill --signal="USR1" router_traefik_1
+  endscript
+}

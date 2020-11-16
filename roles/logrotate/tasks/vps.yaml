@@ -1,0 +1,6 @@
+---
+- name: install traefik configuration
+  copy:
+    src: traefik
+    dest: /etc/logrotate.d/traefik
+  become: yes
