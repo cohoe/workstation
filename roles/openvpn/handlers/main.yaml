@@ -9,3 +9,10 @@
     name: systemd-resolved
     state: restarted
   become: yes
+
+- name: restart connections
+  service:
+    name: "openvpn-{{ item.type }}@{{ item.name }}"
+    state: restarted
+  become: yes
+  with_items: "{{ openvpn_configs }}"

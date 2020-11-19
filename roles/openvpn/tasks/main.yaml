@@ -5,6 +5,13 @@
     state: present
   become: yes
 
+- name: add user to group
+  user:
+    name: "{{ ansible_user_id }}"
+    append: yes
+    groups: openvpn
+  become: yes
+
 # There is a known issue where a cipher doesn't work anymore
 # https://fedoraproject.org/wiki/Changes/New_default_cipher_in_OpenVPN
 # And they haven't fixed it in years....
@@ -47,23 +54,28 @@
   become: yes
   with_items: "{{ openvpn_secrets }}"
   no_log: true
+  notify:
+    - restart connections
 
 - name: create configurations
-  file:
-    path: "/etc/openvpn/{{ item.type }}/{{ item.name }}.conf"
+  copy:
+    dest: "/etc/openvpn/{{ item.type }}/{{ item.name }}.conf"
     content: "{{ item.content }}"
     mode: 0600
   become: yes
   with_items: "{{ openvpn_configs }}"
-  no_log: true
+  notify:
+    - restart connections
 
 - name: create scripts
-  file:
-    path: "/etc/openvpn/{{ item.type }}/{{ item.name }}"
+  copy:
+    dest: "/etc/openvpn/{{ item.type }}/{{ item.name }}"
     content: "{{ item.content }}"
     mode: 0755
   become: yes
   with_items: "{{ openvpn_route_scripts }}"
+  notify:
+    - restart connections
 
 # This forces the handlers to run now rather than at the end of the play.
 # A lot more can go wrong there.
@@ -77,4 +89,3 @@
     state: started
   become: yes
   with_items: "{{ openvpn_configs }}"
-  no_log: true
