@@ -57,6 +57,14 @@
   with_items: "{{ openvpn_configs }}"
   no_log: true
 
+- name: create scripts
+  file:
+    path: "/etc/openvpn/{{ item.type }}/{{ item.name }}"
+    content: "{{ item.content }}"
+    mode: 0755
+  become: yes
+  with_items: "{{ openvpn_route_scripts }}"
+
 # This forces the handlers to run now rather than at the end of the play.
 # A lot more can go wrong there.
 - name: run bluetooth handlers now

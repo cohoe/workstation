@@ -1,2 +1,3 @@
 openvpn_secrets: []
 openvpn_configs: []
+openvpn_route_scripts: []

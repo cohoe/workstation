@@ -22,18 +22,18 @@
 #    - grub
 #    - vpn
 #    - fail2ban
-#    - openvpn
+    - openvpn
 #    - vps
 #    - mail
 #    - backups/workstation
-
-  tasks:
-    - import_role:
-        name: shell
-        tasks_from: zsh
+#
+#  tasks:
+#    - import_role:
+#        name: shell
+#        tasks_from: zsh
 #    - import_role:
 #        name: logrotate
 #        tasks_from: vps.yaml
   vars_files:
     - ../vars/global.yml
-#    - ../vars/vps.yaml
+    - ../vars/vps.yaml
