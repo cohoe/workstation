@@ -4,9 +4,3 @@
     name: spotify
     state: present
   become: yes
-
-- name: install desktop shortcut
-  copy:
-    src: spotify.desktop
-    dest: /usr/local/share/applications/spotify.desktop
-  become: yes

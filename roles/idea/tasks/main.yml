@@ -7,14 +7,9 @@
     classic: yes
   become: yes
 
-- name: install desktop shortcut
-  copy:
-    src: intellij.desktop
-    dest: /usr/local/share/applications/intellij.desktop
-  become: yes
-
 # https://youtrack.jetbrains.com/issue/CPP-12199
 # https://forum.snapcraft.io/t/wayland-dconf-and-xdg-runtime-dir/186/16
+# For some reason I don't think this actually works?
 - name: fix xdg directory
   file:
     src: "/run/user/{{ ansible_user_uid }}/"
