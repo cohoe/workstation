@@ -30,6 +30,7 @@
     - veracrypt
     - vpn
     - android
+    - signal
 
   tasks:
     # NVIDIA drivers

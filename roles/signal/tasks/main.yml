@@ -1,0 +1,6 @@
+---
+- name: install signal snap
+  snap:
+    name: signal-desktop
+    state: present
+  become: yes
