@@ -29,7 +29,9 @@
     - mime
     - pulse
     - bluetooth
-    - podman
+    # I wish Podman didn't suck.
+    # - podman
+    - docker
     - franz
     - redshift
     - spotify
