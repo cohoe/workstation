@@ -1,9 +1,9 @@
 ---
-# A home computer
+# A remote computer
 #
 - import_playbook: desktop.yml
 
-- name: Home
+- name: Remote
   hosts: all
   vars:
     - firewalld_zone: home
@@ -17,32 +17,12 @@
     - security
     - httpd
     - hdhomerun
-    - arduino
     - steam
-    - maxime
-    - nas
-    - aws
     - mail
     - backups/workstation
-    - backups/nas
-    - openttd
-    - veracrypt
     - vpn
-    - android
-    - signal
 
   tasks:
-    # NVIDIA drivers
-    - name: "determine gpu"
-      shell: bash -c "lspci | grep VGA"
-      register: lspci_gpu
-      changed_when: false
-
-    - name: "include nvidia"
-      import_role:
-        name: nvidia
-      when: "'NVIDIA' in lspci_gpu.stdout"
-
     # Log when we last ran
     - name: log run date to file
       copy:

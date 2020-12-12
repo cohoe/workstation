@@ -9,31 +9,30 @@
         - http
         - https
   roles:
-#    - common
-#    - dnf
-#    - rpmfusion
-#    - security
-#    - clitools
-#    - shell
-#    - sudo
-#    - tls
-#    - cockpit
-#    - docker
-#    - grub
-#    - vpn
-#    - fail2ban
+    - common
+    - dnf
+    - rpmfusion
+    - security
+    - clitools
+    - shell
+    - sudo
+    - tls
+    - docker
+    - grub
+    - vpn
+    - fail2ban
     - openvpn
-#    - vps
-#    - mail
-#    - backups/workstation
-#
-#  tasks:
-#    - import_role:
-#        name: shell
-#        tasks_from: zsh
-#    - import_role:
-#        name: logrotate
-#        tasks_from: vps.yaml
+    - vps
+    - mail
+    - backups/workstation
+
+  tasks:
+    - import_role:
+        name: shell
+        tasks_from: zsh
+    - import_role:
+        name: logrotate
+        tasks_from: vps.yaml
   vars_files:
     - ../vars/global.yml
     - ../vars/vps.yaml
