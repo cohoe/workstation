@@ -3,4 +3,5 @@
   dnf:
     name: https://github.com/kaikramer/keystore-explorer/releases/download/v5.4.1/kse-5.4.1.noarch.rpm
     state: present
+    disable_gpg_check: yes
   become: yes
