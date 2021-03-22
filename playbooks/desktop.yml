@@ -37,16 +37,16 @@
     - spotify
     - fail2ban
 
-  tasks:
-    - name: "virtualbox guest additions"
-      import_role:
-        name: vbox/guest
-      when: ansible_virtualization_type == "virtualbox"
-
-    - name: "virtualbox host"
-      import_role:
-        name: vbox/host
-      when: ansible_virtualization_role == "host"
+#  tasks:
+#    - name: "virtualbox guest additions"
+#      import_role:
+#        name: vbox/guest
+#      when: ansible_virtualization_type == "virtualbox"
+#
+#    - name: "virtualbox host"
+#      import_role:
+#        name: vbox/host
+#      when: ansible_virtualization_role == "host"
 
   vars_files:
     - ../vars/global.yml
