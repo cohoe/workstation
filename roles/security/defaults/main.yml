@@ -7,6 +7,7 @@ firewalld_enabled_services:
   - ssh
   - samba-client
 firewalld_enabled_ports:
+  - 5601/tcp
 
 permit_root_login: false
 strict_sshd_ciphers: true
