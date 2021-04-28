@@ -21,9 +21,7 @@
     state: directory
   with_items:
     - ~/Projects
-    - ~/Projects/pub
-    - ~/Projects/priv
-    - ~/Projects/CFCC
+    - "{{ project_dirs }}"
 
 # Face for login
 # Heads up - this requires ImageMagick and jhead which are provided in clitools

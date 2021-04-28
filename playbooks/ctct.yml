@@ -11,9 +11,9 @@
         - samba-client
   roles:
     - networkmanager
-    - remmina
     - firewalld
     - ssh
+    - remmina
     - httpd
     - ctct
     - aws

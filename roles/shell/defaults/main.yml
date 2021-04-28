@@ -12,3 +12,5 @@ user_face: http://i.grntm.co/headshot3.jpg
 
 # Git
 git_email: grant@grantcohoe.com
+
+project_dirs: ['pub', 'priv', 'CFCC']
