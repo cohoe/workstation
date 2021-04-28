@@ -48,14 +48,20 @@
     /org/cinnamon/alttab-switcher-delay: "0"
     /org/cinnamon/muffin/tile-maximize: "true"
     /org/blueberry/obex-enabled: "false"
-    /org/cinnamon/desktop/media-handling/autorun-x-content-start-app: "['x-content/unix-software', 'x-content/bootable-media']"
-    /org/cinnamon/desktop/media-handling/autorun-x-content-ignore: "['x-content/bootable-media']"
     /org/cinnamon/desktop/media-handling/autorun-x-content-open-folder: '@as []'
     /org/cinnamon/settings-daemon/peripherals/touchpad/natural-scroll: "false" 
     /org/cinnamon/settings-daemon/peripherals/touchpad/scrolling-method: 1
     /org/cinnamon/desktop/wm/preferences/num-workspaces: 2
     /org/cinnamon/workspace-osd-visible: "false"
     /org/cinnamon/desktop/wm/preferences/mouse-button-modifier: "''"
+
+- name: misc configuration strings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value | string }}"
+  with_dict:
+    /org/cinnamon/desktop/media-handling/autorun-x-content-start-app: "['x-content/unix-software', 'x-content/bootable-media']"
+    /org/cinnamon/desktop/media-handling/autorun-x-content-ignore: "['x-content/bootable-media']"
 
 - name: copy wallpaper
   copy:
