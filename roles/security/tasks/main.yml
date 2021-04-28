@@ -1,9 +1,0 @@
----
-- import_tasks: keys.yml
-
-- import_tasks: firewall.yml
-  become: yes
-
-- import_tasks: sshd.yml
-  become: true
-  when: secure_sshd

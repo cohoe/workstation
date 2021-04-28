@@ -12,7 +12,8 @@
   roles:
     - networkmanager
     - remmina
-    - security
+    - firewalld
+    - ssh
     - httpd
     - ctct
     - aws

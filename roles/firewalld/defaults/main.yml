@@ -1,0 +1,3 @@
+firewalld_zone: public
+firewalld_enabled_services: []
+firewalld_enabled_ports: []

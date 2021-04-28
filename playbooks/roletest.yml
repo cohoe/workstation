@@ -5,11 +5,14 @@
     - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
-  tasks:
-    - import_role:
-        name: security
-        tasks_from: firewall
-      become: yes
+  roles:
+    - firewalld
+    - ssh
+#  tasks:
+#    - import_role:
+#        name: security
+#        tasks_from: firewall
+#      become: yes
     
   vars_files:
     - ../vars/global.yml

@@ -12,7 +12,8 @@
     - selinux
     - dnf
     - rpmfusion
-    - security
+    - firewalld
+    - ssh
     - clitools
     - shell
     - sudo

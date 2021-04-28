@@ -14,7 +14,8 @@
   roles:
     - networkmanager
     - remmina
-    - security
+    - firewalld
+    - ssh
     - httpd
     - hdhomerun
     - arduino
