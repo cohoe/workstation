@@ -9,7 +9,7 @@
         - http
         - https
   roles:
-    - common
+    - selinux
     - dnf
     - rpmfusion
     - security

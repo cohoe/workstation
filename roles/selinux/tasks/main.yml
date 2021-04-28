@@ -1,0 +1,8 @@
+---
+- name: install python selinux bindings
+  dnf:
+    name:
+      - python3-libsemanage
+      - python3-libselinux
+    state: present
+  become: yes

@@ -2,7 +2,7 @@
 - name: Graphical desktop stuff
   hosts: all
   roles:
-    - common
+    - selinux
     - dnf
     - rpmfusion
     - fedorarepos
