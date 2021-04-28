@@ -1,0 +1,78 @@
+---
+- name: install firewalld
+  dnf:
+    name: firewalld
+    state: latest
+  become: yes
+    
+- name: enable firewalld
+  service:
+    name: firewalld
+    enabled: true
+    state: started
+  become: yes
+
+- name: list firewalld zones
+  shell:
+    cmd: firewall-cmd --get-zones
+  register: firewall_zones
+  changed_when: false
+
+- name: get default firewalld zone
+  shell:
+    cmd: firewall-cmd --get-default-zone
+  register: firewall_default_zone
+  changed_when: false
+
+- name: create new zone if it does not already exist
+  shell:
+    cmd: firewall-cmd --permanent --new-zone={{ firewalld_zone }} && firewall-cmd --reload
+  when: firewalld_zone not in firewall_zones.stdout
+  become: yes
+
+- name: set default zone
+  shell:
+    cmd: firewall-cmd --set-default-zone={{ firewalld_zone }}
+  when: firewalld_zone not in firewall_default_zone.stdout
+  become: yes
+
+- name: allow known services
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    service: "{{ item }}"
+  become: yes
+  with_items:
+    - "{{ firewalld_enabled_services }}"
+
+- name: allow known ports
+  firewalld:
+    zone: "{{ firewalld_zone }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+    port: "{{ item }}"
+  become: yes
+  with_items:
+    - "{{ firewalld_enabled_ports }}"
+
+# Disabling until I ever use this
+# In order for TFTP client to actually work we need to do this.
+# We should be able to do firewall-cmd --add-service tftp-client
+# but there's a bug that prevents that from actually working.
+# https://bugzilla.redhat.com/show_bug.cgi?id=1405695
+#- name: "enable tftp firewall"
+#  shell: firewall-cmd --permanent --direct --add-rule ipv4 raw OUTPUT 1 -p udp -m udp --dport 69 -j CT --helper tftp
+#  become: yes
+
+# Fedora 32 changes the default backened to nftables, which fucks with
+# Docker/Podman. Also makes iptables not work.
+- name: switch firewalld backend
+  lineinfile:
+    path: /etc/firewalld/firewalld.conf
+    regexp: '^FirewallBackend'
+    line: 'FirewallBackend=iptables'
+  become: yes
+  notify: restart firewalld
