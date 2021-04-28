@@ -4,8 +4,8 @@
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   with_dict:
-    # This triggers a change every time since the value is written as 7.2999999999999998
+    # This used to trigger a change every time since the value is written as 7.2999999999999998
     # which when specified here Ansible or dconf is not precise enough to write it that way
-    # and rounds to 7.3.
-    /org/cinnamon/settings-daemon/peripherals/mouse/motion-acceleration: 7.3
+    # and rounds to 7.3. Seems to be fixed in FC34.
+    /org/cinnamon/settings-daemon/peripherals/mouse/motion-acceleration: 7.2999999999999998
     /org/cinnamon/settings-daemon/peripherals/touchpad/horizontal-scrolling: "true"
