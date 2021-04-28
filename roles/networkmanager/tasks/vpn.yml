@@ -16,7 +16,7 @@
     group: root
   become: yes
   notify:
-    - restart networkmanager
+    - restart NetworkManager
   with_dict:
     "{{ vpn_connections }}"
 

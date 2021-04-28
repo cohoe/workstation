@@ -19,7 +19,6 @@
     - tls
     - docker
     - grub
-    - vpn
     - fail2ban
     - openvpn
     - vps

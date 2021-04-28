@@ -12,14 +12,13 @@
 
   # Security, SSL, dns, remmina need to be here so that it gets the vars file
   roles:
-    - network
+    - networkmanager
     - remmina
     - security
     - hdhomerun
     - steam
     - mail
     - backups/workstation
-    - vpn
 
   tasks:
     # Log when we last ran

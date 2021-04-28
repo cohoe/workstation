@@ -1,0 +1,17 @@
+---
+# https://stackoverflow.com/questions/31618967/how-do-i-write-an-ansible-handler-with-multiple-tasks
+- name: restart NetworkManager
+  become: true
+  service:
+    name: NetworkManager
+    state: restarted
+  listen: restart NetworkManager
+
+- name: wait for networking
+  shell:
+    cmd: 'curl -m 2 -s https://google.com'
+  register: result
+  retries: 5
+  delay: 2
+  until: result.rc == 0
+  listen: restart NetworkManager

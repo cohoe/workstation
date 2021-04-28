@@ -10,14 +10,13 @@
         - ssh
         - samba-client
   roles:
-    - network
+    - networkmanager
     - remmina
     - security
     - httpd
     - ctct
     - aws
     - apacheds
-    - vpn
     - openshift
 
   tasks:
