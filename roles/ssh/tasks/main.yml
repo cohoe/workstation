@@ -1,0 +1,8 @@
+---
+- name: load components
+  include_tasks: "{{ task_item }}.yml"
+  with_items:
+    - server
+    - client
+  loop_control:
+    loop_var: task_item
