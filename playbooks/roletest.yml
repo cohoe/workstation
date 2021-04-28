@@ -2,12 +2,19 @@
 - name: RoleTest
   hosts: localhost
   vars:
-    - firewalld_zone: home
+    - firewalld_zone: work
     - firewalld_enabled_services:
         - ssh
   roles:
+    - networkmanager
     - firewalld
     - ssh
+    - remmina
+    - httpd
+    - ctct
+    - aws
+    - apacheds
+    - openshift
 #  tasks:
 #    - import_role:
 #        name: security

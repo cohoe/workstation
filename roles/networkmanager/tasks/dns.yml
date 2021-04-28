@@ -27,3 +27,9 @@
     - "{{ hosts_custom }}"
   when: hosts_custom is defined
   become: yes
+
+- name: configure digrc
+  copy:
+    dest: ~/.digrc
+    content: "+noedns"
+  when: dig_disable_edns

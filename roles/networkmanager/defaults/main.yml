@@ -17,3 +17,4 @@ hosts_default:
       - "{{ ansible_hostname }}"
       - "{{ ansible_hostname }}.localdomain"
 vpn_connections: {}
+dig_disable_edns: false
