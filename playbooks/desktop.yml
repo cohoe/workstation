@@ -27,7 +27,6 @@
     - quicktile
     - wireshark
     - mime
-    - pulse
     - bluetooth
     # I wish Podman didn't suck.
     # - podman

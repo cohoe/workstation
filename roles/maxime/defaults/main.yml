@@ -1,8 +1,0 @@
----
-bt_device_mac: "DE:AD:BE:EF:CA:FE"
-bt_adapter: "hci0"
-bt_device: "Bose QuietComfort 35"
-headset_out: "Built-in Audio Analog Stereo"
-headset_in: "Built-in Audio Analog Stereo"
-speaker_out: "Built-in Audio Analog Stereo"
-speaker_in: "Built-in Audio Analog Stereo"
