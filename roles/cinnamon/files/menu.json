@@ -87,7 +87,7 @@
         "default_icon": "cinnamon-symbolic",
         "dependency": "menu-custom",
         "indent": true,
-        "value": "fedora-logo-icon"
+        "value": "goa-account-fedora"
     },
     "menu-icon-size": {
         "type": "spinbutton",

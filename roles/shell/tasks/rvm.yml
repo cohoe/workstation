@@ -21,6 +21,7 @@
 - name: install rvm keys
   shell:
     cmd: "curl -sSL {{ item.url }} | gpg2 --import"
+    warn: false
   when: item.hash not in gpg_keys.stdout
   with_items:
     - url: https://rvm.io/mpapis.asc
