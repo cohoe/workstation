@@ -28,7 +28,11 @@ lasthost={{ item.value.gateway }}
 save_passwords=yes
 
 [ipv4]
+{% if item.value.search_domains is defined %}
+dns-search={{ item.value.search_domains | join(';') }};
+{% else %}
 dns-search=
+{% endif %}
 method=auto
 
 [ipv6]
@@ -36,3 +40,5 @@ addr-gen-mode=stable-privacy
 dns-search=
 ip6-privacy=0
 method=auto
+
+[proxy]

@@ -4,6 +4,7 @@
   with_items:
     - dns
     - connection
+    - vpn
   loop_control:
     loop_var: task_item
 

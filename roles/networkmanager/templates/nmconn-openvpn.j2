@@ -17,7 +17,11 @@ username={{ item.value.username }}
 service-type=org.freedesktop.NetworkManager.openvpn
 
 [ipv4]
+{% if item.value.search_domains is defined %}
+dns-search={{ item.value.search_domains | join(';') }};
+{% else %}
 dns-search=
+{% endif %}
 method=auto
 
 [ipv6]
@@ -26,4 +30,4 @@ dns-search=
 ip6-privacy=0
 method=auto
 
-# vim: ft=dosini
+[proxy]

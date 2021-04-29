@@ -7,14 +7,14 @@
         - ssh
   roles:
     - networkmanager
-    - firewalld
-    - ssh
-    - remmina
-    - httpd
-    - ctct
-    - aws
-    - apacheds
-    - openshift
+#    - firewalld
+#    - ssh
+#    - remmina
+#    - httpd
+#    - ctct
+#    - aws
+#    - apacheds
+#    - openshift
 #  tasks:
 #    - import_role:
 #        name: security
@@ -23,5 +23,5 @@
     
   vars_files:
     - ../vars/global.yml
-#    - ../vars/ctct.yml
+    - ../vars/ctct.yml
     #- ../vars/home.yml
