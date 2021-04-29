@@ -32,7 +32,7 @@
     value: "{{ item.value | string }}"
   with_dict:
     "/org/cinnamon/panels-height": "['1:28']"
-    # This is because Redshift icon sucks. Still not fixed in fc34
+    # This is because Redshift icon sucks. Still not fixed in fc34. #96
     "/org/cinnamon/panel-zone-icon-sizes": "'[{\"panelId\": 1, \"left\": 0, \"center\": 0, \"right\": 16}]'"
 
 - name: favorite apps
