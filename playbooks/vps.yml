@@ -9,17 +9,17 @@
         - http
         - https
   roles:
-    - common
+    - selinux
     - dnf
     - rpmfusion
-    - security
+    - firewalld
+    - ssh
     - clitools
     - shell
     - sudo
     - tls
     - docker
     - grub
-    - vpn
     - fail2ban
     - openvpn
     - vps

@@ -1,0 +1,35 @@
+---
+# Join all search_domains into a space-separated list for ifcfg file
+#- name: set search domains
+#  shell:
+#    cmd: "nmcli conn mod \"$(nmcli -g name -c no conn show -a --order t:a:p | head -1)\" ipv4.dns-search \"{{ search_domains | join(',') }}\""
+#  become: yes
+#  when: search_domains is defined and search_domains != ansible_dns.search
+#  notify:
+#    - restart NetworkManager
+
+# We must be able to resolve our own hostname
+- name: configure hosts file with default stuff
+  lineinfile:
+    dest: "/etc/hosts"
+    regexp: "^{{ item.address }}(.*)$"
+    line: "{{ item.address }}    {{ item.names | join(' ') }}"
+  with_items:
+    - "{{ hosts_default }}"
+  become: yes
+
+- name: configure hosts file with custom stuff
+  lineinfile:
+    dest: "/etc/hosts"
+    regexp: "^{{ item.address }}(.*)$"
+    line: "{{ item.address }}    {{ item.names | join(' ') }}"
+  with_items:
+    - "{{ hosts_custom }}"
+  when: hosts_custom is defined
+  become: yes
+
+- name: configure digrc
+  copy:
+    dest: ~/.digrc
+    content: "+noedns"
+  when: dig_disable_edns

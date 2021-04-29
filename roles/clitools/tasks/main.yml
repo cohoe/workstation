@@ -42,6 +42,7 @@
       - p7zip             # 7z support
       - openssl           # OpenSSL tools
       - bridge-utils      # Bridge tools
+      - libheif           # HEIC/HEIF tools
     state: latest
   become: true
 

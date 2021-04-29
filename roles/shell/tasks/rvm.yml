@@ -21,6 +21,7 @@
 - name: install rvm keys
   shell:
     cmd: "curl -sSL {{ item.url }} | gpg2 --import"
+    warn: false
   when: item.hash not in gpg_keys.stdout
   with_items:
     - url: https://rvm.io/mpapis.asc
@@ -28,6 +29,9 @@
     - url: https://rvm.io/pkuczynski.asc
       hash: 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 
+# compat-openssl10-devel existed in fc33 but dropped in fc34. Used for
+# openssl-1.0.2 development headers, specifically regarding M2Crypto.
+# I really hope I can get by without it.
 - name: rvm packages
   dnf:
     name:
@@ -40,8 +44,6 @@
       - libyaml-devel
       - readline-devel
       - sqlite-devel
-      #- openssl-devel
-      # this is compat for M2Crypto-related reasons.
-      - compat-openssl10-devel
+      - openssl-devel
     state: present
   become: yes

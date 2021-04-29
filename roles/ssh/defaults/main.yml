@@ -1,0 +1,4 @@
+---
+secure_sshd: true
+permit_root_login: false
+strict_sshd_ciphers: true

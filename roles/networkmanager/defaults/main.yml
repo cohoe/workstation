@@ -1,0 +1,20 @@
+---
+hosts_default:
+  - address: 127.0.0.1
+    names:
+      - localhost
+      - localhost.localdomain
+      - localhost4
+      - localhost4.localdomain4
+      - "{{ ansible_hostname }}"
+      - "{{ ansible_hostname }}.localdomain"
+  - address: "::1"
+    names:
+      - localhost
+      - localhost.localdomain
+      - localhost4
+      - localhost4.localdomain4
+      - "{{ ansible_hostname }}"
+      - "{{ ansible_hostname }}.localdomain"
+vpn_connections: {}
+dig_disable_edns: false

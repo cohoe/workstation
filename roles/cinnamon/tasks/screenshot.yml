@@ -20,14 +20,11 @@
 - name: create custom keyboard shortcuts
   dconf:
     key: "{{ item.key }}"
-    value: "{{ item.value }}"
+    value: "{{ item.value | string }}"
   with_dict:
     /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/name: "'Take Screenshot (Region)'"
-    /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/binding: "['Print']"
     /org/cinnamon/desktop/keybindings/custom-keybindings/custom0/command: "'/usr/bin/xfce4-screenshooter --region'"
     /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/binding: "['<Shift>Print']"
     /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/command: "'/usr/bin/xfce4-screenshooter --fullscreen --save \"/home/{{ ansible_user_id }}/Pictures/\"'"
     /org/cinnamon/desktop/keybindings/custom-keybindings/custom1/name: "'Take Screenshot (Fullscreen)'"
-    /org/cinnamon/desktop/keybindings/custom-list:
-       - 'custom0'
-       - 'custom1'
+    /org/cinnamon/desktop/keybindings/custom-list: "['custom0', 'custom1']"

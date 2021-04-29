@@ -1,0 +1,13 @@
+# Configured by Workstation
+{% for block in ssh_config_hosts %}
+{% if 'comments' in block %}
+{% for comment in block.comments %}
+# {{ comment }}
+{% endfor %}
+{% endif %}
+Host {{ block.name }}
+    Hostname {{ block.name }}
+{% for key, value in block.options.items() %}
+    {{ key }} {{ value }}
+{% endfor %}
+{% endfor %}

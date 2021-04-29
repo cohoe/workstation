@@ -8,7 +8,7 @@
     gpgcheck: no
     enabled: yes
     gpgkey: https://packagecloud.io/grantcohoe/launchy/gpgkey
-    metadata_expire: 604800 # 7d
+    metadata_expire: 7d
   become: yes
 
 - name: install key

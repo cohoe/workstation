@@ -12,14 +12,14 @@
 
   # Security, SSL, dns, remmina need to be here so that it gets the vars file
   roles:
-    - network
+    - networkmanager
     - remmina
-    - security
+    - firewalld
+    - ssh
     - httpd
     - hdhomerun
     - arduino
     - steam
-    - maxime
     - nas
     - aws
     - mail
@@ -27,7 +27,6 @@
     - backups/nas
     - openttd
     - veracrypt
-    - vpn
     - android
     - signal
 

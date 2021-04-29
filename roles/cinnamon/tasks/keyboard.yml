@@ -3,7 +3,7 @@
 - name: keyboard shortcuts
   dconf:
     key: "{{ item.key }}"
-    value: "{{ item.value }}"
+    value: "{{ item.value | string }}"
   with_dict:
     /org/cinnamon/desktop/keybindings/looking-glass-keybinding: "@as []"
     /org/cinnamon/desktop/keybindings/media-keys/screensaver: "['<Super>l']"

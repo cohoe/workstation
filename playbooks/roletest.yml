@@ -2,14 +2,24 @@
 - name: RoleTest
   hosts: localhost
   vars:
-    - firewalld_zone: home
+    - firewalld_zone: work
     - firewalld_enabled_services:
         - ssh
-  tasks:
-    - import_role:
-        name: security
-        tasks_from: firewall
-      become: yes
+  roles:
+    - networkmanager
+    - firewalld
+    - ssh
+    - remmina
+    - httpd
+    - ctct
+    - aws
+    - apacheds
+    - openshift
+#  tasks:
+#    - import_role:
+#        name: security
+#        tasks_from: firewall
+#      become: yes
     
   vars_files:
     - ../vars/global.yml

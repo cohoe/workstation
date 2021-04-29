@@ -2,7 +2,7 @@
 - name: Graphical desktop stuff
   hosts: all
   roles:
-    - common
+    - selinux
     - dnf
     - rpmfusion
     - fedorarepos
@@ -27,7 +27,6 @@
     - quicktile
     - wireshark
     - mime
-    - pulse
     - bluetooth
     # I wish Podman didn't suck.
     # - podman

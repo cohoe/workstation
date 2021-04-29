@@ -1,0 +1,45 @@
+---
+# Thanks @ryansb
+
+- name: Add SSH keys from github
+  authorized_key:
+    user: grant
+    key: https://github.com/cohoe.keys
+    exclusive: yes
+
+- name: test for existing ssh key
+  stat:
+    path: ~/.ssh/id_rsa
+  register: sshkey_stat
+
+- name: generate ssh key
+  shell:
+    cmd: ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''
+  when: sshkey_stat.stat.exists == False
+
+- name: SSH Config
+  template:
+    src: ssh_config.j2
+    dest: '~/.ssh/config'
+    mode: 0600
+  when: ssh_config_hosts is defined
+
+- name: create ssh public keys
+  copy:
+    dest: "~/.ssh/{{ item.name }}.pub"
+    content: "{{ item.pub }}"
+    mode: 0644
+  with_items:
+    - "{{ ssh_keys }}"
+  when: ssh_keys is defined
+  no_log: yes
+
+- name: create ssh private keys
+  copy:
+    dest: "~/.ssh/{{ item.name }}"
+    content: "{{ item.priv }}"
+    mode: 0600
+  with_items:
+    - "{{ ssh_keys }}"
+  when: ssh_keys is defined
+  no_log: yes

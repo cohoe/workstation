@@ -1,0 +1,46 @@
+---
+- name: Configure SSHD
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  become: yes
+  with_items:
+    - { regexp: '^ClientAliveInterval', line: 'ClientAliveInterval 0' }
+    - { regexp: '^GSSAPIAuthentication', line: 'GSSAPIAuthentication  no' }
+    - { regexp: '^LoginGraceTime', line: 'LoginGraceTime  1m' }
+    - { regexp: '^MaxAuthTries', line: 'MaxAuthTries 15' }
+    - { regexp: '^PasswordAuthentication', line: 'PasswordAuthentication yes' }
+    - { regexp: '^PermitEmptyPasswords', line: 'PermitEmptyPasswords no' }
+    - { regexp: '^PermitTunnel', line: 'PermitTunnel yes' }
+    - { regexp: '^PrintLastLog', line: 'PrintLastLog yes' }
+    - { regexp: '^Protocol', line: 'Protocol 2' }
+    - { regexp: '^PubkeyAuthentication', line: 'PubkeyAuthentication  yes' }
+    - { regexp: '^RSAAuthentication', line: 'RSAAuthentication  yes' }
+    - { regexp: '^SyslogFacility', line: 'SyslogFacility AUTH' }
+    - { regexp: '^TCPKeepAlive', line: 'TCPKeepAlive yes' }
+    - { regexp: '^UsePrivilegeSeparation', line: 'UsePrivilegeSeparation sandbox' }
+    - { regexp: '^X11Forwarding', line: 'X11Forwarding  yes' }
+    - { regexp: '^PermitRootLogin', line: 'PermitRootLogin no' }
+  notify:
+    - restart sshd
+
+- name: Configure SSHD Ciphers
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: yes
+  become: yes
+  with_items:
+    - { regexp: '^KexAlgorithms', line: 'KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256' }
+    - { regexp: '^MACs', line: 'MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com' }
+    - { regexp: '^Ciphers', line: 'Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr' }
+
+- name: Configure SSHD Service
+  service:
+    name: sshd
+    state: started
+    enabled: true
+  become: yes
