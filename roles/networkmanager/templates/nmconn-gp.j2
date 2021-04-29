@@ -28,7 +28,7 @@ lasthost={{ item.value.gateway }}
 save_passwords=yes
 
 [ipv4]
-dns-search=
+dns-search={{ item.value.search_domains | default('') }}
 method=auto
 
 [ipv6]
