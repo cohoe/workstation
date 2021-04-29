@@ -33,3 +33,10 @@
     dest: ~/.digrc
     content: "+noedns"
   when: dig_disable_edns
+
+- name: enable systemd-resolved
+  service:
+    name: systemd-resolved
+    state: started
+    enabled: true
+  become: yes
