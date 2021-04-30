@@ -30,3 +30,13 @@
     state: started
     enabled: true
   become: yes
+
+# I keep finding sites that are misconfigured and make random DNS
+# failures occur. This is stupid.
+- name: disable dnssec
+  lineinfile:
+    path: /etc/systemd/resolved.conf
+    regexp: "^#?DNSSEC=(.*)$"
+    line: "DNSSEC=false"
+  become: yes
+  notify: restart resolved

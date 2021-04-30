@@ -16,3 +16,10 @@
   delay: 2
   until: result.rc == 0
   listen: restart NetworkManager
+
+- name: restart resolved
+  service:
+    name: systemd-resolved
+    state: restarted
+  become: yes
+  listen: restart resolved

@@ -6,7 +6,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - networkmanager
+#    - networkmanager
 #    - firewalld
 #    - ssh
 #    - remmina
@@ -15,13 +15,13 @@
 #    - aws
 #    - apacheds
 #    - openshift
-#  tasks:
-#    - import_role:
-#        name: security
-#        tasks_from: firewall
-#      become: yes
+  tasks:
+    - import_role:
+        name: networkmanager
+        tasks_from: dns
+      become: yes
     
   vars_files:
     - ../vars/global.yml
-    - ../vars/ctct.yml
+    #- ../vars/ctct.yml
     #- ../vars/home.yml
