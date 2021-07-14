@@ -3,7 +3,7 @@
 
 - name: Add SSH keys from github
   authorized_key:
-    user: grant
+    user: "{{ ansible_user_id }}"
     key: https://github.com/cohoe.keys
     exclusive: yes
 
