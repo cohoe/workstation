@@ -26,7 +26,6 @@
   with_items:
     - ~/.config/Franz/config
     - ~/.config/Franz/recipes
-    - ~/.config/Franz/recipes/slack
     - ~/.config/Franz/recipes/messenger
     - ~/.config/Franz/recipes/googlecalendar
 
@@ -42,7 +41,8 @@
 #   The file was generated with the base CSS from Github + the overrides I put 
 #   in the customCustomCSS var. They should get unified a bit. I really should
 #   do a PR....
-# * [FB] Messenger comes from https://userstyles.org/styles/134433/dark-night-facebook-messenger
+# * [FB] Messenger comes from https://github.com/cicerakes/DarkNight-FBMessenger/blob/master/DarkNightFBM.user.css
+#   Just remove the weird bits
 #   with notes and things from https://github.com/meetfranz/franz/issues/960
 # * Google Calendar: https://userstyles.org/styles/143026/dark-google-calendar-2019
 - name: custom service darkmode css
@@ -50,19 +50,5 @@
     src: "{{ item }}.css"
     dest: "~/.config/Franz/recipes/{{ item }}/darkmode.css"
   with_items:
-    - slack
     - messenger
     - googlecalendar
-
-# Until https://github.com/meetfranz/plugins/issues/310 gets merged, I have to apply
-# my patch manually
-- name: fix googlecalendar loading
-  copy:
-    src: googlecalendar-webview.js
-    dest: "~/.config/Franz/recipes/googlecalendar/webview.js"
-
-# https://github.com/paveyry/better-hangoutschat/releases/download/v3.4.1/electron-dark.zip
-- name: install new electron
-  copy:
-    src: electron-dark.asar
-    dest: "/opt/franz/franz-{{ franz_version.stdout }}/resources/electron.asar"
