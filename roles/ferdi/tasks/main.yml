@@ -1,0 +1,56 @@
+---
+- name: test if package is installed
+  shell:
+    cmd: rpm -qi ferdi
+    warn: false
+  failed_when: false
+  changed_when: false
+  register: ferdi_installed
+
+- name: determine latest version
+  shell: bash -c "curl -sL \"https://api.github.com/repos/getferdi/ferdi/releases/latest\" | jq -r '.tag_name' | sed 's/v//'"
+  register: ferdi_version
+  changed_when: false
+
+# This will NOT auto-update to the latest version.
+- name: install package
+  dnf:
+    name: "https://github.com/getferdi/ferdi/releases/download/v{{ ferdi_version.stdout }}/ferdi-{{ ferdi_version.stdout }}.x86_64.rpm"
+    state: present
+  become: yes
+  when:
+    - ferdi_installed.rc != 0
+
+- name: create config directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/.config/Ferdi/config
+    - ~/.config/Ferdi/recipes
+    - ~/.config/Ferdi/recipes/messenger
+    - ~/.config/Ferdi/recipes/googlecalendar
+
+- name: settings
+  copy:
+    src: settings.json
+    dest: ~/.config/Ferdi/config/settings.json
+    backup: yes
+
+# Darkmode themes
+# Really need a way to auto-update these as I suspect the CSS classes will change pretty frequently
+# * Slack is detailed in https://github.com/cohoe/workstation/issues/30
+#   The file was generated with the base CSS from Github + the overrides I put 
+#   in the customCustomCSS var. They should get unified a bit. I really should
+#   do a PR....
+# * [FB] Messenger comes from https://github.com/cicerakes/DarkNight-FBMessenger/blob/master/DarkNightFBM.user.css
+#   Just remove the weird bits
+#   with notes and things from https://github.com/meetfranz/franz/issues/960
+# * Google Calendar: https://userstyles.org/styles/143026/dark-google-calendar-2019
+- name: custom service darkmode css
+  copy:
+    src: "{{ item }}.css"
+    dest: "~/.config/Ferdi/recipes/{{ item }}/darkmode.css"
+  with_items:
+    - messenger
+    - googlecalendar
