@@ -19,12 +19,24 @@
       - python3-docker
     state: latest
   become: yes
+  notify:
+    - restart docker
+
+- name: config
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+  become: yes
+  notify:
+    - restart docker
 
 - name: create docker group
   group:
     name: docker
     state: present
   become: yes
+  notify:
+    - restart docker
 
 - name: add user to group
   user:
@@ -32,6 +44,8 @@
     append: yes
     groups: docker
   become: yes
+  notify:
+    - restart docker
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1746355
 # Haven't tested this with docker-ce

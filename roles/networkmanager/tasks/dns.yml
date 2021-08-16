@@ -40,3 +40,12 @@
     line: "DNSSEC=false"
   become: yes
   notify: restart resolved
+
+# Needed for Docker (#105)
+- name: add stub listener
+  lineinfile:
+    path: /etc/systemd/resolved.conf
+    regexp: "^#?DNSStubListenerExtra=(.*)$"
+    line: "DNSStubListenerExtra=172.17.0.1"
+  become: yes
+  notify: restart resolved
