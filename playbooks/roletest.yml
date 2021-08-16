@@ -15,9 +15,11 @@
 #    - aws
 #    - apacheds
 #    - openshift
+    - launchy
+    - ferdi
   tasks:
-    - import_role:
-        name: ferdi
+#    - import_role:
+#        name: ferdi
         #tasks_from: dns
       #become: yes
     
