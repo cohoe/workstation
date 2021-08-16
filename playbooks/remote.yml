@@ -1,8 +1,6 @@
 ---
 # A remote computer
 #
-- import_playbook: desktop.yml
-
 - name: Remote
   hosts: all
   vars:
@@ -12,12 +10,23 @@
 
   # Security, SSL, dns, remmina need to be here so that it gets the vars file
   roles:
+    - selinux
+    - dnf
+    - rpmfusion
+    - fedorarepos
+    - clitools
+    - shell
+    - sudo
+    - tls
+    - java
+    - grub
+    - mime
+    - docker
+    - fail2ban
     - networkmanager
-    - remmina
     - firewalld
     - ssh
     - hdhomerun
-    - steam
     - mail
     - backups/workstation
 
