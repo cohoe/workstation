@@ -31,7 +31,9 @@
     # I wish Podman didn't suck.
     # - podman
     - docker
-    - franz
+    # Ferdi is better in every way.
+    # - franz
+    - ferdi
     - redshift
     - spotify
     - fail2ban
