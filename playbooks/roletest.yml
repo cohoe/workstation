@@ -17,9 +17,9 @@
 #    - openshift
   tasks:
     - import_role:
-        name: networkmanager
-        tasks_from: dns
-      become: yes
+        name: ferdi
+        #tasks_from: dns
+      #become: yes
     
   vars_files:
     - ../vars/global.yml
