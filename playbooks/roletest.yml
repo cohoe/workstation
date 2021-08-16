@@ -15,7 +15,7 @@
 #    - aws
 #    - apacheds
 #    - openshift
-    - launchy
+#    - launchy
     - ferdi
   tasks:
 #    - import_role:

@@ -1,9 +1,25 @@
 ---
+- name: test if package is installed
+  shell:
+    cmd: rpm -qi ferdi
+    warn: false
+  failed_when: false
+  changed_when: false
+  register: ferdi_installed
+
+- name: determine latest version
+  shell: bash -c "curl -sL \"https://api.github.com/repos/getferdi/ferdi/releases/latest\" | jq -r '.tag_name' | sed 's/v//'"
+  register: ferdi_version
+  changed_when: false
+
+# This will NOT auto-update to the latest version.
 - name: install package
-  snap:
-    name: ferdi
+  dnf:
+    name: "https://github.com/getferdi/ferdi/releases/download/v{{ ferdi_version.stdout }}/ferdi-{{ ferdi_version.stdout }}.x86_64.rpm"
     state: present
   become: yes
+  when:
+    - ferdi_installed.rc != 0
 
 - name: create config directories
   file:
@@ -15,11 +31,11 @@
     - ~/.config/Ferdi/recipes/messenger
     - ~/.config/Ferdi/recipes/googlecalendar
 
-#- name: settings
-#  copy:
-#    src: settings.json
-#    dest: ~/.config/Ferdi/config/settings.json
-#    backup: yes
+- name: settings
+  copy:
+    src: settings.json
+    dest: ~/.config/Ferdi/config/settings.json
+    backup: yes
 
 # Darkmode themes
 # Really need a way to auto-update these as I suspect the CSS classes will change pretty frequently
