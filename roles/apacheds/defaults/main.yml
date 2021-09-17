@@ -1,5 +1,5 @@
 ---
-apacheds_version: 2.0.0.v20210213-M16
+apacheds_version: 2.0.0.v20210717-M17
 apacheds_package: "https://downloads.apache.org/directory/studio/{{ apacheds_version }}/ApacheDirectoryStudio-{{ apacheds_version }}-linux.gtk.x86_64.tar.gz"
 ldap_connections: {}
 ad_connections: {}

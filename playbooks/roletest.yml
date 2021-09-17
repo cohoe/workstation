@@ -17,12 +17,12 @@
 #    - openshift
 #    - launchy
 #    - ferdi
-    - docker
-  tasks:
-    - import_role:
-        name: networkmanager
-        tasks_from: dns
-      become: yes
+    - apacheds
+#  tasks:
+#    - import_role:
+#        name: networkmanager
+#        tasks_from: dns
+#      become: yes
     
   vars_files:
     - ../vars/global.yml
