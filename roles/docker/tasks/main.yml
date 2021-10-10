@@ -22,6 +22,13 @@
   notify:
     - restart docker
 
+- name: create config directory
+  file:
+    path: /etc/docker
+    state: directory
+    mode: 0755
+  become: yes
+
 - name: config
   copy:
     src: daemon.json

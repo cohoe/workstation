@@ -17,6 +17,7 @@
   dnf:
     name: "https://github.com/getferdi/ferdi/releases/download/v{{ ferdi_version.stdout }}/ferdi-{{ ferdi_version.stdout }}.x86_64.rpm"
     state: present
+    disable_gpg_check: yes
   become: yes
   when:
     - ferdi_installed.rc != 0
