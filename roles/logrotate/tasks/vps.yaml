@@ -1,4 +1,5 @@
 ---
+# @TODO selinux module to allow
 - name: install traefik configuration
   copy:
     src: traefik
