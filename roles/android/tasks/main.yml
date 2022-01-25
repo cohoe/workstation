@@ -4,6 +4,7 @@
     name:
       - android-tools
       - python3-pyserial
+      - watchman
     state: latest
   become: true
 
@@ -12,3 +13,10 @@
     name: ModemManager
     state: absent
   become: true
+
+- name: install android studio
+  snap:
+    name: android-studio
+    state: present
+    classic: yes
+  become: yes
