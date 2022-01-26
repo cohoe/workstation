@@ -15,3 +15,10 @@
     - screenshot
   loop_control:
     loop_var: task_item
+
+# autostart was in xfce and was needed for cinnamon so
+# it might as well be here
+- name: create home subdirs
+  file:
+    path: "{{ user_autostart_dir }}"
+    state: directory

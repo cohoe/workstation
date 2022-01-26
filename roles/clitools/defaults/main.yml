@@ -1,0 +1,63 @@
+clitools_system_packages:
+  Fedora:
+    - bind-utils        # DNS utilities (nslookup)
+    - openssh-clients   # SSH client (ssh)
+    - openldap-clients  # LDAP client (ldapsearch)
+    - iftop             # Network monitoring
+    - nmap              # Port scanning
+    - tcpdump           # Traffic monitoring
+    - htop              # Load monitoring
+    - iotop             # IO monitoring
+    - dkms              # Dynamic kernel modules
+    - unrar             # RAR file tools
+    - openvpn           # VPN
+    - rfkill            # Wifi Control
+    - pkg-plugin-system-upgrade # System upgrade
+    - numlockx          # Enable numlock always
+    - glances           # System load
+    - ipmitool          # IPMI remote control tool
+    - dmidecode         # System information
+    - fuse-exfat        # EXFAT file system
+    - ffmpeg            # Media utility
+    - ncdu              # ncurses disk usage
+    - jhead             # JPEG data tool
+    - ltrace            # Library call trace
+    - ImageMagick       # Image tools
+    - livecd-tools      # live cd/usb tols
+    - android-tools     # Android tools
+    - iperf3            # Network throughput
+    - speedtest-cli     # Speedtest
+    - p7zip             # 7z support
+    - openssl           # OpenSSL tools
+    - bridge-utils      # Bridge tools
+    - libheif           # HEIC/HEIF tools
+    - gnupg2
+  Ubuntu:
+    - iftop
+    - nmap
+    - htop
+    - ncdu
+    - iperf3
+    - openssl
+    - imagemagick
+    - gnupg2
+
+clitools_development_packages:
+  Fedora:
+    - strace        # Stack debugger
+    - git           # VCS
+    - setroubleshoot-server # SELinux debugging tools
+    - gcc           # Compiler
+    - jq            # json parser
+    - ansible-lint  # Ansible linter
+  Ubuntu:
+    - strace
+    - git
+    - gcc
+    - jq
+    - ansible-lint
+
+# Deprecated
+#      - net-snmp-utils    # SNMP client (snmpwalk)
+#      - tftp              # TFTP client
+#      - pv                # Pipe monitor (for dd jobs)

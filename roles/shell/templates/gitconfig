@@ -7,3 +7,7 @@
     helper = cache --timeout=604800
 [core]
     excludesfile = ~/.gitignore
+[init]
+        defaultBranch = {{ git_init_default_branch }}
+[pull]
+        rebase = false

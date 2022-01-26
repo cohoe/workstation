@@ -6,6 +6,9 @@
     - firewalld_enabled_services:
         - ssh
   roles:
+    - sudo
+    - clitools
+    - shell 
 #    - networkmanager
 #    - firewalld
 #    - ssh
@@ -17,7 +20,7 @@
 #    - openshift
 #    - launchy
 #    - ferdi
-    - apacheds
+#    - apacheds
 #  tasks:
 #    - import_role:
 #        name: networkmanager
@@ -26,5 +29,5 @@
     
   vars_files:
     - ../vars/global.yml
-    #- ../vars/ctct.yml
+    - ../vars/eagle.yml
     #- ../vars/home.yml
