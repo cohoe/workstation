@@ -1,7 +1,7 @@
 ---
 # Python
 - name: install basic python tools
-  dnf:
+  package:
     name:
       - python3-virtualenv
       - python3-virtualenvwrapper
@@ -10,56 +10,14 @@
 
 # Common system tools
 - name: install common system tools
-  dnf:
-    name:
-      - bind-utils        # DNS utilities (nslookup)
-      - openssh-clients   # SSH client (ssh)
-      - openldap-clients  # LDAP client (ldapsearch)
-      - iftop             # Network monitoring
-      - nmap              # Port scanning
-      - tcpdump           # Traffic monitoring
-      - htop              # Load monitoring
-      - iotop             # IO monitoring
-      - dkms              # Dynamic kernel modules
-      - unrar             # RAR file tools
-      - openvpn           # VPN
-      - rfkill            # Wifi Control
-      - dnf-plugin-system-upgrade # System upgrade
-      - numlockx          # Enable numlock always
-      - glances           # System load
-      - ipmitool          # IPMI remote control tool
-      - dmidecode         # System information
-      - fuse-exfat        # EXFAT file system
-      - ffmpeg            # Media utility
-      - ncdu              # ncurses disk usage
-      - jhead             # JPEG data tool
-      - ltrace            # Library call trace
-      - ImageMagick       # Image tools
-      - livecd-tools      # live cd/usb tols
-      - android-tools     # Android tools
-      - iperf3            # Network throughput
-      - speedtest-cli     # Speedtest
-      - p7zip             # 7z support
-      - openssl           # OpenSSL tools
-      - bridge-utils      # Bridge tools
-      - libheif           # HEIC/HEIF tools
+  package:
+    name: "{{ clitools_system_packages[ansible_distribution] }}"
     state: latest
   become: true
 
-# Deprecated
-#      - net-snmp-utils    # SNMP client (snmpwalk)
-#      - tftp              # TFTP client
-#      - pv                # Pipe monitor (for dd jobs)
-
 # Software development tools
 - name: install software development tools
-  dnf:
-    name:
-      - strace        # Stack debugger
-      - git           # VCS
-      - setroubleshoot-server # SELinux debugging tools
-      - gcc           # Compiler
-      - jq            # json parser
-      - ansible-lint  # Ansible linter
+  package:
+    name: "{{ clitools_development_packages[ansible_distribution] }}"
     state: latest
   become: true

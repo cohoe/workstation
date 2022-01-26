@@ -33,17 +33,7 @@
 # openssl-1.0.2 development headers, specifically regarding M2Crypto.
 # I really hope I can get by without it.
 - name: rvm packages
-  dnf:
-    name:
-      - autoconf
-      - automake
-      - bison
-      - gcc-c++
-      - libffi-devel
-      - libtool
-      - libyaml-devel
-      - readline-devel
-      - sqlite-devel
-      - openssl-devel
+  package:
+    name: "{{ rvm_packages[ansible_distribution] }}"
     state: present
   become: yes
