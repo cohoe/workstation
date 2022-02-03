@@ -31,7 +31,8 @@ clitools_system_packages:
     - openssl           # OpenSSL tools
     - bridge-utils      # Bridge tools
     - libheif           # HEIC/HEIF tools
-    - gnupg2
+    - gnupg2            # GPG
+    - wireless-tools    # iwconfig
   Ubuntu:
     - iftop
     - nmap
