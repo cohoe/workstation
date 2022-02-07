@@ -43,3 +43,4 @@
     path: ~/.rvmrc
     regexp: "^rvm_autoupdate_flag"
     line: rvm_autoupdate_flag=2
+    create: yes

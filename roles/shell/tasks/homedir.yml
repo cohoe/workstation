@@ -4,19 +4,13 @@
     path: '~'
     mode: 0751
 
-# autostart was in xfce and was needed for cinnamon so
-# it might as well be here
 - name: create home subdirs
   file:
     path: "{{ item }}"
     state: directory
   with_items:
     - '~/.bin'
-
-- name: create projects directory
-  file:
-    path: '~/Projects'
-    state: directory
+    - '~/Projects'
 
 - name: create project subdirs
   file:
@@ -24,7 +18,7 @@
     state: directory
   with_items:
     - "{{ project_dirs_all }}"
-    - "{{ project_dirs | default [] }}"
+    - "{{ project_dirs | default([]) }}"
 
 # Face for login
 # Heads up - this requires ImageMagick and jhead which are provided in clitools
