@@ -1,9 +1,0 @@
----
-- name: install
-  dnf:
-    name:
-      - podman
-      - podman-compose
-      - buildah
-    state: latest
-  become: yes
