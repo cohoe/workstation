@@ -42,6 +42,8 @@ clitools_system_packages:
     - openssl
     - imagemagick
     - gnupg2
+    - unzip
+    - sshpass
 
 clitools_development_packages:
   Fedora:
