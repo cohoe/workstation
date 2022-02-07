@@ -22,6 +22,7 @@
     src: ssh_config.j2
     dest: '~/.ssh/config'
     mode: 0600
+    force: no
   when: ssh_config_hosts is defined
 
 - name: create ssh public keys
