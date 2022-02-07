@@ -12,7 +12,7 @@ clitools_system_packages:
     - unrar             # RAR file tools
     - openvpn           # VPN
     - rfkill            # Wifi Control
-    - pkg-plugin-system-upgrade # System upgrade
+    - python3-dnf-plugin-system-upgrade # Upgrade
     - numlockx          # Enable numlock always
     - glances           # System load
     - ipmitool          # IPMI remote control tool
