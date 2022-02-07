@@ -15,7 +15,7 @@ user_face: http://i.grntm.co/headshot3.jpg
 git_email: grant@grantcohoe.com
 git_init_default_branch: main
 
-project_dirs: [ 'pub', 'priv', 'cfcc', 'eagle' ]
+project_dirs_all: [ 'pub', 'priv' ]
 
 # Packages
 shell_packages:

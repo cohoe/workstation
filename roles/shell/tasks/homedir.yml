@@ -23,7 +23,8 @@
     path: "~/Projects/{{ item }}"
     state: directory
   with_items:
-    - "{{ project_dirs }}"
+    - "{{ project_dirs_all }}"
+    - "{{ project_dirs | default [] }}"
 
 # Face for login
 # Heads up - this requires ImageMagick and jhead which are provided in clitools
