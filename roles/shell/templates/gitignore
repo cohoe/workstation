@@ -8,3 +8,5 @@ Session.vim
 *.pyc
 *.retry
 .idea
+*.egg-info
+.vscode
