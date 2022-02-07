@@ -19,3 +19,10 @@
     cmd: snap wait system seed.loaded
   become: yes
   changed_when: false
+
+- name: install prune script
+  copy:
+    src: snapd-prune.sh
+    dest: /usr/local/bin/snapd-prune.sh
+    mode: 0755
+  become: yes
