@@ -10,5 +10,5 @@
 - name: autostart
   copy:
     src: "redshift-gtk.desktop"
-    dest: "{{ user_autostart_dir }}/quicktile.desktop"
+    dest: "{{ user_autostart_dir }}/redshift.desktop"
   when: ansible_virtualization_role != 'guest'
