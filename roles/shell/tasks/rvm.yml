@@ -37,3 +37,10 @@
     name: "{{ rvm_packages[ansible_distribution] }}"
     state: present
   become: yes
+
+- name: enable auto-updates
+  lineinfile:
+    path: ~/.rvmrc
+    regexp: "^rvm_autoupdate_flag"
+    line: rvm_autoupdate_flag=2
+    create: yes

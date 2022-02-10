@@ -6,9 +6,9 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - sudo
-    - clitools
-    - shell 
+#    - sudo
+#    - clitools
+    - ferdi
 #    - networkmanager
 #    - firewalld
 #    - ssh
@@ -29,5 +29,5 @@
     
   vars_files:
     - ../vars/global.yml
-    - ../vars/eagle.yml
+#- ../vars/eagle.yml
     #- ../vars/home.yml
