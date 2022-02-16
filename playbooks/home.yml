@@ -28,6 +28,8 @@
     - veracrypt
     - android
     - signal
+    - vscode
+    - swift
 
   tasks:
     # NVIDIA drivers

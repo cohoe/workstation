@@ -3,7 +3,7 @@
   snap:
     name: intellij-idea-ultimate
     state: present
-    channel: 2020.1/stable
+    channel: latest/stable
     classic: yes
   become: yes
 

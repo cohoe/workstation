@@ -1,0 +1,8 @@
+---
+- name: install
+  snap:
+    name: code
+    state: present
+    channel: latest/stable
+    classic: yes
+  become: yes
