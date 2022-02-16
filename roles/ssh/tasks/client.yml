@@ -1,11 +1,10 @@
 ---
-# Thanks @ryansb
-
-- name: Add SSH keys from github
+- name: authorized ssh keys
   authorized_key:
     user: "{{ ansible_user_id }}"
-    key: https://github.com/cohoe.keys
-    exclusive: yes
+    key: "{{ item }}"
+  with_items:
+    - "{{ ssh_authorized_keys}}"
 
 - name: test for existing ssh key
   stat:
