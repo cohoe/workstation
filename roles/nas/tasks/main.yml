@@ -18,10 +18,11 @@
   with_items:
     - "{{ nas_shares }}"
 
+# https://blog.dbrgn.ch/2014/6/17/setting-setuid-setgid-bit-with-ansible/
 - name: allow users to mount system cifs shares
   file:
     path: /usr/sbin/mount.cifs
-    mode: "u+s"
+    mode: 04755
   become: yes
 
 - name: create credential file
