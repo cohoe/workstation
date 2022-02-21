@@ -6,14 +6,14 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - networkmanager
-#  tasks:
-#    - import_role:
-#        name: networkmanager
-#        tasks_from: dns
-#      become: yes
+    #- networkmanager
+  tasks:
+    - import_role:
+        name: cinnamon
+        tasks_from: screenshot
+      #become: yes
     
   vars_files:
     - ../vars/global.yml
 #- ../vars/eagle.yml
-    - ../vars/home.yml
+    #- ../vars/home.yml
