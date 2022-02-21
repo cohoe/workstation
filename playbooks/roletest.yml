@@ -6,8 +6,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - vscode
-    - swift
+    - networkmanager
 #  tasks:
 #    - import_role:
 #        name: networkmanager
@@ -17,4 +16,4 @@
   vars_files:
     - ../vars/global.yml
 #- ../vars/eagle.yml
-#    - ../vars/home.yml
+    - ../vars/home.yml

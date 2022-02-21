@@ -11,6 +11,7 @@ connection-type=password
 dev=tun
 dev-type=tun
 password-flags=1
+port={{ item.value.port | default(1194) }}
 remote={{ item.value.remote }}
 remote-cert-tls=server
 username={{ item.value.username }}
