@@ -1,4 +1,6 @@
 ---
+# This required geoclue2 >2.5.7 unless in Fedora where the fix has been backported.
+# https://github.com/cohoe/workstation/issues/103
 - name: install package
   dnf:
     name:
@@ -12,3 +14,16 @@
     src: "redshift-gtk.desktop"
     dest: "{{ user_autostart_dir }}/redshift.desktop"
   when: ansible_virtualization_role != 'guest'
+
+# I really hope this fixes the problem.
+- name: configure permissions
+  blockinfile:
+    path: /etc/geoclue/geoclue.conf
+    block: |
+      [redshift]
+      allowed=true
+      system=false
+      users=1001
+  become: yes
+  notify:
+    - restart geoclue
