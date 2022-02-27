@@ -2,9 +2,10 @@
 - name: install java
   dnf:
     name:
-      - java
+      #- java
       - icedtea-web
       - java-latest-openjdk
+      - java-latest-openjdk-devel
     state: latest
   become: true
 
