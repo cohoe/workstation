@@ -4,6 +4,7 @@
     name:
       - java
       - icedtea-web
+      - java-latest-openjdk
     state: latest
   become: true
 
