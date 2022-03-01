@@ -32,5 +32,6 @@
     - redshift
     - spotify
     - fail2ban
+    - zoom
   vars_files:
     - ../vars/global.yml

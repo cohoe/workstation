@@ -6,7 +6,7 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - redshift
+    - zoom
 #  tasks:
 #    - import_role:
 #        name: cinnamon

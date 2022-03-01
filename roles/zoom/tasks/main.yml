@@ -1,0 +1,12 @@
+---
+- name: install gpg key
+  rpm_key:
+    state: present
+    key: https://zoom.us/linux/download/pubkey
+  become: yes
+
+- name: install package
+  dnf:
+    name: https://zoom.us/client/latest/zoom_x86_64.rpm
+    state: present
+  become: yes
