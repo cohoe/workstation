@@ -33,5 +33,6 @@
     - spotify
     - fail2ban
     - zoom
+    - authy
   vars_files:
     - ../vars/global.yml

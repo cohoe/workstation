@@ -1,0 +1,6 @@
+---
+- name: install
+  snap:
+    name: authy
+    state: present
+  become: yes
