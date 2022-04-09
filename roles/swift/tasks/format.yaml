@@ -1,0 +1,22 @@
+---
+- name: clone repo
+  git:
+    repo: 'https://github.com/apple/swift-format'
+    dest: /opt/swift-format
+    version: "swift-5.5.2-RELEASE"
+  become: yes
+
+- name: build
+  shell:
+    cmd: swift build
+    chdir: /opt/swift-format
+    #creates: /opt/swift-format/.build/debug/swift-format
+  become: yes
+  changed_when: false
+
+- name: install binary
+  copy:
+    src: /opt/swift-format/.build/debug/swift-format
+    dest: /usr/local/bin/swift-format
+    remote_src: yes
+  become: yes

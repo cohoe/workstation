@@ -6,7 +6,8 @@
     - firewalld_enabled_services:
         - ssh
   roles:
-    - zoom
+    #- zoom
+    - swift
 #  tasks:
 #    - import_role:
 #        name: cinnamon

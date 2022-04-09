@@ -5,4 +5,5 @@
     state: latest
   become: yes
 
-# @TODO vapor
+- include_tasks: vapor.yaml
+- include_tasks: format.yaml
