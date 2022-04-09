@@ -19,4 +19,5 @@
     src: /opt/swift-format/.build/debug/swift-format
     dest: /usr/local/bin/swift-format
     remote_src: yes
+    mode: 0755
   become: yes
