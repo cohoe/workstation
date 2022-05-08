@@ -16,5 +16,8 @@ hosts_default:
       - localhost4.localdomain4
       - "{{ ansible_hostname }}"
       - "{{ ansible_hostname }}.localdomain"
+  - address: "172.17.0.1"
+    names:
+      - host.docker.internal
 vpn_connections: {}
 dig_disable_edns: false
