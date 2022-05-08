@@ -7,7 +7,7 @@
         - ssh
   roles:
     #- zoom
-    - swift
+    - docker
 #  tasks:
 #    - import_role:
 #        name: cinnamon

@@ -34,5 +34,6 @@
     - fail2ban
     - zoom
     - authy
+    - logrotate
   vars_files:
     - ../vars/global.yml

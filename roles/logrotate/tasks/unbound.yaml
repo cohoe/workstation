@@ -1,0 +1,14 @@
+---
+- name: create initial log file
+  file:
+    path: /var/log/unbound.log
+    owner: 1000
+    group: 1000
+    mode: '0644'
+  become: yes
+
+- name: install unbound configuration
+  copy:
+    src: unbound.conf
+    dest: /etc/logrotate.d/unbound
+  become: yes

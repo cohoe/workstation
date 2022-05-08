@@ -25,6 +25,7 @@
     - vps
     - mail
     - backups/workstation
+    - logrotate
 
   tasks:
     - import_role:
@@ -32,7 +33,7 @@
         tasks_from: zsh
     - import_role:
         name: logrotate
-        tasks_from: vps.yaml
+        tasks_from: traefik
   vars_files:
     - ../vars/global.yml
     - ../vars/vps.yaml

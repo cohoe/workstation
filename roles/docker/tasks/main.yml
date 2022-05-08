@@ -54,11 +54,10 @@
   notify:
     - restart docker
 
-- name: logrotate config
-  copy:
-    src: logrotate.conf
-    dest: /etc/logrotate.d/docker
-  become: yes
+- name: logrotate
+  import_role:
+    name: logrotate
+    tasks_from: docker
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1746355
 # Haven't tested this with docker-ce

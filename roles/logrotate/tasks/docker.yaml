@@ -1,0 +1,6 @@
+---
+- name: install docker configuration
+  copy:
+    src: docker.conf
+    dest: /etc/logrotate.d/docker
+  become: yes
