@@ -7,7 +7,8 @@
         - ssh
   roles:
     #- zoom
-    - docker
+    #- docker
+    - vbox/host
 #  tasks:
 #    - import_role:
 #        name: cinnamon

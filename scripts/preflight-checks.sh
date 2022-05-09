@@ -94,6 +94,14 @@ check_dragora() {
     log_success_msg "dnfdragora is absent."
 }
 
+check_secureboot() {
+  if [[ "$(sudo mokutil --sb-state)" != *"disabled"* ]]; then
+    log_failure_msg "SecureBoot is enabled."
+    return 1
+  fi
+  log_success_msg "SecureBoot is disabled."
+}
+
 ret=0
 check_sudoers
 ret=$((${ret}+$?))
@@ -106,6 +114,8 @@ ret=$((${ret}+$?))
 check_hostname
 ret=$((${ret}+$?))
 check_dragora
+ret=$((${ret}+$?))
+check_secureboot
 ret=$((${ret}+$?))
 
 exit ${ret}
