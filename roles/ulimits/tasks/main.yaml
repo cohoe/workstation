@@ -1,0 +1,9 @@
+---
+- name: configure user limits
+  copy:
+    dest: /usr/lib/systemd/user.conf.d/99-custom.conf
+    content: |
+      # Managed by Ansible Workstation.
+      [Manager]
+      DefaultLimitNOFILE=9001:1048576
+  become: yes

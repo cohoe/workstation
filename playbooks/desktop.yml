@@ -35,5 +35,6 @@
     - zoom
     - authy
     - logrotate
+    - ulimits
   vars_files:
     - ../vars/global.yml

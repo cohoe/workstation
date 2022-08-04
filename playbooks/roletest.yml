@@ -8,7 +8,8 @@
   roles:
     #- zoom
     #- docker
-    - vbox/host
+    #- vbox/host
+    - ulimits
 #  tasks:
 #    - import_role:
 #        name: cinnamon
