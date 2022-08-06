@@ -18,7 +18,7 @@
 - name: install corrected unit template
   copy:
     src: openvpn-server@.service
-    dest: /usr/lib/systemd/system/openvpn-server@.service
+    dest: /etc/systemd/system/openvpn-server@.service
     mode: 0644
   become: yes
   notify:
