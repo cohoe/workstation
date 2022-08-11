@@ -13,3 +13,5 @@
   rebase = false
 [alias]
 	root = rev-parse --show-toplevel
+[fetch]
+  prune = true
