@@ -10,3 +10,6 @@ Session.vim
 .idea
 *.egg-info
 .vscode
+*.code-workspace
+*.env
+env.sh
