@@ -1,0 +1,36 @@
+---
+- name: test if package is installed
+  shell:
+    cmd: rpm -qi ferdium
+    warn: false
+  failed_when: false
+  changed_when: false
+  register: ferdium_installed
+
+- name: determine latest version
+  shell: bash -c "curl -sL \"https://api.github.com/repos/ferdium/ferdium-app/releases/latest\" | jq -r '.tag_name' | sed 's/v//'"
+  register: ferdium_version
+  changed_when: false
+
+# This will NOT auto-update to the latest version.
+- name: install package
+  dnf:
+    name: "https://github.com/ferdium/ferdium-app/releases/download/v{{ ferdium_version.stdout }}/ferdium-linux-{{ ferdium_version.stdout }}.rpm"
+    state: present
+    disable_gpg_check: yes
+  become: yes
+  when:
+    - ferdium_installed.rc != 0
+
+- name: create config directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/.config/Ferdium/config
+
+- name: settings
+  copy:
+    src: settings.json
+    dest: ~/.config/Ferdium/config/settings.json
+    backup: yes
