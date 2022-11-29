@@ -12,17 +12,19 @@
     groups: openvpn
   become: yes
 
-# There is a known issue where a cipher doesn't work anymore
-# https://fedoraproject.org/wiki/Changes/New_default_cipher_in_OpenVPN
-# And they haven't fixed it in years....
-- name: install corrected unit template
-  copy:
-    src: openvpn-server@.service
-    dest: /etc/systemd/system/openvpn-server@.service
-    mode: 0644
-  become: yes
-  notify:
-    - reload systemd
+## There is a known issue where a cipher doesn't work anymore
+## https://fedoraproject.org/wiki/Changes/New_default_cipher_in_OpenVPN
+## And they haven't fixed it in years....
+#
+# This may not be needed anymore since I'm moving away from OpenVPN and Unifi
+#- name: install corrected unit template
+#  copy:
+#    src: openvpn-server@.service
+#    dest: /etc/systemd/system/openvpn-server@.service
+#    mode: 0644
+#  become: yes
+#  notify:
+#    - reload systemd
 
 - name: high ports boolean
   seboolean:
