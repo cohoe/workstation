@@ -9,7 +9,7 @@
     #- zoom
     #- docker
     #- vbox/host
-    - sysctl
+    - ssh
 #  tasks:
 #    - import_role:
 #        name: cinnamon
@@ -18,5 +18,5 @@
     
   vars_files:
     - ../vars/global.yml
-#- ../vars/eagle.yml
+    #- ../vars/eagle.yml
     #- ../vars/home.yml
