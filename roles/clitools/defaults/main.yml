@@ -32,7 +32,6 @@ clitools_system_packages:
     - bridge-utils      # Bridge tools
     - libheif           # HEIC/HEIF tools
     - gnupg2            # GPG
-    - wireless-tools    # iwconfig
     - telnet            # Telnet client
   Ubuntu:
     - iftop
@@ -65,3 +64,4 @@ clitools_development_packages:
 #      - net-snmp-utils    # SNMP client (snmpwalk)
 #      - tftp              # TFTP client
 #      - pv                # Pipe monitor (for dd jobs)
+#      - wireless-tools    # iwconfig
