@@ -29,6 +29,7 @@
     - hdhomerun
     - mail
     - backups/workstation
+    - sysctl
 
   tasks:
     # Log when we last ran
