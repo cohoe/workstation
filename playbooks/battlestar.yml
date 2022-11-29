@@ -24,8 +24,13 @@
     - mail
     - backups/workstation
     - sysctl
+    - logrotate
 
   tasks:
+    - import_role:
+        name: logrotate
+        tasks_from: traefik
+
     # Log when we last ran
     - name: log run date to file
       copy:
