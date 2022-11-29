@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<direct>
+{% for rule in firewalld_direct_rules %}
+  <rule ipv="{{ rule.family }}" table="{{ rule.table }}" chain="{{ rule.chain }}" priority="{{ rule.priority }}">{{ rule.rule }}</rule>
+{% endfor %}
+</direct>

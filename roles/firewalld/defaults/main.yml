@@ -1,3 +1,19 @@
 firewalld_zone: public
 firewalld_enabled_services: []
 firewalld_enabled_ports: []
+firewalld_ipsets: []
+firewalld_router_rules: []
+firewalld_vpn_rules:
+  # Wireguard VPN interface rules
+  - family: ipv4
+    table: filter
+    chain: FORWARD
+    priority: 1
+    rule: "-i wg0 -j ACCEPT"
+  - family: ipv4
+    table: filter
+    chain: FORWARD
+    priority: 1
+    rule: "-o wg0 -j ACCEPT"
+  # @TODO ipv4 nat POSTROUTING 1 -o ens+/eno+ -j MASQUERADE
+firewalld_direct_rules: "{{ firewalld_router_rules + firewalld_vpn_rules | default([]) }}"

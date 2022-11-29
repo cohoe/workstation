@@ -76,3 +76,7 @@
     line: 'FirewallBackend=iptables'
   become: yes
   notify: restart firewalld
+
+- name: include router tasks
+  include_tasks: "router.yml"
+  when: firewalld_router is defined and firewalld_router is true

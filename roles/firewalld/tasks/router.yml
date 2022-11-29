@@ -1,0 +1,21 @@
+# https://blog.mohag.net/2018/05/managing-firewalld-ipsets-and-services.html
+- name: Configure ipsets
+  template:
+    src: ipset.xml.j2
+    dest: "/etc/firewalld/ipsets/{{ item.filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  with_items: "{{ firewalld_ipsets }}"
+  notify: reload firewalld
+
+- name: Configure direct rules
+  template:
+    src: direct.xml.j2
+    dest: "/etc/firewalld/direct.xml"
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  notify: reload firewalld

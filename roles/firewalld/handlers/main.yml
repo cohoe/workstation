@@ -4,3 +4,9 @@
     name: firewalld
     state: restarted
   listen: restart firewalld
+
+- name: reload firewalld
+  become: true
+  shell:
+    cmd: firewall-cmd --reload
+  listen: reload firewalld

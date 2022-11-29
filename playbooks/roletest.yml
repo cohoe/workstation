@@ -2,14 +2,15 @@
 - name: RoleTest
   hosts: localhost
   vars:
-    - firewalld_zone: work
+    - firewalld_zone: home
     - firewalld_enabled_services:
         - ssh
+    - firewalld_router: true
   roles:
     #- zoom
     #- docker
     #- vbox/host
-    - ssh
+    - firewalld
 #  tasks:
 #    - import_role:
 #        name: cinnamon
@@ -19,4 +20,4 @@
   vars_files:
     - ../vars/global.yml
     #- ../vars/eagle.yml
-    #- ../vars/home.yml
+    - ../vars/home.yml
