@@ -9,7 +9,7 @@
     #- zoom
     #- docker
     #- vbox/host
-    - ferdium
+    - docker
 #  tasks:
 #    - import_role:
 #        name: cinnamon
