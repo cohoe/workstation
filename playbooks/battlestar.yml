@@ -3,12 +3,6 @@
 #
 - name: Battlestar
   hosts: all
-  vars:
-    - firewalld_zone: home
-    - firewalld_enabled_services:
-        - ssh
-
-  # Security, SSL, dns, remmina need to be here so that it gets the vars file
   roles:
     - selinux
     - dnf
@@ -42,4 +36,4 @@
 
   vars_files:
     - ../vars/global.yml
-    - ../vars/home.yml
+    - ../vars/battlestar.yml

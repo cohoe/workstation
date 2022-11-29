@@ -4,7 +4,8 @@
     name:
       - java
       - java-devel
-      - icedtea-web
+      # @TODO find a replacement
+      #- icedtea-web
       - java-latest-openjdk
       - java-latest-openjdk-devel
     state: latest
