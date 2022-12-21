@@ -1,0 +1,9 @@
+---
+- name: load components
+  include_tasks: "{{ task_item }}.yml"
+  with_items:
+    - resolved
+    - journald
+  loop_control:
+    loop_var: task_item
+

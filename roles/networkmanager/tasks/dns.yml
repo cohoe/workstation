@@ -23,29 +23,3 @@
     dest: ~/.digrc
     content: "+noedns"
   when: dig_disable_edns
-
-- name: enable systemd-resolved
-  service:
-    name: systemd-resolved
-    state: started
-    enabled: true
-  become: yes
-
-# I keep finding sites that are misconfigured and make random DNS
-# failures occur. This is stupid.
-- name: disable dnssec
-  lineinfile:
-    path: /etc/systemd/resolved.conf
-    regexp: "^#?DNSSEC=(.*)$"
-    line: "DNSSEC=false"
-  become: yes
-  notify: restart resolved
-
-# Needed for Docker (#105)
-- name: add stub listener
-  lineinfile:
-    path: /etc/systemd/resolved.conf
-    regexp: "^#?DNSStubListenerExtra=(.*)$"
-    line: "DNSStubListenerExtra=172.17.0.1"
-  become: yes
-  notify: restart resolved

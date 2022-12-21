@@ -1,0 +1,14 @@
+---
+- name: restart resolved
+  service:
+    name: systemd-resolved
+    state: restarted
+  become: yes
+  listen: restart resolved
+
+- name: restart journald
+  service:
+    name: systemd-journald
+    state: restarted
+  become: yes
+  listen: restart journald

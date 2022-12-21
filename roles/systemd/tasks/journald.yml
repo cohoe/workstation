@@ -1,0 +1,20 @@
+---
+- name: enable systemd-journald
+  service:
+    name: systemd-journald
+    state: started
+    enabled: true
+  become: yes
+
+- name: retention parameters
+  ini_file:
+    path: /etc/systemd/journald.conf
+    no_extra_spaces: true
+    section: Journal
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+  become: yes
+  notify: restart journald
+  with_dict:
+    SystemMaxUse: 1G
+    MaxRetentionSec: 2d

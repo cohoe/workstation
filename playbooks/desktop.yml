@@ -8,6 +8,7 @@
     - fedorarepos
     - snapd
     - clitools
+    - systemd
     - shell
     - sudo
     - tls

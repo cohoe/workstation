@@ -9,6 +9,7 @@
     - rpmfusion
     - fedorarepos
     - clitools
+    - systemd
     - shell
     - sudo
     - tls

@@ -10,7 +10,7 @@
     #- zoom
     #- docker
     #- vbox/host
-    - firewalld
+    - systemd
 #  tasks:
 #    - import_role:
 #        name: cinnamon
@@ -20,4 +20,4 @@
   vars_files:
     - ../vars/global.yml
     #- ../vars/eagle.yml
-    - ../vars/home.yml
+    #- ../vars/home.yml

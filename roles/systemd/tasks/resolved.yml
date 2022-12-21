@@ -1,0 +1,30 @@
+---
+- name: enable systemd-resolved
+  service:
+    name: systemd-resolved
+    state: started
+    enabled: true
+  become: yes
+
+# I keep finding sites that are misconfigured and make random DNS
+# failures occur. This is stupid.
+- name: disable dnssec
+  ini_file:
+    path: /etc/systemd/resolved.conf
+    no_extra_spaces: true
+    section: Resolve
+    option: DNSSEC
+    value: false
+  become: yes
+  notify: restart resolved
+
+# Needed for Docker (#105)
+- name: add stub listener
+  ini_file:
+    path: /etc/systemd/resolved.conf
+    no_extra_spaces: true
+    section: Resolve
+    option: DNSStubListenerExtra
+    value: 172.17.0.1
+  become: yes
+  notify: restart resolved

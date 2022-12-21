@@ -15,6 +15,7 @@
     - firewalld
     - ssh
     - clitools
+    - systemd
     - shell
     - sudo
     - tls
