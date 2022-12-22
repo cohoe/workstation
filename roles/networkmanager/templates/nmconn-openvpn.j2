@@ -2,33 +2,15 @@
 id={{ item.key }}
 uuid={{ item.key | to_uuid }}
 type=vpn
-permissions=
+autoconnect=false
 
-[vpn]
-ca=/etc/pki/tls/certs/ca-bundle.crt
-compress=lzo
-connection-type=password
-dev=tun
-dev-type=tun
-password-flags=1
-port={{ item.value.port | default(1194) }}
-remote={{ item.value.remote }}
-remote-cert-tls=server
-username={{ item.value.username }}
-service-type=org.freedesktop.NetworkManager.openvpn
-
-[ipv4]
-{% if item.value.search_domains is defined %}
-dns-search={{ item.value.search_domains | join(';') }};
-{% else %}
-dns-search=
+{% for section in nm_openvpn_defaults.keys() %}
+[{{ section }}]
+{% if item.value.get(section) %}
+{% set _ = nm_openvpn_defaults.get(section).update(item.value.get(section)) %}
 {% endif %}
-method=auto
+{% for k, v in nm_openvpn_defaults.get(section).items() %}
+{{ k }}={{ v }}
+{% endfor %}
 
-[ipv6]
-addr-gen-mode=stable-privacy
-dns-search=
-ip6-privacy=0
-method=auto
-
-[proxy]
+{% endfor %}

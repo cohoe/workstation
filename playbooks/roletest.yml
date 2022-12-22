@@ -10,14 +10,17 @@
     #- zoom
     #- docker
     #- vbox/host
-    - systemd
-#  tasks:
-#    - import_role:
-#        name: cinnamon
-#        tasks_from: screenshot
-#      become: yes
+    #- systemd
+    #- tls
+    #- openvpn
+    #- networkmanager
+  tasks:
+    - import_role:
+        name: networkmanager
+        tasks_from: vpn
+      become: yes
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/eagle.yml
-    #- ../vars/home.yml
+    - ../vars/home.yml

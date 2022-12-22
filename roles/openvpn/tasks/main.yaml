@@ -88,7 +88,7 @@
 
 # This forces the handlers to run now rather than at the end of the play.
 # A lot more can go wrong there.
-- name: run bluetooth handlers now
+- name: run openvpn handlers now
   meta: flush_handlers
 
 - name: start connections

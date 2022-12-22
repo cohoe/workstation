@@ -6,7 +6,7 @@
   become: yes
   with_items:
     - tars-ca.crt
-    - pia-ca.crt
+    - nordvpn-root.crt
   notify: update-ca-trust
 
 - name: flush handlers

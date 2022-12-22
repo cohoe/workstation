@@ -14,18 +14,20 @@
     mode: 0600
     owner: root
     group: root
+    #force: no
   become: yes
   notify:
     - restart NetworkManager
   with_dict:
     "{{ vpn_connections }}"
 
-- name: GlobalProtect gateway fix script
-  copy:
-    src: 100-gp_gateway.sh
-    dest: /etc/NetworkManager/dispatcher.d/100-gp_gateway.sh
-    mode: 0755
-  become: yes
+# Deprecated until I need it again
+#- name: GlobalProtect gateway fix script
+#  copy:
+#    src: 100-gp_gateway.sh
+#    dest: /etc/NetworkManager/dispatcher.d/100-gp_gateway.sh
+#    mode: 0755
+#  become: yes
 
 - name: flush
   meta: flush_handlers
