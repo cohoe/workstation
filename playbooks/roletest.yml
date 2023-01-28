@@ -14,13 +14,14 @@
     #- tls
     #- openvpn
     #- networkmanager
-  tasks:
-    - import_role:
-        name: networkmanager
-        tasks_from: vpn
-      become: yes
+    - vscode
+#  tasks:
+#    - import_role:
+#        name: networkmanager
+#        tasks_from: vpn
+#      become: yes
     
   vars_files:
     - ../vars/global.yml
     #- ../vars/eagle.yml
-    - ../vars/home.yml
+    #- ../vars/home.yml

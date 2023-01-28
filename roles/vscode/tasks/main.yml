@@ -1,8 +1,22 @@
 ---
-- name: install
-  snap:
+- name: install rpm key
+  rpm_key:
+    state: present
+    key: "https://packages.microsoft.com/keys/microsoft.asc"
+  become: yes
+
+- name: create repo
+  yum_repository:
+    name: code
+    description: Visual Studio Code
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    gpgcheck: yes
+    enabled: yes
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+  become: yes
+
+- name: install vscode
+  dnf:
     name: code
     state: present
-    channel: latest/stable
-    classic: yes
   become: yes
