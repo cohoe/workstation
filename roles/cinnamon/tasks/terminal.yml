@@ -18,8 +18,8 @@
     background-transparency-percent: 20
     login-shell: 'true'
     bold-is-bright: 'true'
-    font: 'Nimbus Mono PS 12'
-    use-system-font: false
+    font: "'Nimbus Mono PS 12'"
+    use-system-font: 'false'
  
 - name: set default profile
   dconf:

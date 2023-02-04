@@ -10,8 +10,10 @@
 [init]
   defaultBranch = {{ git_init_default_branch }}
 [pull]
-  rebase = false
+  rebase = true
 [alias]
-	root = rev-parse --show-toplevel
+  root = rev-parse --show-toplevel
 [fetch]
   prune = true
+[diff]
+  colorMoved = zebra
