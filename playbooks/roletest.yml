@@ -14,7 +14,9 @@
     #- tls
     #- openvpn
     #- networkmanager
-    - vscode
+    #- vscode
+    #- vbox/host
+    - swift
 #  tasks:
 #    - import_role:
 #        name: networkmanager

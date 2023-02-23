@@ -1,0 +1,5 @@
+---
+- name: ldconfig
+  shell:
+    cmd: ldconfig
+  become: yes

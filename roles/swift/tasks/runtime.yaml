@@ -1,0 +1,26 @@
+---
+- name: install runtime
+  package:
+    name: "swift-lang-{{ swift_version }}"
+    state: present
+  become: yes
+  notify: ldconfig
+
+- name: ldconfig
+  copy:
+    content: |
+      # Managed by Ansible
+      /usr/libexec/swift/{{ swift_version }}/lib/
+      /usr/libexec/swift/{{ swift_version }}/lib/swift/linux/
+    dest: /etc/ld.so.conf.d/swift.conf
+  become: yes
+  notify: ldconfig
+
+- name: binary dependencies for common projects
+  dnf:
+    name:
+      - libffi3.1
+      - gd-devel
+      - libjpeg-turbo-devel
+    state: latest
+  become: yes

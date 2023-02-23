@@ -1,9 +1,4 @@
 ---
-- name: install runtime
-  package:
-    name: swift-lang
-    state: latest
-  become: yes
-
-- include_tasks: vapor.yaml
+- include_tasks: runtime.yaml
+#- include_tasks: vapor.yaml
 - include_tasks: format.yaml
