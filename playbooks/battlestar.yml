@@ -23,7 +23,6 @@
     - ssh
     - hdhomerun
     - mail
-    - backups/workstation
     - sysctl
     - logrotate
 
