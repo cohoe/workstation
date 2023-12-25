@@ -13,6 +13,7 @@
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   with_dict:
+    /org/cinnamon/desktop-effects: "false"
     /org/cinnamon/muffin/desktop-effects: "false"
     /org/cinnamon/desktop-effects-on-dialogs: "false"
     /org/cinnamon/desktop-effects-on-menus: "false"
