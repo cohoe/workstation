@@ -21,3 +21,9 @@
     name: "{{ clitools_development_packages[ansible_distribution] }}"
     state: latest
   become: true
+
+- name: disable troubleshooter autostart
+  file:
+    path: /etc/xdg/autostart/sealertauto.desktop
+    state: absent
+  become: yes
