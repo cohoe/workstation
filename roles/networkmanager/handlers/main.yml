@@ -10,7 +10,6 @@
 - name: wait for networking
   shell:
     cmd: 'curl -m 2 -s https://google.com'
-    warn: false
   register: result
   retries: 5
   delay: 2

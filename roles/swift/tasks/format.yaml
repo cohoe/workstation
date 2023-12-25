@@ -3,7 +3,7 @@
   git:
     repo: 'https://github.com/apple/swift-format'
     dest: /opt/swift-format
-    version: "0.50700.1"
+    version: "{{ swift_format_version }}"
   become: yes
 
 - name: build

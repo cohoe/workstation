@@ -15,7 +15,6 @@
 - name: figure out package version
   shell:
     cmd: rpm -qa pycharm-community | sed 's/pycharm-community-\([0-9]\+.[0-9]\)\(.*\)$/\1/'
-    warn: false
   register: pycharm_package_version
   changed_when: false
 

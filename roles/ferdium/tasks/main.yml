@@ -2,7 +2,6 @@
 - name: test if package is installed
   shell:
     cmd: rpm -qi ferdium
-    warn: false
   failed_when: false
   changed_when: false
   register: ferdium_installed

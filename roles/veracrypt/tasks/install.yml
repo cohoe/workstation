@@ -33,7 +33,6 @@
   shell:
     cmd: tar -C / --no-overwrite-dir -xpzvf veracrypt_1.23_gui_amd64.tar.gz
     chdir: /tmp/veracrypt-setup/
-    warn: false
 
 - name: cleanup
   file:
