@@ -12,7 +12,7 @@
   copy:
     src: "{{ item }}"
     dest: "/etc/ups/{{ item }}"
-    user: root
+    owner: root
     group: nut
     mode: 0640
   become: yes
@@ -26,7 +26,7 @@
   template:
     src: "{{ item }}.j2"
     dest: "/etc/ups/{{ item }}"
-    user: root
+    owner: root
     group: nut
     mode: 0640
   become: yes
@@ -40,7 +40,7 @@
   template:
     src: "battlestar-notify.sh.j2"
     dest: "/usr/local/bin/battlestar-notify.sh"
-    user: root
+    owner: root
     group: root
     mode: 0755
   become: yes
