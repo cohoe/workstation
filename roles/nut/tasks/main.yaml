@@ -47,6 +47,11 @@
 
 - name: enable services
   service:
-    name: nut.target
+    name: "{{ item }}"
     enabled: true
   become: yes
+  with_items:
+    - nut-driver-enumerator
+    - nut.target
+  notify:
+    - restart nut

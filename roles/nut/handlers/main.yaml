@@ -1,6 +1,9 @@
 ---
 - name: restart nut
   service:
-    name: nut.target
+    name: "{{ item }}"
     state: restarted
   become: yes
+  with_items:
+    - nut-driver-enumerator
+    - nut.target
