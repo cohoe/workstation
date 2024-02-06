@@ -1,0 +1,52 @@
+---
+# https://forums.unraid.net/topic/93341-tutorial-networked-nut-for-cyberpower-ups/
+- name: install package
+  dnf:
+    name: 
+      - nut
+      - nut-client
+    state: present
+  become: yes
+
+- name: configure files
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/ups/{{ item }}"
+    user: root
+    group: nut
+    mode: 0640
+  become: yes
+  with_items:
+    - nut.conf
+    - ups.conf
+  notify:
+    - restart nut
+
+- name: configure templates
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/ups/{{ item }}"
+    user: root
+    group: nut
+    mode: 0640
+  become: yes
+  with_items:
+    - upsd.conf
+    - upsd.users
+  notify:
+    - restart nut
+
+- name: install script
+  template:
+    src: "battlestar-notify.sh.j2"
+    dest: "/usr/local/bin/battlestar-notify.sh"
+    user: root
+    group: root
+    mode: 0755
+  become: yes
+
+- name: enable services
+  service:
+    name: nut.target
+    enabled: true
+  become: yes

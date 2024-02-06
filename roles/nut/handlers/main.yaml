@@ -1,0 +1,6 @@
+---
+- name: restart nut
+  service:
+    name: nut.target
+    state: restarted
+  become: yes
