@@ -16,7 +16,7 @@
     #- networkmanager
     #- vscode
     #- vbox/host
-    - swift
+    - nut
 #  tasks:
 #    - import_role:
 #        name: networkmanager
@@ -25,5 +25,5 @@
     
   vars_files:
     - ../vars/global.yml
-    #- ../vars/eagle.yml
+    - ../vars/battlestar.yml
     #- ../vars/home.yml

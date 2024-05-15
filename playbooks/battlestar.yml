@@ -25,6 +25,7 @@
     - mail
     - sysctl
     - logrotate
+    - nut
 
   tasks:
     - import_role:

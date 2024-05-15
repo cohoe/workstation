@@ -49,7 +49,7 @@
   service:
     name: "{{ item }}"
     enabled: true
-    state: running
+    state: started
   become: yes
   with_items:
     - nut-driver-enumerator
