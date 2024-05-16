@@ -1,6 +1,3 @@
-export SWIFTENV_ROOT="$HOME/.swiftenv"
-export PATH="$SWIFTENV_ROOT/bin:$PATH"
-if [ -f "${SWIFTENV_ROOT}/bin/swiftenv" ]; then
-  eval "$(swiftenv init -)"
+if [ -f $HOME/.local/share/swiftly/env.sh ]; then
+  . $HOME/.local/share/swiftly/env.sh
 fi
-export LINUX_SOURCEKIT_LIB_PATH=/usr/libexec/swift/lib

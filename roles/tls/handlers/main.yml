@@ -1,3 +1,3 @@
 - name: update-ca-trust
-  shell: update-ca-trust
+  shell: "{{ tls_update_ca_command[ansible_distribution] }}"
   become: yes

@@ -1,0 +1,3 @@
+---
+systemd_manage_journald: true
+systemd_manage_resolved: true

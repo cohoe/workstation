@@ -1,9 +1,8 @@
 ---
-- name: load components
-  include_tasks: "{{ task_item }}.yml"
-  with_items:
-    - resolved
-    - journald
-  loop_control:
-    loop_var: task_item
+- name: Load Journald
+  include_tasks: "journald.yml"
+  when: systemd_manage_journald
 
+- name: Load Resolved
+  include_tasks: "resolved.yml"
+  when: systemd_manage_resolved

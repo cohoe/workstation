@@ -1,0 +1,7 @@
+---
+tls_ca_dir:
+  Fedora: /etc/pki/ca-trust/source/anchors
+  Ubuntu: /usr/local/share/ca-certificates
+tls_update_ca_command:
+  Fedora: update-ca-trust
+  Ubuntu: update-ca-certificates

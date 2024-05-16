@@ -2,12 +2,12 @@
 - name: install SSL CAs
   copy:
     src: "{{ item }}"
-    dest: "/etc/pki/ca-trust/source/anchors/{{ item }}"
+    dest: "{{ tls_ca_dir[ansible_distribution] }}/{{ item }}"
   become: yes
+  notify: update-ca-trust
   with_items:
     - tars-ca.crt
     - nordvpn-root.crt
-  notify: update-ca-trust
 
 - name: flush handlers
   meta: flush_handlers
